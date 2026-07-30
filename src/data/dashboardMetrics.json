@@ -1,0 +1,404 @@
+{
+  "meta": {
+    "closedThrough": "Jun 2026",
+    "excludedPartial": "Jul 2026",
+    "arAsOf": "2026-07-30"
+  },
+  "revenueByMonth": [
+    {
+      "month": "Jan",
+      "revenue": 4081578.71,
+      "ebitda": 488539.17
+    },
+    {
+      "month": "Feb",
+      "revenue": 4044561.43,
+      "ebitda": 601370.41
+    },
+    {
+      "month": "Mar",
+      "revenue": 4448100.62,
+      "ebitda": 719354.57
+    },
+    {
+      "month": "Apr",
+      "revenue": 4653018.82,
+      "ebitda": 1039885.62
+    },
+    {
+      "month": "May",
+      "revenue": 4354971.51,
+      "ebitda": 560139.05
+    },
+    {
+      "month": "Jun",
+      "revenue": 4702074.87,
+      "ebitda": 557178.53
+    }
+  ],
+  "yoyGrowth": [
+    {
+      "month": "Jan",
+      "fy26": 4081578.71,
+      "fy25": 2035901.72,
+      "growthPct": 100.48
+    },
+    {
+      "month": "Feb",
+      "fy26": 4044561.43,
+      "fy25": 2864948.3,
+      "growthPct": 41.17
+    },
+    {
+      "month": "Mar",
+      "fy26": 4448100.62,
+      "fy25": 2608085.67,
+      "growthPct": 70.55
+    },
+    {
+      "month": "Apr",
+      "fy26": 4653018.82,
+      "fy25": 2443046.97,
+      "growthPct": 90.46
+    },
+    {
+      "month": "May",
+      "fy26": 4354971.51,
+      "fy25": 2118994.85,
+      "growthPct": 105.52
+    },
+    {
+      "month": "Jun",
+      "fy26": 4702074.87,
+      "fy25": 2946624.05,
+      "growthPct": 59.57
+    }
+  ],
+  "revenueByQuarter": [
+    {
+      "quarter": "Q1",
+      "fy25": 7508935.69,
+      "fy26": 12574240.76
+    },
+    {
+      "quarter": "Q2",
+      "fy25": 7508665.87,
+      "fy26": 13710065.2
+    }
+  ],
+  "expenseBase": [
+    {
+      "label": "FY25 Q1",
+      "cogs": 3320593,
+      "sm": 463617.14,
+      "ga": 851606.04
+    },
+    {
+      "label": "FY25 Q2",
+      "cogs": 3411044.88,
+      "sm": 801515.75,
+      "ga": 913098.18
+    },
+    {
+      "label": "FY25 Q3",
+      "cogs": 4002518.03,
+      "sm": 1685850.71,
+      "ga": 1916250.58
+    },
+    {
+      "label": "FY25 Q4",
+      "cogs": 4805391.09,
+      "sm": 2102971.38,
+      "ga": 1933153.19
+    },
+    {
+      "label": "FY26 Q1",
+      "cogs": 5462056.02,
+      "sm": 2961825.45,
+      "ga": 2341095.14
+    },
+    {
+      "label": "FY26 Q2",
+      "cogs": 5523177.02,
+      "sm": 3448932.33,
+      "ga": 2580752.65
+    }
+  ],
+  "rule40": {
+    "h1": {
+      "revenue": 26284305.96,
+      "priorRevenue": 15017601.56,
+      "growthPct": 75.02,
+      "marginPct": 15.09,
+      "score": 90.11,
+      "threshold": 40
+    },
+    "byQuarter": [
+      {
+        "quarter": "Q1",
+        "revenue": 12574240.76,
+        "priorRevenue": 7508935.69,
+        "growthPct": 67.46,
+        "marginPct": 14.39,
+        "score": 81.85,
+        "threshold": 40
+      },
+      {
+        "quarter": "Q2",
+        "revenue": 13710065.2,
+        "priorRevenue": 7508665.87,
+        "growthPct": 82.59,
+        "marginPct": 15.73,
+        "score": 98.32,
+        "threshold": 40
+      }
+    ]
+  },
+  "kpis": {
+    "revenueYtd": 26284305.96,
+    "revenueYtdGrowthPct": 75.02,
+    "ebitdaYtd": 3966467.35,
+    "ebitdaMarginPct": 15.09,
+    "grossMarginPct": 58.21,
+    "arTotal": 5649124.92,
+    "arOver60": 370902,
+    "headcount": 156,
+    "headcountBillable": 123,
+    "backlog": 19.36,
+    "ttmAttritionPct": 17.3
+  },
+  "ar": {
+    "buckets": [
+      {
+        "label": "Current",
+        "amount": 3682480.85
+      },
+      {
+        "label": "1–30",
+        "amount": 909831.94
+      },
+      {
+        "label": "31–60",
+        "amount": 685910.13
+      },
+      {
+        "label": "61–90",
+        "amount": 21060
+      },
+      {
+        "label": "91+",
+        "amount": 349842
+      }
+    ],
+    "total": 5649124.92,
+    "topCustomers": [
+      {
+        "name": "Canadian Imperial Bank of Commerce",
+        "current": 558500,
+        "d1_30": 159440,
+        "d31_60": 0,
+        "d61_90": 0,
+        "d91_plus": 0,
+        "total": 717940
+      },
+      {
+        "name": "Cone Health",
+        "current": 267105.6,
+        "d1_30": 178070.4,
+        "d31_60": 0,
+        "d61_90": 0,
+        "d91_plus": 0,
+        "total": 445176
+      },
+      {
+        "name": "Fanduel",
+        "current": 246000,
+        "d1_30": 164000,
+        "d31_60": 0,
+        "d61_90": 0,
+        "d91_plus": 0,
+        "total": 410000
+      },
+      {
+        "name": "V2X",
+        "current": 230040,
+        "d1_30": 115020,
+        "d31_60": 0,
+        "d61_90": 0,
+        "d91_plus": 0,
+        "total": 345060
+      },
+      {
+        "name": "British Airways PLC (UK) (USD)",
+        "current": 0,
+        "d1_30": 0,
+        "d31_60": 338000,
+        "d61_90": 0,
+        "d91_plus": 0,
+        "total": 338000
+      },
+      {
+        "name": "Starbuck",
+        "current": 328100,
+        "d1_30": 0,
+        "d31_60": 0,
+        "d61_90": 0,
+        "d91_plus": 0,
+        "total": 328100
+      },
+      {
+        "name": "Experian Services Corp.",
+        "current": 265000,
+        "d1_30": 0,
+        "d31_60": 0,
+        "d61_90": 0,
+        "d91_plus": 0,
+        "total": 265000
+      },
+      {
+        "name": "Coppel",
+        "current": 229760,
+        "d1_30": 0,
+        "d31_60": 0,
+        "d61_90": 0,
+        "d91_plus": 0,
+        "total": 229760
+      },
+      {
+        "name": "Corewell Health",
+        "current": 208401,
+        "d1_30": 0,
+        "d31_60": 0,
+        "d61_90": 0,
+        "d91_plus": 0,
+        "total": 208401
+      },
+      {
+        "name": "Lockheed Martin",
+        "current": 198596,
+        "d1_30": 0,
+        "d31_60": 0,
+        "d61_90": 0,
+        "d91_plus": 0,
+        "total": 198596
+      }
+    ],
+    "customerCount": 46
+  },
+  "backlog": {
+    "unit": "USD millions",
+    "source": "Synechron HR Template Jun 26, New Metrics row 27",
+    "series": [
+      {
+        "month": "Dec",
+        "value": 18.19
+      },
+      {
+        "month": "Jan",
+        "value": 17.9
+      },
+      {
+        "month": "Feb",
+        "value": 18.06
+      },
+      {
+        "month": "Mar",
+        "value": 20.39
+      },
+      {
+        "month": "Apr",
+        "value": 18.57
+      },
+      {
+        "month": "May",
+        "value": 19.36
+      }
+    ]
+  },
+  "fixedCostMix": {
+    "source": "Synechron HR Template Jun 26, New Metrics row 56",
+    "series": [
+      {
+        "month": "Jan",
+        "sn": 77,
+        "dd": 81,
+        "total": 79
+      },
+      {
+        "month": "Feb",
+        "sn": 80,
+        "dd": 59,
+        "total": 73
+      },
+      {
+        "month": "Mar",
+        "sn": 80,
+        "dd": 43,
+        "total": 65
+      },
+      {
+        "month": "Apr",
+        "sn": 81,
+        "dd": 54,
+        "total": 76
+      },
+      {
+        "month": "May",
+        "sn": 83,
+        "dd": 71,
+        "total": 79
+      }
+    ]
+  },
+  "attrition": {
+    "source": "BambooHR saved report 228, including terminated employees",
+    "asOf": "2026-06-30",
+    "ttmSeparations": 29,
+    "headcountJun": 168,
+    "ttmAttritionPct": 17.3,
+    "byMonth": [
+      {
+        "month": "01",
+        "separations": 3,
+        "headcount": 149,
+        "monthlyAttritionPct": 2
+      },
+      {
+        "month": "02",
+        "separations": 0,
+        "headcount": 155,
+        "monthlyAttritionPct": 0
+      },
+      {
+        "month": "03",
+        "separations": 1,
+        "headcount": 161,
+        "monthlyAttritionPct": 0.6
+      },
+      {
+        "month": "04",
+        "separations": 3,
+        "headcount": 162,
+        "monthlyAttritionPct": 1.9
+      },
+      {
+        "month": "05",
+        "separations": 3,
+        "headcount": 166,
+        "monthlyAttritionPct": 1.8
+      },
+      {
+        "month": "06",
+        "separations": 0,
+        "headcount": 168,
+        "monthlyAttritionPct": 0
+      }
+    ],
+    "synechron": {
+      "thisQuarterAttritionPct": 3.2,
+      "thisQuarterVoluntaryPct": 1.2,
+      "lastQuarterAttritionPct": 2.6,
+      "lastQuarterVoluntaryPct": 1.3
+    }
+  }
+}

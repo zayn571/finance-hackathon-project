@@ -1,0 +1,71 @@
+{
+  "groups": [
+    {
+      "kind": "excel",
+      "label": "Excel",
+      "files": [
+        {
+          "name": "Mgmt Reporting (4).xlsx",
+          "meta": "QuickBooks · monthly · Vincent Planz",
+          "url": "https://docs.google.com/spreadsheets/d/1mMMf4at64KB9X9DoApgfFSQukBa0NEFX/edit"
+        },
+        {
+          "name": "RapDev LLC Recons 202607.xlsx",
+          "meta": "QuickBooks · monthly · Eric Rabkin",
+          "url": "https://docs.google.com/spreadsheets/d/1TbHCzRtt5RvWaqGgZpzg9zf7cW-zP4HC/edit"
+        },
+        {
+          "name": "RapDev Adjusted EBITDA Earnout calculation 202606.xlsx",
+          "meta": "QuickBooks · quarterly · Vincent Planz",
+          "url": "https://docs.google.com/spreadsheets/d/17yIicoZf2O7Wst8sz6cKJg3UbzWMQcfK/edit"
+        },
+        {
+          "name": "4.2.1_RapDev - Detailed Projection Model.xlsx",
+          "meta": "Planning · quarterly · Vincent Planz",
+          "url": "https://docs.google.com/spreadsheets/d/107KlW9yQXiU7a_nKJ1yNcIRHXBJ6pYIQ/edit"
+        },
+        {
+          "name": "RapDev LLC_Profit and Loss (42).xlsx",
+          "meta": "QuickBooks export · monthly · Zayn Moselhy",
+          "url": "https://docs.google.com/spreadsheets/d/1gm1Yc-JqwpMcxokIRSZBuEU3o-4i5dqF/edit"
+        }
+      ]
+    },
+    {
+      "kind": "sheets",
+      "label": "Google Sheets",
+      "files": [
+        {
+          "name": "Mgmt Reporting 2026",
+          "meta": "QuickBooks · monthly · Finance team",
+          "url": "https://docs.google.com/spreadsheets/d/1SdNZPB6RHUIyUfQ1GOsGo-ccJ7hHM-Gn_v84JGVQyMU/edit"
+        },
+        {
+          "name": "RapDev Customer Billing Schedule (Forecasts)",
+          "meta": "Billing · monthly · Tameem",
+          "url": "https://docs.google.com/spreadsheets/d/1kQuTKDMwx9bYtlMdhZo86ijV2Hbb4Kb23LnsnmW0KKM/edit"
+        },
+        {
+          "name": "HOURS-RATES-REVENUE (FY26)",
+          "meta": "ServiceNow time cards · weekly · Ayaan Israni",
+          "url": "https://docs.google.com/spreadsheets/d/1cOo358uzN-K2fH2jndUaGx5LuNKrkwLg2ttEu2_ALyY/edit"
+        },
+        {
+          "name": "Northbridge_Analytics_GAAP_Reporting",
+          "meta": "GAAP reporting · monthly · Zayn Moselhy",
+          "url": "https://docs.google.com/spreadsheets/d/1l1niTtU_GriqVaNrbbzVDF48eh-gaAZzbMPyJiPQbpc/edit"
+        },
+        {
+          "name": "SW26 Workbook - RapDev",
+          "meta": "Software · quarterly · Mickenzi",
+          "url": "https://docs.google.com/spreadsheets/d/1mYfb1atX11U6l-VcdKpeQTA6eHw2KIfehYY3D0YdW-M/edit"
+        },
+        {
+          "name": "rapdev-department-listing-2026-12.csv",
+          "meta": "BambooHR report 228 · monthly · Zayn Moselhy",
+          "url": "https://drive.google.com/file/d/1mzBSQvXxFzrUI33WwrhRCkfXdrfjNQzY/view"
+        }
+      ]
+    }
+  ]
+}
