@@ -2,6 +2,14 @@ import { useState } from "react";
 import { ACTUALS_ANALYSIS_SCHEMA, type SchemaRow } from "../data/gaapAnalysisSchema";
 import actuals from "../data/incomeStatementActuals.json";
 import { getByPath, formatDollars, formatPercent } from "../lib/period";
+import {
+  PROVENANCE,
+  PROVENANCE_LABEL,
+  PROVENANCE_TITLE,
+  SUPPRESSED,
+  VERIFIED_REFERENCE,
+  type Provenance,
+} from "../data/provenance";
 
 const data = actuals as Record<string, unknown>;
 
@@ -22,10 +30,13 @@ const ANALYSIS_IDX = ACTUALS_ANALYSIS_SCHEMA.findIndex((r) => r.key === "band-an
 
 function rowValue(row: SchemaRow, period: PeriodCol): number | null {
   if (!row.dataKey) return null;
+  // A value that contradicts a verified source is withheld, not shown with a caveat.
+  if (SUPPRESSED.has(row.key)) return null;
   return getByPath(data[period.key], row.dataKey);
 }
 
 function cellText(row: SchemaRow, period: PeriodCol): string {
+  if (SUPPRESSED.has(row.key)) return "withheld";
   const v = rowValue(row, period);
   return row.isPercent ? formatPercent(v) : formatDollars(v);
 }
@@ -35,8 +46,10 @@ function quoteCsv(v: string): string {
 }
 
 function downloadCsv() {
+  // The export carries the same provenance column the table shows, so a figure
+  // pasted out of this file can still be traced back to its source.
   const lines: string[] = [
-    ["Line item", ...PERIODS.map((p) => p.label)].map(quoteCsv).join(","),
+    ["Line item", ...PERIODS.map((p) => p.label), "Source"].map(quoteCsv).join(","),
   ];
   for (const row of ACTUALS_ANALYSIS_SCHEMA) {
     if (row.kind === "spacer") {
@@ -53,7 +66,13 @@ function downloadCsv() {
       if (v == null) return "";
       return row.isPercent ? (Math.round(v * 10) / 10).toString() : Math.round(v).toString();
     });
-    lines.push([quoteCsv(label), ...cells.map(quoteCsv)].join(","));
+    const prov = PROVENANCE[row.key];
+    const note = SUPPRESSED.has(row.key)
+      ? `Withheld — contradicts verified source${VERIFIED_REFERENCE[row.key] ? `; verified: ${VERIFIED_REFERENCE[row.key]}` : ""}`
+      : prov
+        ? PROVENANCE_LABEL[prov]
+        : "";
+    lines.push([quoteCsv(label), ...cells.map(quoteCsv), quoteCsv(note)].join(","));
   }
   const blob = new Blob(["﻿" + lines.join("\n")], { type: "text/csv;charset=utf-8;" });
   const url = URL.createObjectURL(blob);
@@ -88,15 +107,29 @@ export default function IncomeStatement() {
           <h2>Income statement</h2>
           <p className="hint">
             Structure mirrors the GAAP Analysis tab through the Analysis section. Revenue, COGS
-            and operating expenses come from the QuickBooks P&amp;L by class; bookings from
-            closed-won HubSpot deals; utilization and hours from ServiceNow time cards; headcount
-            from the BambooHR department listing. Q3 and Q4 are projected off Q2 — not closed
-            actuals.
+            and operating expenses tie to the QuickBooks P&amp;L by class. Q3 and Q4 are Q2 scaled
+            by a growth rate — not closed actuals, and every ratio in them is inherited from Q2.
+          </p>
+          <p className="hint warn">
+            Not every row is a QuickBooks figure. Hover any marker to see where that number comes
+            from. Rows marked <strong>unverified</strong> have no traceable source — bookings,
+            project hours and bill rate among them, and the utilization and rate figures here
+            disagree with the delivered Synechron workbook (Jun 2026: 72.35% utilization, 317.91
+            blended rate). Treat those as placeholders, not actuals.
           </p>
         </div>
         <button className="btn btn-primary" onClick={downloadCsv}>
           Download CSV
         </button>
+      </div>
+
+      <div className="prov-legend">
+        {(["qbo", "allocated", "mapped", "unverified"] as Provenance[]).map((p) => (
+          <span key={p} className="prov-legend-item" title={PROVENANCE_TITLE[p]}>
+            <span className={`prov-dot prov-${p}`} aria-hidden="true" />
+            {PROVENANCE_LABEL[p]}
+          </span>
+        ))}
       </div>
 
       <div className="table-scroll">
@@ -136,13 +169,33 @@ export default function IncomeStatement() {
                   </tr>
                 );
               }
+              const prov = PROVENANCE[row.key];
               return (
                 <tr key={row.key} className={rowClass(row)}>
                   <td className="label-col" style={{ paddingLeft: 12 + row.indent * 16 }}>
                     {row.label}
+                    {VERIFIED_REFERENCE[row.key] && (
+                      <span className="verified-ref">verified: {VERIFIED_REFERENCE[row.key]}</span>
+                    )}
+                    {prov && prov !== "qbo" && (
+                      <span
+                        className={`prov-dot prov-${prov}`}
+                        title={`${PROVENANCE_LABEL[prov]} — ${PROVENANCE_TITLE[prov]}`}
+                      >
+                        <span className="sr-only">{PROVENANCE_LABEL[prov]}</span>
+                      </span>
+                    )}
                   </td>
                   {PERIODS.map((p) => (
-                    <td key={p.key} className={p.basis === "projected" ? "projected" : ""}>
+                    <td
+                      key={p.key}
+                      className={[
+                        p.basis === "projected" ? "projected" : "",
+                        prov === "unverified" ? "unverified" : "",
+                      ]
+                        .filter(Boolean)
+                        .join(" ")}
+                    >
                       {cellText(row, p)}
                     </td>
                   ))}
