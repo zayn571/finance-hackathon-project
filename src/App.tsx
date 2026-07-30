@@ -4,6 +4,7 @@ import IncomeStatement from "./components/IncomeStatement";
 import { RevenueEbitdaByMonth, YoyGrowth, RevenueByQuarter, ExpenseBase } from "./components/Charts";
 import ArAging from "./components/ArAging";
 import { Backlog, Attrition, FixedCostMix } from "./components/BacklogAttrition";
+import CloseBoard from "./components/CloseBoard";
 import WorkingFiles from "./components/WorkingFiles";
 import metrics from "./data/dashboardMetrics.json";
 import "./App.css";
@@ -44,6 +45,7 @@ export default function App() {
           <Attrition />
         </div>
         <FixedCostMix />
+        <CloseBoard />
         <WorkingFiles />
       </main>
     </div>

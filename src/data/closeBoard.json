@@ -1,0 +1,756 @@
+{
+  "project": "July '26 Close",
+  "asanaUrl": "https://app.asana.com/0/1216426089593577",
+  "source": "Asana project 1216426089593577, section Recurring Month End Tasks",
+  "members": [
+    {
+      "initials": "VP",
+      "name": "Vincent Planz",
+      "role": "Admin"
+    },
+    {
+      "initials": "ER",
+      "name": "Eric Rabkin",
+      "role": "Analyst"
+    },
+    {
+      "initials": "ZM",
+      "name": "Zaynaldine Moselhy",
+      "role": "Intern"
+    }
+  ],
+  "total": 73,
+  "complete": 4,
+  "tasks": [
+    {
+      "id": "t0",
+      "name": "Check for Project Based Security SOWs and add $1,500 Spiff for Ryan H.",
+      "done": false,
+      "due": "2026-07-30",
+      "bd": -1,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": null
+    },
+    {
+      "id": "t1",
+      "name": "Re-Class Amazon Orders from office Supplies to Hardware & Peripherals",
+      "done": false,
+      "due": "2026-08-03",
+      "bd": 1,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": "brex-import"
+    },
+    {
+      "id": "t2",
+      "name": "Enter Dreamix Intercompany Invoice",
+      "done": false,
+      "due": "2026-08-07",
+      "bd": 5,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t3",
+      "name": "Send Synechron Headcount template",
+      "done": false,
+      "due": "2026-08-05",
+      "bd": 3,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": "bamboohr-department-listing"
+    },
+    {
+      "id": "t4",
+      "name": "Enter BOA 4855 transactions",
+      "done": false,
+      "due": "2026-08-03",
+      "bd": 1,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t5",
+      "name": "Reconcile BOA 4855",
+      "done": false,
+      "due": "2026-08-04",
+      "bd": 2,
+      "assignee": "Zaynaldine Moselhy",
+      "initials": "ZM",
+      "skill": null
+    },
+    {
+      "id": "t6",
+      "name": "Review Transaction Details Report",
+      "done": false,
+      "due": "2026-08-10",
+      "bd": 6,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": null
+    },
+    {
+      "id": "t7",
+      "name": "Review Financials with team",
+      "done": false,
+      "due": "2026-08-11",
+      "bd": 7,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": null
+    },
+    {
+      "id": "t8",
+      "name": "Update S&M 17x Efficiency Check Document",
+      "done": false,
+      "due": "2026-08-12",
+      "bd": 8,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t9",
+      "name": "Accrue for estimated Federal & State Income Taxes Due",
+      "done": false,
+      "due": "2026-08-10",
+      "bd": 6,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": null
+    },
+    {
+      "id": "t10",
+      "name": "Enter NB Checking Transactions",
+      "done": false,
+      "due": "2026-08-03",
+      "bd": 1,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t11",
+      "name": "Accrue Ramp Bonuses for Harry T. and Tyler G.",
+      "done": false,
+      "due": "2026-07-31",
+      "bd": 0,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": null
+    },
+    {
+      "id": "t12",
+      "name": "Reconcile Northern Bank Checking",
+      "done": false,
+      "due": "2026-08-04",
+      "bd": 2,
+      "assignee": "Zaynaldine Moselhy",
+      "initials": "ZM",
+      "skill": null
+    },
+    {
+      "id": "t13",
+      "name": "Update Balance Sheet Recons",
+      "done": false,
+      "due": "2026-08-10",
+      "bd": 6,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": null
+    },
+    {
+      "id": "t14",
+      "name": "Review P&L MoM for variances",
+      "done": false,
+      "due": "2026-08-10",
+      "bd": 6,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": "qbo-gaap-analysis"
+    },
+    {
+      "id": "t15",
+      "name": "Enter Citizens Checking Transactions",
+      "done": false,
+      "due": "2026-08-03",
+      "bd": 1,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t16",
+      "name": "Enter Brex Checking Transactions",
+      "done": false,
+      "due": "2026-08-03",
+      "bd": 1,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": "brex-import"
+    },
+    {
+      "id": "t17",
+      "name": "Reconcile Citizens Checking",
+      "done": false,
+      "due": "2026-08-04",
+      "bd": 2,
+      "assignee": "Zaynaldine Moselhy",
+      "initials": "ZM",
+      "skill": null
+    },
+    {
+      "id": "t18",
+      "name": "Reconcile Brex Checking",
+      "done": false,
+      "due": "2026-08-04",
+      "bd": 2,
+      "assignee": "Zaynaldine Moselhy",
+      "initials": "ZM",
+      "skill": "brex-import"
+    },
+    {
+      "id": "t19",
+      "name": "Review AP Aging & Clean up aged items",
+      "done": false,
+      "due": "2026-07-31",
+      "bd": 0,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": null
+    },
+    {
+      "id": "t20",
+      "name": "Reconcile Amex Platinum 12006 CC",
+      "done": true,
+      "due": "2026-07-29",
+      "bd": -2,
+      "assignee": "Zaynaldine Moselhy",
+      "initials": "ZM",
+      "skill": "end-of-month-cc-managers-report"
+    },
+    {
+      "id": "t21",
+      "name": "Enter Amex Platinum 51005 CC",
+      "done": false,
+      "due": "2026-08-04",
+      "bd": 2,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": "end-of-month-cc-managers-report"
+    },
+    {
+      "id": "t22",
+      "name": "Reconcile Amex Platinum 51005 CC",
+      "done": false,
+      "due": "2026-07-29",
+      "bd": -2,
+      "assignee": "Zaynaldine Moselhy",
+      "initials": "ZM",
+      "skill": "end-of-month-cc-managers-report"
+    },
+    {
+      "id": "t23",
+      "name": "Enter Amex Platinum 12006 CC",
+      "done": false,
+      "due": "2026-08-04",
+      "bd": 2,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": "end-of-month-cc-managers-report"
+    },
+    {
+      "id": "t24",
+      "name": "Enter Brex CC",
+      "done": false,
+      "due": "2026-08-04",
+      "bd": 2,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": "end-of-month-cc-managers-report"
+    },
+    {
+      "id": "t25",
+      "name": "Reconcile Brex CC",
+      "done": false,
+      "due": "2026-08-04",
+      "bd": 2,
+      "assignee": "Zaynaldine Moselhy",
+      "initials": "ZM",
+      "skill": "end-of-month-cc-managers-report"
+    },
+    {
+      "id": "t26",
+      "name": "Reconcile Amex Centurion CC",
+      "done": true,
+      "due": "2026-07-29",
+      "bd": -2,
+      "assignee": "Zaynaldine Moselhy",
+      "initials": "ZM",
+      "skill": "end-of-month-cc-managers-report"
+    },
+    {
+      "id": "t27",
+      "name": "Enter Amex Centurion CC",
+      "done": false,
+      "due": "2026-08-04",
+      "bd": 2,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": "end-of-month-cc-managers-report"
+    },
+    {
+      "id": "t28",
+      "name": "Review AR Aging & Follow Up on past due invoices",
+      "done": false,
+      "due": "2026-07-27",
+      "bd": -4,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": "weekly-cash-flow-update"
+    },
+    {
+      "id": "t29",
+      "name": "Review AR Aging & Follow Up on past due invoices",
+      "done": false,
+      "due": "2026-08-11",
+      "bd": 7,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": "weekly-cash-flow-update"
+    },
+    {
+      "id": "t30",
+      "name": "Follow up AR Aging new billing contacts",
+      "done": false,
+      "due": "2026-08-19",
+      "bd": 13,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": "weekly-cash-flow-update"
+    },
+    {
+      "id": "t31",
+      "name": "Intercompany Allocation to Synechron Ltd, UK",
+      "done": false,
+      "due": "2026-08-10",
+      "bd": 6,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t32",
+      "name": "Review P&L By Class",
+      "done": false,
+      "due": "2026-08-10",
+      "bd": 6,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": "qbo-gaap-analysis"
+    },
+    {
+      "id": "t33",
+      "name": "Create DD Marketplace Invoice in QBO",
+      "done": true,
+      "due": "2026-07-27",
+      "bd": -4,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t34",
+      "name": "Record DD SW Revenue",
+      "done": false,
+      "due": "2026-07-27",
+      "bd": -4,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t35",
+      "name": "Amortize Prepaid Insurance",
+      "done": false,
+      "due": "2026-07-30",
+      "bd": -1,
+      "assignee": "Zaynaldine Moselhy",
+      "initials": "ZM",
+      "skill": null
+    },
+    {
+      "id": "t36",
+      "name": "Amortize Other Prepaid Expenses",
+      "done": false,
+      "due": "2026-07-30",
+      "bd": -1,
+      "assignee": "Zaynaldine Moselhy",
+      "initials": "ZM",
+      "skill": null
+    },
+    {
+      "id": "t37",
+      "name": "Create & Send Customer Invoices",
+      "done": false,
+      "due": "2026-08-04",
+      "bd": 2,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t38",
+      "name": "Amortize Prepaid Travel",
+      "done": false,
+      "due": "2026-07-30",
+      "bd": -1,
+      "assignee": "Zaynaldine Moselhy",
+      "initials": "ZM",
+      "skill": null
+    },
+    {
+      "id": "t39",
+      "name": "Book Bi-weekly payrolls",
+      "done": false,
+      "due": "2026-07-31",
+      "bd": 0,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t40",
+      "name": "Book Off Cycle Payrolls",
+      "done": false,
+      "due": "2026-07-31",
+      "bd": 0,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t41",
+      "name": "Book Health Insurance Expense",
+      "done": false,
+      "due": "2026-07-31",
+      "bd": 0,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t42",
+      "name": "Book 401k Expense",
+      "done": false,
+      "due": "2026-07-31",
+      "bd": 0,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t43",
+      "name": "Book Fringe Benefits Expenses (Dental, Vision, Accident, etc.)",
+      "done": false,
+      "due": "2026-07-31",
+      "bd": 0,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t44",
+      "name": "Review Next Month's P&L for misclassified Txns",
+      "done": false,
+      "due": "2026-08-10",
+      "bd": 6,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": null
+    },
+    {
+      "id": "t45",
+      "name": "Update Monthly Payroll Costs by Employee & Tie to P&L",
+      "done": false,
+      "due": "2026-08-07",
+      "bd": 5,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t46",
+      "name": "Update Yearly Payroll Costs by Employee & Tie to P&L",
+      "done": false,
+      "due": "2026-08-07",
+      "bd": 5,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t47",
+      "name": "Add Scott Essler Commission Record for MP Commissions",
+      "done": true,
+      "due": "2026-07-27",
+      "bd": -4,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": null
+    },
+    {
+      "id": "t48",
+      "name": "Accrue Bonuses & Commissions",
+      "done": false,
+      "due": "2026-08-07",
+      "bd": 5,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": null
+    },
+    {
+      "id": "t49",
+      "name": "Lock books through end of Month",
+      "done": false,
+      "due": "2026-08-10",
+      "bd": 6,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": null
+    },
+    {
+      "id": "t50",
+      "name": "Intercompany Allocation to Synechron Inc., USA",
+      "done": false,
+      "due": "2026-08-10",
+      "bd": 6,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t51",
+      "name": "Book RSU Costs from Synechron, Inc.",
+      "done": false,
+      "due": "2026-08-10",
+      "bd": 6,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t52",
+      "name": "TH Personal Expense re-class",
+      "done": false,
+      "due": "2026-08-10",
+      "bd": 6,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": null
+    },
+    {
+      "id": "t53",
+      "name": "Save Down Financials on Shared Drive",
+      "done": false,
+      "due": "2026-08-11",
+      "bd": 7,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": null
+    },
+    {
+      "id": "t54",
+      "name": "Accrue monthly payroll costs",
+      "done": false,
+      "due": "2026-07-31",
+      "bd": 0,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t55",
+      "name": "Update monthly bonus file & send to Chinmay",
+      "done": false,
+      "due": "2026-08-11",
+      "bd": 7,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t56",
+      "name": "Update Estimated Project Hours in SN Contracts Page to match POC Computation Workbook",
+      "done": false,
+      "due": "2026-08-07",
+      "bd": 5,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": null
+    },
+    {
+      "id": "t57",
+      "name": "Update Management Reporting & Share Updates",
+      "done": false,
+      "due": "2026-08-11",
+      "bd": 7,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": "qbo-gaap-analysis"
+    },
+    {
+      "id": "t58",
+      "name": "Enter Deel invoice for International EE's",
+      "done": false,
+      "due": "2026-07-30",
+      "bd": -1,
+      "assignee": "Zaynaldine Moselhy",
+      "initials": "ZM",
+      "skill": null
+    },
+    {
+      "id": "t59",
+      "name": "Enter Managed Datadog Monthly Revenue",
+      "done": false,
+      "due": "2026-07-30",
+      "bd": -1,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t60",
+      "name": "Enter Managed Security Monthly Revenue",
+      "done": false,
+      "due": "2026-07-30",
+      "bd": -1,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t61",
+      "name": "Send Credit Card Expenses by EE to managers for review",
+      "done": false,
+      "due": "2026-08-05",
+      "bd": 3,
+      "assignee": "Zaynaldine Moselhy",
+      "initials": "ZM",
+      "skill": "end-of-month-cc-managers-report"
+    },
+    {
+      "id": "t62",
+      "name": "Update & Reconcile Deferred Managed Services Revenue Schedule to BS",
+      "done": false,
+      "due": "2026-07-30",
+      "bd": -1,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    },
+    {
+      "id": "t63",
+      "name": "Enter Fixed Asset Depreciation",
+      "done": false,
+      "due": "2026-07-30",
+      "bd": -1,
+      "assignee": "Zaynaldine Moselhy",
+      "initials": "ZM",
+      "skill": null
+    },
+    {
+      "id": "t64",
+      "name": "Save Synechron Trial Balance to Shared GDrive Folder & confirm w/ Aniruddha",
+      "done": false,
+      "due": "2026-08-11",
+      "bd": 7,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": "synechron-monthly-reporting"
+    },
+    {
+      "id": "t65",
+      "name": "Update & Send Synechron Revenue by Template Contract",
+      "done": false,
+      "due": "2026-08-07",
+      "bd": 5,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": "synechron-monthly-reporting"
+    },
+    {
+      "id": "t66",
+      "name": "Calculate & Record Services Revenue",
+      "done": false,
+      "due": "2026-08-07",
+      "bd": 5,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": null
+    },
+    {
+      "id": "t67",
+      "name": "Update RapDev, Inc. Financials & Share w/ Synechron",
+      "done": false,
+      "due": "2026-08-07",
+      "bd": 5,
+      "assignee": "Vincent Planz",
+      "initials": "VP",
+      "skill": "synechron-monthly-reporting"
+    },
+    {
+      "id": "t68",
+      "name": "Monthly Forecast update Shared w/ Synechron",
+      "done": false,
+      "due": "2026-08-06",
+      "bd": 4,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": "synechron-monthly-reporting"
+    },
+    {
+      "id": "t69",
+      "name": "Prepare BVA file for Internal & Synechron",
+      "done": false,
+      "due": "2026-08-11",
+      "bd": 7,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": "synechron-monthly-reporting"
+    },
+    {
+      "id": "t70",
+      "name": "Reconcile Services Billing Schedule to P&L",
+      "done": false,
+      "due": "2026-08-04",
+      "bd": 2,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": "weekly-cash-flow-update"
+    },
+    {
+      "id": "t71",
+      "name": "Check that all Closed Won Deals in Hubspot are added to Billing Trackers",
+      "done": false,
+      "due": "2026-08-04",
+      "bd": 2,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": "weekly-cash-flow-update"
+    },
+    {
+      "id": "t72",
+      "name": "Calculate T&M Services Invoices using \"Monthly Services T&M Billing Calc\" Sheet",
+      "done": false,
+      "due": "2026-08-04",
+      "bd": 2,
+      "assignee": "Eric Rabkin",
+      "initials": "ER",
+      "skill": null
+    }
+  ]
+}
