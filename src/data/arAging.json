@@ -1,0 +1,436 @@
+{
+  "columns": [
+    "",
+    "Current",
+    "1 - 30",
+    "31 - 60",
+    "61 - 90",
+    "91 and over",
+    "Total"
+  ],
+  "customers": [
+    {
+      "name": "AECOM",
+      "current": 0.0,
+      "d1_30": 25200.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 25200.0
+    },
+    {
+      "name": "Ahold Delhaize",
+      "current": 0.0,
+      "d1_30": 26910.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 26910.0
+    },
+    {
+      "name": "AllianceBernstein",
+      "current": 15120.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 15120.0
+    },
+    {
+      "name": "Arrow Electronics",
+      "current": 81900.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 81900.0
+    },
+    {
+      "name": "AXA Technologies",
+      "current": 112306.46,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 112306.46
+    },
+    {
+      "name": "Blue Cross Blue Shield of Louisiana",
+      "current": 22000.0,
+      "d1_30": 21340.0,
+      "d31_60": 0.0,
+      "d61_90": 11220.0,
+      "d91_plus": 0.0,
+      "total": 54560.0
+    },
+    {
+      "name": "Brinks",
+      "current": 0.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 0.0
+    },
+    {
+      "name": "British Airways PLC (UK) (GBP)",
+      "current": 0.0,
+      "d1_30": 0.0,
+      "d31_60": 184597.64,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 184597.64
+    },
+    {
+      "name": "British Airways PLC (UK) (USD)",
+      "current": 0.0,
+      "d1_30": 0.0,
+      "d31_60": 338000.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 338000.0
+    },
+    {
+      "name": "Canadian Imperial Bank of Commerce",
+      "current": 558500.0,
+      "d1_30": 159440.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 717940.0
+    },
+    {
+      "name": "CareSource",
+      "current": 30000.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 30000.0
+    },
+    {
+      "name": "Centene Corporation",
+      "current": 0.0,
+      "d1_30": 32640.0,
+      "d31_60": 32640.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 65280.0
+    },
+    {
+      "name": "Centrica PLC (GBP)",
+      "current": 81663.78,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 81663.78
+    },
+    {
+      "name": "Chipotle Mexican Grill",
+      "current": 0.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 120500.0,
+      "total": 120500.0
+    },
+    {
+      "name": "Claro Pay",
+      "current": 8573.32,
+      "d1_30": 0.0,
+      "d31_60": 7046.66,
+      "d61_90": 9840.0,
+      "d91_plus": 106080.0,
+      "total": 131539.98
+    },
+    {
+      "name": "Cone Health",
+      "current": 267105.6,
+      "d1_30": 178070.4,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 445176.0
+    },
+    {
+      "name": "Constellation Energy Generation, LLC",
+      "current": 0.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 48402.0,
+      "total": 48402.0
+    },
+    {
+      "name": "Coppel",
+      "current": 229760.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 229760.0
+    },
+    {
+      "name": "Corewell Health",
+      "current": 208401.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 208401.0
+    },
+    {
+      "name": "Discovery Communications, LLC",
+      "current": 1425.0,
+      "d1_30": 51394.05,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 52819.05
+    },
+    {
+      "name": "Dynamic Lifecycle",
+      "current": 19387.5,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 19387.5
+    },
+    {
+      "name": "Experian Services Corp.",
+      "current": 265000.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 265000.0
+    },
+    {
+      "name": "Express Pros",
+      "current": 67500.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 67500.0
+    },
+    {
+      "name": "Fanduel",
+      "current": 246000.0,
+      "d1_30": 164000.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 410000.0
+    },
+    {
+      "name": "GIC PTE Ltd",
+      "current": 0.0,
+      "d1_30": 13580.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 13580.0
+    },
+    {
+      "name": "Grainger",
+      "current": 12275.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 12275.0
+    },
+    {
+      "name": "HarbourVest",
+      "current": 69993.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 69993.0
+    },
+    {
+      "name": "HP Inc.",
+      "current": 0.0,
+      "d1_30": 0.0,
+      "d31_60": 76800.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 76800.0
+    },
+    {
+      "name": "Komatsu",
+      "current": 0.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 22500.0,
+      "total": 22500.0
+    },
+    {
+      "name": "Lockheed Martin",
+      "current": 198596.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 198596.0
+    },
+    {
+      "name": "Lululemon",
+      "current": 23630.0,
+      "d1_30": 0.0,
+      "d31_60": 20850.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 44480.0
+    },
+    {
+      "name": "Manchester Airport Group (GBP)",
+      "current": 60678.41,
+      "d1_30": 59536.8,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 120215.21
+    },
+    {
+      "name": "Nasdaq",
+      "current": 96981.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 96981.0
+    },
+    {
+      "name": "Nomura International PLC",
+      "current": 800.0,
+      "d1_30": 9375.0,
+      "d31_60": 1000.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 11175.0
+    },
+    {
+      "name": "Oldcastle",
+      "current": 86940.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 86940.0
+    },
+    {
+      "name": "OneMain Financial",
+      "current": 0.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 49720.0,
+      "total": 49720.0
+    },
+    {
+      "name": "Optiv Security Inc.",
+      "current": 43200.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 43200.0
+    },
+    {
+      "name": "Rockwell Automation, Inc.",
+      "current": 10750.0,
+      "d1_30": 0.0,
+      "d31_60": 24975.83,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 35725.83
+    },
+    {
+      "name": "Rogers Memorial Hospital, Inc",
+      "current": 32400.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 32400.0
+    },
+    {
+      "name": "Sephora USA, Inc.,",
+      "current": 93750.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 93750.0
+    },
+    {
+      "name": "Sierra Nevada Company, LLC",
+      "current": 40560.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 2640.0,
+      "total": 43200.0
+    },
+    {
+      "name": "Starbuck",
+      "current": 328100.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 328100.0
+    },
+    {
+      "name": "Swan Bitcoin",
+      "current": 7000.0,
+      "d1_30": 7000.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 14000.0
+    },
+    {
+      "name": "V2X",
+      "current": 230040.0,
+      "d1_30": 115020.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 345060.0
+    },
+    {
+      "name": "Vitality Global",
+      "current": 0.0,
+      "d1_30": 44000.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 44000.0
+    },
+    {
+      "name": "Waters Corporation",
+      "current": 68040.0,
+      "d1_30": 0.0,
+      "d31_60": 0.0,
+      "d61_90": 0.0,
+      "d91_plus": 0.0,
+      "total": 68040.0
+    }
+  ],
+  "total": {
+    "name": "TOTAL",
+    "current": 3682480.85,
+    "d1_30": 909831.94,
+    "d31_60": 685910.13,
+    "d61_90": 21060.0,
+    "d91_plus": 349842.0,
+    "total": 5649124.92
+  }
+}

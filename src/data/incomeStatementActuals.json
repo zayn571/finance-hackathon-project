@@ -1,0 +1,602 @@
+{
+  "Q1": {
+    "bookings": {
+      "total": 14213362.4,
+      "dd": 3449008,
+      "sn": 10241797,
+      "sw": 108557.4,
+      "msp": 414000
+    },
+    "bookingsShare": {
+      "dd": 24.27,
+      "sn": 72.06
+    },
+    "revenue": {
+      "total": 12574240.76,
+      "dd": {
+        "total": 3468495.12,
+        "services": 2742595.22,
+        "software": 261282.98,
+        "managedDd": 215320.95,
+        "managedSoc": 249295.97
+      },
+      "sn": {
+        "total": 9105745.64,
+        "services": 9104078.97,
+        "software": 1666.67,
+        "msp": 0
+      },
+      "other": 0,
+      "totalServices": 11846674.19,
+      "totalSw": 262949.65,
+      "totalMsp": 464616.92
+    },
+    "cogs": {
+      "total": 5462056.02,
+      "payroll": {
+        "total": 5225837.55,
+        "dd": {
+          "total": 1750347.22,
+          "services": 1384027.87,
+          "software": 131854.28
+        },
+        "sn": {
+          "total": 3475490.33,
+          "services": 3474854.19,
+          "software": 636.14,
+          "msp": 0
+        },
+        "managedDd": 108659.93,
+        "managedSecurity": 125805.14
+      },
+      "travel": {
+        "total": 119150.58,
+        "dd": 45245.32,
+        "sn": 73905.26
+      },
+      "marketplaceFees": 76639.65,
+      "contractorFees": 40428.24,
+      "totalDd": 1872232.19,
+      "totalSn": 3589823.83
+    },
+    "grossMargin": {
+      "total": 7112184.74,
+      "dd": {
+        "total": 1596262.93,
+        "services": 1358567.35,
+        "software": 129428.7
+      },
+      "sn": {
+        "total": 5515921.81,
+        "services": 5629224.78,
+        "software": 1030.53,
+        "msp": 0
+      },
+      "managedDd": 106661.02,
+      "managedSecurity": 123490.83
+    },
+    "grossMarginPct": {
+      "total": 56.56,
+      "dd": 46.02,
+      "ddServices": 49.54,
+      "ddSoftware": 49.54,
+      "managedDd": 49.54,
+      "managedSecurity": 49.54,
+      "sn": 60.58,
+      "snServices": 61.83,
+      "snSoftware": 61.83,
+      "snMsp": null
+    },
+    "opex": {
+      "total": 5302920.59,
+      "ga": {
+        "total": 2341095.14,
+        "dd": 138543.2,
+        "sn": 164371.68,
+        "ops": 2038180.26
+      },
+      "personnel": {
+        "total": 3141285.61,
+        "dd": 795428.36,
+        "sn": 1372885.12,
+        "ops": 972972.13
+      },
+      "sm": {
+        "total": 2961825.45,
+        "dd": 874561.18,
+        "sn": 1658888.81,
+        "ops": 428375.46
+      }
+    },
+    "otherExpenses": {
+      "total": 1262292.43,
+      "ebitdaAddBack": 302950.18
+    },
+    "ebitdaAdjustments": {
+      "total": 56584.08,
+      "mwe": 56584.08
+    },
+    "ebitda": 1809264.15,
+    "adjEbitda": 2168798.41,
+    "ebitdaPct": 17.25,
+    "cogsPlusOpex": {
+      "total": 10764976.61,
+      "pctRevenue": 85.61
+    },
+    "ratios": {
+      "cogsPctRevenue": 43.44,
+      "gaPctRevenue": 18.62,
+      "personnelPctRevenue": 24.98,
+      "smPctRevenue": 23.55,
+      "netOperatingIncomeMargin": 14.39
+    },
+    "projectHours": {
+      "nonBillableHeadcount": 33,
+      "billableHeadcount": 123,
+      "nonBillablePct": 21.15,
+      "billablePct": 78.85,
+      "available": 66560,
+      "worked": 59017,
+      "utilization": 88.67,
+      "billed": 56656.32,
+      "billedPerHead": 460.62,
+      "paddingPct": 4
+    },
+    "billRate": {
+      "breakEven": 190,
+      "perHourBilled": 209.1,
+      "realRate": 200.73
+    },
+    "salesEfficiency": 4
+  },
+  "Q2": {
+    "bookings": {
+      "total": 8417175.32,
+      "dd": 985928,
+      "sn": 6801252,
+      "sw": 64800,
+      "msp": 565195.32
+    },
+    "bookingsShare": {
+      "dd": 11.71,
+      "sn": 80.8
+    },
+    "revenue": {
+      "total": 13710065.2,
+      "dd": {
+        "total": 4434817.96,
+        "services": 3567833.82,
+        "software": 245005.75,
+        "managedDd": 209904.22,
+        "managedSoc": 291560.7
+      },
+      "sn": {
+        "total": 9248115.1,
+        "services": 9213334.79,
+        "software": 5000.01,
+        "msp": 0
+      },
+      "other": 27132.14,
+      "totalServices": 12781168.61,
+      "totalSw": 250005.76,
+      "totalMsp": 501464.92
+    },
+    "cogs": {
+      "total": 5523177.02,
+      "payroll": {
+        "total": 5291450.32,
+        "dd": {
+          "total": 1727025.79,
+          "services": 1428211.9,
+          "software": 98076.35
+        },
+        "sn": {
+          "total": 3564424.53,
+          "services": 3562491.19,
+          "software": 1933.34,
+          "msp": 0
+        },
+        "managedDd": 84025.13,
+        "managedSecurity": 116712.4
+      },
+      "travel": {
+        "total": 115312.83,
+        "dd": 32540.09,
+        "sn": 82772.74
+      },
+      "marketplaceFees": 71756.48,
+      "contractorFees": 44657.39,
+      "totalDd": 1831322.36,
+      "totalSn": 3691854.66
+    },
+    "grossMargin": {
+      "total": 8186888.18,
+      "dd": {
+        "total": 2603495.6,
+        "services": 2139621.92,
+        "software": 146929.4
+      },
+      "sn": {
+        "total": 5556260.44,
+        "services": 5650843.6,
+        "software": 3066.67,
+        "msp": 0
+      },
+      "managedDd": 125879.09,
+      "managedSecurity": 174848.3
+    },
+    "grossMarginPct": {
+      "total": 59.71,
+      "dd": 58.71,
+      "ddServices": 59.97,
+      "ddSoftware": 59.97,
+      "managedDd": 59.97,
+      "managedSecurity": 59.97,
+      "sn": 60.08,
+      "snServices": 61.33,
+      "snSoftware": 61.33,
+      "snMsp": null
+    },
+    "opex": {
+      "total": 6029684.98,
+      "ga": {
+        "total": 2580752.65,
+        "dd": 173727.92,
+        "sn": 175527.77,
+        "ops": 2231496.96
+      },
+      "personnel": {
+        "total": 3506643.88,
+        "dd": 903405.84,
+        "sn": 1479915.16,
+        "ops": 1123322.88
+      },
+      "sm": {
+        "total": 3448932.33,
+        "dd": 1098358.95,
+        "sn": 1901883,
+        "ops": 448690.38
+      }
+    },
+    "otherExpenses": {
+      "total": 276041.51,
+      "ebitdaAddBack": 66249.96
+    },
+    "ebitdaAdjustments": {
+      "total": 61695.29,
+      "mwe": 61695.29
+    },
+    "ebitda": 2157203.2,
+    "adjEbitda": 2285148.45,
+    "ebitdaPct": 16.67,
+    "cogsPlusOpex": {
+      "total": 11552862,
+      "pctRevenue": 84.27
+    },
+    "ratios": {
+      "cogsPctRevenue": 40.29,
+      "gaPctRevenue": 18.82,
+      "personnelPctRevenue": 25.58,
+      "smPctRevenue": 25.16,
+      "netOperatingIncomeMargin": 15.73
+    },
+    "projectHours": {
+      "nonBillableHeadcount": 33,
+      "billableHeadcount": 123,
+      "nonBillablePct": 21.15,
+      "billablePct": 78.85,
+      "available": 64512,
+      "worked": 60951,
+      "utilization": 94.48,
+      "billed": 58512.96,
+      "billedPerHead": 475.72,
+      "paddingPct": 4
+    },
+    "billRate": {
+      "breakEven": 197.44,
+      "perHourBilled": 218.43,
+      "realRate": 209.7
+    },
+    "salesEfficiency": 3.71
+  },
+  "Q3": {
+    "bookings": {
+      "total": 8795948.21,
+      "dd": 1030294.76,
+      "sn": 7107308.34,
+      "sw": 67716,
+      "msp": 590629.11
+    },
+    "bookingsShare": {
+      "dd": 11.71,
+      "sn": 80.8
+    },
+    "revenue": {
+      "total": 14327018.13,
+      "dd": {
+        "total": 4634384.77,
+        "services": 3728386.34,
+        "software": 256031.01,
+        "managedDd": 219349.91,
+        "managedSoc": 304680.93
+      },
+      "sn": {
+        "total": 9664280.28,
+        "services": 9627934.86,
+        "software": 5225.01,
+        "msp": 0
+      },
+      "other": 28353.09,
+      "totalServices": 13356321.2,
+      "totalSw": 261256.02,
+      "totalMsp": 524030.84
+    },
+    "cogs": {
+      "total": 5771719.99,
+      "payroll": {
+        "total": 5529565.58,
+        "dd": {
+          "total": 1804741.95,
+          "services": 1492481.44,
+          "software": 102489.79
+        },
+        "sn": {
+          "total": 3724823.63,
+          "services": 3722803.29,
+          "software": 2020.34,
+          "msp": 0
+        },
+        "managedDd": 87806.26,
+        "managedSecurity": 121964.46
+      },
+      "travel": {
+        "total": 120501.91,
+        "dd": 34004.39,
+        "sn": 86497.51
+      },
+      "marketplaceFees": 74985.52,
+      "contractorFees": 46666.97,
+      "totalDd": 1913731.87,
+      "totalSn": 3857988.12
+    },
+    "grossMargin": {
+      "total": 8555298.15,
+      "dd": {
+        "total": 2720652.9,
+        "services": 2235904.91,
+        "software": 153541.22
+      },
+      "sn": {
+        "total": 5806292.16,
+        "services": 5905131.56,
+        "software": 3204.67,
+        "msp": 0
+      },
+      "managedDd": 131543.65,
+      "managedSecurity": 182716.47
+    },
+    "grossMarginPct": {
+      "total": 59.71,
+      "dd": 58.71,
+      "ddServices": 59.97,
+      "ddSoftware": 59.97,
+      "managedDd": 59.97,
+      "managedSecurity": 59.97,
+      "sn": 60.08,
+      "snServices": 61.33,
+      "snSoftware": 61.33,
+      "snMsp": null
+    },
+    "opex": {
+      "total": 6301020.8,
+      "ga": {
+        "total": 2696886.52,
+        "dd": 181545.68,
+        "sn": 183426.52,
+        "ops": 2331914.32
+      },
+      "personnel": {
+        "total": 3664442.85,
+        "dd": 944059.1,
+        "sn": 1546511.34,
+        "ops": 1173872.41
+      },
+      "sm": {
+        "total": 3604134.28,
+        "dd": 1147785.1,
+        "sn": 1987467.74,
+        "ops": 468881.45
+      }
+    },
+    "otherExpenses": {
+      "total": 288463.38,
+      "ebitdaAddBack": 69231.21
+    },
+    "ebitdaAdjustments": {
+      "total": 64471.58,
+      "mwe": 64471.58
+    },
+    "ebitda": 2254277.34,
+    "adjEbitda": 2387980.13,
+    "ebitdaPct": 16.67,
+    "cogsPlusOpex": {
+      "total": 12072740.79,
+      "pctRevenue": 84.27
+    },
+    "ratios": {
+      "cogsPctRevenue": 40.29,
+      "gaPctRevenue": 18.82,
+      "personnelPctRevenue": 25.58,
+      "smPctRevenue": 25.16,
+      "netOperatingIncomeMargin": 15.73
+    },
+    "projectHours": {
+      "nonBillableHeadcount": 33,
+      "billableHeadcount": 123,
+      "nonBillablePct": 21.15,
+      "billablePct": 78.85,
+      "available": 64512,
+      "worked": 60951,
+      "utilization": 94.48,
+      "billed": 58512.96,
+      "billedPerHead": 475.72,
+      "paddingPct": 4
+    },
+    "billRate": {
+      "breakEven": 197.44,
+      "perHourBilled": 218.43,
+      "realRate": 209.7
+    },
+    "salesEfficiency": 3.71
+  },
+  "Q4": {
+    "bookings": {
+      "total": 9191555.45,
+      "dd": 1076633.38,
+      "sn": 7426967.18,
+      "sw": 70761.6,
+      "msp": 617193.29
+    },
+    "bookingsShare": {
+      "dd": 11.71,
+      "sn": 80.8
+    },
+    "revenue": {
+      "total": 14971391.2,
+      "dd": {
+        "total": 4842821.21,
+        "services": 3896074.53,
+        "software": 267546.28,
+        "managedDd": 229215.41,
+        "managedSoc": 318384.28
+      },
+      "sn": {
+        "total": 10098941.69,
+        "services": 10060961.59,
+        "software": 5460.01,
+        "msp": 0
+      },
+      "other": 29628.3,
+      "totalServices": 13957036.12,
+      "totalSw": 273006.29,
+      "totalMsp": 547599.69
+    },
+    "cogs": {
+      "total": 6031309.31,
+      "payroll": {
+        "total": 5778263.75,
+        "dd": {
+          "total": 1885912.16,
+          "services": 1559607.39,
+          "software": 107099.37
+        },
+        "sn": {
+          "total": 3892351.59,
+          "services": 3890240.38,
+          "software": 2111.21,
+          "msp": 0
+        },
+        "managedDd": 91755.44,
+        "managedSecurity": 127449.94
+      },
+      "travel": {
+        "total": 125921.61,
+        "dd": 35533.78,
+        "sn": 90387.83
+      },
+      "marketplaceFees": 78358.08,
+      "contractorFees": 48765.87,
+      "totalDd": 1999804.02,
+      "totalSn": 4031505.29
+    },
+    "grossMargin": {
+      "total": 8940081.89,
+      "dd": {
+        "total": 2843017.2,
+        "services": 2336467.14,
+        "software": 160446.9
+      },
+      "sn": {
+        "total": 6067436.4,
+        "services": 6170721.21,
+        "software": 3348.8,
+        "msp": 0
+      },
+      "managedDd": 137459.97,
+      "managedSecurity": 190934.34
+    },
+    "grossMarginPct": {
+      "total": 59.71,
+      "dd": 58.71,
+      "ddServices": 59.97,
+      "ddSoftware": 59.97,
+      "managedDd": 59.97,
+      "managedSecurity": 59.97,
+      "sn": 60.08,
+      "snServices": 61.33,
+      "snSoftware": 61.33,
+      "snMsp": null
+    },
+    "opex": {
+      "total": 6584416,
+      "ga": {
+        "total": 2818181.89,
+        "dd": 189710.89,
+        "sn": 191676.32,
+        "ops": 2436794.68
+      },
+      "personnel": {
+        "total": 3829255.12,
+        "dd": 986519.18,
+        "sn": 1616067.35,
+        "ops": 1226668.58
+      },
+      "sm": {
+        "total": 3766234.1,
+        "dd": 1199407.97,
+        "sn": 2076856.24,
+        "ops": 489969.89
+      }
+    },
+    "otherExpenses": {
+      "total": 301437.33,
+      "ebitdaAddBack": 72344.96
+    },
+    "ebitdaAdjustments": {
+      "total": 67371.26,
+      "mwe": 67371.26
+    },
+    "ebitda": 2355665.89,
+    "adjEbitda": 2495382.11,
+    "ebitdaPct": 16.67,
+    "cogsPlusOpex": {
+      "total": 12615725.3,
+      "pctRevenue": 84.27
+    },
+    "ratios": {
+      "cogsPctRevenue": 40.29,
+      "gaPctRevenue": 18.82,
+      "personnelPctRevenue": 25.58,
+      "smPctRevenue": 25.16,
+      "netOperatingIncomeMargin": 15.73
+    },
+    "projectHours": {
+      "nonBillableHeadcount": 33,
+      "billableHeadcount": 123,
+      "nonBillablePct": 21.15,
+      "billablePct": 78.85,
+      "available": 64512,
+      "worked": 60951,
+      "utilization": 94.48,
+      "billed": 58512.96,
+      "billedPerHead": 475.72,
+      "paddingPct": 4
+    },
+    "billRate": {
+      "breakEven": 197.44,
+      "perHourBilled": 218.43,
+      "realRate": 209.7
+    },
+    "salesEfficiency": 3.71
+  }
+}
