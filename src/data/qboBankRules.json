@@ -1,0 +1,4710 @@
+{
+ "source": "QuickBooks Online bank rules export, order preserved as priority (1 = evaluated first)",
+ "count": 392,
+ "rules": [
+  {
+   "priority": 1,
+   "name": "Twin Sisters",
+   "patterns": [
+    "Arias"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Contractors",
+   "subCategory": "Contractors",
+   "department": "110- G&A",
+   "payee": "Twin Sister Cleaning"
+  },
+  {
+   "priority": 2,
+   "name": "Northwestern Mutual",
+   "patterns": [
+    "Northwestern Mutual"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Insurance",
+   "subCategory": "Insurance",
+   "department": "110- G&A",
+   "payee": "Northwestern Mutual"
+  },
+  {
+   "priority": 3,
+   "name": "Aylab DE",
+   "patterns": [
+    "Ayla Hourani"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": "120- Marketing",
+   "payee": "Aylab DE"
+  },
+  {
+   "priority": 4,
+   "name": "BOA Bank Fee 1",
+   "patterns": [
+    "External transfer fee"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Bank Charges & Fees",
+   "subCategory": "Bank Charges & Fees",
+   "department": "110- G&A",
+   "payee": "Bank of America"
+  },
+  {
+   "priority": 5,
+   "name": "Bilt Rewards",
+   "patterns": [
+    "Bilt Rewards"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": "110- G&A",
+   "payee": "Bilt Rewards"
+  },
+  {
+   "priority": 6,
+   "name": "Brex Dividend Received",
+   "patterns": [
+    "Dividend Received"
+   ],
+   "requireAll": false,
+   "account": "Other Income:Dividends Received",
+   "subCategory": "Dividends Received",
+   "department": "110- G&A",
+   "payee": "Brex"
+  },
+  {
+   "priority": 7,
+   "name": "AT&T",
+   "patterns": [
+    "AT&T Wireless"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Communication Expense",
+   "subCategory": "Communication Expense",
+   "department": null,
+   "payee": "AT&T Wireless"
+  },
+  {
+   "priority": 8,
+   "name": "NY Times",
+   "patterns": [
+    "Nytimes.com"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": null,
+   "payee": "NYTimes.com"
+  },
+  {
+   "priority": 9,
+   "name": "Audible",
+   "patterns": [
+    "Audible.com"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": null,
+   "payee": "Audible"
+  },
+  {
+   "priority": 10,
+   "name": "DoorDash",
+   "patterns": [
+    "DoorDash.com"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Door Dash"
+  },
+  {
+   "priority": 11,
+   "name": "Hulu",
+   "patterns": [
+    "Hulu"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": null,
+   "payee": "Hulu"
+  },
+  {
+   "priority": 12,
+   "name": "Love the Reef",
+   "patterns": [
+    "Love The Reef"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": "110- G&A",
+   "payee": "Love The Reef"
+  },
+  {
+   "priority": 13,
+   "name": "Mailgun",
+   "patterns": [
+    "Mailgun Technologies, Inc."
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Mailgun"
+  },
+  {
+   "priority": 14,
+   "name": "Fedex",
+   "patterns": [
+    "FEDEX"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Shipping Expense",
+   "subCategory": "Shipping Expense",
+   "department": null,
+   "payee": "FedEx"
+  },
+  {
+   "priority": 15,
+   "name": "Amazon Web Services",
+   "patterns": [
+    "Amazon Web Services"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "100- Operations",
+   "payee": "Amazon Web Services"
+  },
+  {
+   "priority": 16,
+   "name": "Instacart",
+   "patterns": [
+    "Instacart"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Instacart"
+  },
+  {
+   "priority": 17,
+   "name": "Amazon",
+   "patterns": [
+    "AMAZON.COM"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "Amazon"
+  },
+  {
+   "priority": 18,
+   "name": "Delta",
+   "patterns": [
+    "DELTA AIR LINES"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Delta"
+  },
+  {
+   "priority": 19,
+   "name": "AMERICAN AIRLINES",
+   "patterns": [
+    "AMERICAN AIRLINES"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "American Airlines"
+  },
+  {
+   "priority": 20,
+   "name": "United Airlines",
+   "patterns": [
+    "United Airlines"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "United Airlines"
+  },
+  {
+   "priority": 21,
+   "name": "Uber",
+   "patterns": [
+    "Uber Trip"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Uber"
+  },
+  {
+   "priority": 22,
+   "name": "UBER EATS",
+   "patterns": [
+    "Uber Eats"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Uber Eats"
+  },
+  {
+   "priority": 23,
+   "name": "ChatGPT",
+   "patterns": [
+    "Chatgpt Subscription"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "ChatGPT"
+  },
+  {
+   "priority": 24,
+   "name": "LYFT",
+   "patterns": [
+    "LYFT "
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Lyft"
+  },
+  {
+   "priority": 25,
+   "name": "Comcast",
+   "patterns": [
+    "COMCAST"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Utilities",
+   "subCategory": "Utilities",
+   "department": "110- G&A",
+   "payee": "Comcast"
+  },
+  {
+   "priority": 26,
+   "name": "DOORDASH 2",
+   "patterns": [
+    "DOORDASH"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Door Dash"
+  },
+  {
+   "priority": 27,
+   "name": "SPOTIFY USA",
+   "patterns": [
+    "SPOTIFY USA "
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Spotify"
+  },
+  {
+   "priority": 28,
+   "name": "Checkr",
+   "patterns": [
+    "Checkr, Inc."
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Checkr, Inc."
+  },
+  {
+   "priority": 29,
+   "name": "MICROSOFT STORE",
+   "patterns": [
+    "MICROSOFT*STORE"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Microsoft"
+  },
+  {
+   "priority": 30,
+   "name": "WIFIONBOARD",
+   "patterns": [
+    "WIFIONBOARD"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "Wifi Onboard"
+  },
+  {
+   "priority": 31,
+   "name": "O REILLY MEDIA INC",
+   "patterns": [
+    "O'REILLY MEDIA INC "
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "O'Reilly Media, Inc"
+  },
+  {
+   "priority": 32,
+   "name": "GOOGLE",
+   "patterns": [
+    "Google"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Google"
+  },
+  {
+   "priority": 33,
+   "name": "COURSERA",
+   "patterns": [
+    "COURSRA"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "Coursera"
+  },
+  {
+   "priority": 34,
+   "name": "Ascentium Capital",
+   "patterns": [
+    "AscentiumCapital"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Bank Charges & Fees",
+   "subCategory": "Bank Charges & Fees",
+   "department": "110- G&A",
+   "payee": "Ascentium Capital"
+  },
+  {
+   "priority": 35,
+   "name": "Venmo1",
+   "patterns": [
+    "Venmo"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:G&A- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": "410- Digital platforms G&A",
+   "payee": "Venmo"
+  },
+  {
+   "priority": 36,
+   "name": "Sheraton Hotel",
+   "patterns": [
+    "Sheraton"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Sheraton Hotel"
+  },
+  {
+   "priority": 37,
+   "name": "ADOBE ACROBAT",
+   "patterns": [
+    "ADOBE ACROBAT"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Adobe"
+  },
+  {
+   "priority": 38,
+   "name": "Hyatt",
+   "patterns": [
+    "HYATT REGENCY"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Hyatt"
+  },
+  {
+   "priority": 39,
+   "name": "Starbucks",
+   "patterns": [
+    "STARBUCKS"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Starbucks"
+  },
+  {
+   "priority": 40,
+   "name": "55 COLMORE ROW- London Office",
+   "patterns": [
+    "55 COLMORE ROW"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Rent & Lease",
+   "subCategory": "Rent & Lease",
+   "department": "230- Sales",
+   "payee": "55 Colmore Row"
+  },
+  {
+   "priority": 41,
+   "name": "Zettle",
+   "patterns": [
+    "ZETTLE"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Zettle"
+  },
+  {
+   "priority": 42,
+   "name": "British Air",
+   "patterns": [
+    "BA INFLIGHT SALES"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": "230- Sales",
+   "payee": "British Airways"
+  },
+  {
+   "priority": 43,
+   "name": "Scopestack",
+   "patterns": [
+    "SCOPESTACK CORP."
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "ScopeStack"
+  },
+  {
+   "priority": 44,
+   "name": "British Air 2",
+   "patterns": [
+    "BRITISH AIRWAYS"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "British Airways"
+  },
+  {
+   "priority": 45,
+   "name": "Marriot",
+   "patterns": [
+    "Marrio"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Marriott"
+  },
+  {
+   "priority": 46,
+   "name": "TARGET",
+   "patterns": [
+    "TARGET"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "Target"
+  },
+  {
+   "priority": 47,
+   "name": "7-Eleven",
+   "patterns": [
+    "7-ELEVEN"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "7-Eleven"
+  },
+  {
+   "priority": 48,
+   "name": "Chick-Fil-A",
+   "patterns": [
+    "Chick-Fil-A"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Chick-Fil-A"
+  },
+  {
+   "priority": 49,
+   "name": "Microsoft",
+   "patterns": [
+    "MICROSOFT"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Microsoft"
+  },
+  {
+   "priority": 50,
+   "name": "EVERSOURCE",
+   "patterns": [
+    "EVERSOURCE"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Utilities",
+   "subCategory": "Utilities",
+   "department": "110- G&A",
+   "payee": "Eversource"
+  },
+  {
+   "priority": 51,
+   "name": "Apple Internet",
+   "patterns": [
+    "APPLE.COM/BILINTERNET"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Utilities",
+   "subCategory": "Utilities",
+   "department": "110- G&A",
+   "payee": "Apple"
+  },
+  {
+   "priority": 52,
+   "name": "Sirius XM",
+   "patterns": [
+    "Sirius XM"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": "110- G&A",
+   "payee": "Sirius XM"
+  },
+  {
+   "priority": 53,
+   "name": "MIGHTYCALL",
+   "patterns": [
+    "MIGHTYCALL"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Utilities",
+   "subCategory": "Utilities",
+   "department": "110- G&A",
+   "payee": "MightyCall"
+  },
+  {
+   "priority": 54,
+   "name": "Wayfair",
+   "patterns": [
+    "Wayfair"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": "100- Operations",
+   "payee": "Wayfair"
+  },
+  {
+   "priority": 55,
+   "name": "VIASAT",
+   "patterns": [
+    "VIASAT"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "Viasat"
+  },
+  {
+   "priority": 56,
+   "name": "PORTER AIRLINES",
+   "patterns": [
+    "PORTER AIRLINES "
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Porter Airlines"
+  },
+  {
+   "priority": 57,
+   "name": "MCDONALDS",
+   "patterns": [
+    "McDonald's"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "McDonald's"
+  },
+  {
+   "priority": 58,
+   "name": "MBTA",
+   "patterns": [
+    "MBTA"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:G&A- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": "110- G&A",
+   "payee": "Mbta"
+  },
+  {
+   "priority": 59,
+   "name": "GoDaddy",
+   "patterns": [
+    "GoDaddy.com"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": "110- G&A",
+   "payee": "GoDaddy"
+  },
+  {
+   "priority": 60,
+   "name": "SHELLNGN.COM",
+   "patterns": [
+    "SHELLNGN.COM "
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "100- Operations",
+   "payee": "SHELLNGN.COM"
+  },
+  {
+   "priority": 61,
+   "name": "SERVICENOW",
+   "patterns": [
+    "SERVICENOW"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "320- Engineering",
+   "payee": "ServiceNow"
+  },
+  {
+   "priority": 62,
+   "name": "CVS",
+   "patterns": [
+    "CVS"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "CVS"
+  },
+  {
+   "priority": 63,
+   "name": "RELISH",
+   "patterns": [
+    "RELISH"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": "110- G&A",
+   "payee": "Relish"
+  },
+  {
+   "priority": 64,
+   "name": "DRIZLY",
+   "patterns": [
+    "DRIZLY"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": "110- G&A",
+   "payee": "Drizly"
+  },
+  {
+   "priority": 65,
+   "name": "ANYTIME MAILBOX",
+   "patterns": [
+    "ANYTIME MAILBOX"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": "110- G&A",
+   "payee": "Anytime Mailbox"
+  },
+  {
+   "priority": 66,
+   "name": "AMAZON MARKETPLACE",
+   "patterns": [
+    "AMAZON MARKETPLACE "
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "Amazon"
+  },
+  {
+   "priority": 67,
+   "name": "INTUIT QUICKBOOKS",
+   "patterns": [
+    "INTUIT QUICKBOOKS"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Intuit"
+  },
+  {
+   "priority": 68,
+   "name": "COOKIEBOT",
+   "patterns": [
+    "COOKIEBOT"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "CookieBot"
+  },
+  {
+   "priority": 69,
+   "name": "FROOTBAT.COM",
+   "patterns": [
+    "FROOTBAT.COM"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "frootbat.com"
+  },
+  {
+   "priority": 70,
+   "name": "MYFAX.COM",
+   "patterns": [
+    "MYFAX.COM"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "MyFax"
+  },
+  {
+   "priority": 71,
+   "name": "SPOTHERO",
+   "patterns": [
+    "SPOTHERO"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "SpotHero"
+  },
+  {
+   "priority": 72,
+   "name": "Dunkin",
+   "patterns": [
+    "DUNKIN"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Dunkin Donuts"
+  },
+  {
+   "priority": 73,
+   "name": "Verizon",
+   "patterns": [
+    "VERIZON"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Utilities",
+   "subCategory": "Utilities",
+   "department": "410- Digital platforms G&A",
+   "payee": "Verizon"
+  },
+  {
+   "priority": 74,
+   "name": "Bitly",
+   "patterns": [
+    "BITLY.COM"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Bitly"
+  },
+  {
+   "priority": 75,
+   "name": "Chipotle",
+   "patterns": [
+    "CHIPOTLE"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Chipotle"
+  },
+  {
+   "priority": 76,
+   "name": "Southwest",
+   "patterns": [
+    "Southwest Airlines"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Southwest Air"
+  },
+  {
+   "priority": 77,
+   "name": "Orbitz",
+   "patterns": [
+    "Orbitz"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "Orbitz"
+  },
+  {
+   "priority": 78,
+   "name": "Amtrak",
+   "patterns": [
+    "AMTRAK"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Amtrak"
+  },
+  {
+   "priority": 79,
+   "name": "The Nautilus",
+   "patterns": [
+    "THE NAUTILUS"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "The Nautilus"
+  },
+  {
+   "priority": 80,
+   "name": "Amex Travel",
+   "patterns": [
+    "AMEXTRAVEL.COM SEATTLE WA XXXX--12675 - CHLOE BRANT 320232270152970636"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "American Express"
+  },
+  {
+   "priority": 81,
+   "name": "Liberty Mutual",
+   "patterns": [
+    "LIBERTY MUTUAL"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Insurance",
+   "subCategory": "Insurance",
+   "department": "110- G&A",
+   "payee": "Liberty Mutual"
+  },
+  {
+   "priority": 82,
+   "name": "Booking.com",
+   "patterns": [
+    "Booking.com"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "Booking.com"
+  },
+  {
+   "priority": 83,
+   "name": "Tatte",
+   "patterns": [
+    "TATTE"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Tatte"
+  },
+  {
+   "priority": 84,
+   "name": "Thinking Cup",
+   "patterns": [
+    "THINKING CUP"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Thinking Cup"
+  },
+  {
+   "priority": 85,
+   "name": "Lusha.co",
+   "patterns": [
+    "Lusha.co"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Lusha.co"
+  },
+  {
+   "priority": 86,
+   "name": "E-ZPASS MA",
+   "patterns": [
+    "E-ZPASS"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "E-ZPass"
+  },
+  {
+   "priority": 87,
+   "name": "SLACK",
+   "patterns": [
+    "SLACK"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Slack"
+  },
+  {
+   "priority": 88,
+   "name": "HUBSPOT INC.",
+   "patterns": [
+    "HUBSPOT INC."
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Hubspot, Inc."
+  },
+  {
+   "priority": 89,
+   "name": "BLUE BOTTLE",
+   "patterns": [
+    "BLUE BOTTLE"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Blue Bottle"
+  },
+  {
+   "priority": 90,
+   "name": "REVERE HOTEL",
+   "patterns": [
+    "REVERE HOTEL"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Revere Hotel"
+  },
+  {
+   "priority": 91,
+   "name": "POSTABLE.COM",
+   "patterns": [
+    "POSTABLE.COM"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "POSTABLE.COM"
+  },
+  {
+   "priority": 92,
+   "name": "Canva",
+   "patterns": [
+    "CANVA"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Canva"
+  },
+  {
+   "priority": 93,
+   "name": "BEVI",
+   "patterns": [
+    "BEVI "
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": "110- G&A",
+   "payee": "Bevi"
+  },
+  {
+   "priority": 94,
+   "name": "SPIRIT AIRLINES",
+   "patterns": [
+    "SPIRIT AIRLINES"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Spirit Airlines"
+  },
+  {
+   "priority": 95,
+   "name": "AMERICAN EXPRESS TRAVEL",
+   "patterns": [
+    "AMERICAN EXPRESS TRA"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "American Express"
+  },
+  {
+   "priority": 96,
+   "name": "LASTPASS.COM",
+   "patterns": [
+    "LastPass.com"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "lastpass.com"
+  },
+  {
+   "priority": 97,
+   "name": "NOTION LABS INC.",
+   "patterns": [
+    "NOTION LABS, INC. "
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Notion Labs, Inc."
+  },
+  {
+   "priority": 98,
+   "name": "Owner Draw",
+   "patterns": [
+    "transfer to CHK 7073"
+   ],
+   "requireAll": false,
+   "account": "Owner's Equity",
+   "subCategory": "Owner's Equity",
+   "department": null,
+   "payee": null
+  },
+  {
+   "priority": 99,
+   "name": "JUSTWORKS",
+   "patterns": [
+    "JUSTWORKS"
+   ],
+   "requireAll": false,
+   "account": "Payroll Clearing",
+   "subCategory": "Payroll Clearing",
+   "department": "110- G&A",
+   "payee": "Justworks"
+  },
+  {
+   "priority": 100,
+   "name": "Amazon Audible",
+   "patterns": [
+    "Amazon Audible "
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": null,
+   "payee": "Audible"
+  },
+  {
+   "priority": 101,
+   "name": "ZOOM.US",
+   "patterns": [
+    "ZOOM.US"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Zoom"
+  },
+  {
+   "priority": 102,
+   "name": "BERKELEY TRAVEL",
+   "patterns": [
+    "BERKELEY TRAVEL"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "Berkeley Travel"
+  },
+  {
+   "priority": 103,
+   "name": "APPLE ONLINE STORE",
+   "patterns": [
+    "APPLE ONLINE STORE"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Hardware & Peripherals",
+   "subCategory": "Hardware & Peripherals",
+   "department": "100- Operations",
+   "payee": "Apple"
+  },
+  {
+   "priority": 104,
+   "name": "LENOVO",
+   "patterns": [
+    "LENOVO"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Hardware & Peripherals",
+   "subCategory": "Hardware & Peripherals",
+   "department": "100- Operations",
+   "payee": "Lenovo"
+  },
+  {
+   "priority": 105,
+   "name": "Exxon Mobil",
+   "patterns": [
+    "EXXONMOBIL"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Exxon"
+  },
+  {
+   "priority": 106,
+   "name": "AMEXTRAVEL.COM",
+   "patterns": [
+    "AMEXTRAVEL.COM"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "American Express"
+  },
+  {
+   "priority": 107,
+   "name": "OpenAI",
+   "patterns": [
+    "OPENAI"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "OpenAI"
+  },
+  {
+   "priority": 108,
+   "name": "Jet Aviation",
+   "patterns": [
+    "JET AVIATION"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Jet Aviation"
+  },
+  {
+   "priority": 109,
+   "name": "Air Canada",
+   "patterns": [
+    "AIRCANADA"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Air Canada"
+  },
+  {
+   "priority": 110,
+   "name": "Shodan API",
+   "patterns": [
+    "SHODAN BASIC API"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Shodan API"
+  },
+  {
+   "priority": 111,
+   "name": "Comast",
+   "patterns": [
+    "COMCAST BUSINESS"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Utilities",
+   "subCategory": "Utilities",
+   "department": "110- G&A",
+   "payee": "Comcast"
+  },
+  {
+   "priority": 112,
+   "name": "Hotels.com",
+   "patterns": [
+    "HOTELSCOM"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Hotels.com"
+  },
+  {
+   "priority": 113,
+   "name": "Budget",
+   "patterns": [
+    "BUDGET RENT A CAR"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Budget"
+  },
+  {
+   "priority": 114,
+   "name": "Adobe",
+   "patterns": [
+    "ADOBE"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Adobe"
+  },
+  {
+   "priority": 115,
+   "name": "Github",
+   "patterns": [
+    "GITHUB, INC"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Github"
+  },
+  {
+   "priority": 116,
+   "name": "BambooHR",
+   "patterns": [
+    "BAMBOOHR HRIS"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Bamboo HR"
+  },
+  {
+   "priority": 117,
+   "name": "Trello",
+   "patterns": [
+    "TRELLO.COM"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Trello.com"
+  },
+  {
+   "priority": 118,
+   "name": "BOA Interest Payment",
+   "patterns": [
+    "Interest Payment "
+   ],
+   "requireAll": false,
+   "account": "Interest Expense",
+   "subCategory": "Interest Expense",
+   "department": "110- G&A",
+   "payee": "Bank of America"
+  },
+  {
+   "priority": 119,
+   "name": "Bayti LLC",
+   "patterns": [
+    "BAYTI LLC"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Rent & Lease",
+   "subCategory": "Rent & Lease",
+   "department": "110- G&A",
+   "payee": "Bayti LLC"
+  },
+  {
+   "priority": 120,
+   "name": "Cision",
+   "patterns": [
+    "Cision"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": "100- Operations",
+   "payee": "Cision US Inc."
+  },
+  {
+   "priority": 121,
+   "name": "Moxy Hotels",
+   "patterns": [
+    "Moxy"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Moxy Hotels"
+  },
+  {
+   "priority": 122,
+   "name": "LINKEDIN",
+   "patterns": [
+    "LinkedIn"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": null,
+   "payee": "LinkedIn Corporation"
+  },
+  {
+   "priority": 123,
+   "name": "Fairfield Inn",
+   "patterns": [
+    "Fairfield Inn"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Fairfield Inn & Suites"
+  },
+  {
+   "priority": 124,
+   "name": "Hilton",
+   "patterns": [
+    "Hilton"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Hilton"
+  },
+  {
+   "priority": 125,
+   "name": "Back Bay Garage",
+   "patterns": [
+    "Back Bay Garage"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Back Bay Garage"
+  },
+  {
+   "priority": 126,
+   "name": "Westin Hotels",
+   "patterns": [
+    "Westin"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Westin Hotels & Resorts"
+  },
+  {
+   "priority": 127,
+   "name": "Itaz Consulting",
+   "patterns": [
+    "Itaz Consulting"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Contractors",
+   "subCategory": "Contractors",
+   "department": "110- G&A",
+   "payee": "Itaz Consulting"
+  },
+  {
+   "priority": 128,
+   "name": "Hotel Indigo",
+   "patterns": [
+    "Hotel Indigo"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Hotel Indigo"
+  },
+  {
+   "priority": 129,
+   "name": "Hertz",
+   "patterns": [
+    "Hertz"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Hertz"
+  },
+  {
+   "priority": 130,
+   "name": "Vivint",
+   "patterns": [
+    "Vivint"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": "100- Operations",
+   "payee": "Vivint"
+  },
+  {
+   "priority": 131,
+   "name": "Swiss Air",
+   "patterns": [
+    "Swiss Intl Air"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Swiss Air"
+  },
+  {
+   "priority": 132,
+   "name": "Kryterion",
+   "patterns": [
+    "KRYTERION"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Kryterion"
+  },
+  {
+   "priority": 133,
+   "name": "Lucid",
+   "patterns": [
+    "Lucid Software"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Lucid Software"
+  },
+  {
+   "priority": 134,
+   "name": "Colonnade Hotel",
+   "patterns": [
+    "COLONNADE HOTEL"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Colonnade Hotel"
+  },
+  {
+   "priority": 135,
+   "name": "JetBlue",
+   "patterns": [
+    "JetBlue"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "JetBlue"
+  },
+  {
+   "priority": 136,
+   "name": "HashiCorp",
+   "patterns": [
+    "hashicorp"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "220- Engineering",
+   "payee": "HashiCorp"
+  },
+  {
+   "priority": 137,
+   "name": "USPS",
+   "patterns": [
+    "USPS"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "USPS"
+  },
+  {
+   "priority": 138,
+   "name": "EMPIRECLS",
+   "patterns": [
+    "EMPIRECLS"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "EMPIRECLS"
+  },
+  {
+   "priority": 139,
+   "name": "Four Seasons",
+   "patterns": [
+    "FOUR SEASONS HOTEL"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Four Seasons"
+  },
+  {
+   "priority": 140,
+   "name": "LAZ PKG",
+   "patterns": [
+    "LAZ PKG"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "LAZ Parking"
+  },
+  {
+   "priority": 141,
+   "name": "CAMBIUM APPS",
+   "patterns": [
+    "Cambium Apps Erik"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "100- Operations",
+   "payee": "Cambium Apps"
+  },
+  {
+   "priority": 142,
+   "name": "Sixt",
+   "patterns": [
+    "Sixt"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Sixt"
+  },
+  {
+   "priority": 143,
+   "name": "Panera",
+   "patterns": [
+    "PANERA BREAD"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Panera Bread"
+  },
+  {
+   "priority": 144,
+   "name": "BCBS MASS",
+   "patterns": [
+    "BCBS MASS"
+   ],
+   "requireAll": false,
+   "account": "Health Insurance Liability",
+   "subCategory": "Health Insurance Liability",
+   "department": null,
+   "payee": "Blue Cross Blue Shield MA (deleted)"
+  },
+  {
+   "priority": 145,
+   "name": "PRINCIPAL LIFE",
+   "patterns": [
+    "PRINCIPAL LIFE"
+   ],
+   "requireAll": false,
+   "account": "401k Liability",
+   "subCategory": "401k Liability",
+   "department": null,
+   "payee": "Principal"
+  },
+  {
+   "priority": 146,
+   "name": "CREATIVE MOBILE",
+   "patterns": [
+    "CREATIVE MOBIL"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Creative Mobile"
+  },
+  {
+   "priority": 147,
+   "name": "WEX HEALTH",
+   "patterns": [
+    "WEX HEALTH"
+   ],
+   "requireAll": false,
+   "account": "Fringe Benefits Liability",
+   "subCategory": "Fringe Benefits Liability",
+   "department": null,
+   "payee": "Wex Health"
+  },
+  {
+   "priority": 148,
+   "name": "Principal Fringe Benefits",
+   "patterns": [
+    "PLIC-SBD"
+   ],
+   "requireAll": false,
+   "account": "Fringe Benefits Liability",
+   "subCategory": "Fringe Benefits Liability",
+   "department": null,
+   "payee": "Principal"
+  },
+  {
+   "priority": 149,
+   "name": "Alaska Air",
+   "patterns": [
+    "ALASKA AIR"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Alaska Air"
+  },
+  {
+   "priority": 150,
+   "name": "PAYROLL-BAMBOOHR",
+   "patterns": [
+    "PAYROLL-BAMBOOHR"
+   ],
+   "requireAll": false,
+   "account": "Payroll Clearing",
+   "subCategory": "Payroll Clearing",
+   "department": null,
+   "payee": "Bamboo HR"
+  },
+  {
+   "priority": 151,
+   "name": "Something Fishy Inc",
+   "patterns": [
+    "Something Fishy, Inc"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": "110- G&A",
+   "payee": "Something Fishy, Inc."
+  },
+  {
+   "priority": 152,
+   "name": "SOUTHERN MOKULE",
+   "patterns": [
+    "SOUTHERN MOKULE"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Mokule"
+  },
+  {
+   "priority": 153,
+   "name": "DELAWARE NORTH LOGAN",
+   "patterns": [
+    "DELAWARE NORTH LOGAN"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Delaware North"
+  },
+  {
+   "priority": 154,
+   "name": "Moo Inc.",
+   "patterns": [
+    "MOO INC"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": null,
+   "payee": "Moo, Inc."
+  },
+  {
+   "priority": 155,
+   "name": "Creative Solutions",
+   "patterns": [
+    "Creative Solutions"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": "100- Operations",
+   "payee": "Creative Solutions"
+  },
+  {
+   "priority": 156,
+   "name": "Vueling Airlines",
+   "patterns": [
+    "VUELING"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Vueling"
+  },
+  {
+   "priority": 157,
+   "name": "Chicken and Rice Guys",
+   "patterns": [
+    "THE CHICKEN AND RICE"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Chicken and Rice Guys"
+  },
+  {
+   "priority": 158,
+   "name": "SINCH MAILGUN",
+   "patterns": [
+    "SINCH MAILGUN "
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "100- Operations",
+   "payee": "Mailgun"
+  },
+  {
+   "priority": 159,
+   "name": "DAZN",
+   "patterns": [
+    "DAZN"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": "100- Operations",
+   "payee": "DAZN"
+  },
+  {
+   "priority": 160,
+   "name": "Allianz",
+   "patterns": [
+    "Allianz"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "Allianz"
+  },
+  {
+   "priority": 161,
+   "name": "Citgo",
+   "patterns": [
+    "Citgo"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Citgo"
+  },
+  {
+   "priority": 162,
+   "name": "SEMRush",
+   "patterns": [
+    "SEMRUSH"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "100- Operations",
+   "payee": "SEMRush"
+  },
+  {
+   "priority": 163,
+   "name": "JetBrains",
+   "patterns": [
+    "JetBrains"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "JetBrains"
+  },
+  {
+   "priority": 164,
+   "name": "W H Smith",
+   "patterns": [
+    "W H Smith"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "WHSmith"
+  },
+  {
+   "priority": 165,
+   "name": "SHELL",
+   "patterns": [
+    "SHELL SERVICE "
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Shell"
+  },
+  {
+   "priority": 166,
+   "name": "MARKS AND SPENCER",
+   "patterns": [
+    "MARKS AND SPENCER"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Marks & Spencer"
+  },
+  {
+   "priority": 167,
+   "name": "JETBOOST.IO",
+   "patterns": [
+    "JETBOOST.IO"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "100- Operations",
+   "payee": "JetBoost.io"
+  },
+  {
+   "priority": 168,
+   "name": "CitizenM",
+   "patterns": [
+    "Citizenm"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "CitizenM"
+  },
+  {
+   "priority": 169,
+   "name": "Aer Lingus",
+   "patterns": [
+    "Aer Lingus"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Aer Lingus"
+  },
+  {
+   "priority": 170,
+   "name": "BURGER KING",
+   "patterns": [
+    "Burger King"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Burger King"
+  },
+  {
+   "priority": 171,
+   "name": "Google Cloud",
+   "patterns": [
+    "GOOGLE *CLOUD"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Google"
+  },
+  {
+   "priority": 172,
+   "name": "JP Boston",
+   "patterns": [
+    "JP Boston"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Juice Press"
+  },
+  {
+   "priority": 173,
+   "name": "Netim",
+   "patterns": [
+    "Netim Lille"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": "100- Operations",
+   "payee": "Netim"
+  },
+  {
+   "priority": 174,
+   "name": "Turo",
+   "patterns": [
+    "Turo Inc."
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Turo Inc."
+  },
+  {
+   "priority": 175,
+   "name": "FS Insight",
+   "patterns": [
+    "FS INSIGHT RESEARCH"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "100- Operations",
+   "payee": "FS Insight"
+  },
+  {
+   "priority": 176,
+   "name": "The Alyx",
+   "patterns": [
+    "THE ALYX"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Rent & Lease",
+   "subCategory": "Rent & Lease",
+   "department": "110- G&A",
+   "payee": "The Alyx"
+  },
+  {
+   "priority": 177,
+   "name": "Boston Common Garage",
+   "patterns": [
+    "MCCA-BCG"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Boston Common Garage"
+  },
+  {
+   "priority": 178,
+   "name": "Pier 4",
+   "patterns": [
+    "PIER 4"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Rent & Lease",
+   "subCategory": "Rent & Lease",
+   "department": "100- Operations",
+   "payee": "Pier 4"
+  },
+  {
+   "priority": 179,
+   "name": "Parallels",
+   "patterns": [
+    "Parallels"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Parallels"
+  },
+  {
+   "priority": 180,
+   "name": "EZCATER",
+   "patterns": [
+    "EZCATER"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "EZCater"
+  },
+  {
+   "priority": 181,
+   "name": "IStockPhoto",
+   "patterns": [
+    "iStockphoto"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": null,
+   "payee": "iStockphoto"
+  },
+  {
+   "priority": 182,
+   "name": "Jack in the Box",
+   "patterns": [
+    "Jack in the Box"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Jack in the Box"
+  },
+  {
+   "priority": 183,
+   "name": "LAZParking",
+   "patterns": [
+    "LAZ PARKING"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "LAZ Parking"
+  },
+  {
+   "priority": 184,
+   "name": "Massport",
+   "patterns": [
+    "Massport"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Massport"
+  },
+  {
+   "priority": 185,
+   "name": "Micro Electronics",
+   "patterns": [
+    "Micro Electronics"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "Micro Electronics, Inc."
+  },
+  {
+   "priority": 186,
+   "name": "Nespresso",
+   "patterns": [
+    "Nespresso"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "Nespresso"
+  },
+  {
+   "priority": 187,
+   "name": "THE NEWBURY BOSTON",
+   "patterns": [
+    "The Newbury Boston"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "The Newbury Boston"
+  },
+  {
+   "priority": 188,
+   "name": "Ubiquiti",
+   "patterns": [
+    "Ubiquiti Inc."
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "Ubiquiti Inc."
+  },
+  {
+   "priority": 189,
+   "name": "Upwork",
+   "patterns": [
+    "Upwork"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Legal & Professional Services",
+   "subCategory": "Legal & Professional Services",
+   "department": null,
+   "payee": "Upwork"
+  },
+  {
+   "priority": 190,
+   "name": "Auntie Annes Pretzels",
+   "patterns": [
+    "Auntie Anne's Pretzels"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Auntie Anne's Pretzels"
+  },
+  {
+   "priority": 191,
+   "name": "BOSTON TAXI",
+   "patterns": [
+    "BOSTON TAXI"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Boston Taxi"
+  },
+  {
+   "priority": 192,
+   "name": "CAVA BACK BAY",
+   "patterns": [
+    "CAVA BACK BAY "
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Cava"
+  },
+  {
+   "priority": 193,
+   "name": "Life Alive",
+   "patterns": [
+    "LIFE ALIV"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Life Alive"
+  },
+  {
+   "priority": 194,
+   "name": "Whole Foods",
+   "patterns": [
+    "Whole Foods"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Whole Foods"
+  },
+  {
+   "priority": 195,
+   "name": "Speedway",
+   "patterns": [
+    "Speedway"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Speedway"
+  },
+  {
+   "priority": 196,
+   "name": "BP",
+   "patterns": [
+    "BP"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "BP"
+  },
+  {
+   "priority": 197,
+   "name": "PF Changs",
+   "patterns": [
+    "PF CHANGS"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "P.F. Chang's"
+  },
+  {
+   "priority": 198,
+   "name": "Trip.com",
+   "patterns": [
+    "Trip.com"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "Trip.com"
+  },
+  {
+   "priority": 199,
+   "name": "Cambium Apps2",
+   "patterns": [
+    "CAMBIUM APPS"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "100- Operations",
+   "payee": "Cambium Apps"
+  },
+  {
+   "priority": 200,
+   "name": "Ritz Carlton",
+   "patterns": [
+    "Ritz Carlton"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Ritz Carlton"
+  },
+  {
+   "priority": 201,
+   "name": "Docusign",
+   "patterns": [
+    "DocuSign"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Docusign"
+  },
+  {
+   "priority": 202,
+   "name": "Loom",
+   "patterns": [
+    "Loom Subscription"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": "230- Sales",
+   "payee": "Loom"
+  },
+  {
+   "priority": 203,
+   "name": "Spectrum",
+   "patterns": [
+    "Spectrum"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Utilities",
+   "subCategory": "Utilities",
+   "department": "100- Operations",
+   "payee": "Spectrum"
+  },
+  {
+   "priority": 204,
+   "name": "Webflow.com",
+   "patterns": [
+    "WEBFLOW.COM"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "100- Operations",
+   "payee": "webflow.com"
+  },
+  {
+   "priority": 205,
+   "name": "Taco Bell",
+   "patterns": [
+    "Taco Bell"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Taco Bell"
+  },
+  {
+   "priority": 206,
+   "name": "Cafe Nero",
+   "patterns": [
+    "CAFFE NERO"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Cafe Nero"
+  },
+  {
+   "priority": 207,
+   "name": "Aloft Hotels",
+   "patterns": [
+    "Aloft"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Aloft Hotels"
+  },
+  {
+   "priority": 208,
+   "name": "CUMBERLAND FARMS",
+   "patterns": [
+    "CUMBERLAND FA"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "Cumberland Farms"
+  },
+  {
+   "priority": 209,
+   "name": "Dunkin Donuts",
+   "patterns": [
+    "Dunkin Donuts"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Dunkin Donuts"
+  },
+  {
+   "priority": 210,
+   "name": "FARIMONT COPLEY PLAZA",
+   "patterns": [
+    "Farimont Copley Plaz"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Fairmont Copley Plaza"
+  },
+  {
+   "priority": 211,
+   "name": "FARIMONT COPLEY PLAZ",
+   "patterns": [
+    "Four Points"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Four Points"
+  },
+  {
+   "priority": 212,
+   "name": "Hampton INn",
+   "patterns": [
+    "Hampton Inn"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Hampton Inn"
+  },
+  {
+   "priority": 213,
+   "name": "Renaissance Hotel",
+   "patterns": [
+    "Renaissance"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Renaissance Hotel"
+  },
+  {
+   "priority": 214,
+   "name": "Signature Flight Services",
+   "patterns": [
+    "Signature"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Signature Flight Services"
+  },
+  {
+   "priority": 215,
+   "name": "SmartSheet Inc.",
+   "patterns": [
+    "Smartsheet Inc."
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "SmartSheet Inc."
+  },
+  {
+   "priority": 216,
+   "name": "STK Boston",
+   "patterns": [
+    "STK Boston "
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "STK"
+  },
+  {
+   "priority": 217,
+   "name": "Sunoco",
+   "patterns": [
+    "Sunoco"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "SUNOCO"
+  },
+  {
+   "priority": 218,
+   "name": "Parish Cafe",
+   "patterns": [
+    "PARISH CAFE"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Parish Cafe"
+  },
+  {
+   "priority": 219,
+   "name": "Udemy",
+   "patterns": [
+    "Udemy"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": null,
+   "payee": "Udemy"
+  },
+  {
+   "priority": 220,
+   "name": "KLM",
+   "patterns": [
+    "KLM"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "KLM"
+  },
+  {
+   "priority": 221,
+   "name": "COURTYARD BY MARRIOT",
+   "patterns": [
+    "COURTYARD BY "
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Marriott"
+  },
+  {
+   "priority": 222,
+   "name": "Buffalo Wild Wings",
+   "patterns": [
+    "Buffalo Wild Wings"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Buffalo Wild Wings"
+  },
+  {
+   "priority": 223,
+   "name": "Breeze Airways",
+   "patterns": [
+    "BREEZE AIRWAYS"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Breeze Airways"
+  },
+  {
+   "priority": 224,
+   "name": "Ready Refresh",
+   "patterns": [
+    "Readyrefresh"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": "100- Operations",
+   "payee": "Ready Refresh"
+  },
+  {
+   "priority": 225,
+   "name": "IBERIA.COM",
+   "patterns": [
+    "IBERIA"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Iberia"
+  },
+  {
+   "priority": 226,
+   "name": "Booking.com 2",
+   "patterns": [
+    "BOOKING.COM"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "Booking.com"
+  },
+  {
+   "priority": 227,
+   "name": "Hyatt 2",
+   "patterns": [
+    "Hyatt"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Hyatt"
+  },
+  {
+   "priority": 228,
+   "name": "INKD STORES",
+   "patterns": [
+    "INK D STORES"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": null,
+   "payee": "Ink'd Stores"
+  },
+  {
+   "priority": 229,
+   "name": "POPEYES",
+   "patterns": [
+    "Popeye's"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Popeye's"
+  },
+  {
+   "priority": 230,
+   "name": "Sami Ulla",
+   "patterns": [
+    "Sami Ulla"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": "110- G&A",
+   "payee": "Sami Ulla"
+  },
+  {
+   "priority": 231,
+   "name": "Residence Inn",
+   "patterns": [
+    "Residence Inn"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Residence Inn by Marriot"
+  },
+  {
+   "priority": 232,
+   "name": "IHOP",
+   "patterns": [
+    "IHOP"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "IHOP"
+  },
+  {
+   "priority": 233,
+   "name": "Fooda",
+   "patterns": [
+    "FOODA CNP"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Fooda"
+  },
+  {
+   "priority": 234,
+   "name": "Wynn Las Vegas",
+   "patterns": [
+    "Wynn Las Vegas"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Wynn Las Vegas"
+  },
+  {
+   "priority": 235,
+   "name": "Paddle.net",
+   "patterns": [
+    "PADDLE.NET"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Paddle.net"
+  },
+  {
+   "priority": 236,
+   "name": "Peter Pan Bus",
+   "patterns": [
+    "Peter Pan Bus Lines"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Peter Pan Bus Lines"
+  },
+  {
+   "priority": 237,
+   "name": "Frontier Air",
+   "patterns": [
+    "Frontier Air"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Frontier Air"
+  },
+  {
+   "priority": 238,
+   "name": "PKL",
+   "patterns": [
+    "PKL BOSTON"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "PKL Boston"
+  },
+  {
+   "priority": 239,
+   "name": "Tableau",
+   "patterns": [
+    "TABLEAU"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Tableau"
+  },
+  {
+   "priority": 240,
+   "name": "Bar Taco",
+   "patterns": [
+    "BAR TACO FORT POINT"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Bar Taco"
+  },
+  {
+   "priority": 241,
+   "name": "Woods Hill",
+   "patterns": [
+    "TST* WOODS HILL PIER"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Woods Hill"
+  },
+  {
+   "priority": 242,
+   "name": "Box",
+   "patterns": [
+    "Box, Inc."
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "230- Sales",
+   "payee": "Box Inc."
+  },
+  {
+   "priority": 243,
+   "name": "Cardullos",
+   "patterns": [
+    "Cardullo's"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Cardullo's"
+  },
+  {
+   "priority": 244,
+   "name": "Stubhub",
+   "patterns": [
+    "STUBHUB San Francisco"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Stubhub"
+  },
+  {
+   "priority": 245,
+   "name": "Caffe Nero",
+   "patterns": [
+    " CAFFE NEBOSTON MA "
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Cafe Nero"
+  },
+  {
+   "priority": 246,
+   "name": "Bloomberg.com",
+   "patterns": [
+    "BLOOMBERG.COM"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": "230- Sales",
+   "payee": "Bloomberg.com"
+  },
+  {
+   "priority": 247,
+   "name": "Whale Boss",
+   "patterns": [
+    "WHALE BOSS"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": null,
+   "payee": "Whale Boss"
+  },
+  {
+   "priority": 248,
+   "name": "Twitch",
+   "patterns": [
+    "TWITCH"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": null,
+   "payee": "Twitch"
+  },
+  {
+   "priority": 249,
+   "name": "Expedia",
+   "patterns": [
+    "Expedia"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "Expedia.com"
+  },
+  {
+   "priority": 250,
+   "name": "Monaeo",
+   "patterns": [
+    "MONAEO NEW YORK CITY"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Monaeo"
+  },
+  {
+   "priority": 251,
+   "name": "Anthropic",
+   "patterns": [
+    "Anthropic"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Anthropic"
+  },
+  {
+   "priority": 252,
+   "name": "WEX COBRA",
+   "patterns": [
+    "Wex Cobra"
+   ],
+   "requireAll": false,
+   "account": "Fringe Benefits Liability",
+   "subCategory": "Fringe Benefits Liability",
+   "department": null,
+   "payee": "Wex Health"
+  },
+  {
+   "priority": 253,
+   "name": "Forkable",
+   "patterns": [
+    "THE KITCHENS INC"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:G&A- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": "110- G&A",
+   "payee": "Forkable"
+  },
+  {
+   "priority": 254,
+   "name": "Mercedes-Benz",
+   "patterns": [
+    "MBFS"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": "110- G&A",
+   "payee": "MBFS"
+  },
+  {
+   "priority": 255,
+   "name": "Granola AI",
+   "patterns": [
+    "Granola"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Granola AI"
+  },
+  {
+   "priority": 256,
+   "name": "PKL Boston",
+   "patterns": [
+    "PLAYPKL.COM"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "PKL Boston"
+  },
+  {
+   "priority": 257,
+   "name": "BENNIE HEALTH",
+   "patterns": [
+    "BENNIE HEALTH"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Bennie P&C"
+  },
+  {
+   "priority": 258,
+   "name": "The Gym Group",
+   "patterns": [
+    "THE GYM GROUP LONDON"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "The Gym Group_"
+  },
+  {
+   "priority": 259,
+   "name": "PLAUD AI",
+   "patterns": [
+    "PLAUD AI "
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Plaud.ai"
+  },
+  {
+   "priority": 260,
+   "name": "THE LENOX HOTEL",
+   "patterns": [
+    "THE LENOX HOTEL"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "The Lenox Hotel"
+  },
+  {
+   "priority": 261,
+   "name": "WWW.SWEETGREEN.COM",
+   "patterns": [
+    "WWW.SWEETGREEN.COM"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Sweetgreen"
+  },
+  {
+   "priority": 262,
+   "name": "Zoom.com",
+   "patterns": [
+    "ZOOM.COM"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Zoom"
+  },
+  {
+   "priority": 263,
+   "name": "BCBS MASS PREMI",
+   "patterns": [
+    "BCBS MASS PREMI"
+   ],
+   "requireAll": false,
+   "account": "Health Insurance Liability",
+   "subCategory": "Health Insurance Liability",
+   "department": null,
+   "payee": "Blue Cross & Blue Shield of MA"
+  },
+  {
+   "priority": 264,
+   "name": "QNARY SOCIAL MEDIA",
+   "patterns": [
+    "QNARY SOCIAL MEDIA "
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": null,
+   "payee": "Qnary LLC"
+  },
+  {
+   "priority": 265,
+   "name": "Pro-sitemaps",
+   "patterns": [
+    "PRO-SITEMAPS.COM"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": null,
+   "payee": "PRO-Sitemaps.com"
+  },
+  {
+   "priority": 266,
+   "name": "Claude.AI",
+   "patterns": [
+    "CLAUDE.AI"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Claude.AI"
+  },
+  {
+   "priority": 267,
+   "name": "Figma",
+   "patterns": [
+    "FIGMA"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Figma"
+  },
+  {
+   "priority": 268,
+   "name": "Scribe.how",
+   "patterns": [
+    "SCRIBE.HOW"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Scribe.How"
+  },
+  {
+   "priority": 269,
+   "name": "Business Importer",
+   "patterns": [
+    "BUSINESS IMPORTER"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Business Importer"
+  },
+  {
+   "priority": 270,
+   "name": "Porter Air",
+   "patterns": [
+    "Porter Air"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Porter Airlines"
+  },
+  {
+   "priority": 271,
+   "name": "Virgin Atlantic",
+   "patterns": [
+    "Virgin Atlantic"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Virgin Atlantic"
+  },
+  {
+   "priority": 272,
+   "name": "Inkd Stores II",
+   "patterns": [
+    "Ink'd Stores"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": null,
+   "payee": "Ink'd Stores"
+  },
+  {
+   "priority": 273,
+   "name": "CURB SERVICE",
+   "patterns": [
+    "CURB SERVICE"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Curb"
+  },
+  {
+   "priority": 274,
+   "name": "Mandalay Bay Resort",
+   "patterns": [
+    "Mandalay"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Mandalay Bay Resort"
+  },
+  {
+   "priority": 275,
+   "name": "W LAS VEGAS",
+   "patterns": [
+    "W LAS VEGAS"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "W Las Vegas"
+  },
+  {
+   "priority": 276,
+   "name": "AA WIFI",
+   "patterns": [
+    "AA WIFI SALES FORT WORTH TX XXXX2675"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "American Airlines"
+  },
+  {
+   "priority": 277,
+   "name": "TST",
+   "patterns": [
+    "TST*"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Food Vendor"
+  },
+  {
+   "priority": 278,
+   "name": "Uber One",
+   "patterns": [
+    "UBER ONE"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Uber"
+  },
+  {
+   "priority": 279,
+   "name": "Hudson News",
+   "patterns": [
+    "HUDSON ST"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Hudson News"
+  },
+  {
+   "priority": 280,
+   "name": "Asana",
+   "patterns": [
+    "Asana"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Asana"
+  },
+  {
+   "priority": 281,
+   "name": "Curb Mobility",
+   "patterns": [
+    "Curb"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Curb"
+  },
+  {
+   "priority": 282,
+   "name": "Four Seasons II",
+   "patterns": [
+    "Four Seasons"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Four Seasons"
+  },
+  {
+   "priority": 283,
+   "name": "Uber II",
+   "patterns": [
+    "Uber"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Uber"
+  },
+  {
+   "priority": 284,
+   "name": "YOUTUBE TV",
+   "patterns": [
+    "YOUTUBE TV"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": "110- G&A",
+   "payee": "Youtube TV"
+  },
+  {
+   "priority": 285,
+   "name": "Starlink",
+   "patterns": [
+    "STARLINK INTERNET"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Communication Expense",
+   "subCategory": "Communication Expense",
+   "department": null,
+   "payee": "Starlink"
+  },
+  {
+   "priority": 286,
+   "name": "THE BUSINESS JOURNALCHARLOTTE NC",
+   "patterns": [
+    "THE BUSINESS JOURNALCHARLOTTE NC"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": "110- G&A",
+   "payee": "Boston Business Journal"
+  },
+  {
+   "priority": 287,
+   "name": "CROWN AWARDS HAWTHORNE",
+   "patterns": [
+    "CROWN AWARDS HAWTHORNE"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": "110- G&A",
+   "payee": "Crown Awards"
+  },
+  {
+   "priority": 288,
+   "name": "TICKETMASTER",
+   "patterns": [
+    "TICKETMASTER"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Ticketmaster"
+  },
+  {
+   "priority": 289,
+   "name": "INC. AND FAST COMPAN",
+   "patterns": [
+    "INC. AND FAST COMPAN"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": "110- G&A",
+   "payee": "Fast Company"
+  },
+  {
+   "priority": 290,
+   "name": "GOOGLE WORKSPACE",
+   "patterns": [
+    "GOOGLE *WORKSPACE"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Google"
+  },
+  {
+   "priority": 291,
+   "name": "CACTUS CLUB BACK BAY",
+   "patterns": [
+    "CACTUS CLUB BACK BAY"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Cactus Club"
+  },
+  {
+   "priority": 292,
+   "name": "SPOTIFY",
+   "patterns": [
+    "SPOTIFY"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": null,
+   "payee": "Spotify"
+  },
+  {
+   "priority": 293,
+   "name": "LUSHA BOSTON",
+   "patterns": [
+    "LUSHA BOSTON"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": "120- Marketing",
+   "payee": "Lusha.co"
+  },
+  {
+   "priority": 294,
+   "name": "GRECO",
+   "patterns": [
+    "Greco"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Greco"
+  },
+  {
+   "priority": 295,
+   "name": "Tax1099",
+   "patterns": [
+    "Tax1099"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": null,
+   "payee": "tax1099"
+  },
+  {
+   "priority": 296,
+   "name": "Amazon II",
+   "patterns": [
+    "Amazon"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "Amazon"
+  },
+  {
+   "priority": 297,
+   "name": "Claude",
+   "patterns": [
+    "Claude"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Claude.AI"
+  },
+  {
+   "priority": 298,
+   "name": "Marissa L Promotions",
+   "patterns": [
+    "Marissa L Promotions "
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": null,
+   "payee": "Creative Solutions"
+  },
+  {
+   "priority": 299,
+   "name": "Inkd Stores III",
+   "patterns": [
+    "Inkd Stores"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": null,
+   "payee": "Ink'd Stores"
+  },
+  {
+   "priority": 300,
+   "name": "Sticker Mule",
+   "patterns": [
+    "Sticker Mule"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": null,
+   "payee": "Sticker Mule"
+  },
+  {
+   "priority": 301,
+   "name": "Vistaprint",
+   "patterns": [
+    "Vistaprint"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": null,
+   "payee": "VistaPrint"
+  },
+  {
+   "priority": 302,
+   "name": "Etsy.com",
+   "patterns": [
+    "Etsy.com"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "Etsy"
+  },
+  {
+   "priority": 303,
+   "name": "Tfl Travel Charge",
+   "patterns": [
+    "Tfl Travel Charge"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "Travel Vendor"
+  },
+  {
+   "priority": 304,
+   "name": "CURSOR AI",
+   "patterns": [
+    "CURSOR, AI"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Cursor, AI"
+  },
+  {
+   "priority": 305,
+   "name": "THE IV DOC",
+   "patterns": [
+    "THE IV DOC"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "The IV Doc"
+  },
+  {
+   "priority": 306,
+   "name": "Amazon III",
+   "patterns": [
+    "AMZNMKTPLACE"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "Amazon"
+  },
+  {
+   "priority": 307,
+   "name": "Amazon IV",
+   "patterns": [
+    "AMAZON PRIME*"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "Amazon"
+  },
+  {
+   "priority": 308,
+   "name": "Cava",
+   "patterns": [
+    "CAVA"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:G&A- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Cava"
+  },
+  {
+   "priority": 309,
+   "name": "FS DIRECT RESEARCH",
+   "patterns": [
+    "Direct"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": null,
+   "payee": "FS Insight"
+  },
+  {
+   "priority": 310,
+   "name": "Rainfocus ServiceNow",
+   "patterns": [
+    "BT*RAINFOC*SERVICENO"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": null,
+   "payee": "Rain Focus"
+  },
+  {
+   "priority": 311,
+   "name": "OMNI BOSTON HOTEL",
+   "patterns": [
+    "OMNI BOSTON HOTEL"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Omni Hotel"
+  },
+  {
+   "priority": 312,
+   "name": "NOBU CHICAGO",
+   "patterns": [
+    "NOBU CHICAGO"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Nobu Hotels"
+  },
+  {
+   "priority": 313,
+   "name": "APPLE STORE",
+   "patterns": [
+    "APPLE STORE"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Hardware & Peripherals",
+   "subCategory": "Hardware & Peripherals",
+   "department": null,
+   "payee": "Apple"
+  },
+  {
+   "priority": 314,
+   "name": "TD GARDEN",
+   "patterns": [
+    "TD GARDEN"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "TD Garden"
+  },
+  {
+   "priority": 315,
+   "name": "MAGELLAN JETS QUINCY",
+   "patterns": [
+    "MAGELLAN JETS QUINCY"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:G&A- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Magellan Jets LLC"
+  },
+  {
+   "priority": 316,
+   "name": "Sweetgreen",
+   "patterns": [
+    "Sweetgreen"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:G&A- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Sweetgreen"
+  },
+  {
+   "priority": 317,
+   "name": "easyJet",
+   "patterns": [
+    "easyJet"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "easyJet"
+  },
+  {
+   "priority": 318,
+   "name": "Radisson",
+   "patterns": [
+    "Radisson"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Radisson"
+  },
+  {
+   "priority": 319,
+   "name": "Clickup",
+   "patterns": [
+    "Clickup"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Clickup (Vendor)"
+  },
+  {
+   "priority": 320,
+   "name": "WINSTONS",
+   "patterns": [
+    "WINSTONS"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "Winston's"
+  },
+  {
+   "priority": 321,
+   "name": "HUDSONNEWS",
+   "patterns": [
+    "HUDSONNEWS"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Hudson News"
+  },
+  {
+   "priority": 322,
+   "name": "FORKABLE II",
+   "patterns": [
+    "FORKABLE"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Forkable"
+  },
+  {
+   "priority": 323,
+   "name": "DELTA AIR",
+   "patterns": [
+    "DELTA AIR"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Delta"
+  },
+  {
+   "priority": 324,
+   "name": "THE UPS STORE",
+   "patterns": [
+    "THE UPS STORE"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Shipping Expense",
+   "subCategory": "Shipping Expense",
+   "department": null,
+   "payee": "UPS"
+  },
+  {
+   "priority": 325,
+   "name": "VIVID SEATS",
+   "patterns": [
+    "VIVID SEATS"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Vivid Seats"
+  },
+  {
+   "priority": 326,
+   "name": "NATIONAL CAR",
+   "patterns": [
+    "National Car"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "National Car"
+  },
+  {
+   "priority": 327,
+   "name": "JUICEBOX",
+   "patterns": [
+    "JUICEBOX"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Recruiting Expenses",
+   "subCategory": "Recruiting Expenses",
+   "department": null,
+   "payee": "Juicebox"
+  },
+  {
+   "priority": 328,
+   "name": "AT&T Wireless",
+   "patterns": [
+    "AT&T Wireless"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Communication Expense",
+   "subCategory": "Communication Expense",
+   "department": null,
+   "payee": "AT&T Wireless"
+  },
+  {
+   "priority": 329,
+   "name": "CHECKR INC",
+   "patterns": [
+    "CHECKR, INC"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": null,
+   "payee": "Checkr, Inc."
+  },
+  {
+   "priority": 330,
+   "name": "COGNITION LABS",
+   "patterns": [
+    "Cognition"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Cognition Labs"
+  },
+  {
+   "priority": 331,
+   "name": "CORNERSTONE TECHNOLO",
+   "patterns": [
+    "CORNERSTONE TECHNOLO"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": "120- Marketing",
+   "payee": "Cornerstone Technologies"
+  },
+  {
+   "priority": 332,
+   "name": "Apple Internet II",
+   "patterns": [
+    "APPLE.COM/BILL INTERNET "
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Utilities",
+   "subCategory": "Utilities",
+   "department": null,
+   "payee": "Apple"
+  },
+  {
+   "priority": 333,
+   "name": "CURSOR",
+   "patterns": [
+    "CURSOR"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Cursor, AI"
+  },
+  {
+   "priority": 334,
+   "name": "Bitly Brex",
+   "patterns": [
+    "Bitly "
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Bitly"
+  },
+  {
+   "priority": 335,
+   "name": "Hudson News_Brex",
+   "patterns": [
+    "Hudson News"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "Hudson News"
+  },
+  {
+   "priority": 336,
+   "name": "AllAntico Vinaio",
+   "patterns": [
+    "AllAntico Vinaio MASTERCARD--Vincent Planz"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "AllAntico Vinaio"
+  },
+  {
+   "priority": 337,
+   "name": "Baccos Wine & Cheese",
+   "patterns": [
+    "Baccos Wine & Cheese MASTERCARD--Hannah Farley"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Baccos Wine & Cheese"
+  },
+  {
+   "priority": 338,
+   "name": "Caff\u00e8 Nero",
+   "patterns": [
+    "Caff\u00e8 Nero MASTERCARD--Ben Savage"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Caff\u00e8 Nero"
+  },
+  {
+   "priority": 339,
+   "name": "EZ Cater",
+   "patterns": [
+    "EZ Cater"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "EZCater"
+  },
+  {
+   "priority": 340,
+   "name": "P.F. Changs",
+   "patterns": [
+    "P.F. Changs"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "P.F. Chang's"
+  },
+  {
+   "priority": 341,
+   "name": "Pret a Manger",
+   "patterns": [
+    "Pret a Manger"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Pret a Manger"
+  },
+  {
+   "priority": 342,
+   "name": "Air Canada_Brex",
+   "patterns": [
+    "Air Canada "
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Air Canada"
+  },
+  {
+   "priority": 343,
+   "name": "AeroMexico",
+   "patterns": [
+    "Aeromexico"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "AeroMexico"
+  },
+  {
+   "priority": 344,
+   "name": "Boston Common Garage_Brex",
+   "patterns": [
+    "Boston Common Garage"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Boston Common Garage"
+  },
+  {
+   "priority": 345,
+   "name": "Courtyard Boston Downtown",
+   "patterns": [
+    "Courtyard"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "Courtyard"
+  },
+  {
+   "priority": 346,
+   "name": "Apple",
+   "patterns": [
+    "Apple"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Hardware & Peripherals",
+   "subCategory": "Hardware & Peripherals",
+   "department": null,
+   "payee": "Apple"
+  },
+  {
+   "priority": 347,
+   "name": "American",
+   "patterns": [
+    "American Mastercard"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "American Airlines"
+  },
+  {
+   "priority": 348,
+   "name": "RainFocus",
+   "patterns": [
+    "RainFocus"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Marketing Expenses:Other Marketing Expenses",
+   "subCategory": "Other Marketing Expenses",
+   "department": null,
+   "payee": "Rain Focus"
+  },
+  {
+   "priority": 349,
+   "name": "NAYA",
+   "patterns": [
+    "NAYA"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Naya"
+  },
+  {
+   "priority": 350,
+   "name": "Wi-fi Onboard",
+   "patterns": [
+    "Wi-fi Onboard"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "Wifi Onboard"
+  },
+  {
+   "priority": 351,
+   "name": "Garage At Post Office Square",
+   "patterns": [
+    "Garage At Post Office Square"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Garage At Post Office Square"
+  },
+  {
+   "priority": 352,
+   "name": "Wh Smith",
+   "patterns": [
+    "Wh Smith "
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "WHSmith"
+  },
+  {
+   "priority": 353,
+   "name": "Miro _Brex",
+   "patterns": [
+    "Miro"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Miro.com"
+  },
+  {
+   "priority": 354,
+   "name": "The Liberty",
+   "patterns": [
+    "The Liberty"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Lodging",
+   "subCategory": "Lodging",
+   "department": null,
+   "payee": "The Liberty Hotel"
+  },
+  {
+   "priority": 355,
+   "name": "AllAntico Vinaio Brex",
+   "patterns": [
+    "AllAntico Vinaio"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "All'Antico Vinaio"
+  },
+  {
+   "priority": 356,
+   "name": "Bamboo HR",
+   "patterns": [
+    "Bamboo Hr"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "110- G&A",
+   "payee": "Bamboo HR"
+  },
+  {
+   "priority": 357,
+   "name": "Hubspot",
+   "patterns": [
+    "Hubspot"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Hubspot, Inc."
+  },
+  {
+   "priority": 358,
+   "name": "Winston Flowers",
+   "patterns": [
+    "Winston Flowers"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "Winston's"
+  },
+  {
+   "priority": 359,
+   "name": "Newslink",
+   "patterns": [
+    "Newslink"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Other Travel Expenses",
+   "subCategory": "Other Travel Expenses",
+   "department": null,
+   "payee": "Newslink"
+  },
+  {
+   "priority": 360,
+   "name": "Checkr Brex",
+   "patterns": [
+    "Checkr"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "Checkr, Inc."
+  },
+  {
+   "priority": 361,
+   "name": "Certn",
+   "patterns": [
+    "Certn"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Recruiting Expenses",
+   "subCategory": "Recruiting Expenses",
+   "department": null,
+   "payee": "Certn"
+  },
+  {
+   "priority": 362,
+   "name": "LastPass Brex",
+   "patterns": [
+    "Lastpass Us"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "lastpass.com"
+  },
+  {
+   "priority": 363,
+   "name": "Plaud.ai",
+   "patterns": [
+    "Plaud"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses",
+   "subCategory": "Office Expenses",
+   "department": null,
+   "payee": "Plaud.ai"
+  },
+  {
+   "priority": 364,
+   "name": "PLAUD LLC",
+   "patterns": [
+    "Aplpay Plaud Llc"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Plaud.ai"
+  },
+  {
+   "priority": 365,
+   "name": "Amazon Audible II",
+   "patterns": [
+    "Amazon Audible "
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Dues & Subscriptions",
+   "subCategory": "Dues & Subscriptions",
+   "department": null,
+   "payee": "Audible"
+  },
+  {
+   "priority": 366,
+   "name": "JetBlue Airways Refund",
+   "patterns": [
+    "JetBlue"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "JetBlue"
+  },
+  {
+   "priority": 367,
+   "name": "Amtrak  Refund",
+   "patterns": [
+    "Amtrak"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Amtrak"
+  },
+  {
+   "priority": 368,
+   "name": "Amazon Refund",
+   "patterns": [
+    "Amazon"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "Amazon"
+  },
+  {
+   "priority": 369,
+   "name": "500 Boylston - Naya",
+   "patterns": [
+    "500 Boylston"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Naya"
+  },
+  {
+   "priority": 370,
+   "name": "Ryanair",
+   "patterns": [
+    "Ryanair"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Ryanair"
+  },
+  {
+   "priority": 371,
+   "name": "Webflow.com Brex",
+   "patterns": [
+    "Webflow"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": "120- Marketing",
+   "payee": "webflow.com"
+  },
+  {
+   "priority": 372,
+   "name": "B&H Photo",
+   "patterns": [
+    "B&H Photo"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Office Expenses:Office Supplies",
+   "subCategory": "Office Supplies",
+   "department": null,
+   "payee": "B&H Photo"
+  },
+  {
+   "priority": 373,
+   "name": "Emirates",
+   "patterns": [
+    "Emirates"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Emirates"
+  },
+  {
+   "priority": 374,
+   "name": "501 Boylston-Naya",
+   "patterns": [
+    "501 Boylston"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Naya"
+  },
+  {
+   "priority": 375,
+   "name": "Qantas",
+   "patterns": [
+    "Qantas"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Qantas"
+  },
+  {
+   "priority": 376,
+   "name": "General Taxi Rule",
+   "patterns": [
+    "Taxi"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Taxi Vendor"
+  },
+  {
+   "priority": 377,
+   "name": "Intuit",
+   "patterns": [
+    "Intuit"
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Intuit"
+  },
+  {
+   "priority": 378,
+   "name": "MBTA 2",
+   "patterns": [
+    "Massachusetts Bay Transportation Authority"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Ground Transportation",
+   "subCategory": "Ground Transportation",
+   "department": null,
+   "payee": "Mbta"
+  },
+  {
+   "priority": 379,
+   "name": "Dig Inn",
+   "patterns": [
+    "Dig Inn"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Dig Inn"
+  },
+  {
+   "priority": 380,
+   "name": "WHSmith",
+   "patterns": [
+    "Whsmith"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "WHSmith"
+  },
+  {
+   "priority": 381,
+   "name": "Caffe Nero 2",
+   "patterns": [
+    "Caff\u00e8 Nero"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Caff\u00e8 Nero"
+  },
+  {
+   "priority": 382,
+   "name": "Emirates Refund",
+   "patterns": [
+    "Emirates"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Airfare",
+   "subCategory": "Airfare",
+   "department": null,
+   "payee": "Emirates"
+  },
+  {
+   "priority": 383,
+   "name": "Capital Burger",
+   "patterns": [
+    "Capital Burger"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Capital Burger"
+  },
+  {
+   "priority": 384,
+   "name": "The Wild Duck",
+   "patterns": [
+    "The Wild Duck"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "The Wild Duck"
+  },
+  {
+   "priority": 385,
+   "name": "Shodan API 2",
+   "patterns": [
+    "Shodan "
+   ],
+   "requireAll": false,
+   "account": "General & Administrative:Software Licenses",
+   "subCategory": "Software Licenses",
+   "department": null,
+   "payee": "Shodan API"
+  },
+  {
+   "priority": 386,
+   "name": "Trader Joes",
+   "patterns": [
+    "Trader Joe's"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Trader Joe's"
+  },
+  {
+   "priority": 387,
+   "name": "Sweeneys",
+   "patterns": [
+    "Sweeneys"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Sweeney's"
+  },
+  {
+   "priority": 388,
+   "name": "Shake Shack",
+   "patterns": [
+    "Shake Shack"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Shake Shack"
+  },
+  {
+   "priority": 389,
+   "name": "Star Market",
+   "patterns": [
+    "Star Market"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Star Market"
+  },
+  {
+   "priority": 390,
+   "name": "Raising Canes",
+   "patterns": [
+    "Raising Canes"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Raising Canes"
+  },
+  {
+   "priority": 391,
+   "name": "Finagle A Bagel",
+   "patterns": [
+    "Finagle A Bagel"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Finagle A Bagel"
+  },
+  {
+   "priority": 392,
+   "name": "Flour Bakery",
+   "patterns": [
+    "Flour Bakery"
+   ],
+   "requireAll": false,
+   "account": "Sales & Marketing:Sales & Marketing- Travel Expenses:Meals & Entertainment",
+   "subCategory": "Meals & Entertainment",
+   "department": null,
+   "payee": "Flour Bakery"
+  }
+ ]
+}

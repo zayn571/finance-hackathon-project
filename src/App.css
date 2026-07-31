@@ -588,3 +588,18 @@ td.left, th.left { text-align: left; }
   border-radius: 2px; overflow: hidden; margin-bottom: 12px;
 }
 .dept-seg { min-width: 2px; }
+
+.rule-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.rule-chip {
+  display: inline-flex; align-items: baseline; gap: 6px;
+  background: var(--bg); border-radius: 9999px; padding: 6px 12px;
+}
+.rule-chip-name {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px; color: var(--navy);
+}
+.rule-chip-n { font-size: 11px; color: var(--muted); }
+.mono-sm {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px; color: var(--muted);
+}

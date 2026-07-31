@@ -1,10 +1,41 @@
 {
-  "source": "Brex Transaction Import 20260730 (QBO Transaction Import workbook) \u2014 the categorised import file, which is authoritative for sub-category and department. Account balance from the QuickBooks Transaction Detail report for account 62 (Brex Credit Card, AcctNum 21140).",
+  "source": "Brex Transaction Import 20260730. Categories resolved by QuickBooks bank-rule priority first (first matching rule in QBO's own rule order wins); the category on the import file is used only where no rule matches. Account balance and whole-month totals from the QuickBooks Transaction Detail report for account 62 (Brex Credit Card, AcctNum 21140).",
   "window": {
     "from": "2026-07-25",
     "to": "2026-07-30",
     "lines": 465,
     "total": 84272.77
+  },
+  "categorization": {
+    "rulesEvaluated": 392,
+    "byBankRule": 341,
+    "byImportFile": 124,
+    "topRules": [
+      {
+        "rule": "#283 Uber II",
+        "lines": 135
+      },
+      {
+        "rule": "#277 TST",
+        "lines": 47
+      },
+      {
+        "rule": "#24 LYFT",
+        "lines": 17
+      },
+      {
+        "rule": "#39 Starbucks",
+        "lines": 12
+      },
+      {
+        "rule": "#62 CVS",
+        "lines": 7
+      },
+      {
+        "rule": "#71 SPOTHERO",
+        "lines": 6
+      }
+    ]
   },
   "account": {
     "name": "Brex Credit Card",
@@ -23,8 +54,8 @@
   "bySubCategory": [
     {
       "category": "Meals & Entertainment",
-      "amount": 49797.64,
-      "lines": 182
+      "amount": 49470.4,
+      "lines": 181
     },
     {
       "category": "Software Licenses",
@@ -33,8 +64,8 @@
     },
     {
       "category": "Ground Transportation",
-      "amount": 7184.37,
-      "lines": 184
+      "amount": 7554.56,
+      "lines": 185
     },
     {
       "category": "Airfare",
@@ -53,8 +84,8 @@
     },
     {
       "category": "Office Supplies",
-      "amount": 1678.39,
-      "lines": 18
+      "amount": 1608.44,
+      "lines": 17
     },
     {
       "category": "Other Travel Expenses",
@@ -69,6 +100,11 @@
     {
       "category": "Hardware & Peripherals",
       "amount": 132.8,
+      "lines": 1
+    },
+    {
+      "category": "Rent & Lease",
+      "amount": 27.0,
       "lines": 1
     },
     {
@@ -143,7 +179,8 @@
       "vendor": "Food Vendor",
       "category": "Meals & Entertainment",
       "department": "100- Operations:110- G&A",
-      "amount": 8049.24
+      "amount": 8049.24,
+      "rule": "#277 TST"
     },
     {
       "date": "2026-07-30",
@@ -151,7 +188,8 @@
       "vendor": "Anthropic",
       "category": "Software Licenses",
       "department": "100- Operations:110- G&A",
-      "amount": 5207.23
+      "amount": 5207.23,
+      "rule": "#251 Anthropic"
     },
     {
       "date": "2026-07-30",
@@ -159,7 +197,8 @@
       "vendor": "Food Vendor",
       "category": "Meals & Entertainment",
       "department": "100- Operations:110- G&A",
-      "amount": 3500.0
+      "amount": 3500.0,
+      "rule": "#277 TST"
     },
     {
       "date": "2026-07-30",
@@ -167,7 +206,8 @@
       "vendor": "Food Vendor",
       "category": "Meals & Entertainment",
       "department": "100- Operations:110- G&A",
-      "amount": 1492.34
+      "amount": 1492.34,
+      "rule": "import file"
     },
     {
       "date": "2026-07-30",
@@ -175,7 +215,8 @@
       "vendor": "Delta",
       "category": "Airfare",
       "department": "100- Operations:120- Marketing",
-      "amount": 691.6
+      "amount": 691.6,
+      "rule": "import file"
     },
     {
       "date": "2026-07-30",
@@ -183,7 +224,8 @@
       "vendor": "Office Vendor",
       "category": "Office Supplies",
       "department": "100- Operations:110- G&A",
-      "amount": 668.04
+      "amount": 668.04,
+      "rule": "import file"
     },
     {
       "date": "2026-07-30",
@@ -191,7 +233,8 @@
       "vendor": "Alaska Air",
       "category": "Airfare",
       "department": "300- ServiceNow:330- Sales",
-      "amount": 455.4
+      "amount": 455.4,
+      "rule": "import file"
     },
     {
       "date": "2026-07-30",
@@ -199,7 +242,8 @@
       "vendor": "Southwest Air",
       "category": "Airfare",
       "department": "300- ServiceNow:330- Sales",
-      "amount": 390.4
+      "amount": 390.4,
+      "rule": "import file"
     },
     {
       "date": "2026-07-30",
@@ -207,7 +251,8 @@
       "vendor": "United Airlines",
       "category": "Airfare",
       "department": "200- Datadog:220- Engineering",
-      "amount": 377.2
+      "amount": 377.2,
+      "rule": "import file"
     },
     {
       "date": "2026-07-30",
@@ -215,7 +260,8 @@
       "vendor": "Tatte",
       "category": "Meals & Entertainment",
       "department": "300- ServiceNow:330- Sales",
-      "amount": 225.72
+      "amount": 225.72,
+      "rule": "#83 Tatte"
     },
     {
       "date": "2026-07-30",
@@ -223,7 +269,8 @@
       "vendor": "webflow.com",
       "category": "Software Licenses",
       "department": "100- Operations:120- Marketing",
-      "amount": 200.81
+      "amount": 200.81,
+      "rule": "#204 Webflow.com"
     },
     {
       "date": "2026-07-30",
@@ -231,7 +278,8 @@
       "vendor": "LinkedIn Corporation",
       "category": "Dues & Subscriptions",
       "department": "100- Operations:120- Marketing",
-      "amount": 171.86
+      "amount": 171.86,
+      "rule": "#122 LINKEDIN"
     },
     {
       "date": "2026-07-30",
@@ -239,7 +287,8 @@
       "vendor": "Southwest Air",
       "category": "Airfare",
       "department": "300- ServiceNow:320- Engineering",
-      "amount": 144.79
+      "amount": 144.79,
+      "rule": "import file"
     },
     {
       "date": "2026-07-30",
@@ -247,7 +296,8 @@
       "vendor": "Office Vendor",
       "category": "Hardware & Peripherals",
       "department": "100- Operations:110- G&A",
-      "amount": 132.8
+      "amount": 132.8,
+      "rule": "import file"
     },
     {
       "date": "2026-07-30",
@@ -255,7 +305,8 @@
       "vendor": "The Newbury Boston",
       "category": "Lodging",
       "department": "300- ServiceNow:320- Engineering",
-      "amount": 127.72
+      "amount": 127.72,
+      "rule": "#187 THE NEWBURY BOSTON"
     },
     {
       "date": "2026-07-30",
@@ -263,7 +314,8 @@
       "vendor": "Uber",
       "category": "Ground Transportation",
       "department": "100- Operations:110- G&A",
-      "amount": 83.96
+      "amount": 83.96,
+      "rule": "#283 Uber II"
     },
     {
       "date": "2026-07-30",
@@ -271,7 +323,8 @@
       "vendor": "PKL Boston",
       "category": "Meals & Entertainment",
       "department": "200- Datadog:220- Engineering",
-      "amount": 80.0
+      "amount": 80.0,
+      "rule": "#256 PKL Boston"
     },
     {
       "date": "2026-07-30",
@@ -279,7 +332,8 @@
       "vendor": "Uber",
       "category": "Ground Transportation",
       "department": "300- ServiceNow:320- Engineering",
-      "amount": 78.95
+      "amount": 78.95,
+      "rule": "#283 Uber II"
     },
     {
       "date": "2026-07-30",
@@ -287,7 +341,8 @@
       "vendor": "Uber",
       "category": "Ground Transportation",
       "department": "300- ServiceNow:310- Delivery",
-      "amount": 76.85
+      "amount": 76.85,
+      "rule": "#283 Uber II"
     },
     {
       "date": "2026-07-30",
@@ -295,7 +350,8 @@
       "vendor": "Uber",
       "category": "Ground Transportation",
       "department": "200- Datadog:220- Engineering",
-      "amount": 74.99
+      "amount": 74.99,
+      "rule": "#283 Uber II"
     }
   ],
   "privacyNote": "Cardholder names are stripped from every descriptor. Merchant, vendor, category, department and amount only."
