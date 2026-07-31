@@ -551,3 +551,34 @@ th.col-emphasis, td.col-emphasis {
 .badge-outline {
   background: none; border: 1px solid var(--border-strong); color: var(--muted);
 }
+
+/* ---------- brex card activity ---------- */
+.brex-stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px; margin-bottom: 8px;
+}
+.brex-stat {
+  display: flex; flex-direction: column; gap: 2px;
+  background: var(--bg); border-radius: var(--card-radius); padding: 16px;
+  min-width: 0;
+}
+.brex-stat-label {
+  font-size: 11px; font-weight: 500; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--muted);
+}
+.brex-stat-value { font-size: 20px; font-weight: 700; color: var(--navy); }
+.brex-stat-sub { font-size: 11px; color: var(--muted); }
+.brex-panels { margin-top: 8px; }
+
+.hbar-rows { display: flex; flex-direction: column; gap: 8px; }
+.hbar-row { display: grid; grid-template-columns: 140px 1fr 80px; align-items: center; gap: 12px; }
+.hbar-label {
+  font-size: 12px; color: var(--navy);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.hbar-track { background: var(--bg); height: 12px; border-radius: 2px; }
+.hbar-fill { display: block; height: 12px; border-radius: 2px; }
+.hbar-val { font-size: 12px; font-weight: 600; color: var(--navy); text-align: right; }
+
+.txn-time { display: block; font-size: 11px; color: var(--muted); }
+td.left, th.left { text-align: left; }

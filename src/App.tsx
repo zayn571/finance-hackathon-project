@@ -7,6 +7,7 @@ import { RevenueEbitdaByMonth, YoyGrowth, RevenueByQuarter, ExpenseBase } from "
 import ArAging from "./components/ArAging";
 import { Backlog, Attrition, FixedCostMix } from "./components/BacklogAttrition";
 import Headcount, { NewClients } from "./components/Headcount";
+import BrexActivity from "./components/BrexActivity";
 import CloseBoard from "./components/CloseBoard";
 import WorkingFiles from "./components/WorkingFiles";
 import { PERIODS } from "./lib/derive";
@@ -44,6 +45,7 @@ export default function App() {
           <Backlog />
           <Attrition />
         </div>
+        <BrexActivity />
         <Headcount />
         <div className="grid-2">
           <NewClients />

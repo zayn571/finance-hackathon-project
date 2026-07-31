@@ -1,0 +1,262 @@
+{
+  "source": "Balance and month activity from QuickBooks Transaction Detail by Account, account 62 (Brex Credit Card, AcctNum 21140). Live category and status detail from the Brex expenses API (CARD).",
+  "syncedAt": "2026-07-31T00:00:00Z",
+  "account": {
+    "name": "Brex Credit Card",
+    "qboAccountId": "62",
+    "qboAcctNum": "21140",
+    "balance": 106576.21,
+    "balanceAsOf": "2026-07-30"
+  },
+  "july2026": {
+    "postedLines": 663,
+    "grossCharges": 239985.87,
+    "creditsAndRefunds": -145245.04,
+    "netActivity": 94740.83,
+    "distinctMerchants": 103
+  },
+  "largestCharge": {
+    "merchant": "Fanduel",
+    "amount": 15685.24,
+    "date": "2026-07-02"
+  },
+  "topMerchants": [
+    {
+      "merchant": "Anthropic",
+      "amount": 26150.72
+    },
+    {
+      "merchant": "Amazon",
+      "amount": 15975.94
+    },
+    {
+      "merchant": "Food Vendor",
+      "amount": 15898.64
+    },
+    {
+      "merchant": "Fanduel",
+      "amount": 15688.17
+    },
+    {
+      "merchant": "Hubspot, Inc.",
+      "amount": 14618.83
+    },
+    {
+      "merchant": "United Airlines",
+      "amount": 13118.95
+    },
+    {
+      "merchant": "Apple",
+      "amount": 7444.69
+    },
+    {
+      "merchant": "Delta",
+      "amount": 6679.62
+    }
+  ],
+  "feed": {
+    "window": "Jul 30 2026",
+    "count": 100,
+    "byCategory": [
+      {
+        "category": "Travel — lodging",
+        "amount": 93671.53
+      },
+      {
+        "category": "Meals & entertainment",
+        "amount": 21630.09
+      },
+      {
+        "category": "Travel — ground",
+        "amount": 1367.74
+      },
+      {
+        "category": "Software & subscriptions",
+        "amount": 57.16
+      },
+      {
+        "category": "Other",
+        "amount": 49.35
+      },
+      {
+        "category": "Travel — airfare",
+        "amount": 45
+      },
+      {
+        "category": "Office",
+        "amount": 35.4
+      },
+      {
+        "category": "Rent & facilities",
+        "amount": 30.54
+      },
+      {
+        "category": "Dues & subscriptions",
+        "amount": 10.18
+      }
+    ],
+    "recent": [
+      {
+        "date": "2026-07-30",
+        "time": "23:51",
+        "merchant": "TST*MR. TEA",
+        "amount": 7.49,
+        "category": "Meals & entertainment",
+        "status": "Processing"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "23:51",
+        "merchant": "TST*MR. TEA",
+        "amount": 9.15,
+        "category": "Meals & entertainment",
+        "status": "Cleared"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "23:46",
+        "merchant": "UBER   * PENDING",
+        "amount": 40.96,
+        "category": "Travel — ground",
+        "status": "Processing"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "23:38",
+        "merchant": "UBER   *TRIP",
+        "amount": 30,
+        "category": "Travel — ground",
+        "status": "Cleared"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "23:33",
+        "merchant": "CHICK-FIL-A #04205",
+        "amount": 26.73,
+        "category": "Meals & entertainment",
+        "status": "Processing"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "23:18",
+        "merchant": "UBR* PENDING.UBER.COM",
+        "amount": 25.99,
+        "category": "Travel — ground",
+        "status": "Processing"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "23:10",
+        "merchant": "UBER   *TRIP",
+        "amount": 28.94,
+        "category": "Travel — ground",
+        "status": "Cleared"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "23:03",
+        "merchant": "LYFT   *TEMP AUTH HOLD",
+        "amount": 26.63,
+        "category": "Travel — ground",
+        "status": "Processing"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "22:44",
+        "merchant": "UBER   *TRIP",
+        "amount": 41.69,
+        "category": "Travel — ground",
+        "status": "Cleared"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "22:40",
+        "merchant": "UBER   *EATS",
+        "amount": 25.14,
+        "category": "Meals & entertainment",
+        "status": "Cleared"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "22:38",
+        "merchant": "LYFT   *TEMP AUTH HOLD",
+        "amount": 0,
+        "category": "Travel — ground",
+        "status": "Pending"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "22:31",
+        "merchant": "TST* LUKES LOBSTER - B",
+        "amount": 48.15,
+        "category": "Meals & entertainment",
+        "status": "Processing"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "22:16",
+        "merchant": "CVS/PHARMACY #01217",
+        "amount": 44.41,
+        "category": "Other",
+        "status": "Cleared"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "22:05",
+        "merchant": "Uber",
+        "amount": 0,
+        "category": "Travel — ground",
+        "status": "Pending"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "22:04",
+        "merchant": "UBER TECHNOLOGIES INC",
+        "amount": 0,
+        "category": "Travel — ground",
+        "status": "Pending"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "21:51",
+        "merchant": "SQ *CHERYL PALERMO DBA",
+        "amount": 23,
+        "category": "Meals & entertainment",
+        "status": "Cleared"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "21:49",
+        "merchant": "UBER   *TRIP",
+        "amount": 53.61,
+        "category": "Travel — ground",
+        "status": "Cleared"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "21:47",
+        "merchant": "BOS HUDSON ST1925",
+        "amount": 10.18,
+        "category": "Dues & subscriptions",
+        "status": "Cleared"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "21:47",
+        "merchant": "BOSTON COMMON GARAGE",
+        "amount": 144,
+        "category": "Travel — ground",
+        "status": "Processing"
+      },
+      {
+        "date": "2026-07-30",
+        "time": "21:33",
+        "merchant": "LYFT   *COMFORT 07-29",
+        "amount": 39.93,
+        "category": "Travel — ground",
+        "status": "Cleared"
+      }
+    ]
+  },
+  "privacyNote": "Cardholder names are excluded by design. The feed shows merchant, amount, category and status only."
+}
