@@ -532,3 +532,8 @@ td.unverified {
   font-weight: 400;
   margin-top: 2px;
 }
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn-secondary {
+  background: white; color: var(--navy); border: 1px solid var(--border-strong);
+}
+.btn-secondary:hover { border-color: var(--navy); }

@@ -10,6 +10,7 @@ import {
   VERIFIED_REFERENCE,
   type Provenance,
 } from "../data/provenance";
+import { buildIncomeStatementXlsx, downloadBlob } from "../lib/exportXlsx";
 
 const data = actuals as Record<string, unknown>;
 
@@ -83,6 +84,33 @@ function downloadCsv() {
   URL.revokeObjectURL(url);
 }
 
+async function downloadXlsx() {
+  const blob = await buildIncomeStatementXlsx({
+    sheetName: "GAAP Analysis",
+    title: "RapDev LLC — Income Statement FY26",
+    subtitle:
+      "Structure and formatting follow the Mgmt Reporting GAAP Analysis tab. Q3/Q4 are projected off Q2. See the Source column for each row's provenance.",
+    periods: PERIODS.map((p) => ({
+      key: p.key,
+      label: p.label,
+      note: p.basis === "projected" ? "(projected)" : undefined,
+    })),
+    value: (row, periodKey) => {
+      const period = PERIODS.find((p) => p.key === periodKey);
+      return period ? rowValue(row, period) : null;
+    },
+    note: (row) => {
+      if (SUPPRESSED.has(row.key)) {
+        const ref = VERIFIED_REFERENCE[row.key];
+        return `Withheld — contradicts verified source${ref ? `; verified: ${ref}` : ""}`;
+      }
+      const prov = PROVENANCE[row.key];
+      return prov ? PROVENANCE_LABEL[prov] : "";
+    },
+  });
+  downloadBlob(blob, "RapDev Income Statement FY26.xlsx");
+}
+
 const rowClass = (row: SchemaRow) => {
   if (row.kind === "band") return "is-row is-band";
   if (row.kind === "total") return "is-row is-total";
@@ -118,9 +146,14 @@ export default function IncomeStatement() {
             blended rate). Treat those as placeholders, not actuals.
           </p>
         </div>
-        <button className="btn btn-primary" onClick={downloadCsv}>
-          Download CSV
-        </button>
+        <div className="btn-row">
+          <button className="btn btn-primary" onClick={downloadXlsx}>
+            Download Excel
+          </button>
+          <button className="btn btn-secondary" onClick={downloadCsv}>
+            Download CSV
+          </button>
+        </div>
       </div>
 
       <div className="prov-legend">

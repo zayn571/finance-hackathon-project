@@ -1,0 +1,1014 @@
+{
+ "band-actuals": {
+  "bold": true,
+  "fill": "FF434343",
+  "fontColor": "FFFFFFFF",
+  "size": 10.0,
+  "numFmt": null,
+  "indent": 0
+ },
+ "bookings": {
+  "bold": true,
+  "fill": "FFCCCCCC",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 7
+ },
+ "bookings-dd": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 1,
+  "refRow": 8
+ },
+ "bookings-sn": {
+  "bold": true,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 1,
+  "refRow": 9
+ },
+ "bookings-sw": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 1,
+  "refRow": 10
+ },
+ "bookings-msp": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 11
+ },
+ "revenue": {
+  "bold": true,
+  "fill": "FFCCCCCC",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 13
+ },
+ "revenue-dd": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 1,
+  "refRow": 14
+ },
+ "revenue-dd-services": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 15
+ },
+ "revenue-dd-software": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 16
+ },
+ "revenue-dd-managedDd": {
+  "bold": false,
+  "fill": "FFFFF2CC",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 17
+ },
+ "revenue-dd-managedSoc": {
+  "bold": false,
+  "fill": "FFFFF2CC",
+  "fontColor": null,
+  "size": null,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 18
+ },
+ "revenue-sn": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 1,
+  "refRow": 19
+ },
+ "revenue-sn-services": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 20
+ },
+ "revenue-sn-software": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 21
+ },
+ "revenue-sn-msp": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 22
+ },
+ "revenue-totalServices": {
+  "bold": true,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 23
+ },
+ "revenue-totalSw": {
+  "bold": true,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 24
+ },
+ "revenue-totalMsp": {
+  "bold": true,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 25
+ },
+ "cogs": {
+  "bold": true,
+  "fill": "FFCCCCCC",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 28
+ },
+ "cogs-payroll": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 1,
+  "refRow": 29
+ },
+ "cogs-payroll-dd": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 30
+ },
+ "cogs-payroll-dd-services": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 31
+ },
+ "cogs-payroll-dd-software": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 32
+ },
+ "cogs-payroll-managedDd": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 33
+ },
+ "cogs-payroll-managedSecurity": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 34
+ },
+ "cogs-payroll-sn": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 35
+ },
+ "cogs-payroll-sn-services": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 36
+ },
+ "cogs-payroll-sn-software": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 37
+ },
+ "cogs-payroll-sn-msp": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 38
+ },
+ "cogs-travel": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 1,
+  "refRow": 39
+ },
+ "cogs-travel-dd": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 40
+ },
+ "cogs-travel-sn": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 41
+ },
+ "cogs-marketplaceFees": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 1,
+  "refRow": 42
+ },
+ "cogs-contractorFees": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": null,
+  "indent": 1,
+  "refRow": 43
+ },
+ "cogs-totalDd": {
+  "bold": true,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 44
+ },
+ "cogs-totalSn": {
+  "bold": true,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 45
+ },
+ "gm-dollars": {
+  "bold": true,
+  "fill": "FFCCCCCC",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 47
+ },
+ "gm-dd": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 48
+ },
+ "gm-dd-services": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 49
+ },
+ "gm-dd-software": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 50
+ },
+ "gm-managedDd": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 51
+ },
+ "gm-managedSecurity": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 52
+ },
+ "gm-sn": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 53
+ },
+ "gm-sn-services": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 54
+ },
+ "gm-sn-software": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 55
+ },
+ "gm-sn-msp": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 56
+ },
+ "gm-pct": {
+  "bold": true,
+  "fill": "FFCCCCCC",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0.00%",
+  "indent": 0,
+  "refRow": 57
+ },
+ "gm-pct-dd": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 58
+ },
+ "gm-pct-dd-services": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 59
+ },
+ "gm-pct-dd-software": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 60
+ },
+ "gm-pct-managedDd": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 61
+ },
+ "gm-pct-managedSecurity": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 62
+ },
+ "gm-pct-sn": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 63
+ },
+ "gm-pct-sn-services": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 64
+ },
+ "gm-pct-sn-software": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 65
+ },
+ "gm-pct-sn-msp": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 66
+ },
+ "opex": {
+  "bold": true,
+  "fill": "FFCCCCCC",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 69
+ },
+ "opex-ga": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 1,
+  "refRow": 70
+ },
+ "opex-ga-dd": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 71
+ },
+ "opex-ga-sn": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 72
+ },
+ "opex-ga-ops": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 73
+ },
+ "opex-personnel": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 1,
+  "refRow": 74
+ },
+ "opex-personnel-dd": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 75
+ },
+ "opex-personnel-sn": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 76
+ },
+ "opex-personnel-ops": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 77
+ },
+ "opex-sm": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 1,
+  "refRow": 78
+ },
+ "opex-sm-dd": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 79
+ },
+ "opex-sm-sn": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 80
+ },
+ "opex-sm-ops": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 81
+ },
+ "otherExpenses": {
+  "bold": true,
+  "fill": "FFCCCCCC",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 83
+ },
+ "otherExpenses-line": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 84
+ },
+ "otherExpenses-addback": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 85
+ },
+ "ebitdaAdjustments": {
+  "bold": true,
+  "fill": "FFCCCCCC",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 87
+ },
+ "ebitdaAdjustments-mwe": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 88
+ },
+ "adjEbitda": {
+  "bold": true,
+  "fill": "FFD9D9D9",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "_(\"$\"* #,##0_);_(\"$\"* \\(#,##0\\);_(\"$\"* \"-\"??_);_(@_)",
+  "indent": 0,
+  "refRow": 91
+ },
+ "ebitdaPct": {
+  "bold": false,
+  "fill": null,
+  "fontColor": null,
+  "size": null,
+  "numFmt": "0.00%",
+  "indent": 0,
+  "refRow": 92
+ },
+ "band-analysis": {
+  "bold": true,
+  "fill": "FF434343",
+  "fontColor": "FFFFFFFF",
+  "size": 10.0,
+  "numFmt": null,
+  "indent": 0
+ },
+ "analysis-bookings": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 0,
+  "refRow": 97
+ },
+ "analysis-bookings-dd-share": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 1,
+  "refRow": 98
+ },
+ "analysis-bookings-sn-share": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 1,
+  "refRow": 99
+ },
+ "grossProfit": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 0,
+  "refRow": 101
+ },
+ "grossProfit-dd": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "_(\"$\"* #,##0_);_(\"$\"* \\(#,##0\\);_(\"$\"* \"-\"??_);_(@_)",
+  "indent": 1,
+  "refRow": 102
+ },
+ "grossProfit-dd-pct": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 1,
+  "refRow": 103
+ },
+ "grossProfit-sn": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "_(\"$\"* #,##0_);_(\"$\"* \\(#,##0\\);_(\"$\"* \"-\"??_);_(@_)",
+  "indent": 1,
+  "refRow": 104
+ },
+ "grossProfit-sn-pct": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 1,
+  "refRow": 105
+ },
+ "grossProfit-total": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"#,##0.00",
+  "indent": 0,
+  "refRow": 106
+ },
+ "grossProfit-total-pct": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 0,
+  "refRow": 107
+ },
+ "cogsOpex": {
+  "bold": true,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "#,##0",
+  "indent": 0,
+  "refRow": 110
+ },
+ "cogsOpex-pctRevenue": {
+  "bold": true,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 0,
+  "refRow": 111
+ },
+ "opexNetIncome": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": null,
+  "indent": 0
+ },
+ "opexNetIncome-cogsPct": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 1,
+  "refRow": 115
+ },
+ "opexNetIncome-gaPct": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 1,
+  "refRow": 116
+ },
+ "opexNetIncome-personnelPct": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 1,
+  "refRow": 117
+ },
+ "opexNetIncome-smPct": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 1,
+  "refRow": 118
+ },
+ "opexNetIncome-netOpIncomeMargin": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 1,
+  "refRow": 119
+ },
+ "projectHours": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": null,
+  "size": 8.0,
+  "numFmt": null,
+  "indent": 0
+ },
+ "projectHours-nonBillableHc": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": null,
+  "size": 8.0,
+  "numFmt": null,
+  "indent": 1,
+  "refRow": 122
+ },
+ "projectHours-billableHc": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": null,
+  "size": 8.0,
+  "numFmt": null,
+  "indent": 1,
+  "refRow": 123
+ },
+ "projectHours-nonBillablePct": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 1,
+  "refRow": 124
+ },
+ "projectHours-billablePct": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 1,
+  "refRow": 125
+ },
+ "projectHours-available": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0",
+  "indent": 1,
+  "refRow": 126
+ },
+ "projectHours-worked": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "#,##0",
+  "indent": 1,
+  "refRow": 127
+ },
+ "projectHours-utilization": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0%",
+  "indent": 1,
+  "refRow": 128
+ },
+ "projectHours-billed": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "#,##0",
+  "indent": 1,
+  "refRow": 129
+ },
+ "projectHours-billedPerHead": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "#,##0",
+  "indent": 1,
+  "refRow": 130
+ },
+ "projectHours-padding": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0.0%",
+  "indent": 1,
+  "refRow": 131
+ },
+ "billRate": {
+  "bold": true,
+  "fill": "FFF3F3F3",
+  "fontColor": null,
+  "size": 8.0,
+  "numFmt": null,
+  "indent": 0
+ },
+ "billRate-breakEven": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"#,##0",
+  "indent": 1,
+  "refRow": 134
+ },
+ "billRate-perHourBilled": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"#,##0",
+  "indent": 1,
+  "refRow": 135
+ },
+ "billRate-realRate": {
+  "bold": false,
+  "fill": "FFF3F3F3",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"#,##0",
+  "indent": 1,
+  "refRow": 136
+ },
+ "servicesBillings": {
+  "bold": false,
+  "fill": null,
+  "fontColor": null,
+  "size": null,
+  "numFmt": "\"$\"#,##0.00",
+  "indent": 0,
+  "refRow": 138
+ },
+ "salesEfficiency": {
+  "bold": false,
+  "fill": "FFD9D2E9",
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "0",
+  "indent": 0,
+  "refRow": 140
+ }
+}
