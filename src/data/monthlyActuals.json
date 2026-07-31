@@ -1,0 +1,613 @@
+{
+  "meta": {
+    "fiscalYear": "FY26",
+    "closedThrough": "Jun 2026",
+    "verifiedAnchors": {
+      "utilization": 0.7235,
+      "blendedRate": 317.9145486457155,
+      "source": "Delivered Synechron workbook, Jun 2026"
+    }
+  },
+  "monthly": [
+    {
+      "month": "Jan",
+      "monthIndex": 0,
+      "quarter": "Q1",
+      "workingDays": 22,
+      "billableHeadcount": 123,
+      "nonBillableHeadcount": 33,
+      "revenue": {
+        "services": {
+          "dd": 876689.99,
+          "sn": 2942831.82,
+          "ops": 0,
+          "syn": 0
+        },
+        "software": {
+          "dd": 84906.83,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        },
+        "msp": {
+          "dd": 177150.07,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        },
+        "managedDd": 98718.08,
+        "managedSoc": 78431.99,
+        "synIntercompany": {
+          "dd": 0,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        }
+      },
+      "cogs": {
+        "personnel": {
+          "dd": 606590.94,
+          "sn": 1147986.56,
+          "ops": 0,
+          "syn": 0
+        },
+        "travel": {
+          "dd": 11911.5,
+          "sn": 35938.57,
+          "ops": 0,
+          "syn": 0
+        },
+        "intercompany": {
+          "dd": 0,
+          "sn": 11674.95,
+          "ops": 0,
+          "syn": 0
+        },
+        "other": {
+          "dd": 25159.8,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        }
+      },
+      "opex": {
+        "ga": {
+          "dd": 47747.95,
+          "sn": 70543.72,
+          "ops": 660686.39,
+          "syn": 0
+        },
+        "sm": {
+          "dd": 254604.92,
+          "sn": 566237.95,
+          "ops": 153956.29,
+          "syn": 0
+        },
+        "gaPersonnel": {
+          "dd": 29022.18,
+          "sn": 34995.39,
+          "ops": 282548.9,
+          "syn": 0
+        },
+        "smPersonnel": {
+          "dd": 244847.18,
+          "sn": 424587.34,
+          "ops": 51736.12,
+          "syn": 0
+        }
+      },
+      "otherExpenses": 73953.35,
+      "bookings": {
+        "total": 4613635.007999838,
+        "dd": 1119542.5546647222,
+        "sn": 3324471.145830189,
+        "sw": 35237.560748992204,
+        "msp": 134383.74675593534
+      },
+      "ebitdaAdjustments": {
+        "mwe": 18367.104194999996
+      },
+      "otherExpensesAddBack": 17748.804
+    },
+    {
+      "month": "Feb",
+      "monthIndex": 1,
+      "quarter": "Q1",
+      "workingDays": 20,
+      "billableHeadcount": 123,
+      "nonBillableHeadcount": 33,
+      "revenue": {
+        "services": {
+          "dd": 930965.7,
+          "sn": 2880949.12,
+          "ops": 0,
+          "syn": 0
+        },
+        "software": {
+          "dd": 89329.83,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        },
+        "msp": {
+          "dd": 143316.78,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        },
+        "managedDd": 57884.79,
+        "managedSoc": 85431.99,
+        "synIntercompany": {
+          "dd": 0,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        }
+      },
+      "cogs": {
+        "personnel": {
+          "dd": 507460.14,
+          "sn": 1093718.13,
+          "ops": 0,
+          "syn": 0
+        },
+        "travel": {
+          "dd": 17972.29,
+          "sn": 25388.37,
+          "ops": 0,
+          "syn": 0
+        },
+        "intercompany": {
+          "dd": 0,
+          "sn": 14417.35,
+          "ops": 0,
+          "syn": 0
+        },
+        "other": {
+          "dd": 26486.7,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        }
+      },
+      "opex": {
+        "ga": {
+          "dd": 41126.52,
+          "sn": 51000.7,
+          "ops": 774081.59,
+          "syn": 0
+        },
+        "sm": {
+          "dd": 272652.08,
+          "sn": 462895.81,
+          "ops": 155991.34,
+          "syn": 0
+        },
+        "gaPersonnel": {
+          "dd": 19495.06,
+          "sn": 20049.44,
+          "ops": 249153.6,
+          "syn": 0
+        },
+        "smPersonnel": {
+          "dd": 216052.33,
+          "sn": 381689.98,
+          "ops": 50103.55,
+          "syn": 0
+        }
+      },
+      "otherExpenses": 68179.62,
+      "bookings": {
+        "total": 4571792.321372112,
+        "dd": 1109389.027521805,
+        "sn": 3294320.341937664,
+        "sw": 34917.97885545513,
+        "msp": 133164.97305718838
+      },
+      "ebitdaAdjustments": {
+        "mwe": 18200.526435
+      },
+      "otherExpensesAddBack": 16363.108799999998
+    },
+    {
+      "month": "Mar",
+      "monthIndex": 2,
+      "quarter": "Q1",
+      "workingDays": 22,
+      "billableHeadcount": 123,
+      "nonBillableHeadcount": 33,
+      "revenue": {
+        "services": {
+          "dd": 934939.53,
+          "sn": 3280298.03,
+          "ops": 0,
+          "syn": 0
+        },
+        "software": {
+          "dd": 87046.32,
+          "sn": 1666.67,
+          "ops": 0,
+          "syn": 0
+        },
+        "msp": {
+          "dd": 144150.07,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        },
+        "managedDd": 58718.08,
+        "managedSoc": 85431.99,
+        "synIntercompany": {
+          "dd": 0,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        }
+      },
+      "cogs": {
+        "personnel": {
+          "dd": 636296.14,
+          "sn": 1233785.64,
+          "ops": 0,
+          "syn": 0
+        },
+        "travel": {
+          "dd": 15361.53,
+          "sn": 12578.32,
+          "ops": 0,
+          "syn": 0
+        },
+        "intercompany": {
+          "dd": 0,
+          "sn": 14335.94,
+          "ops": 0,
+          "syn": 0
+        },
+        "other": {
+          "dd": 24993.15,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        }
+      },
+      "opex": {
+        "ga": {
+          "dd": 49668.73,
+          "sn": 42827.26,
+          "ops": 603412.28,
+          "syn": 0
+        },
+        "sm": {
+          "dd": 347304.18,
+          "sn": 629755.05,
+          "ops": 118427.83,
+          "syn": 0
+        },
+        "gaPersonnel": {
+          "dd": 26969.61,
+          "sn": 19827.14,
+          "ops": 288387.37,
+          "syn": 0
+        },
+        "smPersonnel": {
+          "dd": 259042,
+          "sn": 491735.83,
+          "ops": 51042.59,
+          "syn": 0
+        }
+      },
+      "otherExpenses": 620126.24,
+      "bookings": {
+        "total": 5027935.07062805,
+        "dd": 1220076.417813473,
+        "sn": 3623005.512232147,
+        "sw": 38401.86039555266,
+        "msp": 146451.28018687628
+      },
+      "ebitdaAdjustments": {
+        "mwe": 20016.45279
+      },
+      "otherExpensesAddBack": 148830.2976
+    },
+    {
+      "month": "Apr",
+      "monthIndex": 3,
+      "quarter": "Q2",
+      "workingDays": 22,
+      "billableHeadcount": 123,
+      "nonBillableHeadcount": 33,
+      "revenue": {
+        "services": {
+          "dd": 1207422.26,
+          "sn": 3145926.74,
+          "ops": 0,
+          "syn": 0
+        },
+        "software": {
+          "dd": 81991.83,
+          "sn": 1666.67,
+          "ops": 0,
+          "syn": 0
+        },
+        "msp": {
+          "dd": 150400.07,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        },
+        "managedDd": 64968.08,
+        "managedSoc": 85431.99,
+        "synIntercompany": {
+          "dd": 54110.73,
+          "sn": 0,
+          "ops": 11500.52,
+          "syn": 0
+        }
+      },
+      "cogs": {
+        "personnel": {
+          "dd": 637628.54,
+          "sn": 1211047.94,
+          "ops": 0,
+          "syn": 0
+        },
+        "travel": {
+          "dd": 10345.6,
+          "sn": 14370.93,
+          "ops": 0,
+          "syn": 0
+        },
+        "intercompany": {
+          "dd": 0,
+          "sn": 14796.87,
+          "ops": 0,
+          "syn": 0
+        },
+        "other": {
+          "dd": 23476.8,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        }
+      },
+      "opex": {
+        "ga": {
+          "dd": 42573.33,
+          "sn": 44838.23,
+          "ops": 621920.71,
+          "syn": 0
+        },
+        "sm": {
+          "dd": 302973.79,
+          "sn": 609746.92,
+          "ops": 79413.54,
+          "syn": 0
+        },
+        "gaPersonnel": {
+          "dd": 22918.6,
+          "sn": 20896.93,
+          "ops": 287631.78,
+          "syn": 0
+        },
+        "smPersonnel": {
+          "dd": 255691.79,
+          "sn": 477919.16,
+          "ops": 49575.99,
+          "syn": 0
+        }
+      },
+      "otherExpenses": 90144.01,
+      "bookings": {
+        "total": 2856680.446362832,
+        "dd": 334611.2124371925,
+        "sn": 2308256.9698911896,
+        "sw": 21992.28195763796,
+        "msp": 191819.9820768119
+      },
+      "ebitdaAdjustments": {
+        "mwe": 20938.58469
+      },
+      "otherExpensesAddBack": 21634.5624
+    },
+    {
+      "month": "May",
+      "monthIndex": 4,
+      "quarter": "Q2",
+      "workingDays": 21,
+      "billableHeadcount": 123,
+      "nonBillableHeadcount": 33,
+      "revenue": {
+        "services": {
+          "dd": 1387716.21,
+          "sn": 2673691.54,
+          "ops": 0,
+          "syn": 0
+        },
+        "software": {
+          "dd": 84394.12,
+          "sn": 1666.67,
+          "ops": 0,
+          "syn": 0
+        },
+        "msp": {
+          "dd": 171365.76,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        },
+        "managedDd": 72468.07,
+        "managedSoc": 98897.69,
+        "synIntercompany": {
+          "dd": 30367.17,
+          "sn": 0,
+          "ops": 5770.04,
+          "syn": 0
+        }
+      },
+      "cogs": {
+        "personnel": {
+          "dd": 553048.51,
+          "sn": 1124173.69,
+          "ops": 0,
+          "syn": 0
+        },
+        "travel": {
+          "dd": 10396.55,
+          "sn": 32419.45,
+          "ops": 0,
+          "syn": 0
+        },
+        "intercompany": {
+          "dd": 0,
+          "sn": 15015.43,
+          "ops": 0,
+          "syn": 0
+        },
+        "other": {
+          "dd": 25005.99,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        }
+      },
+      "opex": {
+        "ga": {
+          "dd": 46243.65,
+          "sn": 84969.97,
+          "ops": 592739.11,
+          "syn": 108007.05
+        },
+        "sm": {
+          "dd": 285822.46,
+          "sn": 768217.48,
+          "ops": 148773.12,
+          "syn": 0
+        },
+        "gaPersonnel": {
+          "dd": 31126.87,
+          "sn": 54337.41,
+          "ops": 237564.45,
+          "syn": 90020.73
+        },
+        "smPersonnel": {
+          "dd": 255686.35,
+          "sn": 424987.37,
+          "ops": 52578.44,
+          "syn": 0
+        }
+      },
+      "otherExpenses": 84723.2,
+      "bookings": {
+        "total": 2673696.8919210634,
+        "dd": 313177.821423583,
+        "sn": 2160402.4678402347,
+        "sw": 20583.57489415878,
+        "msp": 179533.02776308698
+      },
+      "ebitdaAdjustments": {
+        "mwe": 19597.371795
+      },
+      "otherExpensesAddBack": 20333.568
+    },
+    {
+      "month": "Jun",
+      "monthIndex": 5,
+      "quarter": "Q2",
+      "workingDays": 22,
+      "billableHeadcount": 123,
+      "nonBillableHeadcount": 33,
+      "revenue": {
+        "services": {
+          "dd": 972695.35,
+          "sn": 3393716.51,
+          "ops": 0,
+          "syn": 0
+        },
+        "software": {
+          "dd": 78619.8,
+          "sn": 1666.67,
+          "ops": 0,
+          "syn": 0
+        },
+        "msp": {
+          "dd": 179699.09,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        },
+        "managedDd": 72468.07,
+        "managedSoc": 107231.02,
+        "synIntercompany": {
+          "dd": 36035.57,
+          "sn": 29780.3,
+          "ops": 9861.58,
+          "syn": 0
+        }
+      },
+      "cogs": {
+        "personnel": {
+          "dd": 536348.74,
+          "sn": 1229202.9,
+          "ops": 0,
+          "syn": 0
+        },
+        "travel": {
+          "dd": 11797.94,
+          "sn": 35982.36,
+          "ops": 0,
+          "syn": 0
+        },
+        "intercompany": {
+          "dd": 0,
+          "sn": 14845.09,
+          "ops": 0,
+          "syn": 0
+        },
+        "other": {
+          "dd": 23273.69,
+          "sn": 0,
+          "ops": 0,
+          "syn": 0
+        }
+      },
+      "opex": {
+        "ga": {
+          "dd": 84910.94,
+          "sn": 45719.57,
+          "ops": 701102.52,
+          "syn": 207727.57
+        },
+        "sm": {
+          "dd": 509562.7,
+          "sn": 523918.6,
+          "ops": 218966.74,
+          "syn": 1536.98
+        },
+        "gaPersonnel": {
+          "dd": 25638.1,
+          "sn": 38709.78,
+          "ops": 272275.27,
+          "syn": 76073.32
+        },
+        "smPersonnel": {
+          "dd": 312344.13,
+          "sn": 463064.51,
+          "ops": 57602.9,
+          "syn": 0
+        }
+      },
+      "otherExpenses": 107473.36,
+      "bookings": {
+        "total": 2886797.981716105,
+        "dd": 338138.9661392245,
+        "sn": 2332592.562268576,
+        "sw": 22224.14314820326,
+        "msp": 193842.31016010107
+      },
+      "ebitdaAdjustments": {
+        "mwe": 21159.336914999996
+      },
+      "otherExpensesAddBack": 25793.6064
+    }
+  ]
+}

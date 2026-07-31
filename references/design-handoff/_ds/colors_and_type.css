@@ -1,0 +1,252 @@
+/* ============================================================
+   RapDev Design System — colors_and_type.css
+   Import this in any HTML artifact to get brand tokens.
+   ============================================================ */
+
+/* ---- Fonts ---------------------------------------------------
+   Gilroy is commercial. If licensed copies are present in
+   ./fonts/ (filenames: Gilroy-Light.woff2 etc.) they'll load.
+   Otherwise the stack falls through to DM Sans (Google) → Lato
+   → system sans. ------------------------------------------- */
+
+/* Gilroy — uploaded brand assets. Only Light (300) and
+   ExtraBold (800) are available. The brand spec calls for
+   five weights (300/400/500/600/700); for the three middle
+   weights the font cascade falls through to Lato. Display
+   type uses Light, emphasis/stats use ExtraBold. */
+@font-face {
+  font-family: 'Gilroy';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: local('Gilroy-Light'), local('Gilroy Light'),
+       url('./fonts/Gilroy-Light.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Gilroy';
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: local('Gilroy-ExtraBold'), local('Gilroy ExtraBold'),
+       url('./fonts/Gilroy-ExtraBold.otf') format('opentype');
+}
+
+/* Lato — uploaded brand assets (TTF). Lato is the second
+   fallback in the official stack and is always present, even
+   when a Gilroy license isn't loaded. Italics are exposed for
+   completeness but the design system DOES NOT USE italics —
+   see README "Type" notes. ----------------------------------- */
+
+@font-face { font-family: 'Lato'; font-weight: 100; font-style: normal;
+  font-display: swap; src: url('./fonts/Lato-Thin.ttf') format('truetype'); }
+@font-face { font-family: 'Lato'; font-weight: 100; font-style: italic;
+  font-display: swap; src: url('./fonts/Lato-ThinItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Lato'; font-weight: 300; font-style: normal;
+  font-display: swap; src: url('./fonts/Lato-Light.ttf') format('truetype'); }
+@font-face { font-family: 'Lato'; font-weight: 300; font-style: italic;
+  font-display: swap; src: url('./fonts/Lato-LightItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Lato'; font-weight: 400; font-style: normal;
+  font-display: swap; src: url('./fonts/Lato-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Lato'; font-weight: 400; font-style: italic;
+  font-display: swap; src: url('./fonts/Lato-Italic.ttf') format('truetype'); }
+@font-face { font-family: 'Lato'; font-weight: 700; font-style: normal;
+  font-display: swap; src: url('./fonts/Lato-Bold.ttf') format('truetype'); }
+@font-face { font-family: 'Lato'; font-weight: 700; font-style: italic;
+  font-display: swap; src: url('./fonts/Lato-BoldItalic.ttf') format('truetype'); }
+@font-face { font-family: 'Lato'; font-weight: 900; font-style: normal;
+  font-display: swap; src: url('./fonts/Lato-Black.ttf') format('truetype'); }
+@font-face { font-family: 'Lato'; font-weight: 900; font-style: italic;
+  font-display: swap; src: url('./fonts/Lato-BlackItalic.ttf') format('truetype'); }
+
+/* Note on weights: Lato ships at 100/300/400/700/900. The
+   brand spec calls for 500 (Medium) and 600 (SemiBold).
+   When the cascade falls through to Lato, the browser will
+   synthesize 500 from 400 and 600 from 700 — close enough
+   for prototyping. Production Gilroy preserves the exact
+   weight ramp. ---------------------------------------------- */
+
+:root {
+  /* ---- Brand palette (exact — no approximations) -------- */
+  --rd-navy:        #0B2D4C;
+  --rd-teal:        #00A5A2;
+  --rd-teal-deep:   #09838D;  /* secondary teal, hover/pressed */
+  --rd-white:       #FFFFFF;
+  --rd-gray:        #333333;  /* body text on white */
+  --rd-bg-light:    #F1F6F8;  /* alternating section bg */
+
+  /* Tinted neutrals, derived — used for borders + disabled.
+     Not a new palette; these are navy at reduced alpha,
+     pre-composited against white for deterministic rendering. */
+  --rd-border:      #E4E9EE;  /* default card/input border */
+  --rd-border-strong: #C9D2DA; /* hover border, dividers */
+  --rd-muted:       #6B7A8A;  /* captions, secondary labels */
+
+  /* ---- Semantic color roles ------------------------------ */
+  --fg-default:       var(--rd-gray);
+  --fg-strong:        var(--rd-navy);
+  --fg-muted:         var(--rd-muted);
+  --fg-inverse:       var(--rd-white);
+  --fg-accent:        var(--rd-teal);
+  --fg-accent-strong: var(--rd-teal-deep);
+
+  --bg-canvas:    var(--rd-white);
+  --bg-section:   var(--rd-bg-light);
+  --bg-inverse:   var(--rd-navy);
+  --bg-accent:    var(--rd-teal);
+
+  --border-default: var(--rd-border);
+  --border-strong:  var(--rd-border-strong);
+  --border-focus:   var(--rd-teal);
+
+  --link:           var(--rd-teal);
+  --link-hover:     var(--rd-teal-deep);
+
+  /* ---- Type ---------------------------------------------- */
+  --font-sans: 'Gilroy', 'Lato',
+               -apple-system, BlinkMacSystemFont, 'Segoe UI',
+               Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas,
+               'Liberation Mono', monospace;
+
+  --fw-light:    300; /* @kind font */
+  --fw-regular:  400; /* @kind font */
+  --fw-medium:   500; /* @kind font */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold:     700; /* @kind font */
+
+  /* Type scale — px-based, documented to match both web
+     (min 14px) and deck (min 18pt ≈ 24px) rules. ---------- */
+  --fs-display-xl: 72px;  /* hero / deck title */
+  --fs-display-l:  56px;
+  --fs-display-m:  44px;
+  --fs-h1:         36px;
+  --fs-h2:         28px;
+  --fs-h3:         22px;
+  --fs-h4:         18px;
+  --fs-body-lg:    18px;
+  --fs-body:       16px;  /* default web body */
+  --fs-body-sm:    14px;  /* smallest allowed on web */
+  --fs-caption:    12px;  /* metadata only, never paragraphs */
+
+  --lh-tight:  1.1;  /* @kind font */
+  --lh-snug:   1.25; /* @kind font */
+  --lh-normal: 1.5;  /* @kind font */
+  --lh-loose:  1.65; /* @kind font */
+
+  --tracking-tight:   -0.01em; /* @kind font */
+  --tracking-normal:  0;       /* @kind font */
+  --tracking-wide:    0.04em;  /* @kind font */
+  --tracking-caps:    0.12em;  /* @kind font */
+
+  /* ---- Spacing scale (4/8-based) -------------------------- */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  24px;
+  --sp-6:  32px;
+  --sp-7:  48px;
+  --sp-8:  64px;
+  --sp-9:  96px;
+  --sp-10: 128px;
+
+  /* ---- Radii --------------------------------------------- */
+  --r-none: 0; /* @kind radius */
+  --r-sm:   6px;    /* buttons, inputs, pills */
+  --r-md:   12px;   /* cards, panels */
+  --r-full: 9999px; /* avatars, dot badges */
+
+  /* ---- Motion -------------------------------------------- */
+  --motion-micro:  150ms; /* @kind other */
+  --motion-ui:     240ms; /* @kind other */
+  --motion-page:   400ms; /* @kind other */
+  --ease-out:      cubic-bezier(0.2, 0.8, 0.2, 1); /* @kind other */
+}
+
+/* ============================================================
+   Base element styles
+   ============================================================ */
+html, body {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  color: var(--fg-default);
+  background: var(--bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--fg-strong);
+  margin: 0 0 var(--sp-4) 0;
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+h1 { font-size: var(--fs-display-m); font-weight: var(--fw-light);   line-height: var(--lh-tight); }
+h2 { font-size: var(--fs-h1);        font-weight: var(--fw-semibold); line-height: var(--lh-tight); }
+h3 { font-size: var(--fs-h2);        font-weight: var(--fw-semibold); line-height: var(--lh-snug); }
+h4 { font-size: var(--fs-h3);        font-weight: var(--fw-medium);   line-height: var(--lh-snug); }
+h5 { font-size: var(--fs-h4);        font-weight: var(--fw-medium);   line-height: var(--lh-snug); }
+h6 { font-size: var(--fs-body);      font-weight: var(--fw-semibold); letter-spacing: var(--tracking-caps); text-transform: uppercase; }
+
+p {
+  margin: 0 0 var(--sp-4) 0;
+  max-width: 70ch;
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color var(--motion-micro) var(--ease-out);
+}
+a:hover { color: var(--link-hover); text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--border-focus); outline-offset: 2px; border-radius: 2px; }
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+code {
+  background: var(--bg-section);
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--fg-strong);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border-default);
+  margin: var(--sp-6) 0;
+}
+
+::selection { background: var(--rd-teal); color: var(--rd-white); }
+
+/* ============================================================
+   Utility classes — use in preview cards, UI kit components
+   ============================================================ */
+.rd-eyebrow {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--fg-accent-strong);
+}
+.rd-muted { color: var(--fg-muted); }
+.rd-mono  { font-family: var(--font-mono); }
+
+.rd-section-light { background: var(--bg-canvas); }
+.rd-section-tint  { background: var(--bg-section); }
+.rd-section-dark  { background: var(--bg-inverse); color: var(--fg-inverse); }
+.rd-section-dark h1,
+.rd-section-dark h2,
+.rd-section-dark h3,
+.rd-section-dark h4 { color: var(--fg-inverse); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 80ms !important;
+  }
+}

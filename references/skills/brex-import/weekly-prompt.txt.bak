@@ -1,0 +1,71 @@
+You are running the RapDev Brex Import skill in FEED mode, unattended and DRAFT-ONLY.
+
+Read skills/brex-import/SKILL.md and follow it exactly. Use the scripts in
+skills/brex-import/scripts/ EXACTLY as written.
+
+HARD RULE — NO IMPROVISED SCRIPTS
+- Do NOT write, generate, or improvise any new helper script. Only the scripts ALREADY in
+  skills/brex-import/scripts/ may run. The fixed entry points are:
+    runner.py qbo-purchases   (QBO report -> qbo_purchases.json)
+    brex_page.py              (per-page Brex staging -> %TEMP%\brex_acc.json)
+    runner.py categorize-brex (categorize + reconcile + write xlsx)
+  Any small file transform/copy uses an inline `python -c "..."` command (shown below), never a
+  written script. If a step seems to need a script that does not exist, STOP and record it in
+  RUN-SUMMARY.md — do not improvise one.
+- Every shell command MUST start with `python` and use ABSOLUTE paths (no `cd …;` prefix, no
+  PowerShell cmdlets). Set the variables once and substitute them literally:
+    OUTDIR  = G:\Shared drives\RapDev Finance - Claude\outputs\Brex Transaction Import\<YYYY>\<YYYYMM>
+    SCRIPTS = G:\Shared drives\RapDev Finance - Claude\skills\brex-import\scripts
+    REFS    = G:\Shared drives\RapDev Finance - Claude\skills\brex-import\references
+  (Build <YYYY>/<YYYYMM> from the posted-date window.)
+
+STEPS
+
+1. QBO-first (sets the window). Call quickbooks_transaction_detail_by_account for account_id=62
+   over a BOUNDED ROLLING window: start_date = today minus 21 days, end_date = today. Do NOT use a
+   fixed or older start: ~3 weeks always covers everything since the last (or caught-up) run plus
+   the posted-date window +/-3 days for reconciliation, and it never grows week over week. The MCP result is saved to a file — note that path as <QBO_REPORT_FILE>.
+   Read the latest booked date; that date through today is the Brex POSTED-date window. Then stage
+   the reconciliation baseline with the FIXED subcommand:
+     python "<SCRIPTS>\runner.py" qbo-purchases --report "<QBO_REPORT_FILE>" --out-dir "<OUTDIR>"
+
+2. Brex pull. Call brex_expenses_list (expense_type=CARD). Paginate newest-first: for EACH page the
+   tool result is saved to a file <PAGE_FILE> — run
+     python "<SCRIPTS>\brex_page.py" "<PAGE_FILE>"
+   and continue with the printed cursor until it prints "continue? False".
+   - payment_posted_at IS the posted date — used VERBATIM by brex_page.py. Never estimate a clearing
+     date; expenses with no payment_posted_at are excluded automatically.
+   - When the loop ends, stage Brex_expenses.json from the accumulator with this EXACT one-liner:
+     python -c "import json,os; a=json.load(open(os.path.join(os.environ['TEMP'],'brex_acc.json'),encoding='utf-8')); json.dump(a['exps'], open(r'<OUTDIR>\Brex_expenses.json','w',encoding='utf-8'), indent=2); print('staged', len(a['exps']))"
+
+3. Categorize + reconcile + write the filled xlsx (one command, starts with python):
+     python "<SCRIPTS>\runner.py" categorize-brex --refs-dir "<REFS>" --out-dir "<OUTDIR>" --brex-expenses "<OUTDIR>\Brex_expenses.json" --qbo-rules "<REFS>\qbo-bank-rules.xlsx" --vendors "<REFS>\Vendors.xlsx" --memory "<REFS>\brex-memory.md" --qbo-purchases "<OUTDIR>\qbo_purchases.json"
+   (Template auto-resolves from references/. If the dated output file already exists, write to a
+   suffixed name and note it — do NOT overwrite.)
+
+4. Honor SKILL.md enrichment (use Read/Write/Edit tools + inline `python -c`, no new scripts):
+   - Airlines -> airline name as Payee + Sub Category Override = Airfare.
+   - NO blind "Food Vendor" guess. Web-search any merchant with no rule/memory/vendor match, map it
+     to exactly one of Food/Office/Travel/Taxi/Hotel Vendor, flag it, and append the confirmed
+     mapping to <REFS>\brex-memory.md via the Edit tool.
+   - Fill Card #/Card Name/EE ID from the Card Mapping tab; DATE column = the Brex posted date.
+   - Refresh the Department Listing tab from BambooHR report 228 and reconcile names to the Brex
+     form (do not clobber the curated QBO-Department column for unmatched/new employees; flag those).
+
+5. Write RUN-SUMMARY.md as an actual FILE using the Write tool at "<OUTDIR>\RUN-SUMMARY.md"
+   (do NOT just print the summary in your response — it must land in the folder). Include: posted
+   window; counts (total pulled / refunds excluded / already-posted excluded / NEW rows); flagged
+   rows; web-searched merchants and how each was mapped; and any failures.
+
+6. Delete the JSON sidecars from <OUTDIR> when done, leaving ONLY the xlsx and RUN-SUMMARY.md.
+   Use ONLY this exact python command — do NOT use Remove-Item or any PowerShell cmdlet for this
+   (Remove-Item -Force/-Recurse is DENIED and will fail):
+     python -c "import os; [os.remove(os.path.join(r'<OUTDIR>',f)) for f in ('Brex_expenses.json','qbo_purchases.json','Vendors.json','categorized.json') if os.path.exists(os.path.join(r'<OUTDIR>',f))]"
+
+HARD CONSTRAINTS
+- DRAFT-ONLY. Do NOT import to or write to QuickBooks. Do NOT send anything externally (no email,
+  Slack, invoices, payment links). Produce only local files for human review.
+- If any pull fails or returns partial data, STOP and record it in RUN-SUMMARY.md. Never treat a
+  partial or failed pull as complete, and never invent data to fill a gap.
+- A different RapDev Finance & Accounting team member must review and approve this draft before
+  anything is promoted out of the outputs/ folder.

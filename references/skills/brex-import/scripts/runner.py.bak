@@ -1,0 +1,911 @@
+"""brex-import skill runner.
+
+Subcommands:
+    preflight        — check that required workspace files exist
+    dryrun           — resolve all blank-Payee rows, output JSON with confidence buckets
+    write            — copy template, write rows, apply overrides, add cell comments
+    notes            — produce reasoning markdown alongside the filled xlsx
+    categorize-brex  — feed-mode: read Brex_expenses.json + qbo_rules.xlsx,
+                       match + flag, emit categorized.json (new in v2)
+
+Common arguments:
+    --playground <path>   default: /CoWork Playground (auto-detected via mount)
+    --csv <path>          path to the Brex CSV (auto-detected from Transaction Import/ if omitted)
+    --template <path>     path to blank template (auto-detected from Transaction Import/ if omitted)
+
+The runner is deliberately path-agnostic so the skill works for any user who follows
+the file-layout convention in SKILL.md.
+"""
+
+from __future__ import annotations
+import argparse
+import csv
+import json
+import re
+import shutil
+import sys
+from datetime import datetime
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from memory_loader import load_memory
+from resolver import (resolve, load_vendors, merchant_from_desc, FALLBACKS)
+from fill_col_L import expected_sub_cat, should_write_override, CHARITY_VENDORS_LC
+
+from openpyxl import load_workbook
+from openpyxl.comments import Comment
+
+# ----------------- Path discovery -----------------
+
+def find_playground(explicit: str | None) -> Path:
+    """Resolve the CoWork Playground directory.
+
+    Order of attempts:
+      1. --playground arg if given
+      2. /CoWork Playground (legacy fixed mount)
+      3. /sessions/*/mnt/CoWork Playground (current session-mount convention)
+    """
+    if explicit:
+        p = Path(explicit)
+        if not p.exists():
+            raise FileNotFoundError(f"Playground not found: {p}")
+        return p
+    legacy = Path("/CoWork Playground")
+    if legacy.exists():
+        return legacy
+    matches = sorted(Path("/sessions").glob("*/mnt/CoWork Playground"))
+    if matches:
+        return matches[-1]
+    raise FileNotFoundError(
+        "Could not locate the CoWork Playground folder. "
+        "Pass --playground explicitly."
+    )
+
+
+REFS_DEFAULT = Path(__file__).resolve().parent.parent / "references"
+
+
+def find_refs_dir(explicit: str | None) -> Path:
+    """Locate the skill's reference materials (brex-memory.md, Vendors.xlsx, template).
+    Order: --refs-dir arg -> bundled references/ folder -> legacy CoWork tools/."""
+    if explicit:
+        p = Path(explicit)
+        if not p.exists():
+            raise FileNotFoundError(f"refs dir not found: {p}")
+        return p
+    if REFS_DEFAULT.exists():
+        return REFS_DEFAULT
+    try:
+        return find_playground(None) / "Transaction Import" / "tools"
+    except FileNotFoundError:
+        return REFS_DEFAULT
+
+
+def find_csv(transaction_import: Path, explicit: str | None) -> Path:
+    """Find the Brex CSV to process.
+
+    Searches Transaction Import/YYYY/MonthName/ subfolders first (the canonical
+    location). Falls back to Transaction Import/ root for legacy workspaces.
+    Raises if zero or multiple CSVs are found.
+    """
+    if explicit:
+        return Path(explicit)
+    # Prefer subfolder CSVs (canonical location)
+    csvs = sorted(transaction_import.glob("*/*/Brex (*).csv"))
+    if not csvs:
+        # Legacy: fall back to root of Transaction Import
+        csvs = sorted(transaction_import.glob("Brex (*).csv"))
+    if len(csvs) == 0:
+        raise FileNotFoundError(
+            f"No Brex CSV found under {transaction_import}. "
+            f"Ask the user to upload one (looks like 'Brex (NN).csv')."
+        )
+    if len(csvs) > 1:
+        names = [str(c.relative_to(transaction_import)) for c in csvs]
+        raise ValueError(f"Multiple Brex CSVs found; ask user which to use: {names}")
+    return csvs[0]
+
+
+def find_template(refs_dir: Path, explicit: str | None) -> Path:
+    """Find the blank QBO Transaction Import template (in the skill's references/).
+
+    Primary match is the proper long name `Brex Transaction Import File*.xlsx`.
+    Google Drive File Stream intermittently re-mangles that name to its 8.3 alias
+    (e.g. `BREXTR~3.XLS`); the file content stays a valid .xlsx, so we fall back to
+    that pattern, excluding the other bundled workbooks (rules / vendors)."""
+    if explicit:
+        return Path(explicit)
+    if not refs_dir.exists():
+        raise FileNotFoundError(f"refs dir not found: {refs_dir}")
+
+    def _ok(p: Path) -> bool:
+        return (p.is_file()
+                and not p.name.endswith(".bak")
+                and not re.match(r"\d{4}-\d{2}-\d{2}", p.name))
+
+    # 1. Proper long name.
+    candidates = [p for p in refs_dir.glob("Brex Transaction Import File*.xlsx") if _ok(p)]
+    if candidates:
+        candidates.sort(key=lambda p: (0 if "Copy" not in p.name else 1, p.name))
+        return candidates[0]
+
+    # 2. Drive-mangled 8.3 alias fallback (e.g. BREXTR~3.XLS). Exclude the other
+    #    bundled workbooks so the rules / vendors files are never picked by mistake.
+    _exclude = {"qbo-bank-rules.xlsx", "vendors.xlsx"}
+    mangled = [p for p in refs_dir.iterdir()
+               if _ok(p)
+               and p.suffix.lower() in (".xls", ".xlsx")
+               and p.name.lower() not in _exclude
+               and p.name.upper().startswith("BREXTR")]
+    if mangled:
+        return sorted(mangled, key=lambda p: p.name)[0]
+
+    raise FileNotFoundError(
+        f"No Brex Transaction Import template found under {refs_dir}. "
+        f"Expected 'Brex Transaction Import File.xlsx' or its Drive 8.3 alias BREXTR~N.XLS."
+    )
+
+
+# ----------------- CSV parsing -----------------
+
+def parse_amount(s: str) -> float:
+    s = (s or "").strip().lstrip("$").replace(",", "")
+    if s.startswith("(") and s.endswith(")"):
+        s = "-" + s[1:-1]
+    try:
+        return float(s)
+    except ValueError:
+        return 0.0
+
+
+def parse_date(s: str):
+    s = (s or "").strip()
+    if not s:
+        return None
+    for fmt in ("%m/%d/%Y", "%Y-%m-%d", "%m-%d-%Y", "%m/%d/%y"):
+        try:
+            return datetime.strptime(s, fmt)
+        except ValueError:
+            continue
+    return s
+
+
+def read_csv(csv_path: Path) -> list[dict]:
+    with open(csv_path, encoding='utf-8-sig', newline='') as f:
+        return list(csv.DictReader(f))
+
+
+def detect_month(spent_rows: list[dict]) -> str:
+    """Return the most common month name (e.g. 'May') from the SPENT rows' dates."""
+    from collections import Counter
+    months = []
+    for r in spent_rows:
+        d = parse_date(r.get('Date', ''))
+        if isinstance(d, datetime):
+            months.append(d.strftime("%B"))
+    if not months:
+        # Fall back to today
+        return datetime.today().strftime("%B")
+    return Counter(months).most_common(1)[0][0]
+
+
+def detect_year(spent_rows: list[dict]) -> str:
+    from collections import Counter
+    years = []
+    for r in spent_rows:
+        d = parse_date(r.get('Date', ''))
+        if isinstance(d, datetime):
+            years.append(d.strftime("%Y"))
+    if not years:
+        return datetime.today().strftime("%Y")
+    return Counter(years).most_common(1)[0][0]
+
+
+# ----------------- Manual override curation -----------------
+
+# These are the patterns the user has previously approved in batch via the
+# AskUserQuestion judgment-call flow. They live here as defaults; the runner
+# accepts an --overrides JSON argument to add to or replace this list per run.
+DEFAULT_MANUAL_OVERRIDES = [
+    # Travel/parking misses
+    ("virgin at", "Travel Vendor", "Other Travel Expenses", "manual:travel",
+     "Virgin Atlantic generic flight-ID pattern"),
+    ("online travel agenc", "Travel Vendor", "Other Travel Expenses", "manual:travel",
+     "Merchant string literally contains 'travel agency'"),
+    ("aviation authority", "Travel Vendor", "Other Travel Expenses", "manual:travel",
+     "Airport authority fee"),
+    ("autopark at gallery mall", "Travel Vendor", "Other Travel Expenses", "manual:travel",
+     "Parking garage"),
+    ("sat st garage", "Travel Vendor", "Other Travel Expenses", "manual:travel",
+     "Parking garage"),
+    ("detroit metro airport parking", "Travel Vendor", "Ground Transportation", "manual:travel",
+     "Airport parking — overrides taxi-keyword match"),
+    # Office Vendor / SaaS misses
+    ("blacksmith media", "Office Vendor", "Office Supplies", "manual:office",
+     "Media/marketing vendor (flag)"),
+    ("block,inc.", "Office Vendor", "Office Supplies", "manual:office",
+     "Block Inc / Square fees"),
+    ("gibbons company", "Office Vendor", "Office Supplies", "manual:office",
+     "Bermuda department store (flag)"),
+    ("lululemon", "Office Vendor", "Office Supplies", "manual:office",
+     "Athletic apparel (flag)"),
+    ("drybar", "Office Vendor", "Office Supplies", "manual:office",
+     "Hair salon (flag)"),
+    ("golf tee house", "Office Vendor", "Office Supplies", "manual:office",
+     "Golf retail (flag)"),
+    # Charity rule
+    ("childrensaidnyc", "Childrens Aid NYC", "Charitable Contribution", "manual:charity",
+     "Vendor list match + charitable donation rule"),
+]
+
+
+def apply_manual_override(merchant_lc, desc_lc, overrides):
+    for pat, po, sc, src_tag, reason in overrides:
+        if pat in merchant_lc or pat in desc_lc:
+            return (po, sc, src_tag, reason)
+    return None
+
+
+# ----------------- Workspace discovery -----------------
+
+def get_workspace_files(refs_dir: Path):
+    """Resolve the skill's read-time materials from its references/ folder
+    (finance-drive layout): brex-memory.md, Vendors.xlsx, and the template all
+    live in skills/brex-import/references/. Outputs are written to a separate
+    --out-dir (outputs/Brex Transaction Import/YYYYMM/) passed by the orchestrator.
+    """
+    def first_existing(*candidates):
+        for c in candidates:
+            if c.exists():
+                return c
+        return candidates[0]  # report the preferred path even if missing
+
+    return dict(
+        refs=refs_dir,
+        memory=first_existing(refs_dir / "brex-memory.md",
+                              refs_dir / "memory.md"),
+        vendors=first_existing(refs_dir / "Vendors.xlsx"),
+    )
+
+
+def workspace_status(refs_dir: Path) -> dict:
+    """Pre-flight: check required reference files exist in the skill's references/."""
+    files = get_workspace_files(refs_dir)
+    missing = []
+    for label, p in [("references/brex-memory.md", files["memory"]),
+                     ("references/Vendors.xlsx", files["vendors"])]:
+        if not p.exists():
+            missing.append(label)
+    return dict(ok=len(missing) == 0, missing=missing, files={k: str(v) for k, v in files.items()})
+
+
+# ----------------- Subcommand: preflight -----------------
+
+def cmd_preflight(args):
+    refs = find_refs_dir(args.refs_dir)
+    status = workspace_status(refs)
+    print(json.dumps(status, indent=2))
+    return 0 if status["ok"] else 2
+
+
+# ----------------- Subcommand: dryrun -----------------
+
+def cmd_dryrun(args):
+    refs = find_refs_dir(args.refs_dir)
+    files = get_workspace_files(refs)
+    csv_path = find_csv(Path(args.out_dir) if args.out_dir else Path('.'), args.csv)
+
+    memory = load_memory(files["memory"])
+    vendors_lc = load_vendors(files["vendors"])
+
+    rows = read_csv(csv_path)
+    spent_rows = [r for r in rows if r['SPENT'].strip()]
+    blank_payee = [(i, r) for i, r in enumerate(spent_rows) if not r['Payee'].strip()]
+
+    overrides = DEFAULT_MANUAL_OVERRIDES
+    if args.overrides:
+        with open(args.overrides) as f:
+            extra = json.load(f)
+        overrides = overrides + [tuple(o) for o in extra]
+
+    results = []
+    for spent_idx, r in blank_payee:
+        desc = r['DESCRIPTION']
+        merchant = merchant_from_desc(desc)
+        merch_lc = merchant.lower()
+        desc_lc = desc.lower()
+        ov = apply_manual_override(merch_lc, desc_lc, overrides)
+        if ov:
+            po, sc, src, reason = ov
+            res = dict(merchant=merchant, value=po, source=src,
+                       confidence="High", reason=reason,
+                       manual_sub_cat=sc, spent=parse_amount(r['SPENT']),
+                       csv_idx=spent_idx, target_row=4 + spent_idx)
+        else:
+            res = resolve(merchant, vendors_lc, memory)
+            res['manual_sub_cat'] = res.pop('memory_sub_cat', None) or None
+            res['spent'] = parse_amount(r['SPENT'])
+            res['csv_idx'] = spent_idx
+            res['target_row'] = 4 + spent_idx
+        results.append(res)
+
+    # Bucket low-confidence ones for the judgment-call UI
+    lows = [r for r in results if r['confidence'] == 'Low']
+    restaurants = [r for r in lows if r['value'] == 'Food Vendor']
+    # The 'travel_misses' and 'office_misses' buckets are populated only when
+    # the user adds an --overrides file; in the default run they're handled
+    # by DEFAULT_MANUAL_OVERRIDES and won't appear as Lows.
+
+    by_conf = {}
+    for r in results:
+        by_conf[r['confidence']] = by_conf.get(r['confidence'], 0) + 1
+
+    summary = dict(
+        csv_path=str(csv_path),
+        csv_rows=len(rows),
+        spent_rows=len(spent_rows),
+        qualifying_rows=len(blank_payee),
+        confidence=by_conf,
+        restaurants_count=len(restaurants),
+        lows=results if args.detail else [r for r in results if r['confidence'] in ('Low', 'Medium')],
+    )
+    print(json.dumps(summary, indent=2, default=str))
+    return 0
+
+
+# ----------------- Subcommand: write -----------------
+
+def cmd_write(args):
+    refs = find_refs_dir(args.refs_dir)
+    files = get_workspace_files(refs)
+    csv_path = find_csv(Path(args.out_dir) if args.out_dir else Path('.'), args.csv)
+    template = find_template(refs, args.template)
+
+    memory = load_memory(files["memory"])
+    vendors_lc = load_vendors(files["vendors"])
+
+    rows = read_csv(csv_path)
+    spent_rows = [r for r in rows if r['SPENT'].strip()]
+    month = detect_month(spent_rows)
+    year = detect_year(spent_rows)
+    if args.out_dir:
+        out_dir = Path(args.out_dir)
+    else:
+        out_dir = find_playground(args.playground) / "Transaction Import" / year / month
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    # Naming per finance-drive CLAUDE.md §4: "<Task> YYYYMMDD", no dashes.
+    today = datetime.today().strftime("%Y%m%d")
+    out_xlsx = out_dir / f"Brex Transaction Import {today}.xlsx"
+    # §4 one-final-draft + §3 overwrite gate: never auto-version; overwriting an
+    # existing file requires human approval, surfaced here as --allow-overwrite.
+    if out_xlsx.exists() and not args.allow_overwrite:
+        raise FileExistsError(
+            f"{out_xlsx} already exists. Re-running overwrites it, which is a "
+            f"§3 approval gate. Get human approval, then re-run with --allow-overwrite."
+        )
+
+    shutil.copyfile(template, out_xlsx)
+    wb = load_workbook(out_xlsx)
+    ws = wb["QBO Transactions"]
+    # Detect columns by header (handles April J/M vs May I/L drift)
+    H = {ws.cell(3, c).value: c for c in range(1, ws.max_column + 1)}
+    C = dict(
+        date=H["DATE"], desc=H["DESCRIPTION"], payee=H["Payee"],
+        cat=H["Category or Match"], spent=H["SPENT"], received=H["RECEIVED"],
+        pov=H["Payee Override"], sub_ov=H["Sub Category Override"],
+    )
+
+    # ---- Defensive: clear any phantom data the template may carry ----
+    # Some templates ship with leftover data in rows 4+. Clear input columns
+    # (B through Sub Category Override) for ALL data rows before writing.
+    # Formulas live in cols beyond Sub Category Override and are preserved.
+    last_input_col = C['sub_ov']
+    for r in range(4, ws.max_row + 1):
+        for c in range(2, last_input_col + 1):
+            if ws.cell(r, c).value is not None:
+                ws.cell(r, c).value = None
+            if ws.cell(r, c).comment is not None:
+                ws.cell(r, c).comment = None
+
+    overrides = DEFAULT_MANUAL_OVERRIDES
+    if args.overrides:
+        with open(args.overrides) as f:
+            extra = json.load(f)
+        overrides = overrides + [tuple(o) for o in extra]
+
+    # ---- Write data rows ----
+    for i, r in enumerate(spent_rows):
+        row_num = 4 + i
+        ws.cell(row_num, C['date']).value = parse_date(r['Date'])
+        ws.cell(row_num, C['desc']).value = r['DESCRIPTION']
+        ws.cell(row_num, C['payee']).value = r['Payee'] or None
+        ws.cell(row_num, C['cat']).value = r['Categorize or match'] or None
+        ws.cell(row_num, C['spent']).value = parse_amount(r['SPENT'])
+
+    # ---- Resolve Payee Override for blank-Payee rows ----
+    resolutions = []
+    for i, r in enumerate(spent_rows):
+        if r['Payee'].strip():
+            continue
+        row_num = 4 + i
+        desc = r['DESCRIPTION']
+        merchant = merchant_from_desc(desc)
+        merch_lc = merchant.lower()
+        desc_lc = desc.lower()
+        ov = apply_manual_override(merch_lc, desc_lc, overrides)
+        if ov:
+            po, sc, src, reason = ov
+            res = dict(row=row_num, merchant=merchant, value=po, source=src,
+                       confidence="High", reason=reason, manual_sub_cat=sc,
+                       spent=parse_amount(r['SPENT']))
+        else:
+            res = resolve(merchant, vendors_lc, memory)
+            res['row'] = row_num
+            # If memory carried a Sub Category Override, treat it like a manual
+            # sub-cat so the fill_col_L step uses it instead of its default.
+            res['manual_sub_cat'] = res.pop('memory_sub_cat', None) or None
+            res['spent'] = parse_amount(r['SPENT'])
+        ws.cell(row_num, C['pov']).value = res['value']
+        resolutions.append(res)
+
+    # ---- Apply Sub Category Override ----
+    sub_writes = []
+    for i, r in enumerate(spent_rows):
+        row_num = 4 + i
+        desc = r['DESCRIPTION']
+        merchant = merchant_from_desc(desc)
+        merch_lc = merchant.lower()
+        pov = ws.cell(row_num, C['pov']).value
+        payee_csv = (r['Payee'] or '').strip() or None
+        effective = pov or payee_csv
+
+        manual_sc = None
+        for res in resolutions:
+            if res['row'] == row_num:
+                manual_sc = res.get('manual_sub_cat')
+                break
+
+        eff_lc = (effective or "").lower()
+        is_charity = eff_lc in {c.lower() for c in CHARITY_VENDORS_LC}
+        is_manual = manual_sc is not None
+
+        if manual_sc:
+            exp = manual_sc
+        elif is_charity:
+            exp = "Charitable Contribution"
+        else:
+            exp = expected_sub_cat(effective or "", merch_lc)
+
+        if exp is None:
+            continue
+
+        line_acct = r.get('Categorize or match') or ""
+        auto = line_acct.split(":")[-1].strip() if line_acct else None
+        if should_write_override(exp, auto, effective, is_charity=is_charity, is_manual=is_manual):
+            ws.cell(row_num, C['sub_ov']).value = exp
+            sub_writes.append((row_num, merchant, str(effective), auto, exp))
+
+    # ---- Cell comments on flagged rows ----
+    for res in resolutions:
+        row = res['row']
+        conf = res['confidence']
+        src = res['source']
+        if conf in ("Low", "Medium") or src.startswith("manual"):
+            if conf == "Low":
+                prefix = "⚠️ LOW CONFIDENCE — review"
+            elif src.startswith("manual"):
+                prefix = "Manual override (Claude curated, pre-approved by user)"
+            else:
+                prefix = "Medium confidence"
+            text = (f"{prefix}\n\nValue: {res['value']}\n"
+                    f"Reason: {res['reason']}\n(xlsx row {row} · {src})")
+            c = Comment(text, "Brex Import Skill")
+            c.width = 360
+            c.height = 140
+            ws.cell(row, C['pov']).comment = c
+
+    flagged_rows = {row for row, *_ in sub_writes}
+    for res in resolutions:
+        if res['row'] not in flagged_rows:
+            continue
+        if not (res['confidence'] in ("Low", "Medium") or res['source'].startswith("manual")):
+            continue
+        sub_val = ws.cell(res['row'], C['sub_ov']).value
+        if sub_val is None:
+            continue
+        text = (f"Sub Category Override: {sub_val}\n"
+                f"Linked to {res['confidence']}-confidence Payee Override decision; "
+                f"see comment on Payee Override cell.")
+        c = Comment(text, "Brex Import Skill")
+        c.width = 320
+        c.height = 100
+        ws.cell(res['row'], C['sub_ov']).comment = c
+
+    wb.save(out_xlsx)
+
+    if getattr(args, "emit_state", False):
+        state_path = out_dir / f"{out_xlsx.stem}.resolutions.json"
+        state_path.write_text(json.dumps({
+            "resolutions": resolutions,
+            "sub_cat_writes": sub_writes,
+            "csv_path": str(csv_path),
+            "template": str(template),
+            "out_xlsx": str(out_xlsx),
+            "year": year,
+            "month": month,
+        }, indent=2, default=str))
+
+    by_conf = {}
+    for r in resolutions:
+        by_conf[r['confidence']] = by_conf.get(r['confidence'], 0) + 1
+
+    print(json.dumps({
+        "out_xlsx": str(out_xlsx),
+        "data_rows_written": len(spent_rows),
+        "payee_override_written": len(resolutions),
+        "sub_cat_override_written": len(sub_writes),
+        "confidence": by_conf,
+    }, indent=2))
+    return 0
+
+
+# ----------------- Subcommand: notes -----------------
+
+def cmd_notes(args):
+    playground = find_playground(args.playground)
+    files = get_workspace_files(playground)
+
+    candidates = sorted(files["transaction_import"].glob("*/*/*.resolutions.json"))
+    if not candidates:
+        print("No .resolutions.json state found. Run 'write' first.", file=sys.stderr)
+        return 1
+    if args.state:
+        state_path = Path(args.state)
+    else:
+        state_path = candidates[-1]
+
+    state = json.loads(state_path.read_text())
+    resolutions = state["resolutions"]
+    sub_writes = state["sub_cat_writes"]
+    out_xlsx = Path(state["out_xlsx"])
+    csv_path = Path(state["csv_path"])
+    out_notes = out_xlsx.with_name(out_xlsx.stem + "-reasoning.md")
+
+    vendors_lc = set(load_vendors(files["vendors"]).keys())
+    wb = load_workbook(out_xlsx)
+    ws = wb["QBO Transactions"]
+    H = {ws.cell(3, c).value: c for c in range(1, ws.max_column + 1)}
+    c_pov = H["Payee Override"]
+    validation_pass, validation_fail = [], []
+    for row in range(4, ws.max_row + 1):
+        pov = ws.cell(row, c_pov).value
+        if pov in (None, ""):
+            continue
+        pov_lc = str(pov).strip().lower()
+        if pov in FALLBACKS or pov == "PayPal":
+            validation_pass.append((row, pov))
+        elif pov_lc in vendors_lc:
+            validation_pass.append((row, pov))
+        else:
+            validation_fail.append((row, pov))
+
+    rows = read_csv(csv_path)
+    spent_rows = [r for r in rows if r['SPENT'].strip()]
+    total_spent = sum(parse_amount(r['SPENT']) for r in spent_rows)
+
+    by_conf = {}
+    for r in resolutions:
+        by_conf[r['confidence']] = by_conf.get(r['confidence'], 0) + 1
+
+    lines = []
+    lines.append(f"# {state['year']}-{state['month']} Brex Import — Reasoning Notes")
+    lines.append("")
+    lines.append(f"**Source CSV:** `{csv_path.name}`")
+    lines.append(f"**Output file:** `{out_xlsx.name}`")
+    lines.append(f"**Template:** `{Path(state['template']).name}`")
+    lines.append(f"**Generated:** {datetime.today().strftime('%Y-%m-%d %H:%M')}")
+    lines.append("")
+    lines.append("> The xlsx has cell comments on Low/Medium/manual-override cells — "
+                 "hover any flagged cell in Excel to see the inline reasoning. "
+                 "This file is the structured audit log.")
+    lines.append("")
+    lines.append("## Reconciliation")
+    lines.append(f"- CSV rows total: {len(rows)}")
+    lines.append(f"- SPENT rows exported: {len(spent_rows)}")
+    lines.append(f"- Total SPENT: ${total_spent:,.2f}")
+    lines.append(f"- Pre-existing Payee (flowed through): {sum(1 for r in spent_rows if r['Payee'].strip())}")
+    lines.append(f"- Blank-Payee (resolver applied): {len(resolutions)}")
+    lines.append("")
+    lines.append("## Confidence")
+    lines.append(f"- **High:** {by_conf.get('High',0)}")
+    lines.append(f"- **Medium:** {by_conf.get('Medium',0)}")
+    lines.append(f"- **Low:** {by_conf.get('Low',0)}")
+    lines.append("")
+    lines.append(f"## Validation: {len(validation_pass)} pass / {len(validation_fail)} 'fail'")
+    if validation_fail:
+        lines.append("")
+        for row, pov in validation_fail:
+            lines.append(f"- row {row}: `{pov}` not in vendor list (may be expected per memory.md notes)")
+    lines.append("")
+
+    manual = [r for r in resolutions if r['source'].startswith('manual')]
+    if manual:
+        lines.append("## Manual overrides applied")
+        lines.append("")
+        lines.append("| Row | $ | Merchant | Payee Override | Sub Cat | Reason |")
+        lines.append("|---:|---:|---|---|---|---|")
+        for r in sorted(manual, key=lambda x: x['row']):
+            lines.append(f"| {r['row']} | ${r['spent']:.2f} | `{r['merchant']}` | "
+                         f"{r['value']} | {r.get('manual_sub_cat') or ''} | {r['reason']} |")
+        lines.append("")
+
+    lines.append("## All resolver picks (Low → Medium → High)")
+    lines.append("")
+    lines.append("| Conf | Row | $ | Merchant | Value | Source | Reason |")
+    lines.append("|---|---:|---:|---|---|---|---|")
+    order = {"Low": 0, "Medium": 1, "High": 2}
+    for r in sorted(resolutions, key=lambda x: (order[x['confidence']], -x['spent'])):
+        lines.append(f"| **{r['confidence']}** | {r['row']} | ${r['spent']:.2f} | "
+                     f"`{r['merchant'][:50]}` | {r['value']} | {r['source']} | {r['reason']} |")
+    lines.append("")
+
+    if sub_writes:
+        lines.append("## Sub Category Overrides written")
+        lines.append("")
+        lines.append("| Row | Merchant | Effective Payee | Auto Sub Cat | Override written |")
+        lines.append("|---:|---|---|---|---|")
+        for row, m, pov, auto, exp in sub_writes:
+            lines.append(f"| {row} | `{m[:50]}` | {pov} | {auto or '(blank)'} | **{exp}** |")
+        lines.append("")
+
+    out_notes.write_text("\n".join(lines))
+    print(json.dumps({"out_notes": str(out_notes), "size_bytes": out_notes.stat().st_size}))
+    return 0
+
+
+# ----------------- Subcommand: categorize-brex (feed mode, new in v2) -----------------
+
+def cmd_categorize_brex(args):
+    """Feed-mode pipeline. Reads orchestrator-staged JSON inputs, writes both
+    categorized.json (audit trail) and the QBO Transaction Import xlsx (primary
+    deliverable, same format as CSV mode).
+
+    Inputs (all required, all orchestrator-prepared — no network in this script):
+      --brex-expenses    Brex_expenses.json from `brex_expenses_list` MCP pull
+      --qbo-rules        qbo_rules.xlsx (converted from .xls by orchestrator
+                         via `libreoffice --headless --convert-to xlsx`)
+
+    Optional:
+      --vendors          Vendors.json (live MCP cache) OR Vendors.xlsx (fallback)
+      --memory           brex-memory.md (improves fallback accuracy)
+      --out              path to write categorized.json (default: feed/categorized.json)
+      --template         path to blank Brex Transaction Import template (auto-detected)
+      --no-xlsx          skip the xlsx write — JSON only
+    """
+    # Import here so the existing CSV path doesn't pay the import cost
+    import brex_feed
+
+    refs = find_refs_dir(args.refs_dir)
+    files = get_workspace_files(refs)
+    if args.out_dir:
+        feed_dir = Path(args.out_dir)
+    else:
+        feed_dir = find_playground(args.playground) / "Transaction Import" / "feed"
+    feed_dir.mkdir(parents=True, exist_ok=True)
+
+    out_path = Path(args.out) if args.out else feed_dir / "categorized.json"
+
+    vendors_path = None
+    if args.vendors:
+        vendors_path = Path(args.vendors)
+    elif files["vendors"].exists():
+        vendors_path = files["vendors"]
+
+    memory_path = None
+    if args.memory:
+        memory_path = Path(args.memory)
+    elif files["memory"].exists():
+        memory_path = files["memory"]
+
+    summary = brex_feed.run(
+        brex_path=Path(args.brex_expenses),
+        rules_xlsx=Path(args.qbo_rules),
+        vendors_path=vendors_path,
+        memory_path=memory_path,
+        out_path=out_path,
+    )
+    summary["out_path"] = str(out_path)
+
+    # Reload results from JSON for downstream steps (avoids refactoring run())
+    with open(out_path) as f:
+        payload = json.load(f)
+    results = payload["results"]
+
+    # Reconciliation against QBO posted Purchases (if --qbo-purchases supplied)
+    if getattr(args, "qbo_purchases", None):
+        import reconcile
+        qbo_purchases = reconcile.load_qbo_purchases(Path(args.qbo_purchases))
+        results, recon_summary = reconcile.reconcile(
+            results, qbo_purchases,
+            date_window_days=getattr(args, "reconcile_window_days", 3),
+        )
+        summary.update(recon_summary)
+        # Persist augmented results back to categorized.json so the audit trail
+        # carries the reconcile fields
+        payload["results"] = results
+        payload["reconcile"] = recon_summary
+        with open(out_path, "w") as f:
+            json.dump(payload, f, indent=2, default=str)
+
+    # Write the xlsx deliverable unless --no-xlsx (default: always write)
+    if not getattr(args, "no_xlsx", False):
+        if args.out_dir:
+            out_dir = Path(args.out_dir)
+        else:
+            year, month = brex_feed.detect_month_year(results)
+            out_dir = find_playground(args.playground) / "Transaction Import" / year / month
+        template = find_template(refs, args.template)
+        xlsx_result = brex_feed.write_xlsx(
+            results=results,
+            template_path=template,
+            out_dir=out_dir,
+            allow_overwrite=getattr(args, "allow_overwrite", False),
+        )
+        summary["xlsx"] = xlsx_result
+
+    print(json.dumps(summary, indent=2))
+    return 0
+
+
+# ----------------- Subcommand: qbo-purchases (feed mode, fixed entry point) -----------------
+
+def cmd_qbo_purchases(args):
+    """Feed mode: transform a saved `quickbooks_transaction_detail_by_account` report file into
+    qbo_purchases.json in the shape reconcile.py expects. This is the FIXED, reviewed entry point
+    that replaces any ad-hoc transform helper — the unattended run must call this, never improvise
+    its own script.
+
+    Accepts either shape the MCP layer emits:
+      - raw QBO report JSON: {"Header":..,"Columns":..,"Rows":..}
+      - a content-array wrapper: [{"type":"text","text":"<report-json-string>"}]
+
+    Output rows: {TxnDate, TotalAmt=abs(Amount), PrivateNote=Memo/Description,
+                  EntityRef.name=Name, PaymentType:"CreditCard", AccountRef.value:<--account>}.
+    """
+    raw = json.loads(Path(args.report).read_text(encoding="utf-8"))
+    if isinstance(raw, list) and raw and isinstance(raw[0], dict) and "text" in raw[0]:
+        rep = json.loads(raw[0]["text"])
+    elif isinstance(raw, dict) and "text" in raw and "Columns" not in raw:
+        rep = json.loads(raw["text"])
+    else:
+        rep = raw
+    if not (isinstance(rep, dict) and "Columns" in rep):
+        raise ValueError("Report file is not a TransactionDetailByAccount report (no Columns).")
+
+    cols = [c.get("ColTitle") for c in rep["Columns"]["Column"]]
+    idx = {name: i for i, name in enumerate(cols)}
+    for need in ("Date", "Amount", "Memo/Description", "Name"):
+        if need not in idx:
+            raise ValueError(f"Report missing expected column {need!r}; got {cols!r}")
+
+    rows = []
+    def _walk(node):
+        if isinstance(node, dict):
+            if "ColData" in node:
+                rows.append([cd.get("value", "") for cd in node["ColData"]])
+            sub = node.get("Rows")
+            if isinstance(sub, dict):
+                for r in sub.get("Row", []):
+                    _walk(r)
+            if "Row" in node:
+                for r in node["Row"]:
+                    _walk(r)
+    for r in rep.get("Rows", {}).get("Row", []):
+        _walk(r)
+
+    def _num(s):
+        try:
+            return abs(float(str(s).replace(",", "")))
+        except ValueError:
+            return 0.0
+
+    purchases = [{
+        "TxnDate": r[idx["Date"]],
+        "TotalAmt": _num(r[idx["Amount"]]),
+        "PrivateNote": r[idx["Memo/Description"]],
+        "EntityRef": {"name": r[idx["Name"]]},
+        "PaymentType": "CreditCard",
+        "AccountRef": {"value": args.account},
+    } for r in rows if r[idx["Date"]]]
+
+    out_dir = Path(args.out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / "qbo_purchases.json"
+    out_path.write_text(json.dumps(purchases, indent=2), encoding="utf-8")
+
+    dates = [p["TxnDate"] for p in purchases]
+    print(json.dumps({
+        "out": str(out_path),
+        "rows": len(purchases),
+        "date_min": min(dates) if dates else None,
+        "date_max": max(dates) if dates else None,
+        "account": args.account,
+    }, indent=2))
+    return 0
+
+
+# ----------------- CLI -----------------
+
+def main():
+    p = argparse.ArgumentParser(description="Brex Import skill runner")
+    sub = p.add_subparsers(dest="cmd", required=True)
+
+    p_pre = sub.add_parser("preflight")
+    p_pre.add_argument("--playground")
+    p_pre.add_argument("--refs-dir")
+    p_pre.set_defaults(func=cmd_preflight)
+
+    p_dry = sub.add_parser("dryrun")
+    p_dry.add_argument("--playground")
+    p_dry.add_argument("--refs-dir")
+    p_dry.add_argument("--out-dir")
+    p_dry.add_argument("--csv")
+    p_dry.add_argument("--overrides", help="JSON file with additional manual overrides")
+    p_dry.add_argument("--detail", action="store_true", help="Include all resolutions, not just Low/Medium")
+    p_dry.set_defaults(func=cmd_dryrun)
+
+    p_w = sub.add_parser("write")
+    p_w.add_argument("--playground")
+    p_w.add_argument("--refs-dir")
+    p_w.add_argument("--out-dir", help="Output folder, e.g. outputs/Brex Transaction Import/YYYYMM/")
+    p_w.add_argument("--allow-overwrite", action="store_true", help="Permit overwriting an existing dated file (post human approval per CLAUDE.md §3)")
+    p_w.add_argument("--csv")
+    p_w.add_argument("--template")
+    p_w.add_argument("--overrides")
+    p_w.add_argument("--emit-state", action="store_true",
+                     help="Also write the .resolutions.json sidecar (needed for the standalone `notes` subcommand). Off by default — cell comments in the xlsx are the primary audit trail.")
+    p_w.set_defaults(func=cmd_write)
+
+    p_n = sub.add_parser("notes")
+    p_n.add_argument("--playground")
+    p_n.add_argument("--state", help="Path to .resolutions.json from a write step")
+    p_n.set_defaults(func=cmd_notes)
+
+    p_cb = sub.add_parser("categorize-brex",
+                          help="Feed mode: categorize a Brex expenses JSON pull against QBO bank rules + vendor list, write both categorized.json and the QBO Transaction Import xlsx")
+    p_cb.add_argument("--playground")
+    p_cb.add_argument("--refs-dir")
+    p_cb.add_argument("--out-dir", help="Output folder, e.g. outputs/Brex Transaction Import/YYYYMM/")
+    p_cb.add_argument("--allow-overwrite", action="store_true", help="Permit overwriting an existing dated file (post human approval per CLAUDE.md §3)")
+    p_cb.add_argument("--brex-expenses", required=True,
+                      help="Path to Brex_expenses.json (orchestrator-staged from brex_expenses_list MCP)")
+    p_cb.add_argument("--qbo-rules", required=True,
+                      help="Path to qbo_rules.xlsx (orchestrator-converted from .xls)")
+    p_cb.add_argument("--vendors",
+                      help="Path to Vendors.json (live MCP cache) or Vendors.xlsx (fallback)")
+    p_cb.add_argument("--memory", help="Path to brex-memory.md (improves fallback accuracy)")
+    p_cb.add_argument("--out", help="Path to write categorized.json (default: feed/categorized.json)")
+    p_cb.add_argument("--template", help="Path to blank Brex Transaction Import xlsx template (auto-detected from tools/)")
+    p_cb.add_argument("--no-xlsx", action="store_true",
+                      help="Skip the QBO Transaction Import xlsx write — emit categorized.json only")
+    p_cb.add_argument("--qbo-purchases",
+                      help="Path to qbo_purchases.json (orchestrator-staged from quickbooks_query against Purchase entity). When supplied, runs reconciliation and excludes ALREADY_POSTED rows from the xlsx.")
+    p_cb.add_argument("--reconcile-window-days", type=int, default=3,
+                      help="Date tolerance (+/-N days) for reconcile matching. Default 3 covers Brex settlement lag.")
+    p_cb.set_defaults(func=cmd_categorize_brex)
+
+    p_qp = sub.add_parser("qbo-purchases",
+                          help="Feed mode: transform a saved transaction_detail_by_account report file into qbo_purchases.json (reconcile shape). Fixed entry point — replaces ad-hoc transform scripts.")
+    p_qp.add_argument("--report", required=True,
+                      help="Path to the saved quickbooks_transaction_detail_by_account tool-result file (raw report JSON or a [{type,text}] content-array wrapper)")
+    p_qp.add_argument("--out-dir", required=True, help="Run output folder; writes qbo_purchases.json there")
+    p_qp.add_argument("--account", default="62", help="QBO AccountRef.value to stamp (default 62 = Brex Credit Card)")
+    p_qp.set_defaults(func=cmd_qbo_purchases)
+
+    args = p.parse_args()
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,0 +1,60 @@
+priority,match,direction,bucket,notes
+10,cashcon,any,EXCLUDE,Internal cash-concentration sweep between BOA and NB - nets to zero across total bank
+10,ach single,any,EXCLUDE,Internal RapDev ACH movement (RAPDEV LLC ACH SINGLE)
+10,rapdev llc return,any,EXCLUDE,Internal RapDev return
+20,*,credit,From Signed Contracts,Any incoming credit is a customer receipt unless excluded above. Handles Datadog/ServiceNow/BCBS as customers
+30,returned check,debit,From Signed Contracts,Customer check reversal - contra to Signed Contracts (e.g. Brinks cancelled check)
+30,brex inc,debit,Credit Cards,Brex card payment
+30,amex epayment,debit,Credit Cards,Amex card payment
+30,american express,debit,Credit Cards,Amex card payment
+30,peris,debit,Health Insurance,Principal 401k contribution (PLIC-PERIS)
+30,plic,debit,Other Benefits,Principal non-401k (PLIC-SBD insurance)
+30,principal,debit,Other Benefits,Principal non-401k default
+30,cna ach,debit,Other Benefits,CNA insurance premium
+30,cna insurance,debit,Other Benefits,CNA insurance
+30,bcbs,debit,Health Insurance,Blue Cross premium withdrawal
+30,blue cross,debit,Health Insurance,Blue Cross premium withdrawal
+30,bamboo,debit,Payroll,BambooHR payroll funding
+30,wex,debit,Other Benefits,Wex Health / Wex COBRA - benefits administrator (overrides split)
+30,bancorpsv,debit,Other Benefits,Bancorp/Wex benefits settlement
+30,deel,debit,International EE's,Deel international contractor/EE payroll
+30,419 boylston,debit,Office Rent,Landlord
+30,joshua,debit,Marketing Expenses,Joshua Walker (also billed as CRANK)
+30,crank,debit,Marketing Expenses,Joshua Walker trading name
+30,datadog,debit,Marketing Expenses,Datadog VENDOR bill (Datadog as a customer is a credit -> Signed Contracts)
+30,servicenow,debit,Marketing Expenses,ServiceNow VENDOR bill (ServiceNow as a customer is a credit -> Signed Contracts)
+30,midnight brunch,debit,Marketing Expenses,
+30,handbook,debit,Marketing Expenses,
+30,inkline,debit,Marketing Expenses,
+30,mcdermott,debit,Other Misc Expenses,Legal
+30,morgan stanley,debit,Other Misc Expenses,
+30,faun zarge,debit,Other Misc Expenses,
+30,crown castle,debit,Other Misc Expenses,
+30,anthropic,debit,Other Misc Expenses,
+30,a.murphy,debit,Other Misc Expenses,
+30,tsanet,debit,Other Misc Expenses,
+30,the kitchens,debit,Other Misc Expenses,Forkable / The Kitchens (office food)
+30,forkable,debit,Other Misc Expenses,
+30,venmo,debit,Other Misc Expenses,
+30,eversource,debit,Other Misc Expenses,Utility
+30,verizon,debit,Other Misc Expenses,Utility
+30,quietcubes,debit,Other Misc Expenses,
+30,whisler,debit,Other Misc Expenses,
+30,mcs group,debit,Other Misc Expenses,
+30,cushman,debit,Other Misc Expenses,
+30,stematch,debit,Other Misc Expenses,
+30,salesforce,debit,Other Misc Expenses,
+30,american moving,debit,Other Misc Expenses,
+30,fakhoury,debit,Other Misc Expenses,Immigration
+30,troutman,debit,Other Misc Expenses,Legal
+30,happiest baby,debit,Other Misc Expenses,
+30,zayo,debit,Other Misc Expenses,Telecom
+30,business inform,debit,Other Misc Expenses,Business Information Group (background checks)
+30,mbta,debit,Other Misc Expenses,
+30,paypal,debit,Other Misc Expenses,
+30,dreamix,debit,Other Misc Expenses,International dev vendor
+30,analysis fee,debit,Other Misc Expenses,Bank account analysis fee
+30,irs,debit,Other Misc Expenses,Tax payment
+40,inclearing check,debit,Office Rent,Cleared paper check of 48755.28 = 419 Boylston rent (amount-matched); other check amounts are FLAGGED for QBO payee cross-reference
+50,online transfer,debit,Other Misc Expenses,Online/phone funds transfer out (per Finance: Other Misc)
+50,internet/phone trsfr,debit,Other Misc Expenses,Online/phone funds transfer out

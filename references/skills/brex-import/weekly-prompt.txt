@@ -1,0 +1,29 @@
+You are running the RapDev Brex Import skill in FEED mode, unattended and DRAFT-ONLY.
+
+Read skills/brex-import/SKILL.md and follow the Feed-mode steps EXACTLY, in order. SKILL.md is the
+SINGLE SOURCE OF TRUTH for the procedure — including the vendor DISK-CACHE flow (step 4) and the
+MANDATORY finalize closing step (step 7: pull BambooHR report 228 -> stage JSON -> runner.py
+finalize). Do not improvise scripts or deviate from SKILL.md.
+
+Variables (substitute literally; build <YYYY>/<YYYYMM> from the posted-date window):
+  OUTDIR  = G:\Shared drives\RapDev Finance - Claude\outputs\Brex Transaction Import\<YYYY>\<YYYYMM>
+  SCRIPTS = G:\Shared drives\RapDev Finance - Claude\skills\brex-import\scripts
+  REFS    = G:\Shared drives\RapDev Finance - Claude\skills\brex-import\references
+
+RUN-MODE CONSTRAINTS (unattended)
+- SYNCHRONOUS: run every command in the FOREGROUND with the PowerShell tool. NEVER set
+  run_in_background, never "wait for a notification", never end your turn while a command is still
+  running. Give categorize-brex (step 5) and finalize (step 7) timeout=600000 (10 min) and read
+  their printed output before continuing. The run is NOT complete until finalize has printed its
+  summary and exited cleanly. If a command times out or errors, retry it ONCE in the foreground;
+  if it still fails, STOP and flag it.
+- DRAFT-ONLY: do NOT write to QuickBooks; do NOT send anything externally (email, Slack, invoices,
+  payment links). Produce only local files for human review.
+- NEVER pass --allow-overwrite. On a dated-file collision the runner auto-versions the filename
+  (e.g. "... YYYYMMDD (2).xlsx"). Overwriting an existing deliverable is a root §3 approval gate.
+- OUTPUT DISCIPLINE: no per-step narration or recaps. Emit text only for a real decision that needs
+  reasoning, a flag/error/STOP, or the final summary. Keep all verification steps.
+- If any pull fails or returns partial data, STOP and flag it. Never treat a partial or failed pull
+  as complete, and never invent data to fill a gap.
+- A different RapDev Finance & Accounting team member must review and approve this draft before
+  anything is promoted out of the outputs/ folder.

@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/rapdev-design-system-e4f7f627-3a22-443b-b856-66e236009546/colors_and_type.css">
+<link rel="stylesheet" href="_ds/rapdev-design-system-e4f7f627-3a22-443b-b856-66e236009546/styles.css">
+<script src="_ds/rapdev-design-system-e4f7f627-3a22-443b-b856-66e236009546/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  body { margin: 0; background: #F1F6F8; }
+  * { box-sizing: border-box; }
+  a { color: #00A5A2; text-decoration: none; }
+  a:hover { color: #09838D; text-decoration: underline; }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; background: #F1F6F8; font-family: var(--font-sans); color: #333333; display: flex; align-items: flex-start;">
+  <div style="flex: 1 1 auto; min-width: 0;">
+
+  <div style="background: #0B2D4C; color: #FFFFFF; padding: 24px 32px; display: flex; align-items: flex-end; justify-content: space-between; gap: 32px;">
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #00A5A2;">Finance — sample data</div>
+      <div style="font-size: 28px; font-weight: 600; line-height: 1.1;">Operating dashboard</div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 24px;">
+      <div style="display: flex; flex-direction: column; gap: 4px; text-align: left;">
+        <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #9FB3C4;">Period</div>
+        <select onChange="{{ onPeriod }}" value="{{ periodKey }}" style="font-family: inherit; font-size: 16px; font-weight: 500; color: #0B2D4C; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 6px; padding: 10px 12px; min-height: 44px; cursor: pointer;">
+          <sc-for list="{{ periodOptions }}" as="p" hint-placeholder-count="17">
+            <option value="{{ p.key }}">{{ p.label }}</option>
+          </sc-for>
+        </select>
+      </div>
+      <div style="width: 1px; height: 40px; background: #1E4568;"></div>
+      <div style="display: flex; flex-direction: column; gap: 2px; text-align: right;">
+        <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #9FB3C4;">Working days</div>
+        <div style="font-size: 16px; font-weight: 500;">{{ workingDays }}</div>
+      </div>
+      <div style="width: 1px; height: 40px; background: #1E4568;"></div>
+      <div style="display: flex; flex-direction: column; gap: 2px; text-align: right;">
+        <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #9FB3C4;">Units</div>
+        <div style="font-size: 16px; font-weight: 500;">USD thousands</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 32px; display: flex; flex-direction: column; gap: 24px; max-width: 1720px; margin: 0 auto;">
+
+    <div style="display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 24px;">
+      <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #00A5A2;">Q4 — operating goals</div>
+          <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">Forecast vs actual</div>
+        </div>
+        <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums;">
+          <thead>
+            <tr>
+              <th style="text-align: left; padding: 10px 12px 10px 0; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Millions</th>
+              <th style="text-align: right; padding: 10px 12px; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Actuals 4Q24</th>
+              <th style="text-align: right; padding: 10px 12px; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Actuals 4Q25</th>
+              <th style="text-align: right; padding: 10px 12px; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Target 4Q26</th>
+              <th style="text-align: right; padding: 10px 12px; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Actuals 4Q26</th>
+              <th style="text-align: right; padding: 10px 0 10px 12px; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Achievement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ goalRows }}" as="g" hint-placeholder-count="5">
+              <tr style="background: {{ g.bg }};">
+                <td style="padding: 10px 12px 10px 0; border-bottom: 1px solid #E4E9EE; color: #0B2D4C; font-weight: {{ g.weight }}; padding-left: {{ g.indent }};">{{ g.label }}</td>
+                <td style="padding: 10px 12px; border-bottom: 1px solid #E4E9EE; text-align: right; color: #6B7A8A;">{{ g.a24 }}</td>
+                <td style="padding: 10px 12px; border-bottom: 1px solid #E4E9EE; text-align: right; color: #6B7A8A;">{{ g.a25 }}</td>
+                <td style="padding: 10px 12px; border-bottom: 1px solid #E4E9EE; text-align: right; color: #333333;">{{ g.target }}</td>
+                <td style="padding: 10px 12px; border-bottom: 1px solid #E4E9EE; text-align: right; color: #0B2D4C; font-weight: {{ g.weight }};">{{ g.actual }}</td>
+                <td style="padding: 10px 0 10px 12px; border-bottom: 1px solid #E4E9EE; text-align: right; font-weight: 600; color: {{ g.achColor }};">{{ g.ach }}</td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #00A5A2;">Unit goals</div>
+          <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">Monthly run-rate targets</div>
+        </div>
+        <sc-for list="{{ unitGoals }}" as="u" hint-placeholder-count="4">
+          <div style="display: flex; flex-direction: column; gap: 6px; padding-bottom: 12px; border-bottom: 1px solid #E4E9EE;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap;">
+              <div style="font-size: 14px; color: #333333; min-width: 0;">{{ u.label }}</div>
+              <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; min-width: 0; font-variant-numeric: tabular-nums;">
+                <span style="font-size: 18px; font-weight: 700; color: #0B2D4C;">{{ u.actual }}</span>
+                <span style="font-size: 13px; color: #6B7A8A;">of {{ u.goal }}</span>
+                <span style="font-size: 13px; font-weight: 600; color: {{ u.color }};">{{ u.ach }}</span>
+              </div>
+            </div>
+            <div style="height: 10px; background: #F1F6F8;">
+              <div style="height: 10px; background: {{ u.color }}; width: {{ u.w }}%;"></div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px;">
+      <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="6">
+        <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 8px; min-width: 0; overflow: hidden;">
+          <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">{{ k.label }}</div>
+          <div style="font-size: 28px; font-weight: 700; color: #0B2D4C; line-height: 1.1;">{{ k.value }}</div>
+          <div style="font-size: 14px; color: {{ k.deltaColor }};">{{ k.delta }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 24px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 24px;">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #00A5A2;">Rule of 40</div>
+          <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">{{ periodLabel }}</div>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 12px;">
+          <div style="font-size: 36px; font-weight: 700; color: #0B2D4C; line-height: 1;">{{ r40Score }}</div>
+          <div style="font-size: 14px; font-weight: 600; color: {{ r40Color }};">{{ r40Verdict }}</div>
+        </div>
+        <div style="display: flex; height: 12px; width: 100%; background: #F1F6F8;">
+          <div style="background: #0B2D4C; width: {{ r40GrowthW }}%;"></div>
+          <div style="background: #00A5A2; width: {{ r40MarginW }}%;"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 8px; border-bottom: 1px solid #E4E9EE;">
+            <span style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #333333;"><span style="width: 12px; height: 12px; background: #0B2D4C; display: block;"></span>Revenue growth, YoY</span>
+            <span style="font-size: 16px; font-weight: 600; color: #0B2D4C;">{{ r40Growth }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 8px; border-bottom: 1px solid #E4E9EE;">
+            <span style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #333333;"><span style="width: 12px; height: 12px; background: #00A5A2; display: block;"></span>Adj. EBITDA margin</span>
+            <span style="font-size: 16px; font-weight: 600; color: #0B2D4C;">{{ r40Margin }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <span style="font-size: 14px; color: #6B7A8A;">Threshold</span>
+            <span style="font-size: 16px; font-weight: 600; color: #6B7A8A;">40.0</span>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px; min-width: 0;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px;">
+          <div style="font-size: 14px; color: #6B7A8A;">Score by quarter — growth plus margin, against the 40 line</div>
+          <div style="display: flex; gap: 16px; font-size: 12px; color: #6B7A8A;">
+            <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; background: #0B2D4C; display: block;"></span>Growth</div>
+            <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; background: #00A5A2; display: block;"></span>Margin</div>
+          </div>
+        </div>
+        <div style="position: relative; display: flex; align-items: flex-end; gap: 24px; height: 150px; border-bottom: 1px solid #E4E9EE;">
+          <div style="position: absolute; left: 0; right: 0; bottom: {{ r40LineBottom }}%; height: 2px; background: #C9D2DA;"></div>
+          <sc-for list="{{ r40Bars }}" as="b" hint-placeholder-count="4">
+            <div style="flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; height: 100%; position: relative;">
+              <div style="font-size: 13px; font-weight: 700; color: #0B2D4C;">{{ b.score }}</div>
+              <div style="width: 56%; height: {{ b.h }}%; display: flex; flex-direction: column;">
+                <div style="background: #00A5A2; height: {{ b.marginH }}%;"></div>
+                <div style="background: #0B2D4C; height: {{ b.growthH }}%;"></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display: flex; gap: 24px;">
+          <sc-for list="{{ r40Bars }}" as="b" hint-placeholder-count="4">
+            <div style="flex: 1 1 0; text-align: center; font-size: 12px; color: #6B7A8A;">{{ b.label }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">Weekly KPIs</div>
+          <div style="font-size: 14px; color: #6B7A8A;">Toggle the teams you want to see. Trailing five weeks, W26 through W30.</div>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <sc-for list="{{ kpiToggles }}" as="t" hint-placeholder-count="5">
+            <x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="{{ t.variant }}" onClick="{{ t.toggle }}" hint-size="140px,44px">{{ t.label }}</x-import>
+          </sc-for>
+        </div>
+      </div>
+
+      <sc-for list="{{ kpiTables }}" as="g" hint-placeholder-count="1">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px;">
+            <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #00A5A2;">{{ g.title }}</div>
+            <div style="font-size: 12px; color: #6B7A8A;">{{ g.meta }}</div>
+          </div>
+          <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums;">
+              <thead>
+                <tr>
+                  <sc-for list="{{ g.cols }}" as="h" hint-placeholder-count="7">
+                    <th style="padding: 10px 12px; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A; text-align: {{ h.align }}; white-space: nowrap;">{{ h.label }}</th>
+                  </sc-for>
+                </tr>
+              </thead>
+              <tbody>
+                <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="8">
+                  <tr style="background: {{ r.bg }};">
+                    <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="7">
+                      <td style="padding: 10px 12px; border-bottom: 1px solid #E4E9EE; text-align: {{ c.align }}; color: {{ c.color }}; font-weight: {{ c.weight }}; white-space: nowrap;">{{ c.text }}</td>
+                    </sc-for>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">Income statement</div>
+          <div style="font-size: 14px; color: #6B7A8A;">Click a quarter column to expand it into months; click a section band to collapse it. USD thousands.</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="secondary" onClick="{{ expandAll }}" hint-size="130px,44px">Expand all</x-import>
+          <x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="secondary" onClick="{{ collapseAll }}" hint-size="130px,44px">Collapse all</x-import>
+          <div style="position: relative;">
+            <x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="primary" onClick="{{ toggleMenuIS }}" hint-size="100px,44px">Export</x-import>
+            <sc-if value="{{ menuISOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; right: 0; top: 50px; min-width: 210px; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 6px; overflow: hidden; z-index: 20;">
+                <div style="border-bottom: 1px solid #E4E9EE;"><x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="ghost" full-width="{{ true }}" onClick="{{ exportISCsv }}" hint-size="100%,44px">Download CSV</x-import></div>
+                <div style="border-bottom: 0;"><x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="ghost" full-width="{{ true }}" onClick="{{ exportISXls }}" hint-size="100%,44px">Download Excel (.xls)</x-import></div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+      <div style="overflow: auto; max-height: 720px;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums;">
+          <thead>
+            <tr>
+              <th style="text-align: left; padding: 12px 16px 12px 0; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A; background: #FFFFFF; position: sticky; top: 0; z-index: 2; min-width: 300px;">Line item</th>
+              <sc-for list="{{ columns }}" as="col" hint-placeholder-count="5">
+                <th onClick="{{ col.toggle }}" style="text-align: right; padding: 12px 16px; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A; background: #FFFFFF; position: sticky; top: 0; z-index: 2; white-space: nowrap; cursor: {{ col.cursor }};">
+                  <div style="display: flex; align-items: center; justify-content: flex-end; gap: 6px;">
+                    <span style="font-size: 14px; font-weight: 600; color: #0B2D4C;">{{ col.label }}</span>
+                    <span style="font-size: 11px; font-weight: 600; color: #00A5A2;">{{ col.marker }}</span>
+                  </div>
+                  <div style="font-size: 11px; color: #6B7A8A; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px;">{{ col.sub }}</div>
+                </th>
+              </sc-for>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ rows }}" as="row" hint-placeholder-count="12">
+              <tr style="background: {{ row.rowBg }};">
+                <td onClick="{{ row.click }}" style="text-align: left; padding: {{ row.pad }} 16px {{ row.pad }} 0; border-bottom: {{ row.border }}; color: {{ row.labelColor }}; font-weight: {{ row.weight }}; padding-left: {{ row.indent }}; text-transform: {{ row.tt }}; letter-spacing: {{ row.ls }}; font-size: {{ row.fs }}; cursor: {{ row.cursor }}; white-space: nowrap;">{{ row.label }}<span style="color: #00A5A2; padding-left: 8px;">{{ row.marker }}</span></td>
+                <sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="5">
+                  <td style="text-align: right; padding: {{ row.pad }} 16px; border-bottom: {{ row.border }}; white-space: nowrap; color: {{ cell.color }}; font-weight: {{ row.weight }}; background: {{ cell.bg }};">{{ cell.text }}</td>
+                </sc-for>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 24px;">
+      <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">Revenue and EBITDA by month</div>
+            <div style="font-size: 14px; color: #6B7A8A;">FY2026, USD thousands</div>
+          </div>
+          <div style="display: flex; gap: 16px; font-size: 12px; color: #6B7A8A;">
+            <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; background: #0B2D4C; display: block;"></span>Revenue</div>
+            <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; background: #00A5A2; display: block;"></span>Adj. EBITDA</div>
+          </div>
+        </div>
+        <div style="overflow-x: auto; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; align-items: flex-end; gap: 12px; height: 240px; border-bottom: 1px solid #E4E9EE; min-width: 560px;">
+          <sc-for list="{{ momBars }}" as="b" hint-placeholder-count="12">
+            <div style="flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; height: 100%;">
+              <div style="font-size: 11px; font-weight: 600; color: #0B2D4C;">{{ b.revLabel }}</div>
+              <div style="display: flex; align-items: flex-end; justify-content: center; gap: 3px; width: 100%; height: {{ b.groupH }}%;">
+                <div style="width: 45%; background: #0B2D4C; height: {{ b.revH }}%;"></div>
+                <div style="width: 45%; background: #00A5A2; height: {{ b.ebH }}%;"></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display: flex; gap: 12px; min-width: 560px;">
+          <sc-for list="{{ momBars }}" as="b" hint-placeholder-count="12">
+            <div style="flex: 1 1 0; text-align: center; font-size: 12px; color: #6B7A8A;">{{ b.month }}</div>
+          </sc-for>
+        </div>
+        </div>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">Revenue by quarter</div>
+            <div style="font-size: 14px; color: #6B7A8A;">FY2026 vs FY2025</div>
+          </div>
+          <div style="display: flex; gap: 16px; font-size: 12px; color: #6B7A8A;">
+            <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; background: #C9D2DA; display: block;"></span>FY25</div>
+            <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; background: #0B2D4C; display: block;"></span>FY26</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-end; gap: 24px; height: 240px; border-bottom: 1px solid #E4E9EE;">
+          <sc-for list="{{ quarterBars }}" as="q" hint-placeholder-count="4">
+            <div style="flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; height: 100%;">
+              <div style="font-size: 13px; font-weight: 700; color: #0B2D4C;">{{ q.label }}</div>
+              <div style="display: flex; align-items: flex-end; justify-content: center; gap: 4px; width: 100%; height: {{ q.groupH }}%;">
+                <div style="width: 40%; background: #C9D2DA; height: {{ q.pyH }}%;"></div>
+                <div style="width: 40%; background: #0B2D4C; height: {{ q.cyH }}%;"></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display: flex; gap: 24px;">
+          <sc-for list="{{ quarterBars }}" as="q" hint-placeholder-count="4">
+            <div style="flex: 1 1 0; text-align: center; font-size: 12px; color: #6B7A8A;">{{ q.name }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 24px;">
+      <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">YoY growth</div>
+          <div style="font-size: 14px; color: #6B7A8A;">Revenue vs same month FY2025</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <sc-for list="{{ yoyRows }}" as="y" hint-placeholder-count="12">
+            <div style="display: grid; grid-template-columns: 40px 1fr 60px; align-items: center; gap: 12px;">
+              <div style="font-size: 12px; color: #6B7A8A;">{{ y.month }}</div>
+              <div style="height: 14px; background: #F1F6F8;">
+                <div style="height: 14px; background: {{ y.color }}; width: {{ y.w }}%;"></div>
+              </div>
+              <div style="font-size: 13px; font-weight: 600; color: #0B2D4C; text-align: right; font-variant-numeric: tabular-nums;">{{ y.pct }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">Expense base trend</div>
+            <div style="font-size: 14px; color: #6B7A8A;">COGS, S&amp;M and G&amp;A by quarter — FY2025 vs FY2026</div>
+          </div>
+          <div style="display: flex; gap: 16px; font-size: 12px; color: #6B7A8A;">
+            <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; background: #0B2D4C; display: block;"></span>COGS</div>
+            <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; background: #00A5A2; display: block;"></span>S&amp;M</div>
+            <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; background: #9FB3C4; display: block;"></span>G&amp;A</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-end; gap: 10px; height: 230px; border-bottom: 1px solid #E4E9EE;">
+          <sc-for list="{{ expenseBars }}" as="e" hint-placeholder-count="8">
+            <div style="flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; height: 100%;">
+              <div style="font-size: 11px; font-weight: 600; color: #0B2D4C;">{{ e.total }}</div>
+              <div style="width: 62%; height: {{ e.h }}%; display: flex; flex-direction: column;">
+                <div style="background: #9FB3C4; height: {{ e.gaH }}%;"></div>
+                <div style="background: #00A5A2; height: {{ e.smH }}%;"></div>
+                <div style="background: #0B2D4C; height: {{ e.cogsH }}%;"></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <sc-for list="{{ expenseBars }}" as="e" hint-placeholder-count="8">
+            <div style="flex: 1 1 0; text-align: center; font-size: 12px; color: #6B7A8A;">{{ e.label }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">Bookings</div>
+          <div style="font-size: 14px; color: #6B7A8A;">Signed contract value by month — ServiceNow and Datadog</div>
+        </div>
+        <div style="display: flex; gap: 32px;">
+          <div style="display: flex; flex-direction: column; gap: 2px; text-align: right;">
+            <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">FY26 bookings</div>
+            <div style="font-size: 28px; font-weight: 700; color: #0B2D4C; line-height: 1.1;">{{ bookingsTotal }}</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 2px; text-align: right;">
+            <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Book-to-bill</div>
+            <div style="font-size: 28px; font-weight: 700; color: #00A5A2; line-height: 1.1;">{{ bookToBill }}</div>
+          </div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 32px; align-items: stretch;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: flex-end; gap: 10px; height: 200px; border-bottom: 1px solid #E4E9EE;">
+            <sc-for list="{{ bookingBars }}" as="b" hint-placeholder-count="12">
+              <div style="flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; height: 100%;">
+                <div style="font-size: 11px; font-weight: 600; color: #0B2D4C;">{{ b.total }}</div>
+                <div style="width: 58%; height: {{ b.h }}%; display: flex; flex-direction: column;">
+                  <div style="background: #00A5A2; height: {{ b.ddH }}%;"></div>
+                  <div style="background: #0B2D4C; height: {{ b.snH }}%;"></div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <sc-for list="{{ bookingBars }}" as="b" hint-placeholder-count="12">
+              <div style="flex: 1 1 0; text-align: center; font-size: 12px; color: #6B7A8A;">{{ b.month }}</div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 20px; justify-content: center;">
+          <div style="display: flex; height: 40px; width: 100%;">
+            <div style="background: #0B2D4C; width: {{ snPct }}%; display: flex; align-items: center; padding-left: 12px; color: #FFFFFF; font-size: 14px; font-weight: 600;">ServiceNow {{ snLabel }}</div>
+            <div style="background: #00A5A2; width: {{ ddPct }}%; display: flex; align-items: center; padding-left: 12px; color: #FFFFFF; font-size: 14px; font-weight: 600;">Datadog {{ ddLabel }}</div>
+          </div>
+          <sc-for list="{{ bookingLines }}" as="l" hint-placeholder-count="4">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 10px; border-bottom: 1px solid #E4E9EE;">
+              <div style="font-size: 14px; color: #333333;">{{ l.label }}</div>
+              <div style="display: flex; align-items: baseline; gap: 10px; font-variant-numeric: tabular-nums;">
+                <span style="font-size: 16px; font-weight: 600; color: #0B2D4C;">{{ l.value }}</span>
+                <span style="font-size: 13px; color: {{ l.color }};">{{ l.note }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 24px;">
+      <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">Headcount by class</div>
+            <div style="font-size: 14px; color: #6B7A8A;">Active employees at period close</div>
+          </div>
+          <div style="position: relative;">
+            <x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="primary" onClick="{{ toggleMenuDept }}" hint-size="100px,44px">Export</x-import>
+            <sc-if value="{{ menuDeptOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; right: 0; top: 50px; min-width: 240px; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 6px; overflow: hidden; z-index: 20;">
+                <div style="border-bottom: 1px solid #E4E9EE;"><x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="ghost" full-width="{{ true }}" onClick="{{ exportDeptCsv }}" hint-size="100%,44px">Department listing — CSV</x-import></div>
+                <div style="border-bottom: 0;"><x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="ghost" full-width="{{ true }}" onClick="{{ exportDeptXls }}" hint-size="100%,44px">Department listing — Excel</x-import></div>
+              </div>
+            </sc-if>
+          </div>
+          <div style="display: flex; gap: 24px; flex-wrap: wrap; min-width: 0;">
+            <div style="display: flex; flex-direction: column; gap: 2px; text-align: right;">
+              <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Total</div>
+              <div style="font-size: 28px; font-weight: 700; color: #0B2D4C; line-height: 1.1;">{{ hcTotal }}</div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 2px; text-align: right;">
+              <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Billable</div>
+              <div style="font-size: 28px; font-weight: 700; color: #00A5A2; line-height: 1.1;">{{ hcBillable }}</div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 2px; text-align: right;">
+              <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Billable mix</div>
+              <div style="font-size: 28px; font-weight: 700; color: #0B2D4C; line-height: 1.1;">{{ hcBillablePct }}</div>
+            </div>
+          </div>
+        </div>
+        <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums;">
+          <thead>
+            <tr>
+              <th style="text-align: left; padding: 10px 12px 10px 0; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Class</th>
+              <th style="text-align: left; padding: 10px 12px; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Function</th>
+              <th style="text-align: left; padding: 10px 12px; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Type</th>
+              <th style="text-align: right; padding: 10px 12px; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Headcount</th>
+              <th style="text-align: right; padding: 10px 0 10px 12px; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Share</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ classRows }}" as="c" hint-placeholder-count="13">
+              <tr style="background: {{ c.bg }};">
+                <td style="padding: 10px 12px 10px 0; border-bottom: 1px solid #E4E9EE; font-weight: 600; color: #0B2D4C; padding-left: {{ c.indent }};">{{ c.code }}</td>
+                <td style="padding: 10px 12px; border-bottom: 1px solid #E4E9EE; color: #333333; font-weight: {{ c.weight }};">{{ c.name }}</td>
+                <td style="padding: 10px 12px; border-bottom: 1px solid #E4E9EE;">
+                  <x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Badge" variant="{{ c.tagVariant }}" hint-size="100px,24px">{{ c.type }}</x-import>
+                </td>
+                <td style="padding: 10px 12px; border-bottom: 1px solid #E4E9EE; text-align: right; font-weight: 600; color: #0B2D4C;">{{ c.count }}</td>
+                <td style="padding: 10px 0 10px 12px; border-bottom: 1px solid #E4E9EE;">
+                  <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
+                    <div style="width: 120px; height: 10px; background: {{ c.trackBg }};">
+                      <div style="height: 10px; background: {{ c.barColor }}; width: {{ c.w }}%;"></div>
+                    </div>
+                    <span style="font-size: 13px; color: #6B7A8A; width: 40px; text-align: right;">{{ c.share }}</span>
+                  </div>
+                </td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">T&amp;M vs fixed price</div>
+            <div style="font-size: 14px; color: #6B7A8A;">Share of active project revenue</div>
+          </div>
+          <div style="display: flex; height: 40px; width: 100%;">
+            <div style="background: #0B2D4C; width: {{ tmPct }}%; display: flex; align-items: center; padding-left: 12px; color: #FFFFFF; font-size: 14px; font-weight: 600;">T&amp;M {{ tmLabel }}</div>
+            <div style="background: #00A5A2; width: {{ fpPct }}%; display: flex; align-items: center; padding-left: 12px; color: #FFFFFF; font-size: 14px; font-weight: 600;">FP {{ fpLabel }}</div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+            <sc-for list="{{ mixStats }}" as="m" hint-placeholder-count="4">
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">{{ m.label }}</div>
+                <div style="font-size: 18px; font-weight: 600; color: #0B2D4C;">{{ m.value }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">Average realized rate</div>
+            <div style="font-size: 14px; color: #6B7A8A;">Blended delivery rate per hour, trailing three months</div>
+          </div>
+          <sc-for list="{{ rateRows }}" as="r" hint-placeholder-count="3">
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+                <div style="font-size: 14px; font-weight: 500; color: #0B2D4C;">{{ r.name }}</div>
+                <div style="display: flex; align-items: baseline; gap: 8px;">
+                  <span style="font-size: 20px; font-weight: 700; color: #0B2D4C;">{{ r.rate }}</span>
+                  <span style="font-size: 13px; color: #6B7A8A;">{{ r.note }}</span>
+                </div>
+              </div>
+              <div style="height: 12px; background: #F1F6F8;">
+                <div style="height: 12px; background: {{ r.color }}; width: {{ r.w }}%;"></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+      <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">New clients won</div>
+            <div style="font-size: 14px; color: #6B7A8A;">December 2026</div>
+          </div>
+          <div style="text-align: right; min-width: 0;">
+            <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Initial contract value</div>
+            <div style="font-size: 24px; font-weight: 700; color: #00A5A2;">{{ newBizTotal }}</div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0;">
+          <sc-for list="{{ newClients }}" as="n" hint-placeholder-count="5">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #E4E9EE;">
+              <div style="display: flex; align-items: center; gap: 12px; min-width: 0;">
+                <image-slot id="{{ n.slot }}" style="width: 40px; height: 40px; flex: 0 0 auto;" shape="rounded" radius="6" placeholder="Logo"></image-slot>
+                <div style="display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+                  <div style="font-size: 14px; font-weight: 600; color: #0B2D4C;">{{ n.name }}</div>
+                  <div style="font-size: 12px; color: #6B7A8A;">{{ n.meta }}</div>
+                </div>
+              </div>
+              <div style="font-size: 16px; font-weight: 600; color: #0B2D4C; font-variant-numeric: tabular-nums;">{{ n.amount }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">Backlog</div>
+            <div style="font-size: 14px; color: #6B7A8A;">Contracted revenue not yet recognized</div>
+          </div>
+          <div style="text-align: right; min-width: 0;">
+            <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Total</div>
+            <div style="font-size: 24px; font-weight: 700; color: #0B2D4C;">{{ backlogTotal }}</div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <sc-for list="{{ backlogRows }}" as="b" hint-placeholder-count="4">
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+                <div style="font-size: 14px; color: #333333;">{{ b.label }}</div>
+                <div style="font-size: 15px; font-weight: 600; color: #0B2D4C; font-variant-numeric: tabular-nums;">{{ b.value }}</div>
+              </div>
+              <div style="height: 10px; background: #F1F6F8;">
+                <div style="height: 10px; background: {{ b.color }}; width: {{ b.w }}%;"></div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding-top: 12px; border-top: 1px solid #E4E9EE; display: flex; justify-content: space-between; align-items: baseline;">
+          <div style="font-size: 14px; color: #6B7A8A;">Coverage of next-quarter plan</div>
+          <div style="font-size: 16px; font-weight: 600; color: #00A5A2;">86%</div>
+        </div>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">Attrition</div>
+            <div style="font-size: 14px; color: #6B7A8A;">Trailing twelve months, voluntary and total</div>
+          </div>
+          <div style="text-align: right; min-width: 0;">
+            <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">TTM total</div>
+            <div style="font-size: 24px; font-weight: 700; color: #0B2D4C;">11.4%</div>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 16px;">
+          <sc-for list="{{ attritionStats }}" as="a" hint-placeholder-count="4">
+            <div style="background: #F1F6F8; padding: 16px; display: flex; flex-direction: column; gap: 2px; min-width: 0; overflow: hidden;">
+              <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">{{ a.label }}</div>
+              <div style="font-size: 20px; font-weight: 700; color: #0B2D4C;">{{ a.value }}</div>
+              <div style="font-size: 12px; color: #6B7A8A;">{{ a.note }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Separations by month</div>
+          <div style="display: flex; align-items: flex-end; gap: 6px; height: 70px; border-bottom: 1px solid #E4E9EE;">
+            <sc-for list="{{ attritionBars }}" as="a" hint-placeholder-count="12">
+              <div style="flex: 1 1 0; background: #C9D2DA; height: {{ a.h }}%;"></div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px;">
+      <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #00A5A2;">Synechron report</div>
+            <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">Headcount — December 2026</div>
+            <div style="font-size: 14px; color: #6B7A8A;">Monthly headcount listing by class, billable status and function</div>
+          </div>
+          <div style="position: relative;">
+            <x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="primary" onClick="{{ toggleMenuHC }}" hint-size="100px,44px">Export</x-import>
+            <sc-if value="{{ menuHCOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; right: 0; top: 50px; min-width: 210px; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 6px; overflow: hidden; z-index: 20;">
+                <div style="border-bottom: 1px solid #E4E9EE;"><x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="ghost" full-width="{{ true }}" onClick="{{ exportHCCsv }}" hint-size="100%,44px">Download CSV</x-import></div>
+                <div style="border-bottom: 0;"><x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="ghost" full-width="{{ true }}" onClick="{{ exportHCXls }}" hint-size="100%,44px">Download Excel (.xls)</x-import></div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums;">
+            <thead>
+              <tr>
+                <sc-for list="{{ hcReportCols }}" as="h" hint-placeholder-count="4">
+                  <th style="padding: 10px 12px; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A; text-align: {{ h.align }}; white-space: nowrap;">{{ h.label }}</th>
+                </sc-for>
+              </tr>
+            </thead>
+            <tbody>
+              <sc-for list="{{ hcReportRows }}" as="r" hint-placeholder-count="8">
+                <tr style="background: {{ r.bg }};">
+                  <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="4">
+                    <td style="padding: 10px 12px; border-bottom: 1px solid #E4E9EE; text-align: {{ c.align }}; color: {{ c.color }}; font-weight: {{ c.weight }}; white-space: nowrap;">{{ c.text }}</td>
+                  </sc-for>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 4px; border-top: 1px solid #0B2D4C;">
+          <div style="font-size: 14px; color: #6B7A8A; padding-top: 12px;">Total headcount</div>
+          <div style="font-size: 18px; font-weight: 700; color: #0B2D4C; padding-top: 12px;">{{ hcTotal }}</div>
+        </div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #00A5A2;">Synechron report</div>
+            <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">RapDev dashboard template — December 2026</div>
+            <div style="font-size: 14px; color: #6B7A8A;">Standard monthly reporting pack, plan versus actual</div>
+          </div>
+          <div style="position: relative;">
+            <x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="primary" onClick="{{ toggleMenuDash }}" hint-size="100px,44px">Export</x-import>
+            <sc-if value="{{ menuDashOpen }}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; right: 0; top: 50px; min-width: 210px; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 6px; overflow: hidden; z-index: 20;">
+                <div style="border-bottom: 1px solid #E4E9EE;"><x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="ghost" full-width="{{ true }}" onClick="{{ exportDashCsv }}" hint-size="100%,44px">Download CSV</x-import></div>
+                <div style="border-bottom: 0;"><x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="ghost" full-width="{{ true }}" onClick="{{ exportDashXls }}" hint-size="100%,44px">Download Excel (.xls)</x-import></div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+        <div style="overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums;">
+            <thead>
+              <tr>
+                <sc-for list="{{ dashReportCols }}" as="h" hint-placeholder-count="4">
+                  <th style="padding: 10px 12px; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A; text-align: {{ h.align }}; white-space: nowrap;">{{ h.label }}</th>
+                </sc-for>
+              </tr>
+            </thead>
+            <tbody>
+              <sc-for list="{{ dashReportRows }}" as="r" hint-placeholder-count="8">
+                <tr style="background: {{ r.bg }};">
+                  <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="4">
+                    <td style="padding: 10px 12px; border-bottom: 1px solid #E4E9EE; text-align: {{ c.align }}; color: {{ c.color }}; font-weight: {{ c.weight }}; white-space: nowrap;">{{ c.text }}</td>
+                  </sc-for>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 4px; border-top: 1px solid #0B2D4C;">
+          <div style="font-size: 14px; color: #6B7A8A; padding-top: 12px;">Metrics reported</div>
+          <div style="font-size: 18px; font-weight: 700; color: #0B2D4C; padding-top: 12px;">{{ dashCount }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #F1F6F8; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #00A5A2;">Working files</div>
+        <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">Jump to the source workbooks</div>
+        <div style="font-size: 14px; color: #6B7A8A;">The files behind this dashboard. Replace the links with your own SharePoint and Drive URLs.</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Excel</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <a href="#" style="display: flex; align-items: flex-start; gap: 12px; padding: 20px; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; text-decoration: none; color: #0B2D4C;" style-hover="border-color: #C9D2DA; text-decoration: none;">
+          <span style="color: #0B2D4C;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M8 13h2"></path><path d="M14 13h2"></path><path d="M8 17h2"></path><path d="M14 17h2"></path></svg></span>
+          <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 auto;">
+            <span style="font-size: 15px; font-weight: 600; color: #0B2D4C;">Monthly close — income statement</span>
+            <span style="font-size: 12px; color: #6B7A8A;">Excel · updated 2 days ago · Finance</span>
+          </span>
+          <span style="color: #6B7A8A;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></span>
+        </a>
+        <a href="#" style="display: flex; align-items: flex-start; gap: 12px; padding: 20px; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; text-decoration: none; color: #0B2D4C;" style-hover="border-color: #C9D2DA; text-decoration: none;">
+          <span style="color: #0B2D4C;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M8 13h2"></path><path d="M14 13h2"></path><path d="M8 17h2"></path><path d="M14 17h2"></path></svg></span>
+          <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 auto;">
+            <span style="font-size: 15px; font-weight: 600; color: #0B2D4C;">Department listing and headcount</span>
+            <span style="font-size: 12px; color: #6B7A8A;">Excel · updated weekly · People Ops</span>
+          </span>
+          <span style="color: #6B7A8A;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></span>
+        </a>
+        <a href="#" style="display: flex; align-items: flex-start; gap: 12px; padding: 20px; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; text-decoration: none; color: #0B2D4C;" style-hover="border-color: #C9D2DA; text-decoration: none;">
+          <span style="color: #0B2D4C;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M8 13h2"></path><path d="M14 13h2"></path><path d="M8 17h2"></path><path d="M14 17h2"></path></svg></span>
+          <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 auto;">
+            <span style="font-size: 15px; font-weight: 600; color: #0B2D4C;">Bookings and backlog tracker</span>
+            <span style="font-size: 12px; color: #6B7A8A;">Excel · updated daily · Sales Ops</span>
+          </span>
+          <span style="color: #6B7A8A;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></span>
+        </a>
+        <a href="#" style="display: flex; align-items: flex-start; gap: 12px; padding: 20px; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; text-decoration: none; color: #0B2D4C;" style-hover="border-color: #C9D2DA; text-decoration: none;">
+          <span style="color: #0B2D4C;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M8 13h2"></path><path d="M14 13h2"></path><path d="M8 17h2"></path><path d="M14 17h2"></path></svg></span>
+          <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 auto;">
+            <span style="font-size: 15px; font-weight: 600; color: #0B2D4C;">Synechron reporting pack</span>
+            <span style="font-size: 12px; color: #6B7A8A;">Excel · updated monthly · Finance</span>
+          </span>
+          <span style="color: #6B7A8A;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></span>
+        </a>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">Google Sheets</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <a href="#" style="display: flex; align-items: flex-start; gap: 12px; padding: 20px; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; text-decoration: none; color: #0B2D4C;" style-hover="border-color: #C9D2DA; text-decoration: none;">
+          <span style="color: #00A5A2;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M12 3v18"></path><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path><path d="M3 15h18"></path></svg></span>
+          <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 auto;">
+            <span style="font-size: 15px; font-weight: 600; color: #0B2D4C;">Weekly KPI roll-up</span>
+            <span style="font-size: 12px; color: #6B7A8A;">Google Sheets · updated Mondays · Ops</span>
+          </span>
+          <span style="color: #6B7A8A;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></span>
+        </a>
+        <a href="#" style="display: flex; align-items: flex-start; gap: 12px; padding: 20px; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; text-decoration: none; color: #0B2D4C;" style-hover="border-color: #C9D2DA; text-decoration: none;">
+          <span style="color: #00A5A2;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M12 3v18"></path><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path><path d="M3 15h18"></path></svg></span>
+          <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 auto;">
+            <span style="font-size: 15px; font-weight: 600; color: #0B2D4C;">Utilization and capacity model</span>
+            <span style="font-size: 12px; color: #6B7A8A;">Google Sheets · updated weekly · Delivery</span>
+          </span>
+          <span style="color: #6B7A8A;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></span>
+        </a>
+        <a href="#" style="display: flex; align-items: flex-start; gap: 12px; padding: 20px; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; text-decoration: none; color: #0B2D4C;" style-hover="border-color: #C9D2DA; text-decoration: none;">
+          <span style="color: #00A5A2;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M12 3v18"></path><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path><path d="M3 15h18"></path></svg></span>
+          <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 auto;">
+            <span style="font-size: 15px; font-weight: 600; color: #0B2D4C;">Rate card and realized rate</span>
+            <span style="font-size: 12px; color: #6B7A8A;">Google Sheets · updated quarterly · Finance</span>
+          </span>
+          <span style="color: #6B7A8A;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></span>
+        </a>
+        <a href="#" style="display: flex; align-items: flex-start; gap: 12px; padding: 20px; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; text-decoration: none; color: #0B2D4C;" style-hover="border-color: #C9D2DA; text-decoration: none;">
+          <span style="color: #00A5A2;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M12 3v18"></path><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M3 9h18"></path><path d="M3 15h18"></path></svg></span>
+          <span style="display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 auto;">
+            <span style="font-size: 15px; font-weight: 600; color: #0B2D4C;">Attrition and hiring plan</span>
+            <span style="font-size: 12px; color: #6B7A8A;">Google Sheets · updated monthly · People Ops</span>
+          </span>
+          <span style="color: #6B7A8A;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></span>
+        </a>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+        <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;">
+          <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #00A5A2;">Team board</div>
+          <div style="font-size: 22px; font-weight: 600; color: #0B2D4C;">July month-end close</div>
+          <div style="font-size: 14px; color: #6B7A8A;">{{ closeProgressLabel }} · book-day due dates relative to close</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <sc-for list="{{ closeTeam }}" as="p" hint-placeholder-count="3">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 9999px; background: {{ p.bg }}; color: #FFFFFF; font-size: 12px; font-weight: 700;">{{ p.initials }}</span>
+                <span style="display: flex; flex-direction: column;">
+                  <span style="font-size: 13px; font-weight: 600; color: #0B2D4C;">{{ p.name }}</span>
+                  <span style="font-size: 11px; color: #6B7A8A;">{{ p.role }}</span>
+                </span>
+              </div>
+            </sc-for>
+          </div>
+          <x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="secondary" size="sm" hint-size="120px,38px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>Add task</x-import>
+        </div>
+      </div>
+
+      <div style="height: 10px; background: #F1F6F8;">
+        <div style="height: 10px; background: #00A5A2; width: {{ closeProgressPct }}%;"></div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 32px;">
+        <div style="overflow-x: auto;">
+          <div style="min-width: 640px; display: flex; flex-direction: column;">
+            <div style="display: grid; grid-template-columns: 28px minmax(0, 1fr) 130px 70px 90px; gap: 12px; padding: 10px 0; border-bottom: 2px solid #0B2D4C; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;">
+              <div></div><div>Task</div><div>Assignee</div><div>BD due</div><div>Due date</div>
+            </div>
+            <sc-for list="{{ closeGroups }}" as="g" hint-placeholder-count="3">
+              <div style="display: flex; flex-direction: column;">
+                <div style="padding: 14px 0 8px 0; font-size: 14px; font-weight: 700; color: #0B2D4C;">{{ g.name }}</div>
+                <sc-for list="{{ g.items }}" as="t" hint-placeholder-count="6">
+                  <div style="display: grid; grid-template-columns: 28px minmax(0, 1fr) 130px 70px 90px; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid #E4E9EE;">
+                    <button type="button" onClick="{{ t.toggle }}" style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 9999px; cursor: pointer; background: {{ t.checkBg }}; border: 2px solid {{ t.checkBorder }}; color: {{ t.checkFg }}; padding: 0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></button>
+                    <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;">
+                      <div style="font-size: 14px; color: {{ t.nameColor }}; text-decoration: {{ t.strike }}; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ t.name }}</div>
+                      <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                        <x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Badge" variant="{{ t.skillVariant }}" hint-size="140px,22px">{{ t.skill }}</x-import>
+                        <x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="{{ t.delegateVariant }}" size="sm" onClick="{{ t.delegate }}" hint-size="150px,38px">{{ t.delegateLabel }}</x-import>
+                      </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px; min-width: 0;">
+                      <span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 9999px; background: {{ t.avatarBg }}; color: #FFFFFF; font-size: 10px; font-weight: 700; flex: 0 0 auto;">{{ t.initials }}</span>
+                      <span style="font-size: 13px; color: #333333; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ t.assignee }}</span>
+                    </div>
+                    <div style="font-size: 13px; color: #6B7A8A; font-variant-numeric: tabular-nums;">{{ t.bd }}</div>
+                    <div style="font-size: 13px; font-weight: 600; color: {{ t.dueColor }};">{{ t.due }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 24px; min-width: 0;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>Notes</div>
+            <sc-for list="{{ closeNotes }}" as="n" hint-placeholder-count="3">
+              <div style="display: flex; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid #E4E9EE;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 9999px; background: {{ n.bg }}; color: #FFFFFF; font-size: 11px; font-weight: 700; flex: 0 0 auto;">{{ n.initials }}</span>
+                <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;">
+                  <div style="display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;">
+                    <span style="font-size: 13px; font-weight: 600; color: #0B2D4C;">{{ n.name }}</span>
+                    <span style="font-size: 11px; color: #6B7A8A;">{{ n.when }}</span>
+                  </div>
+                  <div style="font-size: 14px; line-height: 1.5; color: #333333; text-wrap: pretty;">{{ n.text }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B7A8A;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 auto;"><path d="M12 8V4H8"></path><rect width="16" height="12" x="4" y="8" rx="2"></rect><path d="M2 14h2"></path><path d="M20 14h2"></path><path d="M15 13v2"></path><path d="M9 13v2"></path></svg>Suggested agents</div>
+            <sc-for list="{{ closeAgents }}" as="a" hint-placeholder-count="3">
+              <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; background: #F1F6F8; padding: 16px; border-radius: 12px; flex-wrap: wrap;">
+                <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0;">
+                  <div style="font-size: 14px; font-weight: 600; color: #0B2D4C; font-family: var(--font-mono);">{{ a.skill }}</div>
+                  <div style="font-size: 13px; color: #6B7A8A; text-wrap: pretty;">{{ a.what }}</div>
+                  <div style="font-size: 11px; color: #6B7A8A;">Covers {{ a.covers }}</div>
+                </div>
+                <x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Button" variant="{{ a.variant }}" size="sm" onClick="{{ a.run }}" hint-size="110px,38px">{{ a.label }}</x-import>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size: 12px; color: #6B7A8A; padding-bottom: 16px;">All figures are illustrative sample data. USD thousands unless noted.</div>
+  </div>
+  </div>
+
+  <aside style="flex: 0 0 10%; min-width: 168px; max-width: 220px; position: sticky; top: 0; height: 100vh; background: #F1F6F8; border-left: 1px solid #E4E9EE; display: flex; flex-direction: column;">
+    <div style="display: flex; align-items: center; gap: 4px; padding: 12px 12px 8px 12px;">
+      <div style="display: inline-flex; align-items: center; gap: 5px; background: #0B2D4C; color: #FFFFFF; border-radius: 6px; padding: 6px 10px; font-size: 12px; font-weight: 600;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>Chat</div>
+      <div style="display: inline-flex; align-items: center; gap: 5px; color: #0B2D4C; padding: 6px 6px; font-size: 12px; font-weight: 500; cursor: pointer;" style-hover="color: #09838D;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Activity</div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 4px; padding: 8px 12px; border-top: 1px solid #E4E9EE; border-bottom: 1px solid #E4E9EE;">
+      <div style="display: flex; align-items: center; gap: 6px;">
+        <x-import component-from-global-scope="RapDevDesignSystem_e4f7f6.Badge" variant="teal" hint-size="52px,22px">Team</x-import>
+        <span style="font-size: 12px; font-weight: 500; color: #0B2D4C;">Finance</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 5px; font-size: 11px; color: #6B7A8A;"><span style="width: 6px; height: 6px; border-radius: 9999px; background: #00A5A2; display: block;"></span>Finance · Overview</div>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 10px 12px;">
+      <div style="font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6B7A8A;">Sessions · 1</div>
+      <div style="display: flex; gap: 4px;">
+        <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 4px; font-family: inherit; font-size: 11px; font-weight: 500; color: #0B2D4C; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 6px; padding: 6px 8px; cursor: pointer;" style-hover="border-color: #C9D2DA;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></button>
+        <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 4px; font-family: inherit; font-size: 11px; font-weight: 500; color: #0B2D4C; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 6px; padding: 6px 8px; cursor: pointer;" style-hover="border-color: #C9D2DA;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></button>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 2px; padding: 8px 12px; border-top: 1px solid #E4E9EE; border-bottom: 1px solid #E4E9EE; background: #FFFFFF;">
+      <div style="display: flex; justify-content: space-between; gap: 6px;">
+        <span style="font-size: 12px; color: #0B2D4C;">New session.</span>
+        <span style="font-size: 10px; color: #6B7A8A;">47m</span>
+      </div>
+      <div style="font-size: 11px; color: #6B7A8A; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">— can i edit this page…</div>
+      <a href="#" style="font-size: 11px; font-weight: 500;">Continue last</a>
+    </div>
+
+    <div style="flex: 1 1 auto; padding: 12px; font-size: 11px; line-height: 1.5; color: #6B7A8A;">Ask about Finance — the current view is attached to each message as context.</div>
+
+    <div style="padding: 8px 12px;">
+      <div style="background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 8px;">
+        <div style="font-size: 11px; color: #6B7A8A; padding-bottom: 8px; border-bottom: 1px solid #E4E9EE;">Ask about Finance…</div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;">
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; gap: 4px; font-family: inherit; font-size: 11px; font-weight: 500; color: #0B2D4C; background: #FFFFFF; border: 1px solid #E4E9EE; border-radius: 6px; padding: 6px 8px; cursor: pointer;" style-hover="border-color: #C9D2DA;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>Attach</button>
+          <button type="button" style="display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; background: #00A5A2; color: #FFFFFF; border: 0; border-radius: 6px; cursor: pointer;" style-hover="background: #09838D;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="m5 12 7-7 7 7"></path></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 0 12px 12px 12px; font-size: 10px; color: #6B7A8A;">Context: Finance · Overview</div>
+  </aside>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const REV = [1720,1795,1880,1910,1965,2040,2085,2130,2210,2265,2330,2410];
+const REV_PY = [1520,1560,1615,1655,1690,1740,1775,1810,1855,1905,1950,2005];
+
+const BOOK = [
+  { sn: 1180, dd: 640 }, { sn: 1035, dd: 720 }, { sn: 1420, dd: 690 },
+  { sn: 1090, dd: 810 }, { sn: 1250, dd: 760 }, { sn: 1615, dd: 905 },
+  { sn: 1180, dd: 950 }, { sn: 1310, dd: 880 }, { sn: 1720, dd: 1040 },
+  { sn: 1810, dd: 1240 }, { sn: 1885, dd: 1305 }, { sn: 2210, dd: 1400 }
+];
+const BILL_HC = 123, NONBILL_HC = 33;
+
+const KPI_GROUPS = [
+  { key: 'rapdev', label: 'RapDev', title: 'RapDev KPIs', meta: 'All teams', rows: [
+    ['Debt hours', '6,198 Hrs', '4,097 Hrs', '4,097 Hrs', '4,092 Hrs', '4,317 Hrs', '+5.5%'],
+    ['Debt $', '$1.25M', '$906.22k', '$906.22k', '$904.90k', '$972.40k', '+7.5%'],
+    ['Runway hours', '58.8k Hrs', '57.8k Hrs', '56.9k Hrs', '57.1k Hrs', '54.2k Hrs', '-5.2%'],
+    ['Runway $', '$17.10M', '$16.24M', '$16.34M', '$16.91M', '$16.35M', '-3.3%'],
+    ['Runway %', '47.43%', '50.02%', '49.87%', '50.27%', '49.61%', '-1.3%'],
+    ['Backlog $ (GAAP)', '$18.35M', '$17.15M', '$17.25M', '$17.81M', '$17.32M', '-2.8%'],
+    ['Utilization — actual', '72%', '62%', '73%', '75%', '70%', '-6.7%'],
+    ['Utilization — billable', '73%', '63%', '74%', '75%', '71%', '-5.3%'],
+    ['Weighted avg bill rate', '$318', '$325', '$325', '$326', '$326', '0.0%'],
+    ['% HC billable', '70.37%', '70.19%', '69.33%', '69.51%', '68.67%', '-1.2%'],
+    ['Capacity delta (hours)', '-1,378 Hrs', '-1,723 Hrs', '406 Hrs', '465 Hrs', '299 Hrs', '-35.7%'],
+    ['Rolling 52wk attrition %', '9.4%', '10.26%', '10.26%', '9.4%', '9.4%', '0.0%'],
+    ['Project count', '135', '125', '126', '129', '131', '+1.6%'],
+    ['Fixed cost percentage', '77%', '77%', '76%', '75%', '75%', '0.0%'],
+    ['% FC billable hours', '43%', '40%', '41%', '39%', '35%', '-10.3%'],
+    ['Billable hours', '3,156 Hrs', '2,713.5 Hrs', '3,167 Hrs', '3,217 Hrs', '3,051 Hrs', '-5.2%'],
+    ['Free hours', '469 Hrs', '414 Hrs', '574 Hrs', '546 Hrs', '348 Hrs', '-36.3%'],
+    ['Free hours %', '15%', '15%', '18%', '17%', '11%', '-35.3%']
+  ] },
+  { key: 'sn', label: 'ServiceNow', title: 'ServiceNow team KPIs', meta: 'Classes 300 series', rows: [
+    ['Debt hours', '521 Hrs', '500 Hrs', '500 Hrs', '495 Hrs', '720 Hrs', '+45.5%'],
+    ['Debt $', '$125.91k', '$120.07k', '$120.07k', '$118.75k', '$186.25k', '+56.8%'],
+    ['Runway hours', '47.3k Hrs', '47.2k Hrs', '46.5k Hrs', '47.2k Hrs', '44.6k Hrs', '-5.4%'],
+    ['Runway $', '$14.31M', '$13.49M', '$13.59M', '$13.75M', '$13.50M', '-1.8%'],
+    ['Runway %', '53.15%', '53.52%', '53.28%', '53.03%', '53.51%', '+0.9%'],
+    ['Backlog $ (GAAP)', '$14.43M', '$13.61M', '$13.71M', '$13.87M', '$13.69M', '-1.3%'],
+    ['Utilization — actual', '74%', '63%', '73%', '77%', '75%', '-2.6%'],
+    ['Utilization — billable', '75%', '64%', '74%', '78%', '76%', '-2.6%'],
+    ['Weighted avg bill rate', '$321', '$327', '$327', '$327', '$327', '0.0%'],
+    ['Capacity delta (hours)', '-938 Hrs', '-1,215 Hrs', '139 Hrs', '263 Hrs', '213 Hrs', '-19.0%'],
+    ['Project count', '86', '80', '82', '83', '82', '-1.2%'],
+    ['Fixed cost percentage', '81%', '81%', '80%', '80%', '79%', '-1.3%'],
+    ['% FC billable hours', '34%', '32%', '32%', '29%', '26%', '-10.3%'],
+    ['Billable hours', '2,341 Hrs', '2,003.5 Hrs', '2,288 Hrs', '2,412 Hrs', '2,362 Hrs', '-2.1%'],
+    ['Free hours', '290 Hrs', '227 Hrs', '326 Hrs', '347 Hrs', '239 Hrs', '-31.1%'],
+    ['Free hours %', '12%', '11%', '14%', '14%', '10%', '-28.6%']
+  ] },
+  { key: 'dd', label: 'Datadog', title: 'Datadog team KPIs', meta: 'Classes 200 series', rows: [
+    ['Debt hours', '5,677 Hrs', '3,597 Hrs', '3,597 Hrs', '3,597 Hrs', '3,597 Hrs', '0.0%'],
+    ['Debt $', '$1.12M', '$786.14k', '$786.14k', '$786.14k', '$786.14k', '0.0%'],
+    ['Runway hours', '11.5k Hrs', '10.7k Hrs', '10.4k Hrs', '9,929 Hrs', '9,532 Hrs', '-4.0%'],
+    ['Runway $', '$2.79M', '$2.75M', '$2.75M', '$3.16M', '$2.85M', '-9.9%'],
+    ['Runway %', '30.57%', '37.87%', '37.87%', '40.99%', '36.87%', '-10.1%'],
+    ['Backlog $ (GAAP)', '$3.92M', '$3.54M', '$3.54M', '$3.95M', '$3.64M', '-7.9%'],
+    ['Utilization — actual', '70%', '60%', '74%', '69%', '57%', '-17.4%'],
+    ['Utilization — billable', '71%', '61%', '75%', '69%', '58%', '-15.9%'],
+    ['Weighted avg bill rate', '$309', '$318', '$318', '$321', '$321', '0.0%'],
+    ['Capacity delta (hours)', '-422 Hrs', '-492 Hrs', '284 Hrs', '216 Hrs', '100 Hrs', '-53.7%'],
+    ['Project count', '49', '45', '44', '46', '49', '+6.5%'],
+    ['Fixed cost percentage', '35%', '31%', '32%', '33%', '31%', '-6.1%'],
+    ['% FC billable hours', '68%', '61%', '64%', '68%', '64%', '-5.9%'],
+    ['Billable hours', '815 Hrs', '710 Hrs', '879 Hrs', '805 Hrs', '689 Hrs', '-14.4%'],
+    ['Free hours', '179 Hrs', '187 Hrs', '248 Hrs', '199 Hrs', '109 Hrs', '-45.2%'],
+    ['Free hours %', '22%', '26%', '28%', '25%', '16%', '-36.0%']
+  ] },
+  { key: 'md', label: 'Managed Datadog', title: 'Managed Datadog KPIs', meta: 'Subscription delivery', rows: [
+    ['MD customers', '8', '8', '8', '8', '9', '+12.5%'],
+    ['MD hours', '51 Hrs', '46 Hrs', '63 Hrs', '50 Hrs', '51 Hrs', '+2.0%'],
+    ['MD hours per engineer', '5 Hrs', '4 Hrs', '6 Hrs', '5 Hrs', '5 Hrs', '0.0%'],
+    ['MD cases', '15', '26', '26', '12', '15', '+25.0%'],
+    ['MD cases per engineer', '1', '2', '2', '1', '1', '0.0%'],
+    ['MD MRR', '$91.2k', '$91.2k', '$91.2k', '$91.2k', '$99.1k', '+8.7%'],
+    ['MD rate', '$447', '$496', '$362', '$456', '$486', '+6.6%']
+  ] },
+  { key: 'msoc', label: 'Managed SOC', title: 'Managed SOC KPIs', meta: 'Subscription delivery', rows: [
+    ['MSOC customers', '9', '9', '8', '8', '9', '+12.5%'],
+    ['MSOC hours', '37 Hrs', '52 Hrs', '54 Hrs', '36 Hrs', '47 Hrs', '+30.6%'],
+    ['MSOC MRR', '$68.5k', '$68.5k', '$68.5k', '$68.5k', '$81.0k', '+18.3%'],
+    ['MSOC rate', '$463', '$329', '$317', '$475', '$431', '-9.3%']
+  ] }
+];
+const WORK_DAYS = [22,20,22,22,21,22,23,21,22,22,20,22];
+const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const PERIODS = [{ key: 'FY26', label: 'FY2026 — full year', months: [0,1,2,3,4,5,6,7,8,9,10,11] }]
+  .concat([[0,1,2],[3,4,5],[6,7,8],[9,10,11]].map((m, qi) => ({ key: 'Q' + (qi + 1), label: 'Q' + (qi + 1) + ' 2026', months: m })))
+  .concat(MONTH_NAMES.map((n, i) => ({ key: 'M' + i, label: n + ' 2026', months: [i] })));
+
+const TEAM = {
+  VP: { name: 'Vincent Planz', role: 'Admin', bg: '#0B2D4C' },
+  ER: { name: 'Eric Rabkin', role: 'Accounting', bg: '#09838D' },
+  ZM: { name: 'Zayn Moselhy', role: 'Finance', bg: '#00A5A2' }
+};
+const CLOSE_TASKS = [
+  { name: 'Recurring month end tasks', items: [
+    ['Record DD SW revenue', 'ER', '-5', 'Jul 27', 'Revenue recognition'],
+    ['Review AR aging and follow up on past due invoices', 'ER', '-5', 'Jul 27', 'AR aging pull'],
+    ['Enter Managed Datadog monthly revenue', 'ER', '-2', 'Jul 30', 'Managed services roll'],
+    ['Enter Managed Security monthly revenue', 'ER', '-2', 'Jul 30', 'Managed services roll'],
+    ['Update and reconcile deferred managed services revenue', 'ER', '-2', 'Jul 30', 'Deferred rollforward'],
+    ['Amortize other prepaid expenses', 'ZM', '-2', 'Jul 30', 'Prepaid schedule'],
+    ['Amortize prepaid insurance', 'ZM', '-2', 'Jul 30', 'Prepaid schedule'],
+    ['Amortize prepaid travel', 'ZM', '-2', 'Jul 30', 'Prepaid schedule'],
+    ['Enter fixed asset depreciation', 'ZM', '-2', 'Jul 30', 'Fixed asset roll']
+  ] },
+  { name: 'Reconciliations', items: [
+    ['Reconcile Amex Platinum 51005 CC', 'ZM', '-3', 'Jul 29', 'brex-import'],
+    ['Categorize Brex card activity', 'ZM', '-3', 'Jul 29', 'brex-import'],
+    ['Manager credit card spend rollup', 'ZM', '-1', 'Jul 31', 'end-of-month-cc-managers-report'],
+    ['Refresh department listing and headcount', 'ER', '-1', 'Jul 31', 'bamboohr-department-listing']
+  ] },
+  { name: 'Review and sign-off', items: [
+    ['Review income statement against plan', 'VP', '+1', 'Aug 3', 'Variance review'],
+    ['Approve close package and post to Synechron', 'VP', '+2', 'Aug 4', 'Synechron pack'],
+    ['Publish dashboard and KPI roll-up', 'ZM', '+2', 'Aug 4', 'KPI roll-up']
+  ] }
+];
+const CLOSE_NOTES = [
+  { who: 'VP', when: '2h ago', text: 'Hold the close package until the deferred managed services true-up is posted. I want the Datadog software split reviewed before we send anything to Synechron.' },
+  { who: 'ER', when: '4h ago', text: 'AR aging is clean except two Datadog renewals sitting at 45 days. Chasing both, expect cash in before the 5th.' },
+  { who: 'ZM', when: 'yesterday', text: 'Amex Platinum is reconciled through the 28th. Brex feed still has 14 uncategorized transactions — running the import skill next.' }
+];
+const CLOSE_AGENTS = [
+  { skill: 'brex-import', what: 'Pulls Brex expenses and categorizes them against QBO bank rules and the vendor list.', covers: '2 open tasks' },
+  { skill: 'end-of-month-cc-managers-report', what: 'Builds the eight manager spend files and the YTD master from QBO.', covers: '1 open task' },
+  { skill: 'bamboohr-department-listing', what: 'Refreshes the department listing and HC by month workbook from BambooHR.', covers: '1 open task' }
+];
+
+const KPI_COLS = ['Name', 'W26 (6/21)', 'W27 (6/28)', 'W28 (7/5)', 'W29 (7/12)', 'W30 (7/19)', 'Change %'];
+
+function money(v) {
+  const n = Math.round(Math.abs(v)).toLocaleString('en-US');
+  return v < 0 ? '(' + n + ')' : n;
+}
+function usd(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+function musd(v) {
+  return Math.abs(v) >= 1000 ? '$' + (v / 1000).toFixed(2) + 'M' : '$' + Math.round(v).toLocaleString('en-US') + 'k';
+}
+
+class Component extends DCLogic {
+  state = {
+    expanded: { Q1: false, Q2: false, Q3: false, Q4: true },
+    sections: { Actuals: true, Analysis: true, Forecast: false },
+    menu: null,
+    kpiOn: { rapdev: true, sn: true, dd: false, md: false, msoc: false },
+    period: 'Q4',
+    doneTasks: { 'Record DD SW revenue': true, 'Review AR aging and follow up on past due invoices': true, 'Reconcile Amex Platinum 51005 CC': true },
+    agentTasks: {},
+    agentsRunning: {}
+  };
+
+  base(i) {
+    const rev = REV[i], b = BOOK[i];
+    const o = {
+      bkDD: b.dd * 0.72, bkSN: b.sn * 0.80, bkSW: b.dd * 0.28 + b.sn * 0.10, bkMSP: b.sn * 0.10,
+      ddServices: rev * 0.30, ddSoftware: rev * 0.12, mgdDD: rev * 0.06, mgdSOC: rev * 0.05,
+      snServices: rev * 0.32, snSoftware: rev * 0.09, snMSP: rev * 0.06,
+      cpDDServices: rev * 0.155, cpDDSoftware: rev * 0.075, cpMgdDD: rev * 0.028, cpMgdSec: rev * 0.026,
+      cpSNServices: rev * 0.165, cpSNSoftware: rev * 0.055, cpSNMSP: rev * 0.030,
+      travDD: rev * 0.006, travSN: rev * 0.007, mktFees: rev * 0.014, contFees: rev * 0.014,
+      gaDD: rev * 0.018, gaSN: rev * 0.020, gaOps: rev * 0.042,
+      perDD: rev * 0.030, perSN: rev * 0.034, perOps: rev * 0.046,
+      smDD: rev * 0.032, smSN: rev * 0.030, smOps: rev * 0.038,
+      smMarketing: rev * 0.026, smTravel: rev * 0.012,
+      othExp: rev * 0.024, othAdd: rev * 0.006, mwe: rev * 0.011,
+      hoursAvail: BILL_HC * 173.3
+    };
+    o.hoursWorked = o.hoursAvail * 0.784;
+    o.hoursBilled = o.hoursWorked * 0.96;
+    return o;
+  }
+
+  monthFigures(i) { return this.sum([i]); }
+
+  sum(indices) {
+    const out = {};
+    Object.keys(this.base(0)).forEach(k => { out[k] = indices.reduce((acc, i) => acc + this.base(i)[k], 0); });
+    out.billHC = BILL_HC;
+    out.nonBillHC = NONBILL_HC;
+    return this.derive(out);
+  }
+
+  derive(a) {
+    const d = Object.assign({}, a);
+    const pct = (x, y) => y ? (x / y) * 100 : 0;
+    d.bookings = a.bkDD + a.bkSN + a.bkSW + a.bkMSP;
+    d.ddRev = a.ddServices + a.ddSoftware + a.mgdDD + a.mgdSOC;
+    d.snRev = a.snServices + a.snSoftware + a.snMSP;
+    d.rev = d.ddRev + d.snRev;
+    d.totalServices = a.ddServices + a.snServices;
+    d.totalSW = a.ddSoftware + a.snSoftware;
+    d.totalMSP = a.snMSP + a.mgdDD + a.mgdSOC;
+    d.ddPayroll = a.cpDDServices + a.cpDDSoftware + a.cpMgdDD + a.cpMgdSec;
+    d.snPayroll = a.cpSNServices + a.cpSNSoftware + a.cpSNMSP;
+    d.cogsPayroll = d.ddPayroll + d.snPayroll;
+    d.cogsTravel = a.travDD + a.travSN;
+    d.cogs = d.cogsPayroll + d.cogsTravel + a.mktFees + a.contFees;
+    d.ddCogs = d.ddPayroll + a.travDD + a.mktFees;
+    d.snCogs = d.snPayroll + a.travSN + a.contFees;
+    d.gm = d.rev - d.cogs;
+    d.gmDD = d.ddRev - d.ddCogs;
+    d.gmSN = d.snRev - d.snCogs;
+    d.gmDDServices = a.ddServices - a.cpDDServices;
+    d.gmDDSoftware = a.ddSoftware - a.cpDDSoftware;
+    d.gmMgdDD = a.mgdDD - a.cpMgdDD;
+    d.gmMgdSec = a.mgdSOC - a.cpMgdSec;
+    d.gmSNServices = a.snServices - a.cpSNServices;
+    d.gmSNSoftware = a.snSoftware - a.cpSNSoftware;
+    d.gmSNMSP = a.snMSP - a.cpSNMSP;
+    d.gmPct = pct(d.gm, d.rev);
+    d.gmDDPct = pct(d.gmDD, d.ddRev);
+    d.gmSNPct = pct(d.gmSN, d.snRev);
+    d.gmDDServicesPct = pct(d.gmDDServices, a.ddServices);
+    d.gmDDSoftwarePct = pct(d.gmDDSoftware, a.ddSoftware);
+    d.gmMgdDDPct = pct(d.gmMgdDD, a.mgdDD);
+    d.gmMgdSecPct = pct(d.gmMgdSec, a.mgdSOC);
+    d.gmSNServicesPct = pct(d.gmSNServices, a.snServices);
+    d.gmSNSoftwarePct = pct(d.gmSNSoftware, a.snSoftware);
+    d.gmSNMSPPct = pct(d.gmSNMSP, a.snMSP);
+    d.ga = a.gaDD + a.gaSN + a.gaOps;
+    d.per = a.perDD + a.perSN + a.perOps;
+    d.sm = a.smDD + a.smSN + a.smOps;
+    d.opex = d.ga + d.per + d.sm;
+    d.othTotal = a.othExp - a.othAdd;
+    d.noi = d.gm - d.opex;
+    d.ebitda = d.noi - a.othExp + a.othAdd;
+    d.adjEbitda = d.ebitda + a.mwe;
+    d.ebitdaPct = pct(d.ebitda, d.rev);
+    d.adjEbitdaPct = pct(d.adjEbitda, d.rev);
+    d.ddBookShare = pct(a.bkDD, d.bookings);
+    d.snBookShare = pct(a.bkSN, d.bookings);
+    d.cogsOpex = d.cogs + d.opex;
+    d.cogsOpexPct = pct(d.cogsOpex, d.rev);
+    d.cogsPct = pct(d.cogs, d.rev);
+    d.gaPct = pct(d.ga, d.rev);
+    d.perPct = pct(d.per, d.rev);
+    d.smPct = pct(d.sm, d.rev);
+    d.noiPct = pct(d.noi, d.rev);
+    d.nonBillPct = pct(a.nonBillHC, a.billHC + a.nonBillHC);
+    d.billPct = pct(a.billHC, a.billHC + a.nonBillHC);
+    d.util = pct(a.hoursWorked, a.hoursAvail);
+    d.padPct = 100 - pct(a.hoursBilled, a.hoursWorked);
+    d.hoursPerHead = a.hoursBilled / a.billHC;
+    d.beRate = (d.cogs + d.opex) * 1000 / a.hoursWorked;
+    d.billedRate = d.totalServices * 1000 / a.hoursBilled;
+    d.realRate = d.totalServices * 1000 / a.hoursWorked;
+    d.salesEff = d.bookings / d.sm;
+    ['bookings','rev','ddRev','ddServices','ddSoftware','mgdDD','mgdSOC','snRev','snServices','snSoftware','snMSP','totalServices','totalSW','totalMSP','cogs','gm','opex','per','ga','sm','smMarketing','smTravel','othExp','othAdd','mwe','ebitda'].forEach(k => {
+      d['f_' + k] = (d[k] === undefined ? a[k] : d[k]) * 1.06;
+    });
+    return d;
+  }
+
+  fmt(v, f) {
+    if (v === undefined || v === null) return '';
+    if (f === 'p') return v.toFixed(1) + '%';
+    if (f === 'r') return '$' + Math.round(v).toLocaleString('en-US');
+    if (f === 'n') return String(Math.round(v));
+    if (f === 'h') return Math.round(v).toLocaleString('en-US');
+    if (f === 'x') return v.toFixed(2) + 'x';
+    return money(v);
+  }
+
+  periodDef() {
+    return PERIODS.filter(p => p.key === this.state.period)[0] || PERIODS[0];
+  }
+
+  toggleTask(name) {
+    this.setState(s => ({ doneTasks: Object.assign({}, s.doneTasks, { [name]: !s.doneTasks[name] }) }));
+  }
+
+  toggleAgentTask(name) {
+    this.setState(s => ({ agentTasks: Object.assign({}, s.agentTasks, { [name]: !s.agentTasks[name] }) }));
+  }
+
+  runAgent(skill) {
+    this.setState(s => ({ agentsRunning: Object.assign({}, s.agentsRunning, { [skill]: !s.agentsRunning[skill] }) }));
+  }
+
+  toggleKpi(key) {
+    this.setState(s => ({ kpiOn: Object.assign({}, s.kpiOn, { [key]: !s.kpiOn[key] }) }));
+  }
+
+  toggleSection(name) {
+    this.setState(s => ({ sections: Object.assign({}, s.sections, { [name]: !s.sections[name] }) }));
+  }
+
+  download(filename, matrix, kind) {
+    const esc = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    let blob, name;
+    if (kind === 'xls') {
+      const body = matrix.map(r => '<tr>' + r.map(c => '<td>' + esc(c) + '</td>').join('') + '</tr>').join('');
+      blob = new Blob(['<html><head><meta charset="utf-8"></head><body><table>' + body + '</table></body></html>'], { type: 'application/vnd.ms-excel' });
+      name = filename + '.xls';
+    } else {
+      const csv = matrix.map(r => r.map(c => '"' + String(c).replace(/"/g, '""') + '"').join(',')).join('\r\n');
+      blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' });
+      name = filename + '.csv';
+    }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    this.setState({ menu: null });
+  }
+
+  toggleQuarter(q) {
+    this.setState(s => ({ expanded: Object.assign({}, s.expanded, { [q]: !s.expanded[q] }) }));
+  }
+
+  renderVals() {
+    const exp = this.state.expanded;
+    const quarters = [
+      { key: 'Q1', months: [0,1,2] },
+      { key: 'Q2', months: [3,4,5] },
+      { key: 'Q3', months: [6,7,8] },
+      { key: 'Q4', months: [9,10,11] }
+    ];
+
+    const columns = [];
+    quarters.forEach(q => {
+      if (exp[q.key]) {
+        q.months.forEach(i => columns.push({
+          label: MONTHS[i], sub: 'FY26', marker: '', headBg: '#F1F6F8', cursor: 'default',
+          figures: this.monthFigures(i), tint: '#F1F6F8', toggle: null
+        }));
+      }
+      columns.push({
+        label: q.key, sub: exp[q.key] ? 'total' : 'expand', marker: exp[q.key] ? '−' : '+',
+        headBg: '#FFFFFF', cursor: 'pointer', figures: this.sum(q.months), tint: '',
+        toggle: () => this.toggleQuarter(q.key)
+      });
+    });
+    columns.push({
+      label: 'FY26', sub: 'full year', marker: '', headBg: '#FFFFFF', cursor: 'default',
+      figures: this.sum([0,1,2,3,4,5,6,7,8,9,10,11]), tint: '', toggle: null, bold: true
+    });
+
+    const SPEC = [
+      ['section', 'Actuals'],
+      ['total', 'Bookings', 0, 'bookings', 'm'],
+      ['line', 'DD', 1, 'bkDD', 'm'], ['line', 'SN', 1, 'bkSN', 'm'],
+      ['line', 'SW', 1, 'bkSW', 'm'], ['line', 'MSP', 1, 'bkMSP', 'm'],
+      ['spacer'],
+      ['total', 'Revenue', 0, 'rev', 'm'],
+      ['sub', 'DD', 1, 'ddRev', 'm'],
+      ['line', 'Services', 2, 'ddServices', 'm'], ['line', 'Software', 2, 'ddSoftware', 'm'],
+      ['line', 'Managed DD', 2, 'mgdDD', 'm'], ['line', 'Managed SOC', 2, 'mgdSOC', 'm'],
+      ['sub', 'SN', 1, 'snRev', 'm'],
+      ['line', 'Services', 2, 'snServices', 'm'], ['line', 'Software', 2, 'snSoftware', 'm'],
+      ['line', 'MSP', 2, 'snMSP', 'm'],
+      ['total', 'Total services', 0, 'totalServices', 'm'],
+      ['total', 'Total SW', 0, 'totalSW', 'm'],
+      ['total', 'Total MSP', 0, 'totalMSP', 'm'],
+      ['spacer'],
+      ['total', 'COGS', 0, 'cogs', 'm'],
+      ['sub', 'COGS payroll', 1, 'cogsPayroll', 'm'],
+      ['line', 'DD', 2, 'ddPayroll', 'm'],
+      ['line', 'DD services', 3, 'cpDDServices', 'm'], ['line', 'DD software', 3, 'cpDDSoftware', 'm'],
+      ['line', 'Managed DD', 3, 'cpMgdDD', 'm'], ['line', 'Managed security', 3, 'cpMgdSec', 'm'],
+      ['line', 'SN', 2, 'snPayroll', 'm'],
+      ['line', 'SN services', 3, 'cpSNServices', 'm'], ['line', 'SN software', 3, 'cpSNSoftware', 'm'],
+      ['line', 'SN MSP', 3, 'cpSNMSP', 'm'],
+      ['sub', 'COGS travel', 1, 'cogsTravel', 'm'],
+      ['line', 'DD', 2, 'travDD', 'm'], ['line', 'SN', 2, 'travSN', 'm'],
+      ['line', 'Marketplace fees', 1, 'mktFees', 'm'], ['line', 'Contractor fees', 1, 'contFees', 'm'],
+      ['total', 'Total DD COGS', 0, 'ddCogs', 'm'], ['total', 'Total SN COGS', 0, 'snCogs', 'm'],
+      ['spacer'],
+      ['total', 'Gross margin $', 0, 'gm', 'm'],
+      ['sub', 'DD', 1, 'gmDD', 'm'],
+      ['line', 'DD services', 2, 'gmDDServices', 'm'], ['line', 'DD software', 2, 'gmDDSoftware', 'm'],
+      ['line', 'Managed DD', 2, 'gmMgdDD', 'm'], ['line', 'Managed security', 2, 'gmMgdSec', 'm'],
+      ['sub', 'SN', 1, 'gmSN', 'm'],
+      ['line', 'SN services', 2, 'gmSNServices', 'm'], ['line', 'SN software', 2, 'gmSNSoftware', 'm'],
+      ['line', 'SN MSP', 2, 'gmSNMSP', 'm'],
+      ['total', 'Gross margin %', 0, 'gmPct', 'p'],
+      ['sub', 'DD', 1, 'gmDDPct', 'p'],
+      ['line', 'DD services', 2, 'gmDDServicesPct', 'p'], ['line', 'DD software', 2, 'gmDDSoftwarePct', 'p'],
+      ['line', 'Managed DD', 2, 'gmMgdDDPct', 'p'], ['line', 'Managed security', 2, 'gmMgdSecPct', 'p'],
+      ['sub', 'SN', 1, 'gmSNPct', 'p'],
+      ['line', 'SN services', 2, 'gmSNServicesPct', 'p'], ['line', 'SN software', 2, 'gmSNSoftwarePct', 'p'],
+      ['line', 'SN MSP', 2, 'gmSNMSPPct', 'p'],
+      ['spacer'],
+      ['total', 'Operating expenses', 0, 'opex', 'm'],
+      ['sub', 'Total general & administrative', 1, 'ga', 'm'],
+      ['line', 'DD', 2, 'gaDD', 'm'], ['line', 'SN', 2, 'gaSN', 'm'], ['line', 'Operations', 2, 'gaOps', 'm'],
+      ['sub', 'Total personnel expenses', 1, 'per', 'm'],
+      ['line', 'DD', 2, 'perDD', 'm'], ['line', 'SN', 2, 'perSN', 'm'], ['line', 'Operations', 2, 'perOps', 'm'],
+      ['sub', 'Total sales & marketing', 1, 'sm', 'm'],
+      ['line', 'DD', 2, 'smDD', 'm'], ['line', 'SN', 2, 'smSN', 'm'], ['line', 'Operations', 2, 'smOps', 'm'],
+      ['spacer'],
+      ['total', 'Other expenses', 0, 'othTotal', 'm'],
+      ['line', 'Other expenses', 1, 'othExp', 'm'],
+      ['line', 'Other expenses — EBITDA add back', 1, 'othAdd', 'm'],
+      ['spacer'],
+      ['total', 'EBITDA adjustments', 0, 'mwe', 'm'],
+      ['line', 'McDermott, Will & Emery', 1, 'mwe', 'm'],
+      ['spacer'],
+      ['total', 'EBITDA', 0, 'ebitda', 'm'],
+      ['total', 'Adj. EBITDA', 0, 'adjEbitda', 'm'],
+      ['total', 'EBITDA %', 0, 'ebitdaPct', 'p'],
+      ['section', 'Analysis'],
+      ['total', 'Bookings', 0, 'bookings', 'm'],
+      ['line', 'DD share of bookings', 1, 'ddBookShare', 'p'],
+      ['line', 'SN share of bookings', 1, 'snBookShare', 'p'],
+      ['spacer'],
+      ['total', 'Gross profit', 0, 'gm', 'm'],
+      ['line', 'DD gross profit', 1, 'gmDD', 'm'], ['line', 'DD gross profit %', 1, 'gmDDPct', 'p'],
+      ['line', 'SN gross profit', 1, 'gmSN', 'm'], ['line', 'SN gross profit %', 1, 'gmSNPct', 'p'],
+      ['total', 'Total gross profit', 0, 'gm', 'm'], ['total', 'Total gross profit %', 0, 'gmPct', 'p'],
+      ['spacer'],
+      ['total', 'COGS + opex', 0, 'cogsOpex', 'm'], ['line', '% revenue', 1, 'cogsOpexPct', 'p'],
+      ['spacer'],
+      ['total', 'Opex & net income', 0],
+      ['line', 'COGS % of revenue', 1, 'cogsPct', 'p'], ['line', 'G&A % of revenue', 1, 'gaPct', 'p'],
+      ['line', 'Personnel % of revenue', 1, 'perPct', 'p'], ['line', 'S&M % of revenue', 1, 'smPct', 'p'],
+      ['line', 'Net operating income margin', 1, 'noiPct', 'p'],
+      ['spacer'],
+      ['total', 'Project hours', 0],
+      ['line', 'Non-billable headcount', 1, 'nonBillHC', 'n'], ['line', 'Billable headcount', 1, 'billHC', 'n'],
+      ['line', 'Non-billable %', 1, 'nonBillPct', 'p'], ['line', 'Billable %', 1, 'billPct', 'p'],
+      ['line', 'Hours available', 1, 'hoursAvail', 'h'], ['line', 'Hours worked', 1, 'hoursWorked', 'h'],
+      ['line', 'Utilization', 1, 'util', 'p'], ['line', 'Hours billed', 1, 'hoursBilled', 'h'],
+      ['line', 'Hours billed / head', 1, 'hoursPerHead', 'h'], ['line', 'Padding %', 1, 'padPct', 'p'],
+      ['spacer'],
+      ['total', 'Bill rate', 0],
+      ['line', 'Break-even rate', 1, 'beRate', 'r'], ['line', 'Rate (per hour billed)', 1, 'billedRate', 'r'],
+      ['line', "'Real' rate (per hour worked)", 1, 'realRate', 'r'],
+      ['spacer'],
+      ['total', 'Services billings', 0, 'totalServices', 'm'],
+      ['total', 'Sales efficiency', 0, 'salesEff', 'x'],
+      ['section', 'Forecast'],
+      ['total', 'Bookings', 0, 'f_bookings', 'm'],
+      ['spacer'],
+      ['total', 'Revenue', 0, 'f_rev', 'm'],
+      ['line', 'Services', 2, 'f_totalServices', 'm'], ['line', 'Software', 2, 'f_totalSW', 'm'],
+      ['line', 'MSP', 2, 'f_totalMSP', 'm'],
+      ['sub', 'DD', 1, 'f_ddRev', 'm'],
+      ['line', 'Services', 2, 'f_ddServices', 'm'], ['line', 'Software', 2, 'f_ddSoftware', 'm'],
+      ['line', 'Managed DD', 2, 'f_mgdDD', 'm'], ['line', 'Managed SOC', 2, 'f_mgdSOC', 'm'],
+      ['sub', 'SN', 1, 'f_snRev', 'm'],
+      ['line', 'Services', 2, 'f_snServices', 'm'], ['line', 'Software', 2, 'f_snSoftware', 'm'],
+      ['line', 'MSP', 2, 'f_snMSP', 'm'],
+      ['total', 'COGS', 0, 'f_cogs', 'm'],
+      ['spacer'],
+      ['total', 'Gross profit', 0, 'f_gm', 'm'],
+      ['spacer'],
+      ['total', 'Operating expenses', 0, 'f_opex', 'm'],
+      ['line', 'Personnel', 2, 'f_per', 'm'], ['line', 'G&A', 2, 'f_ga', 'm'],
+      ['line', 'Sales & marketing', 2, 'f_sm', 'm'],
+      ['line', 'Marketing', 3, 'f_smMarketing', 'm'], ['line', 'Travel', 3, 'f_smTravel', 'm'],
+      ['spacer'],
+      ['total', 'Other expenses', 0],
+      ['line', 'Other expenses', 1, 'f_othExp', 'm'],
+      ['line', 'Other expenses — EBITDA add back', 1, 'f_othAdd', 'm'],
+      ['spacer'],
+      ['total', 'EBITDA adjustments', 0, 'f_mwe', 'm'],
+      ['line', 'McDermott, Will & Emery', 1, 'f_mwe', 'm'],
+      ['spacer'],
+      ['total', 'EBITDA', 0, 'f_ebitda', 'm']
+    ];
+
+    const open = this.state.sections;
+    const rows = [];
+    const exportMatrix = [['Line item'].concat(columns.map(c => c.label + ' ' + c.sub))];
+    let current = null;
+    SPEC.forEach(spec => {
+      const kind = spec[0];
+      if (kind === 'section') {
+        current = spec[1];
+        rows.push({
+          label: current, marker: open[current] ? '−' : '+', kind: kind,
+          rowBg: '#0B2D4C', labelColor: '#FFFFFF', weight: 600, indent: '16px',
+          tt: 'uppercase', ls: '0.12em', fs: '12px', cursor: 'pointer', pad: '12px',
+          border: '1px solid #0B2D4C', click: () => this.toggleSection(current),
+          cells: columns.map(() => ({ text: '', color: '#FFFFFF', bg: '#0B2D4C' }))
+        });
+        exportMatrix.push([current.toUpperCase()].concat(columns.map(() => '')));
+        return;
+      }
+      if (!open[current]) return;
+      if (kind === 'spacer') {
+        rows.push({
+          label: '', marker: '', rowBg: '#FFFFFF', labelColor: '#FFFFFF', weight: 400, indent: '0px',
+          tt: 'none', ls: '0', fs: '13px', cursor: 'default', pad: '4px', border: '0',
+          click: null, cells: columns.map(() => ({ text: '', color: '#FFFFFF', bg: 'transparent' }))
+        });
+        exportMatrix.push([''].concat(columns.map(() => '')));
+        return;
+      }
+      const label = spec[1], depth = spec[2] || 0, key = spec[3], f = spec[4];
+      const isTotal = kind === 'total', isSub = kind === 'sub';
+      const texts = columns.map(c => key ? this.fmt(c.figures[key], f) : '');
+      rows.push({
+        label: label, marker: '',
+        rowBg: isTotal ? '#F1F6F8' : '#FFFFFF',
+        labelColor: '#0B2D4C',
+        weight: isTotal ? 700 : (isSub ? 600 : 400),
+        indent: (depth * 16) + 'px',
+        tt: 'none', ls: '0', fs: '13px', cursor: 'default', pad: '8px',
+        border: '1px solid #E4E9EE', click: null,
+        cells: columns.map((c, ci) => ({
+          text: texts[ci],
+          color: key && c.figures[key] < 0 ? '#6B7A8A' : '#0B2D4C',
+          bg: c.tint || 'transparent'
+        }))
+      });
+      exportMatrix.push([' '.repeat(depth * 2) + label].concat(texts));
+    });
+
+    const fy = this.sum([0,1,2,3,4,5,6,7,8,9,10,11]);
+    const q4 = this.sum([9,10,11]);
+    const revMax = Math.max.apply(null, REV);
+    const momBars = REV.map((r, i) => {
+      const f = this.monthFigures(i);
+      return {
+        month: MONTHS[i], revLabel: money(r), groupH: (r / revMax) * 100,
+        revH: 100, ebH: (f.adjEbitda / r) * 100
+      };
+    });
+
+    const qTotals = quarters.map(q => ({
+      name: q.key,
+      cy: q.months.reduce((a,i) => a + REV[i], 0),
+      py: q.months.reduce((a,i) => a + REV_PY[i], 0)
+    }));
+    const qMax = Math.max.apply(null, qTotals.map(q => q.cy));
+    const quarterBars = qTotals.map(q => ({
+      name: q.name, label: money(q.cy), groupH: (q.cy / qMax) * 100,
+      cyH: 100, pyH: (q.py / q.cy) * 100
+    }));
+
+    const yoyRows = REV.map((r, i) => {
+      const g = (r / REV_PY[i] - 1) * 100;
+      return { month: MONTHS[i], pct: g.toFixed(1) + '%', w: (g / 25) * 100, color: g >= 18 ? '#00A5A2' : '#0B2D4C' };
+    });
+
+    const expRaw = [
+      { label: 'Q1 25', cogs: 875, sm: 205, ga: 300 },
+      { label: 'Q2 25', cogs: 920, sm: 215, ga: 305 },
+      { label: 'Q3 25', cogs: 955, sm: 230, ga: 315 },
+      { label: 'Q4 25', cogs: 1010, sm: 240, ga: 320 },
+      { label: 'Q1 26', cogs: 1035, sm: 262, ga: 330 },
+      { label: 'Q2 26', cogs: 1110, sm: 278, ga: 342 },
+      { label: 'Q3 26', cogs: 1175, sm: 296, ga: 355 },
+      { label: 'Q4 26', cogs: 1250, sm: 312, ga: 368 }
+    ];
+    const expMax = Math.max.apply(null, expRaw.map(e => e.cogs + e.sm + e.ga));
+    const expenseBars = expRaw.map(e => {
+      const t = e.cogs + e.sm + e.ga;
+      return {
+        label: e.label, total: money(t), h: (t / expMax) * 100,
+        cogsH: (e.cogs / t) * 100, smH: (e.sm / t) * 100, gaH: (e.ga / t) * 100
+      };
+    });
+
+    const bookRaw = BOOK;
+    const bookMax = Math.max.apply(null, bookRaw.map(b => b.sn + b.dd));
+    const bookingBars = bookRaw.map((b, i) => {
+      const t = b.sn + b.dd;
+      return { month: MONTHS[i], total: money(t), h: (t / bookMax) * 100, snH: (b.sn / t) * 100, ddH: (b.dd / t) * 100 };
+    });
+    const bookQ4 = bookRaw.slice(9).reduce((a,b) => a + b.sn + b.dd, 0);
+    const bookAch = (bookQ4 / 10300 * 100).toFixed(1) + '%';
+    const snTotal = bookRaw.reduce((a,b) => a + b.sn, 0);
+    const ddTotal = bookRaw.reduce((a,b) => a + b.dd, 0);
+    const bookTotal = snTotal + ddTotal;
+
+    const deptGroups = [
+      { code: '100', name: 'Operations', children: [
+        { code: '110', name: 'G&A', type: 'Non-billable', count: 13 },
+        { code: '120', name: 'Marketing', type: 'Non-billable', count: 5 }
+      ] },
+      { code: '200', name: 'Datadog', children: [
+        { code: '210', name: 'Delivery', type: 'Billable', count: 38 },
+        { code: '220', name: 'Engineering', type: 'Billable', count: 15 },
+        { code: '230', name: 'Sales', type: 'Non-billable', count: 7 }
+      ] },
+      { code: '300', name: 'ServiceNow', children: [
+        { code: '310', name: 'Delivery', type: 'Billable', count: 46 },
+        { code: '320', name: 'Engineering', type: 'Billable', count: 12 },
+        { code: '330', name: 'Sales', type: 'Non-billable', count: 8 }
+      ] },
+      { code: '400', name: 'Synechron', children: [
+        { code: '410', name: 'Digital Platforms', type: 'Billable', count: 12 }
+      ] }
+    ];
+    const leaves = deptGroups.reduce((a, g) => a.concat(g.children), []);
+    const hcTotal = leaves.reduce((a, c) => a + c.count, 0);
+    const hcBillable = leaves.filter(c => c.type === 'Billable').reduce((a, c) => a + c.count, 0);
+    const hcMax = Math.max.apply(null, leaves.map(c => c.count));
+    const classRows = [];
+    deptGroups.forEach(g => {
+      const gc = g.children.reduce((a, c) => a + c.count, 0);
+      classRows.push({
+        code: g.code, name: g.name, type: 'Group', count: gc,
+        share: Math.round((gc / hcTotal) * 100) + '%', w: 0,
+        indent: '0px', weight: 700, bg: '#F1F6F8', trackBg: 'transparent',
+        barColor: 'transparent', tagFg: 'transparent', tagBg: 'transparent', group: true
+      });
+      g.children.forEach(c => classRows.push({
+        code: c.code, name: c.name, type: c.type, count: c.count,
+        share: Math.round((c.count / hcTotal) * 100) + '%',
+        w: (c.count / hcMax) * 100,
+        indent: '20px', weight: 400, bg: '#FFFFFF', trackBg: '#F1F6F8',
+        barColor: c.type === 'Billable' ? '#00A5A2' : '#0B2D4C',
+        tagVariant: c.type === 'Billable' ? 'teal' : 'tint', group: false
+      }));
+    });
+    const deptMatrix = [['Class', 'Department', 'Type', 'Headcount', 'Share of total']]
+      .concat(classRows.map(r => [r.code, r.name, r.group ? 'Group' : r.type, r.count, r.share]))
+      .concat([['', 'Total', '', hcTotal, '100%'], ['', 'Billable', '', hcBillable, Math.round(hcBillable / hcTotal * 100) + '%'], ['', 'Non-billable', '', hcTotal - hcBillable, Math.round((hcTotal - hcBillable) / hcTotal * 100) + '%']]);
+
+    const goalRows = [
+      { label: 'Revenue', a24: '$5.64', a25: '$6.11', target: '$6.70', actual: '$7.01', ach: '104.6%', achColor: '#00A5A2', weight: 700, indent: '0px', bg: '#F1F6F8' },
+      { label: 'from deposits', a24: '—', a25: '—', target: '$1.60', actual: '$1.72', ach: '107.5%', achColor: '#00A5A2', weight: 400, indent: '16px', bg: '#FFFFFF' },
+      { label: 'from billable work', a24: '—', a25: '—', target: '$5.10', actual: '$5.29', ach: '103.7%', achColor: '#00A5A2', weight: 400, indent: '16px', bg: '#FFFFFF' },
+      { label: 'Bookings', a24: '$7.80', a25: '$8.32', target: '$10.30', actual: '$' + (bookQ4 / 1000).toFixed(2), ach: bookAch, achColor: '#0B2D4C', weight: 700, indent: '0px', bg: '#F1F6F8' },
+      { label: 'Adj. EBITDA', a24: '$0.94', a25: '$1.08', target: '$1.30', actual: '$1.35', ach: '103.8%', achColor: '#00A5A2', weight: 700, indent: '0px', bg: '#F1F6F8' }
+    ];
+
+    const unitGoals = [
+      { label: 'Monthly billable hours per resource', actual: '176', goal: '182', ach: '96.7%', w: 96.7, color: '#0B2D4C' },
+      { label: 'Monthly bookings per AE', actual: usd(Math.round(bookQ4 * 1000 / 3 / 11)), goal: '$265,111', ach: (bookQ4 * 1000 / 3 / 11 / 265111 * 100).toFixed(1) + '%', w: 100, color: '#00A5A2' },
+      { label: 'Utilization — billable classes', actual: '78.4%', goal: '80.0%', ach: '98.0%', w: 98, color: '#0B2D4C' },
+      { label: 'Gross margin', actual: '42.5%', goal: '41.0%', ach: '103.7%', w: 100, color: '#00A5A2' }
+    ];
+
+    const period = this.periodDef();
+    const workingDays = period.months.reduce((a, i) => a + WORK_DAYS[i], 0);
+    const pFig = this.sum(period.months);
+    const pRevPY = period.months.reduce((a, i) => a + REV_PY[i], 0);
+    const r40Growth = (pFig.rev / pRevPY - 1) * 100;
+    const r40Margin = pFig.adjEbitdaPct;
+    const r40Score = r40Growth + r40Margin;
+    const r40Quarters = [[0,1,2],[3,4,5],[6,7,8],[9,10,11]].map((m, qi) => {
+      const f = this.sum(m);
+      const g = (f.rev / m.reduce((a, i) => a + REV_PY[i], 0) - 1) * 100;
+      return { label: 'Q' + (qi + 1) + ' 26', growth: g, margin: f.adjEbitdaPct, score: g + f.adjEbitdaPct };
+    });
+    const r40Max = Math.max(45, Math.max.apply(null, r40Quarters.map(q => q.score)) * 1.1);
+
+    const closeAll = CLOSE_TASKS.reduce((a, g) => a.concat(g.items), []);
+    const closeTotal = closeAll.length;
+    const closeDone = closeAll.filter(t => this.state.doneTasks[t[0]]).length;
+    const closePct = (closeDone / closeTotal) * 100;
+
+    const dashData = [
+      ['Revenue', musd(q4.rev), '$6.70M', '+4.6%'],
+      ['Bookings', musd(bookQ4), '$10.30M', '-4.4%'],
+      ['Adj. EBITDA', musd(q4.adjEbitda), '$1.30M', '+3.8%'],
+      ['Adj. EBITDA margin', q4.adjEbitdaPct.toFixed(1) + '%', '13.0%', '-0.2 pts'],
+      ['Gross margin', q4.gmPct.toFixed(1) + '%', '41.0%', '+1.5 pts'],
+      ['Utilization', q4.util.toFixed(1) + '%', '80.0%', '-1.6 pts'],
+      ['Billable headcount', String(hcBillable), '124', '-4'],
+      ['Backlog', '$18.42M', '$17.50M', '+5.3%'],
+      ['Attrition (TTM)', '11.4%', '12.0%', '+0.6 pts'],
+      ['Real rate', usd(q4.realRate) + '/hr', '$205/hr', '+$1']
+    ];
+    const hcMatrix = [['Class', 'Department', 'Type', 'Headcount', 'Share']]
+      .concat(classRows.filter(c => !c.group).map(c => [c.code, c.name, c.type, c.count, c.share]))
+      .concat([['', 'Total', '', hcTotal, '100%']]);
+    const dashMatrix = [['Metric', 'Actual', 'Plan', 'Variance']].concat(dashData);
+
+    return {
+      columns, rows, momBars,
+      closeTeam: ['VP', 'ER', 'ZM'].map(k => ({ initials: k, name: TEAM[k].name, role: TEAM[k].role, bg: TEAM[k].bg })),
+      closeProgressPct: closePct,
+      closeProgressLabel: closeDone + ' of ' + closeTotal + ' tasks complete',
+      closeGroups: CLOSE_TASKS.map(g => ({
+        name: g.name,
+        items: g.items.map(t => {
+          const done = !!this.state.doneTasks[t[0]];
+          const agent = !!this.state.agentTasks[t[0]];
+          return {
+            name: t[0], assignee: TEAM[t[1]].name, initials: t[1], avatarBg: TEAM[t[1]].bg,
+            bd: t[2], due: t[3], skill: t[4],
+            dueColor: done ? '#6B7A8A' : (t[2].indexOf('-') === 0 ? '#0B2D4C' : '#00A5A2'),
+            nameColor: done ? '#6B7A8A' : '#0B2D4C',
+            strike: done ? 'line-through' : 'none',
+            checkFg: done ? '#FFFFFF' : 'transparent',
+            checkBg: done ? '#00A5A2' : '#FFFFFF',
+            checkBorder: done ? '#00A5A2' : '#C9D2DA',
+            skillVariant: agent ? 'teal' : 'tint',
+            delegateLabel: agent ? 'Agent assigned' : 'Delegate to agent',
+            delegateVariant: agent ? 'secondary' : 'ghost',
+            toggle: () => this.toggleTask(t[0]),
+            delegate: () => this.toggleAgentTask(t[0])
+          };
+        })
+      })),
+      closeNotes: CLOSE_NOTES.map(n => ({
+        initials: n.who, name: TEAM[n.who].name, bg: TEAM[n.who].bg, when: n.when, text: n.text
+      })),
+      closeAgents: CLOSE_AGENTS.map(a => {
+        const on = !!this.state.agentsRunning[a.skill];
+        return {
+          skill: a.skill, what: a.what, covers: a.covers,
+          label: on ? 'Queued' : 'Delegate',
+          variant: on ? 'secondary' : 'primary',
+          run: () => this.runAgent(a.skill)
+        };
+      }),
+      periodKey: period.key,
+      periodLabel: period.label,
+      periodOptions: PERIODS.map(p => ({ key: p.key, label: p.label })),
+      workingDays: workingDays + ' days',
+      onPeriod: (e) => this.setState({ period: e.target.value }),
+      r40Score: r40Score.toFixed(1),
+      r40Growth: r40Growth.toFixed(1) + '%',
+      r40Margin: r40Margin.toFixed(1) + '%',
+      r40Verdict: r40Score >= 40 ? 'Above the 40 line' : 'Below the 40 line',
+      r40Color: r40Score >= 40 ? '#00A5A2' : '#6B7A8A',
+      r40GrowthW: (r40Growth / Math.max(r40Score, 40)) * 100,
+      r40MarginW: (r40Margin / Math.max(r40Score, 40)) * 100,
+      r40LineBottom: (40 / r40Max) * 100,
+      r40Bars: r40Quarters.map(q => ({
+        label: q.label, score: q.score.toFixed(1),
+        h: (q.score / r40Max) * 100,
+        growthH: (q.growth / q.score) * 100,
+        marginH: (q.margin / q.score) * 100
+      })),
+      kpiToggles: KPI_GROUPS.map(g => ({
+        label: g.label,
+        fg: this.state.kpiOn[g.key] ? '#FFFFFF' : '#0B2D4C',
+        bg: this.state.kpiOn[g.key] ? '#0B2D4C' : '#FFFFFF',
+        variant: this.state.kpiOn[g.key] ? 'primary' : 'secondary',
+        toggle: () => this.toggleKpi(g.key)
+      })),
+      kpiTables: KPI_GROUPS.filter(g => this.state.kpiOn[g.key]).map(g => ({
+        title: g.title, meta: g.meta,
+        cols: KPI_COLS.map((c, i) => ({ label: c, align: i === 0 ? 'left' : 'right' })),
+        rows: g.rows.map((r, ri) => ({
+          bg: ri % 2 ? '#F1F6F8' : '#FFFFFF',
+          cells: r.map((v, ci) => ({
+            text: v,
+            align: ci === 0 ? 'left' : 'right',
+            color: ci === 0 ? '#0B2D4C' : (ci === 6 ? (v === '0.0%' ? '#6B7A8A' : '#0B2D4C') : '#333333'),
+            weight: ci === 0 || ci === 6 ? 600 : 400
+          }))
+        }))
+      })),
+      menuISOpen: this.state.menu === 'is',
+      menuHCOpen: this.state.menu === 'hc',
+      menuDashOpen: this.state.menu === 'dash',
+      toggleMenuIS: () => this.setState(st => ({ menu: st.menu === 'is' ? null : 'is' })),
+      toggleMenuHC: () => this.setState(st => ({ menu: st.menu === 'hc' ? null : 'hc' })),
+      toggleMenuDash: () => this.setState(st => ({ menu: st.menu === 'dash' ? null : 'dash' })),
+      exportISCsv: () => this.download('rapdev-income-statement-2026-12', exportMatrix, 'csv'),
+      exportISXls: () => this.download('rapdev-income-statement-2026-12', exportMatrix, 'xls'),
+      hcReportCols: [
+        { label: 'Class', align: 'left' }, { label: 'Function', align: 'left' },
+        { label: 'Type', align: 'left' }, { label: 'Headcount', align: 'right' },
+        { label: 'Share', align: 'right' }
+      ],
+      hcReportRows: classRows.filter(c => !c.group).map((c, i) => ({
+        bg: i % 2 ? '#F1F6F8' : '#FFFFFF',
+        cells: [
+          { text: c.code, align: 'left', color: '#0B2D4C', weight: 600 },
+          { text: c.name, align: 'left', color: '#333333', weight: 400 },
+          { text: c.type, align: 'left', color: '#6B7A8A', weight: 400 },
+          { text: String(c.count), align: 'right', color: '#0B2D4C', weight: 600 },
+          { text: c.share, align: 'right', color: '#6B7A8A', weight: 400 }
+        ]
+      })),
+      exportHCCsv: () => this.download('synechron-headcount-2026-12', hcMatrix, 'csv'),
+      exportHCXls: () => this.download('synechron-headcount-2026-12', hcMatrix, 'xls'),
+      dashReportCols: [
+        { label: 'Metric', align: 'left' }, { label: 'Actual', align: 'right' },
+        { label: 'Plan', align: 'right' }, { label: 'Variance', align: 'right' }
+      ],
+      dashReportRows: dashData.map((r, i) => ({
+        bg: i % 2 ? '#F1F6F8' : '#FFFFFF',
+        cells: [
+          { text: r[0], align: 'left', color: '#0B2D4C', weight: 600 },
+          { text: r[1], align: 'right', color: '#0B2D4C', weight: 600 },
+          { text: r[2], align: 'right', color: '#6B7A8A', weight: 400 },
+          { text: r[3], align: 'right', color: r[3].indexOf('-') === 0 ? '#6B7A8A' : '#00A5A2', weight: 600 }
+        ]
+      })),
+      dashCount: String(dashData.length),
+      exportDashCsv: () => this.download('synechron-rapdev-dashboard-2026-12', dashMatrix, 'csv'),
+      exportDashXls: () => this.download('synechron-rapdev-dashboard-2026-12', dashMatrix, 'xls'), quarterBars, yoyRows, expenseBars, bookingBars, classRows, goalRows, unitGoals,
+      expandAll: () => this.setState({ expanded: { Q1: true, Q2: true, Q3: true, Q4: true } }),
+      collapseAll: () => this.setState({ expanded: { Q1: false, Q2: false, Q3: false, Q4: false } }),
+      kpis: [
+        { label: 'FY26 revenue', value: musd(fy.rev), delta: '+19.4% vs FY25', deltaColor: '#00A5A2' },
+        { label: 'Q4 revenue', value: musd(q4.rev), delta: '104.6% of target', deltaColor: '#00A5A2' },
+        { label: 'Adj. EBITDA margin', value: (fy.adjEbitda / fy.rev * 100).toFixed(1) + '%', delta: '+180 bps YoY', deltaColor: '#00A5A2' },
+        { label: 'FY26 bookings', value: musd(bookTotal), delta: 'Q4 at ' + bookAch + ' of target', deltaColor: '#0B2D4C' },
+        { label: 'Backlog', value: '$18.42M', delta: '86% next-quarter coverage', deltaColor: '#0B2D4C' },
+        { label: 'Headcount', value: String(hcTotal), delta: '+14 net YTD', deltaColor: '#0B2D4C' }
+      ],
+      bookingsTotal: musd(bookTotal),
+      bookToBill: (bookTotal / fy.rev).toFixed(2) + 'x',
+      snPct: (snTotal / bookTotal) * 100,
+      ddPct: (ddTotal / bookTotal) * 100,
+      snLabel: Math.round((snTotal / bookTotal) * 100) + '%',
+      ddLabel: Math.round((ddTotal / bookTotal) * 100) + '%',
+      bookingLines: [
+        { label: 'ServiceNow bookings', value: musd(snTotal), note: '+16.2% YoY', color: '#00A5A2' },
+        { label: 'Datadog bookings', value: musd(ddTotal), note: '+31.8% YoY', color: '#00A5A2' },
+        { label: 'Average deal size', value: musd(Math.round(bookTotal / 38)), note: '38 deals closed', color: '#6B7A8A' },
+        { label: 'Q4 bookings', value: musd(bookQ4), note: bookAch + ' of target', color: '#0B2D4C' }
+      ],
+      hcTotal: String(hcTotal),
+      menuDeptOpen: this.state.menu === 'dept',
+      toggleMenuDept: () => this.setState(st => ({ menu: st.menu === 'dept' ? null : 'dept' })),
+      exportDeptCsv: () => this.download('rapdev-department-listing-2026-12', deptMatrix, 'csv'),
+      exportDeptXls: () => this.download('rapdev-department-listing-2026-12', deptMatrix, 'xls'),
+      hcBillable: String(hcBillable),
+      hcBillablePct: Math.round((hcBillable / hcTotal) * 100) + '%',
+      tmPct: 68, fpPct: 32, tmLabel: '68%', fpLabel: '32%',
+      mixStats: [
+        { label: 'T&M projects', value: '41 active' },
+        { label: 'Fixed price', value: '19 active' },
+        { label: 'T&M revenue', value: '$16.82M' },
+        { label: 'FP revenue', value: '$7.92M' }
+      ],
+      rateRows: [
+        { name: 'ServiceNow', rate: '$214/hr', note: '+$9 YoY', w: 89, color: '#0B2D4C' },
+        { name: 'Datadog', rate: '$196/hr', note: '+$14 YoY', w: 82, color: '#00A5A2' },
+        { name: 'Blended', rate: '$206/hr', note: 'target $205', w: 86, color: '#C9D2DA' }
+      ],
+      newBizTotal: '$1.84M',
+      newClients: [
+        { name: 'Northwind Logistics', meta: 'ServiceNow ITSM — fixed price', amount: '$620k', slot: 'logo-northwind' },
+        { name: 'Ardent Health Partners', meta: 'Datadog observability — T&M', amount: '$455k', slot: 'logo-ardent' },
+        { name: 'Baymark Financial', meta: 'ServiceNow SecOps — T&M', amount: '$390k', slot: 'logo-baymark' },
+        { name: 'Cobalt Retail Group', meta: 'Managed SOC — subscription', amount: '$232k', slot: 'logo-cobalt' },
+        { name: 'Tessera Manufacturing', meta: 'Datadog migration — fixed price', amount: '$145k', slot: 'logo-tessera' }
+      ],
+      backlogTotal: '$18.42M',
+      backlogRows: [
+        { label: 'ServiceNow — contracted', value: '$9.64M', w: 100, color: '#0B2D4C' },
+        { label: 'Datadog — contracted', value: '$5.91M', w: 61, color: '#00A5A2' },
+        { label: 'Managed SOC — subscription', value: '$1.98M', w: 21, color: '#09838D' },
+        { label: 'Deposits not yet earned', value: '$890k', w: 9, color: '#C9D2DA' }
+      ],
+      attritionStats: [
+        { label: 'Voluntary', value: '8.6%', note: '13 separations' },
+        { label: 'Involuntary', value: '2.8%', note: '4 separations' },
+        { label: 'Billable classes', value: '9.9%', note: 'target under 12%' },
+        { label: 'Regretted', value: '4.1%', note: '6 of 17' }
+      ],
+      attritionBars: [2,1,0,2,1,3,1,2,1,2,1,1].map(v => ({ h: Math.max(6, (v / 3) * 100) }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>

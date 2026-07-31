@@ -1,0 +1,299 @@
+---
+name: brex-import
+description: Brex credit-card transaction categorization workflow. Two modes — (1) CSV mode turns a monthly Brex CSV export into a filled QuickBooks Online Transaction Import xlsx, and (2) Feed mode pulls Brex expenses directly via the API and matches them against QBO bank rules + the vendor list. Use this skill whenever the user mentions running a Brex import, filling the QBO Transaction Import file, categorizing Brex transactions, processing the monthly Brex CSV, filling Payee Override / Sub Category Override columns, or "pull brex transactions and categorize them". Also trigger on "categorize this credit card export", "fill the transaction import", "I just uploaded a Brex CSV", "run the Brex feed", or "categorize this week's Brex pull".
+---
+
+# Brex Import
+
+> **Rules precedence:** this skill runs under the finance-drive root rulebook
+> (`/RapDev Finance - Claude/CLAUDE.md`) and its own canonical rules in
+> `references/workflow-rules.md`; the root wins on any conflict. Read-time
+> materials (memory, vendor list, template) live in `references/`; outputs go to
+> `outputs/Brex Transaction Import/YYYY/YYYYMM/`.
+
+Two modes:
+- **CSV mode** — take a monthly Brex CSV export, apply the user's curated merchant memory + categorization rules, produce one filled QBO Transaction Import xlsx with cell comments on every flagged decision.
+- **Feed mode** — pull Brex card expenses directly via MCP, filter non-postable, match against QBO bank rules + memory + vendor list, flag cardholder-only matches, reconcile against QBO posted transactions, and **write the filled QBO Transaction Import xlsx from `references/Brex Transaction Import File.xlsx`** (same template + format as CSV mode), plus a `categorized.json` audit trail.
+
+**Output policy (CSV mode):** exactly one file per run — the filled xlsx. No reasoning markdown, no JSON sidecar. Cell comments in the xlsx ARE the audit trail.
+
+**Output policy (Feed mode):** the **filled `Brex Transaction Import YYYYMMDD.xlsx`** (built from the template — this is THE deliverable and must match `references/Brex Transaction Import File.xlsx` exactly: all columns, formatting, and per-row cell comments on flagged rows), plus `categorized.json` as the audit trail. Never reshape the deliverable into a stripped sheet or CSV. The **DATE** column reflects the **Brex posted date** (`payment_posted_at`), not the swipe/purchase date — matching how the team's CSV import is dated (Zayn 2026-06-15).
+
+## Categorization & enrichment rules (BOTH modes) — updated 2026-06-16
+
+Merchant is pulled from the **descriptor**, which is truncated and does NOT match QB rule names (e.g. Brex shows `SOUTHWES`, `AMERICAN`, `UA INFLT`). Match on the descriptor forms below, in both CSV and feed mode.
+
+1. **Airlines.** Airline raw descriptors live in `references/brex-memory.md` (SOUTHWES→Southwest Air, AMERICAN→American Airlines, DELTA / DELTA AIRLINES ONBOARD→Delta, UNITED / UA INFLT→United Airlines, VIR→Virgin Atlantic, KLM, JETBLUE, LUFTHAN→Lufthansa, BRITISH A→British Airways, RYANAIR, AIR CAN→Air Canada, ALASKA A→Alaska Air, AIR FRAN→Air France, VUELING AHKA→Vueling, ALLEGNT→Allegiant, QANTAS, AERLING→Aer Lingus, FRONTIER→Frontier Air, AEROMEXICO) → Payee = airline name, Sub Category Override = **Airfare**. This works on the descriptor, so it covers Brex AND Amex (do NOT rely on Brex's `AIRLINE_EXPENSES` category alone — CSV mode has no category).
+
+2. **Brex-category map (feed mode) — full 48 categories.** After bank rule, vendor list, and memory/airline-descriptor have all missed, classify by the expense's Brex `category` via `resolver.BREX_CATEGORY_MAP` (Medium confidence; sets BOTH the Payee bucket and the Sub Category — e.g. `CORPORATE_INSURANCE → Office Vendor / Insurance`, `ADVERTISING_AND_MARKETING → Office Vendor / Other Marketing Expenses`). This complete map takes precedence over the legacy partial `BREX_CAT_TO_PAYEE` hint. The 4 **always-flag** categories (`GAMBLING`, `POLITICAL_DONATIONS`, `MEDICAL`, `FLOWERS`) are checked *before* the MCC hint and return `UNCLASSIFIED` at confidence `Flag` (never auto-categorized, always surfaced for review). Only categories not in the map fall through to the web-search step. **Documented resolver order: bank rule → vendor list → memory/airline → Brex-category map (48, incl. 4 always-flag) → web search → default.**
+
+3. **No-match fallback = WEB SEARCH, never a blind guess.** When a merchant matches no QB rule, no memory entry, and no vendor-list entry, do NOT default to "Food Vendor." Instead **web-search the merchant**, determine what it does, and map to exactly one of: Food Vendor / Office Vendor / Travel Vendor / Taxi Vendor / Hotel Vendor. Apply it, set confidence=Review, flag the row (`source = "web: <one-line what they do>"`). Then **append the confirmed merchant→vendor mapping to `references/brex-memory.md`** (Historical specific section) so next run is instant. Only if the web search is genuinely inconclusive, leave it flagged for a human — still no silent Food Vendor guess.
+
+4. **Card fields from the Card Mapping tab.** For every row, populate `Card #`, `Card Name`, `EE ID`, and `Dept Override` (when blank) by reading the card last-4 from the descriptor — the trailing `XXXX####`; **take the LAST occurrence** so embedded order numbers (e.g. Microsoft's `XXXXX6257`) don't win — then look it up in the workbook's **Card Mapping** tab (last-4 → Card Name / Department / EE ID).
+
+5. **Department Listing tab — refresh from BambooHR every run.** Pull the BambooHR "Department Listing" report (report 228) via `bamboohr_report_get` and rewrite the workbook's last tab with the latest data. **Name reconciliation:** BambooHR names sometimes differ trivially from the Brex/Card-Mapping names (e.g. BambooHR "Dwight Henderson Jr" vs card "Dwight Henderson"). Anchor on EE ID where available; otherwise normalize the obvious variants (Jr/Sr suffixes, middle initials, spelling) to the Brex form so department mapping resolves.
+
+6. **Name Aliases — the EE ID column, not just Department Listing.** The `QBO Transactions!EE ID` column is a workbook formula (`XLOOKUP` on the Card Name against Department Listing's name-key), not something the scripts write. It goes blank whenever the Brex cardholder name differs from BambooHR's legal name in a way `finalize`'s Rule-5 normalization doesn't cover — most commonly a preferred first name (Brex "Zayn Moselhy" vs. BambooHR "Zaynaldine Moselhy"). Added 2026-07-16 (Zayn): `runner.py finalize` now also scans for these and reconciles them via a persisted alias table — see "Name reconciliation (unmapped EE ID)" under Feed mode step 7. **Never guesses silently**: it only auto-suggests when exactly one Department Listing employee shares the last name and has a first name that starts with the Brex first name; anything more ambiguous is flagged with no guess, same as every other confidence gate in this skill.
+
+## Workspace layout
+
+```
+/RapDev Finance - Claude/
+├── CLAUDE.md                                  (root finance rulebook — governs this skill)
+├── skills/brex-import/
+│   ├── SKILL.md
+│   ├── scripts/
+│   ├── references/                            (read-time materials the skill loads)
+│   │   ├── workflow-rules.md
+│   │   ├── brex-memory.md
+│   │   ├── qbo-bank-rules.xlsx                (bundled QBO bank rules ≈379 — auto-loaded, no export)
+│   │   ├── Vendors.xlsx
+│   │   ├── name-aliases.md                    (confirmed Brex-name → EE ID aliases — NEW 2026-07-16)
+│   │   └── Brex Transaction Import File.xlsx  (blank template; includes a "Name Aliases" tab)
+│   └── test-fixtures/
+└── outputs/Brex Transaction Import/
+    └── YYYY/                                   (year, e.g. 2026)
+        └── YYYYMM/                             (month — run outputs, e.g. 202606)
+            ├── Brex Transaction Import YYYYMMDD.xlsx   (CSV- + feed-mode deliverable)
+            ├── Brex_expenses.json                      (feed: raw pull — discard after run)
+            ├── Vendors.json                            (feed: vendor cache; rules come bundled from references/)
+            ├── qbo_purchases.json                      (feed: reconciliation input)
+            └── categorized.json                        (feed: audit JSON)
+```
+
+The runner auto-resolves `references/` (its own folder); pass `--refs-dir` to override and `--out-dir` to set the run's output folder. Raw source CSVs are **discarded after processing** (root §4) — there is no `sources/` archive.
+
+---
+
+## CSV mode — the four steps (in order)
+
+### 1. Ask for the CSV
+
+Don't auto-detect. Open with an explicit prompt:
+
+> "Please upload the Brex CSV export (looks like `Brex (NN).csv`)."
+
+When the user uploads, process it directly from `/uploads/` — do **not** archive it. Detect the report month from the CSV's date range to set the `outputs/Brex Transaction Import/YYYY/YYYYMM/` target folder. Per root §4 the raw CSV is discarded after the run; cell comments in the output xlsx are the audit trail. If multiple CSVs are uploaded, ask which to use — do not guess.
+
+### 2. Import the CSV into the Import file
+
+Internal-only step. Don't pause for user approval here, just execute:
+
+1. `scripts/runner.py preflight` — halt with a clear message if any reference file is missing.
+2. `scripts/runner.py dryrun --csv <path>` — resolves every blank-Payee row by confidence (High = memory or exact vendor; Medium = keyword/substring/industry; Low = best guess).
+3. Bucket Low rows into: restaurants, travel_misses, office_misses, charity. Skip empty buckets.
+
+Briefly report totals (qualifying rows, confidence breakdown). Don't pause; proceed to step 3.
+
+### 3. Ask judgment-call questions
+
+Use the **AskUserQuestion tool**. One question per non-empty bucket, max four. Buckets:
+
+- **Restaurants** — default Food Vendor; ask if any should be promoted to `brex-memory.md`.
+- **Travel misses** — rows that look travel but defaulted Food. Offer batch override.
+- **Office misses** — SaaS/services defaulting Food. Offer Office Vendor + the right sub-cat.
+- **Charity** — recipient name directly in col J per Rule 3.
+
+If >10 rows in a bucket, summarize the pattern, don't list each row.
+
+If the user says "auto" or "skip," skip the questions and proceed.
+
+### 4. Write the filled xlsx
+
+`scripts/runner.py write --out-dir "outputs/Brex Transaction Import/YYYY/YYYYMM/" --csv <path> --overrides <json>` where overrides is the user's answers as `[pattern_lc, payee_override, sub_cat_override, source_tag, reason]` tuples. (Build `YYYYMM` from the CSV's date range.)
+
+The runner:
+- Reads template + materials from `references/`
+- Writes output to your `--out-dir`, named `Brex Transaction Import YYYYMMDD.xlsx` (root §4; date = run date)
+- **Does not auto-version.** If the dated file exists, the runner refuses unless `--allow-overwrite` is passed — overwriting is a root §3 approval gate, so get human approval first
+- Clears phantom data from rows beyond the CSV's row count (defensive)
+- Writes Payee Override (col I or J — detected by header) and Sub Category Override (col L or M)
+- Attaches Excel cell comments to every Low/Medium/manual-override cell
+
+**Do not run the `notes` subcommand.** It exists for explicit on-demand use, not as part of the standard flow.
+
+**STOP IMMEDIATELY AFTER WRITE.** When the runner reports the output path, the run is done. Report the absolute path of the file and end the response. Do NOT:
+- Run any verification (totals, row count, vendor validity, formula checks, Department Listing)
+- Open or read the output xlsx for inspection
+- Call `mcp__cowork__present_files`
+- Add any post-write commentary, sanity checks, or "by the way" notes
+
+The runner's own stdout (path + counts) is the complete deliverable summary. The user can open the file from the path; they don't need a presented card.
+
+---
+
+## Feed mode — the eight steps (in order)
+
+Feed mode does NOT replace CSV mode — both coexist. Trigger feed mode when the user says "pull Brex directly", "run the Brex feed", "categorize this week's Brex transactions", or any phrasing that implies a live API pull rather than a CSV upload.
+
+**Architecture constraint:** Python scripts have NO network. The orchestrator (Claude) calls the Brex/QBO MCP tools, writes results to files, and `brex_feed.py` reads them. Mirrors how `resolver.py` already works.
+
+**Determinism rule — do NOT improvise scripts.** Every step runs a script that ALREADY EXISTS in `scripts/`, invoked by an exact `python "<absolute path>" ...` command. Claude must **never write, generate, or improvise a new helper script** (e.g. a one-off QBO-transform or Brex-staging script). The fixed entry points are:
+- `runner.py qbo-purchases --report <saved QBO report file> --out-dir <run dir>` → writes `qbo_purchases.json` (reconcile shape).
+- `brex_page.py <saved Brex page file> <window_start> <window_end>` → the canonical per-page Brex stager. **The window (date_max from step 1, and today) is REQUIRED as args — the script aborts without it.** Accumulates in-window expenses to `%TEMP%/brex_acc.json` and prints the next cursor + `continue?`.
+- `runner.py categorize-brex ...` → categorize + reconcile + write the xlsx.
+Small file transforms use the named scripts in `scripts/` (`acc_stage.py`, `vendors_check.py`), NOT inline `python -c`. If a needed step has no existing script, STOP and flag it — never improvise one. **All file operations (read / move / delete / transform) go through `python` or inline `python -c`, never PowerShell cmdlets (`Remove-Item`, `Copy-Item`, …): the locked unattended settings deny the dangerous cmdlets, so a cmdlet step can half-fail — stay on the deterministic python path.**
+
+### 1. QBO posted-date discovery (do this FIRST — it sets the Brex pull window)
+
+Before touching Brex, find out what's already booked in QBO so you (a) know the date to pull Brex *from* and (b) never double-post. (Adopted 2026-06-11: QBO posted state drives the Brex window, not a fixed look-back.)
+
+1. Pull QBO posted transactions for the **Brex Credit Card** (`account_id=62`, GL 21140) with the **`quickbooks_transaction_detail_by_account`** report over a **BOUNDED ROLLING window: start_date = today − 21 days, end_date = today** (never an older or fixed start — ~3 weeks always covers everything since the last run plus the ±3-day reconciliation buffer, and it never grows week over week). Honor an explicit user window if given (e.g. "06/01–06/11"). Do **not** use `quickbooks_query ... FROM Purchase` — it under-returns. The result is saved to a file; **do NOT read or grep it.**
+2. Stage `qbo_purchases.json` with the **fixed transform subcommand** (never an ad-hoc script):
+   `python "<abs>\scripts\runner.py" qbo-purchases --report "<saved QBO report file>" --out-dir "<run out-dir>"`
+   It writes rows in the shape `reconcile.py` expects (`TxnDate`, `TotalAmt`=abs(Amount), `PrivateNote`=Memo/Description, `EntityRef.name`=Name, `PaymentType="CreditCard"`, `AccountRef.value="62"`) — the mandatory reconciliation baseline in step 5.
+3. The qbo-purchases output prints **`date_max` = the latest posted QBO date**. Take the Brex POSTED-date window as **`date_max` → today** — read it from `date_max`; do NOT hunt for the latest date by grepping the report. **`date_max` is NOT a raw max()** — the transform excludes card-payment sweeps (e.g. `PREAUTHORIZED WD BREX INC. PAYMENTS`, a balance payoff, not a purchase) and isolated post-gap "stragglers" (< 3 transactions on a date reached after a ≥2-day gap from the prior dense-posting date — e.g. a lone recurring bank-fed charge like `Anytime Mailbox` that posts independently of this skill's weekly batch). Trusting either would falsely advance the window and truncate the pull (2026-07-10 incident: a payment sweep + 2 stragglers pushed the raw max from 07-01 to 07-07, cutting a 10-day window to 3 days and missing ~150 rows). When stragglers are excluded, the tool prints `date_max_raw` and `stragglers_excluded_from_date_max` — read those too and mention them to the user rather than silently dropping the flag.
+
+### 2. Brex pull (orchestrator step)
+
+Call `brex_expenses_list` with `expense_type=CARD` **and `expand=["merchant","budget","user"]`** — the **`user` expansion is REQUIRED** (it is the real cardholder used for Card Name; `merchant`/`budget` feed categorization). **Heads-up: the MCP list endpoint ignores `purchased_after`/`purchased_before`** — it always returns newest-first pages. So paginate with `cursor` (100/page); for EACH saved page file run the canonical stager, **passing the window as args (date_max from step 1, and today) — the script ABORTS without them:**
+   `python "<abs>\scripts\brex_page.py" "<saved page file>" <date_max> <today>`
+Continue with the printed cursor until it prints `continue? False`. The stager filters **locally**:
+- Keeps expenses whose **`payment_posted_at`** falls inside the window. **`payment_posted_at` IS the posted date — Brex's "Posted date (UTC)" column. Used VERBATIM (`[:10]` of the UTC timestamp). NEVER estimate, infer, or compute a clearing/settlement date.** Null/empty `payment_posted_at` = not yet posted → excluded (never guess a date).
+- Stops paginating once a page's purchases fall before the window floor (newest-first → stop early).
+- Dedupes by `id`; drops `status in {CANCELED}`, refunds/credits, and `billing_amount.amount == 0`.
+
+When the loop ends, stage the accumulator to `outputs/Brex Transaction Import/YYYY/YYYYMM/Brex_expenses.json` via the fixed script (raw pull, discarded after the run per root §4):
+   `python "<abs>\scripts\acc_stage.py" "<out-dir>\Brex_expenses.json"`
+
+### 3. QBO bank rules — bundled (no export needed)
+
+The bank rules ship **inside the skill** at `references/qbo-bank-rules.xlsx` (~379 rules; converted from the QBO "Export to Excel" `.xls`, refreshed 2026-07-29). **Default: load that bundled file — do NOT ask the user for an export.**
+
+1. `rules_loader.py` parses `references/qbo-bank-rules.xlsx`. Expect ~379 kept / ~13 skipped.
+2. **Refresh only when rules materially change in QBO (or ~quarterly):** user re-exports QBO → Banking → Rules → "Export to Excel", drops the `.xls` into `references/`, then convert:
+   ```
+   libreoffice --headless --convert-to xlsx --outdir references/ "references/qbo-bank-rules.xls"
+   ```
+   **Fallback (Zayn 2026-07-29):** libreoffice failed on one export with "source file could not be loaded" even though the `.xls` was a valid CDFV2 file (confirmed via `xlrd`) — a libreoffice/environment quirk, not a bad file. If that happens, convert directly in Python instead: read all cells with `xlrd.open_workbook(...)`, write them into a new `openpyxl` workbook with the same 3 columns (`Rule Name` / `Rule Conditions` / `Rule Outputs`), save as `.xlsx`. `rules_loader.py` only needs those 3 columns' values, so this is equivalent to the libreoffice conversion for this purpose.
+   The live `quickbooks_bank_rules_list` MCP still returns HTTP 400, so the bundled file is the source of truth until that's fixed.
+
+> Tradeoff: the bundled snapshot does NOT auto-update from QBO. Refresh it if categorization quality drops or rules change.
+
+### 4. Vendors — DISK CACHE (never paginate vendors into context)
+
+The vendor list is a persistent disk cache at `references/Vendors.json`. Do NOT pull the full vendor list into context page-by-page.
+
+1. **Freshness check** — if `references/Vendors.json` exists and is < 14 days old, use it AS-IS; do NOT query vendors at all:
+   `python "<abs>\scripts\vendors_check.py" "<abs>\references\Vendors.json"`
+2. **Refresh only if STALE/missing** — make ONE call (NOT paginated); its large result is saved to a FILE, not inlined into context:
+   `quickbooks_query  SELECT Id, DisplayName, CompanyName, Active FROM Vendor MAXRESULTS 1000`
+   then transform it to the cache with the fixed subcommand (never read the ~865 rows into context):
+   `python "<abs>\scripts\runner.py" vendors-cache --report "<saved Vendor query file>" --out "<abs>\references\Vendors.json"`
+3. Last-resort fallback only if both are unavailable: `references/Vendors.xlsx`.
+
+Matching uses both `DisplayName` AND `CompanyName` per the spec.
+
+### 5. Categorize
+
+```
+scripts/runner.py categorize-brex \
+  --out-dir "outputs/Brex Transaction Import/YYYY/YYYYMM/" \
+  --brex-expenses "outputs/Brex Transaction Import/YYYY/YYYYMM/Brex_expenses.json" \
+  --qbo-rules references/qbo-bank-rules.xlsx \
+  --vendors references/Vendors.json   # the disk cache from step 4 (xlsx = last-resort fallback only)
+  --memory references/brex-memory.md \
+  --qbo-purchases "outputs/Brex Transaction Import/YYYY/YYYYMM/qbo_purchases.json"   # reconciliation (mandatory)
+```
+
+**On a dated-file collision the runner AUTO-VERSIONS to `… YYYYMMDD (2).xlsx`.** NEVER pass `--allow-overwrite` in an unattended/scheduled run — overwriting an existing deliverable is a root §3 approval gate. `--allow-overwrite` is honored ONLY in an interactive session that also sets `BREX_INTERACTIVE=1`, after explicit human approval; the scheduled wrapper never sets it, so unattended runs always auto-version.
+
+Pipeline (per expense):
+1. **Filter** — drop `status in {CANCELED, DRAFT}`, `payment_status in {REFUNDED, REFUNDING, CREDITED}` (refunds/credits — excluded per Zayn 2026-06-15), and `billing_amount.amount == 0`. Amount is converted from cents (`billing_amount.amount / 100`). Use `billing_amount` (USD) so FX charges are pre-converted.
+2. **Settlement** — `payment_status != CLEARED` is kept (PROCESSING is treated as postable per user decision 2026-06-02) but tagged with a `settlement_note`. The note is informational; it does NOT gate posting.
+3. **Match** — descriptor + budget_name vs. rules, longest-text-first:
+    - Text in **descriptor** → confidence=`High`, source=`qbo-rule(merchant):<name>`, apply payee+category+class.
+    - Text only in **budget.name** → confidence=`Review`, source=`qbo-rule(cardholder):<name>`, `flag=true`, still apply payee+category+class but **surface for human review**.
+    - Why: in the prototype, "Aylab DE" rule (text=`Ayla`) blanket-matched every Ayla Hourani purchase → ROBERTSON'S DRUG STORE booked to Marketing, FOODHUB booked to Marketing. Cardholder-rule blanket matching is the most common source of silent miscategorization.
+4. **Fallback** — no rule → `resolver.resolve_with_signals(merchant, vendors_lc, memory, mcc, brex_category)`. The signals upgrade a base `Low` guess to `Review`:
+    - MCC → payee (e.g., 4511 airline → Travel Vendor)
+    - Brex category → payee (e.g., MEDICAL → Office Vendor)
+    - Hits Condor Flugdienst (MCC 4511) that the prototype guessed Food.
+5. **Output** — `categorized.json` with one record per input expense plus a summary block. Stdout summary mirrors the JSON's `totals` block.
+
+**Airline handling (Zayn 2026-06-15):** when Brex `category == AIRLINE_EXPENSES`, the **Sub Category Override = Airfare** and the descriptor maps to the **specific airline payee** via `resolver.airline_from_descriptor` (UNITED / UA INFLT → United Airlines, SOUTHWES → Southwest Air, AMERICAN → American Airlines, DELTA → Delta, plus JetBlue/Alaska/Frontier/Spirit/Air Canada/KLM/Vueling/easyJet/Virgin/Qantas) — overriding the generic Travel Vendor / Other Travel Expenses default. Gated on the airline category so short keys like `AMERICAN` can't collide with American Express. Airline-category items with no recognizable airline name (e.g. airport parking) stay Travel Vendor.
+
+### 6. Surface flagged
+
+Read the summary. If `cardholder_rule_flagged > 0` OR `flagged_total > 0`, list the flagged rows for the user with descriptor + budget_name + assigned payee + flag_reason. Use AskUserQuestion to batch corrections back into `brex-memory.md` for next run, the same pattern as CSV mode.
+
+### 7. Finalize — refresh the Department Listing tab + clean up (MANDATORY closing step)
+
+The run is NOT complete until this step has printed its summary and exited cleanly.
+
+1. Pull the BambooHR Department Listing report: `bamboohr_report_get(report_id="228")` and stage the JSON to `outputs/Brex Transaction Import/YYYY/YYYYMM/bamboo_228.json` (its file mtime must be fresh).
+2. Run the fixed subcommand (never an ad-hoc script):
+   `python "<abs>\scripts\runner.py" finalize --xlsx "<the xlsx written in step 5>" --bamboo-report "<...>\bamboo_228.json" --out-dir "<run out-dir>"`
+   It refreshes the last tab (Department Listing) from report 228 — matching by Employee #, refreshing the BambooHR fact columns, **PRESERVING the curated QBO-Department columns**, and appending+flagging new hires that need a mapping — then deletes the JSON sidecars, leaving only the xlsx.
+
+**Fail loud:** finalize ABORTS if report 228 is missing or stale (> 3h old). If it aborts, STOP and flag it — do not finish the run without a current roster.
+
+**Name reconciliation (unmapped EE ID) — added 2026-07-16 (Zayn):** `finalize`'s stdout also includes `unmapped_ee_suggestions` and `unmapped_ee_no_candidate` — cardholder names in this run's data whose `EE ID` will resolve blank because the Brex name doesn't match any Department Listing name-key (see Rule 6 above). For each:
+- `unmapped_ee_suggestions` — exactly one Department Listing employee shares the last name and has a first name the Brex name is a prefix of (e.g. "Zayn" → "Zaynaldine Moselhy", EE 184). Surface these to the user via **AskUserQuestion**, same pattern as step 6's flagged rows — do NOT write them without confirmation.
+- `unmapped_ee_no_candidate` — zero or more than one plausible match. Flag for the user to identify manually; never guess.
+
+After the user confirms (per name), write the confirmations to a JSON file `[{brex_name, ee_id, bamboo_name, note}]` and run the fixed subcommand (never hand-edit the xlsx or `name-aliases.md`):
+```
+python "<abs>\scripts\runner.py" confirm-aliases --xlsx "<the run's xlsx>" --confirmed "<confirmations.json>"
+```
+This appends the confirmed rows to `references/name-aliases.md` (durable — future runs resolve that person automatically, no re-asking) and rewrites the current xlsx's `Name Aliases` tab.
+
+**How resolution actually happens — updated 2026-07-20 (Zayn):** a separate formula downstream of `EE ID` reads that column and broke when things relied on the `Name Aliases`-tab formula fallback alone (added 2026-07-16) — so that formula is left in place as a harmless backup, but it is **not** the fix. Instead, for every employee with a confirmed alias, `finalize` now rewrites Department Listing's own **First Name / Last Name / "Last, First"** columns (and the name-key they feed) to the Brex form **every run** — e.g. Department Listing shows "Zayn Moselhy", not "Zaynaldine Moselhy", for EE 184. This makes the *original, untouched* `EE ID` XLOOKUP (and anything else keyed off Department Listing's name) resolve directly, with nothing formula-side to maintain. `finalize`'s BambooHR fact-column refresh is otherwise unaffected — only First/Last/D reflect the alias when one exists for that EE.
+
+### 8. Deliver the filled xlsx (must match the reference template)
+
+The deliverable is the **`.xlsx` the runner wrote in step 5** at `outputs/Brex Transaction Import/YYYY/YYYYMM/Brex Transaction Import YYYYMMDD.xlsx`. It is built from `references/Brex Transaction Import File.xlsx`, so it already matches that template exactly — every column, the formatting, and per-row cell comments on flagged rows. **This is the file that produced the good 2026-06-11 output.**
+
+- **Deliver it via the Cowork preview card** (`mcp__cowork__present_files`) so the user can open/save it. The run executes in the sandbox, which does NOT sync to the real Drive, and a binary `.xlsx` can't be auto-written into the Drive `outputs/` folder via the connector — so the card is the delivery path. The user saves it into `outputs/Brex Transaction Import/YYYY/YYYYMM/`.
+- **Do NOT reshape the deliverable.** No stripped column subset, no plain CSV, no native-Google-Sheet substitute. A Sheet drops the template's columns, formatting, and cell-comment audit trail — that is exactly what "looked nothing like the reference file" last time.
+- `categorized.json` stays alongside as the audit trail.
+
+(Optional — ONLY if the user explicitly asks for a quick on-Drive view: a Google Sheet copy can be created in the folder via the connector, but it is a *companion view*, never the deliverable.)
+
+---
+
+## TODO (next phase — out of scope for v2)
+
+These items are intentionally NOT built. Spec'd here so the next implementer has a clean handoff.
+
+1. ~~Reconciliation diff vs QBO posted transactions~~ — **BUILT (2026-06-02).** See `scripts/reconcile.py` + `--qbo-purchases` flag on `categorize-brex`. Matches Brex expenses to QBO Purchases on (date±3d, exact amount, descriptor prefix). ALREADY_POSTED → excluded from xlsx; LIKELY_POSTED → kept with duplicate-warning cell comment. Orchestrator step: pull QBO posted transactions via the `quickbooks_transaction_detail_by_account` report (account_id=62, window ±3 days) — **not** `quickbooks_query FROM Purchase`, which under-returns — and stage as `outputs/Brex Transaction Import/YYYY/YYYYMM/qbo_purchases.json`. See `references/workflow-rules.md` → 'Feed mode — mandatory QBO reconciliation' for the canonical method.
+2. **Stamp Brex id into QBO memo** — when writing the QBO upload, set memo = Brex `expense.id` so future reconciliation has a stable key.
+3. **Write the QBO upload / Transaction Import xlsx** — feed mode currently stops at `categorized.json`. To produce a fillable xlsx like CSV mode does, port the `cmd_write` template logic to consume `categorized.json` instead of CSV rows.
+4. **Bank-feed double-entry decision** — when Brex auto-feeds QBO via the bank-feed connector, this skill should NOT create a separate entry for the same expense. Need a way to detect "already in the bank feed" and skip.
+5. **Direct-write to QBO** — instead of producing a Transaction Import xlsx for manual import, hit QBO's `expenses` or `bills` endpoint directly. Requires resolving categories + classes + customer/job to QBO IDs.
+6. **Delivery** — the deliverable is the **full-template `.xlsx`** (step 7), delivered via the Cowork preview card; it matches `references/Brex Transaction Import File.xlsx`. OPEN: a seamless way to auto-place that binary directly into the Drive `outputs/` folder (the connector can't place a binary; the 271 KB file would need ~114K-token base64 inline). Do NOT substitute a stripped Google Sheet — it doesn't match the reference template.
+
+**Target QBO account for the future import half:** `21140 Brex Credit Card`.
+
+---
+
+## Edge cases
+
+- **CSV mode**:
+  - CSV has no SPENT rows — unusual. Tell the user and ask whether to proceed.
+  - Template unreadable — don't silently fall back. Tell the user.
+  - brex-memory.md / Vendors.xlsx missing — accuracy drops. Warn.
+  - Multiple Brex CSVs uploaded — ask which to use.
+  - Existing dated file for the period — the runner AUTO-VERSIONS to `… (2).xlsx`; it never overwrites unattended. `--allow-overwrite` is honored only in an interactive session that sets `BREX_INTERACTIVE=1` after human approval.
+  - OneDrive holds a file mid-write — retry once.
+
+- **Feed mode**:
+  - Brex pull returns zero CLEARED expenses — likely a date-window mismatch; tell the user and offer to widen.
+  - Bank rules load from bundled `references/qbo-bank-rules.xlsx` (no per-run export). If that file is ever missing, fall back to asking for a fresh QBO export + convert. Never run with no rules (would 0% hit).
+  - QBO vendors pull fails — fall back to cached `Vendors.json` and report cache age. If no cache, fall back to `references/Vendors.xlsx`.
+  - Cardholder-rule flag rate > 10% of postable — surface as a warning. Likely indicates a rule that's too aggressive (text too short, or a person's first name).
+
+## Files in this skill
+
+- `SKILL.md` — this file
+- `scripts/runner.py` — orchestration (preflight, dryrun, write, notes, categorize-brex)
+- `scripts/resolver.py` — Payee Override resolver + MCC/Brex-category enrichment + vendor loaders (xlsx + JSON)
+- `scripts/rules_loader.py` — QBO bank rules parser (.xlsx or live MCP payload) — NEW in v2
+- `references/qbo-bank-rules.xlsx` — **bundled QBO bank rules (~379), auto-loaded by feed mode** (refresh ~quarterly)
+- `scripts/brex_feed.py` — feed-mode pipeline (filter + match + flag) — NEW in v2
+- `scripts/fill_col_L.py` — default Sub Category Override derivation (CSV mode only)
+- `scripts/memory_loader.py` — parses brex-memory.md tables (including Sub Category column)
+- `scripts/name_aliases.py` — Brex-name → EE ID alias matching/persistence for the `EE ID` column (NEW 2026-07-16)
+- `references/name-aliases.md` — human-confirmed Brex-vs-BambooHR name aliases (NEW 2026-07-16); loaded by `finalize`, written by `confirm-aliases`
+- `references/workflow-rules.md` — canonical rules (CSV mode)
+- `test-fixtures/` — synthetic test data (CSV + feed fixtures)

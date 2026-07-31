@@ -1,0 +1,15 @@
+qbo_account,qbo_subaccount,tab_row,segment,added_by,added_date,notes
+# This file has NO seeded rows as of skill creation (2026-07-14). It exists to hold human-confirmed
+# exceptions where the QBO class tag on an account does NOT determine the correct tab placement --
+# principally "Revenue- Synechron Intercompany" and any other project-tagged revenue/COGS/opex where
+# the real business segment differs from the class field (e.g. "the Markel project hits Datadog" even
+# if QBO has it classed elsewhere). Add one row per known subaccount/customer/project name.
+#
+# qbo_account       = the QBO parent account exactly as it appears in the P&L (e.g. "Revenue- Synechron Intercompany")
+# qbo_subaccount    = the specific customer/entity/project sub-line (e.g. "Synechron Inc., USA")
+# tab_row           = target row number in the GAAP Analysis tab's Actuals block
+# segment           = DD / SN / Operations / Synechron -- must match tab_row's actual segment
+# added_by / added_date = who confirmed this and when (approval trail, per root CLAUDE.md SS3)
+# notes             = why (e.g. "Markel project, delivered by Datadog team")
+#
+# Until a subaccount has a row here, the skill FLAGS its dollar amount rather than guessing.

@@ -1,0 +1,97 @@
+You are running the RapDev Brex Import skill in FEED mode, unattended and DRAFT-ONLY.
+
+Read skills/brex-import/SKILL.md and follow it exactly. Use the scripts in
+skills/brex-import/scripts/ EXACTLY as written.
+
+HARD RULE — NO IMPROVISED SCRIPTS
+- Do NOT write, generate, or improvise any new helper script. Only the scripts ALREADY in
+  skills/brex-import/scripts/ may run. The fixed entry points are:
+    runner.py qbo-purchases   (QBO report -> qbo_purchases.json)
+    brex_page.py              (per-page Brex staging -> %TEMP%\brex_acc.json)
+    runner.py categorize-brex (categorize + reconcile + write xlsx)
+  Any small file transform/copy uses an inline `python -c "..."` command (shown below), never a
+  written script. If a step seems to need a script that does not exist, STOP and flag it in your
+  final response — do not improvise one.
+- Every shell command MUST start with `python` and use ABSOLUTE paths (no `cd …;` prefix, no
+  PowerShell cmdlets). Set the variables once and substitute them literally:
+    OUTDIR  = G:\Shared drives\RapDev Finance - Claude\outputs\Brex Transaction Import\<YYYY>\<YYYYMM>
+    SCRIPTS = G:\Shared drives\RapDev Finance - Claude\skills\brex-import\scripts
+    REFS    = G:\Shared drives\RapDev Finance - Claude\skills\brex-import\references
+  (Build <YYYY>/<YYYYMM> from the posted-date window.)
+
+SYNCHRONOUS EXECUTION (correctness -- a step must finish before the next begins)
+- Run EVERY command in the FOREGROUND. NEVER set run_in_background. NEVER end your turn while a
+  command is still running, and never "wait for a notification" -- there is no async wake here.
+- categorize-brex (step 3) and finalize (step 5) can take several minutes. Invoke the PowerShell
+  tool with timeout=600000 (10 min) for those two, foreground, and read their printed JSON before
+  continuing. If one times out or errors, retry it ONCE in the foreground; if it still fails, STOP
+  and flag it.
+- Steps 1-5 run in order, every time. finalize (step 5) is MANDATORY: the run is not complete until
+  finalize has printed its summary and exited cleanly. Never finish with finalize unrun.
+
+OUTPUT DISCIPLINE -- this is an unattended run; no one reads mid-run prose.
+- Do NOT narrate or recap each step. No "now doing X" / "X done, next Y" status lines.
+- DO still emit text for: a real decision that needs reasoning, a flag/error/STOP, and the final
+  summary. Keep all verification steps. Brevity over commentary -- not fewer checks.
+
+STEPS
+
+1. QBO-first (sets the window). Call quickbooks_transaction_detail_by_account for account_id=62
+   over a BOUNDED ROLLING window: start_date = today minus 21 days, end_date = today (never a fixed
+   or older start: ~3 weeks always covers everything since the last run plus the posted-date window
+   +/-3 days, and it never grows week over week). The MCP result is saved to a file -- note that
+   path as <QBO_REPORT_FILE>; do NOT read or grep it. Immediately stage the reconciliation baseline:
+     python "<SCRIPTS>\runner.py" qbo-purchases --report "<QBO_REPORT_FILE>" --out-dir "<OUTDIR>"
+   Its printed JSON includes "date_max" = the latest posted QBO date. That date through today IS the
+   Brex POSTED-date window -- take the window start from date_max; do NOT hunt for it by grepping.
+
+2. Brex pull. Call brex_expenses_list (expense_type=CARD, expand=["merchant","budget","user"]).
+   Paginate newest-first: for EACH page the tool result is saved to a file <PAGE_FILE> — run it
+   passing the window as args (date_max from step 1, and today; do NOT edit brex_page.py):
+     python "<SCRIPTS>\brex_page.py" "<PAGE_FILE>" <date_max> <today>
+   and continue with the printed cursor until it prints "continue? False".
+   - payment_posted_at IS the posted date — used VERBATIM by brex_page.py. Never estimate a clearing
+     date; expenses with no payment_posted_at are excluded automatically.
+   - When the loop ends, stage Brex_expenses.json from the accumulator with this EXACT one-liner:
+     python -c "import json,os; a=json.load(open(os.path.join(os.environ['TEMP'],'brex_acc.json'),encoding='utf-8')); json.dump(a['exps'], open(r'<OUTDIR>\Brex_expenses.json','w',encoding='utf-8'), indent=2); print('staged', len(a['exps']))"
+
+   VENDOR LIST — DISK CACHE ONLY (do this before step 3; never paginate vendors into context).
+   The vendor list is a persistent cache at "<REFS>\Vendors.json". Check freshness:
+     python -c "import os,time; p=r'<REFS>\Vendors.json'; print('FRESH' if os.path.exists(p) and (time.time()-os.path.getmtime(p))<1209600 else 'STALE')"
+   - FRESH (< 14 days): use it as-is. Do NOT query vendors at all.
+   - STALE or missing: refresh with ONE call (do NOT paginate, do NOT read vendors into context):
+       quickbooks_query  SELECT Id, DisplayName, CompanyName, Active FROM Vendor MAXRESULTS 1000
+     The large result is saved to a file — note that path as <VENDOR_FILE>, then:
+       python "<SCRIPTS>\runner.py" vendors-cache --report "<VENDOR_FILE>" --out "<REFS>\Vendors.json"
+
+3. Categorize + reconcile + write the filled xlsx (one command, starts with python):
+     python "<SCRIPTS>\runner.py" categorize-brex --refs-dir "<REFS>" --out-dir "<OUTDIR>" --brex-expenses "<OUTDIR>\Brex_expenses.json" --qbo-rules "<REFS>\qbo-bank-rules.xlsx" --vendors "<REFS>\Vendors.json" --memory "<REFS>\brex-memory.md" --qbo-purchases "<OUTDIR>\qbo_purchases.json"
+   (Template auto-resolves from references/. If the dated output file already exists, write to a
+   suffixed name and note it — do NOT overwrite.)
+
+4. Honor SKILL.md enrichment (use Read/Write/Edit tools + inline `python -c`, no new scripts):
+   - Airlines -> airline name as Payee + Sub Category Override = Airfare.
+   - NO blind "Food Vendor" guess. Web-search any merchant with no rule/memory/vendor match, map it
+     to exactly one of Food/Office/Travel/Taxi/Hotel Vendor, flag it, and append the confirmed
+     mapping to <REFS>\brex-memory.md via the Edit tool.
+   - Fill Card #/Card Name/EE ID from the Card Mapping tab; DATE column = the Brex posted date.
+     (The Department Listing tab is refreshed by the mandatory finalize step -- see step 5.)
+
+5. FINALIZE (mandatory -- refreshes the Department Listing tab AND deletes the JSON sidecars).
+   First pull the BambooHR Department Listing report via bamboohr_report_get(report_id="228") and
+   stage the JSON to "<OUTDIR>\bamboo_228.json" (its file mtime must be fresh -- finalize aborts on
+   a stale roster). Then run:
+     python "<SCRIPTS>\runner.py" finalize --xlsx "<OUTDIR>\Brex Transaction Import <YYYYMMDD>.xlsx" --bamboo-report "<OUTDIR>\bamboo_228.json" --out-dir "<OUTDIR>"
+   finalize refreshes the last tab (Department Listing) from report 228 -- matching by Employee #,
+   refreshing the BambooHR fact columns, PRESERVING the curated QBO-Department columns, and
+   appending+flagging new hires that need a mapping -- then deletes the JSON sidecars, leaving ONLY
+   the xlsx deliverable. It FAILS LOUD if report 228 is missing or stale; if it aborts, STOP and
+   flag it (do not proceed without a current roster). <YYYYMMDD> = the run date used for the xlsx.
+
+HARD CONSTRAINTS
+- DRAFT-ONLY. Do NOT import to or write to QuickBooks. Do NOT send anything externally (no email,
+  Slack, invoices, payment links). Produce only local files for human review.
+- If any pull fails or returns partial data, STOP and flag it in your final response. Never treat
+  a partial or failed pull as complete, and never invent data to fill a gap.
+- A different RapDev Finance & Accounting team member must review and approve this draft before
+  anything is promoted out of the outputs/ folder.

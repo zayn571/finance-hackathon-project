@@ -1,5 +1,6 @@
 import metrics from "../data/dashboardMetrics.json";
 import { SERIES } from "../lib/chartTokens";
+import { MONTHLY, type Period } from "../lib/derive";
 
 const S = SERIES.light;
 const fmtM = (v: number) => (Math.abs(v) >= 1e6 ? `${(v / 1e6).toFixed(2)}M` : `${Math.round(v / 1000)}k`);
@@ -20,7 +21,8 @@ function Legend({ items }: { items: { label: string; color: string }[] }) {
 }
 
 /** Revenue and EBITDA by month — grouped bars, one axis, direct value labels. */
-export function RevenueEbitdaByMonth() {
+export function RevenueEbitdaByMonth({ period }: { period: Period }) {
+  const active = new Set(period.months.map((mi) => MONTHLY[mi].month));
   const rows = metrics.revenueByMonth;
   const max = Math.max(...rows.map((r) => Math.max(r.revenue, r.ebitda)));
   return (
@@ -29,8 +31,8 @@ export function RevenueEbitdaByMonth() {
         <div>
           <h2>Revenue and EBITDA by month</h2>
           <p className="hint">
-            QuickBooks P&amp;L, closed months only ({metrics.meta.closedThrough}).{" "}
-            {metrics.meta.excludedPartial} is still mid-close and is excluded.
+            QuickBooks P&amp;L through {metrics.meta.closedThrough}. Months in the selected period
+            are highlighted.
           </p>
         </div>
       </div>
@@ -38,7 +40,7 @@ export function RevenueEbitdaByMonth() {
       <div className="chart-scroll">
         <div className="bars-grouped" role="img" aria-label="Revenue and EBITDA by month">
           {rows.map((r) => (
-            <div key={r.month} className="bar-group">
+            <div key={r.month} className={active.has(r.month) ? "bar-group" : "bar-group dimmed"}>
               <div className="bar-pair">
                 <div className="bar-col">
                   <span className="bar-label">{fmtM(r.revenue)}</span>
@@ -74,7 +76,8 @@ export function RevenueEbitdaByMonth() {
 }
 
 /** Year-over-year revenue growth by month. Single series → no legend box. */
-export function YoyGrowth() {
+export function YoyGrowth({ period }: { period: Period }) {
+  const active = new Set(period.months.map((mi) => MONTHLY[mi].month));
   const rows = metrics.yoyGrowth;
   const max = Math.max(...rows.map((r) => r.growthPct ?? 0));
   return (
@@ -87,7 +90,7 @@ export function YoyGrowth() {
       </div>
       <div className="yoy-rows">
         {rows.map((r) => (
-          <div key={r.month} className="yoy-row">
+          <div key={r.month} className={active.has(r.month) ? "yoy-row" : "yoy-row dimmed"}>
             <span className="yoy-month">{r.month}</span>
             <div className="yoy-track">
               <div className="yoy-bar" style={{ width: `${((r.growthPct ?? 0) / max) * 100}%`, background: S[0] }} />

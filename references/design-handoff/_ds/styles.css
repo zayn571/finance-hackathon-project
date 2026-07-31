@@ -1,0 +1,7 @@
+/* ============================================================
+   RapDev Design System — styles.css (root entry)
+   Single stylesheet for consumers: link this one file and you
+   get the full token layer + base element styles.
+   ============================================================ */
+
+@import url('./colors_and_type.css');

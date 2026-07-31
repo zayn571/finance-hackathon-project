@@ -1,0 +1,30 @@
+qbo_group,qbo_account,qbo_subaccount_filter,tab_row,tab_row_label,tab_block,notes
+Income,Services Revenue,,15,DD Services,Revenue,"Fixed Fee + Time & Materials summed; split to this row only when class rolls up under 200- Datadog"
+Income,Services Revenue,,20,SN Services,Revenue,"Fixed Fee + Time & Materials summed; split to this row only when class rolls up under 300- ServiceNow"
+Income,Software Revenue,Datadog Marketplace,16,DD Software,Revenue,
+Income,Software Revenue,Other Software Revenue,21,SN Software,Revenue,
+Income,MSP Revenue,Managed Datadog,17,Managed DD,Revenue,
+Income,MSP Revenue,Managed Security,18,Managed SOC,Revenue,
+Income,MSP Revenue,,22,SN MSP,Revenue,"Any MSP Revenue sub-account rolling up under 300- ServiceNow class; none observed as of 2026-07-14 pull"
+Income,Revenue- Synechron Intercompany,,,,Revenue,"NOT auto-mapped -- route via reference/segment-overrides.csv by subaccount name (e.g. customer/entity). No confident default; unmatched = FLAG. See SKILL.md SS3."
+COGS,COGS- Personnel Expense,,30,DD (COGS Payroll),COGS,"Class rollup 200- Datadog. QBO does not split personnel COGS by Services/Software/Managed -- rows 31-34 are NOT populated by this skill."
+COGS,COGS- Personnel Expense,,35,SN (COGS Payroll),COGS,"Class rollup 300- ServiceNow. Rows 36-38 NOT populated by this skill (see notes on row 30)."
+COGS,COGS- Synechron Intercompany,,30,DD (COGS Payroll),COGS,"Per 2026-07-14 decision: lump into COGS Payroll for whichever side (DD/SN) the QBO class says, added on top of COGS- Personnel Expense for that class. Route by class rollup, same as COGS- Personnel Expense."
+COGS,COGS- Synechron Intercompany,,35,SN (COGS Payroll),COGS,"See row 30 note -- same rule, ServiceNow side."
+COGS,COGS- Travel Expenses,,40,DD (COGS Travel),COGS,Class rollup 200- Datadog.
+COGS,COGS- Travel Expenses,,41,SN (COGS Travel),COGS,Class rollup 300- ServiceNow.
+COGS,Other COGS,Marketplace Fees,42,Marketplace Fees,COGS,Observed only under 200- Datadog to date; write under whichever class actually carries it.
+COGS,Other COGS,,43,Contractor Fees,COGS,"Any Other COGS subaccount that is not Marketplace Fees. Flag if an unrecognized Other COGS subaccount appears -- do not assume it is Contractor Fees."
+Expenses,General & Administrative (excl. G&A- Personnel Expenses),,71,DD G&A,Opex,"Total G&A group MINUS the G&A- Personnel Expenses sub-account (that sub-account moves to the combined Personnel Expenses bucket -- see SKILL.md SS4 assumption). Class rollup 200- Datadog."
+Expenses,General & Administrative (excl. G&A- Personnel Expenses),,72,SN G&A,Opex,Same rule. Class rollup 300- ServiceNow.
+Expenses,General & Administrative (excl. G&A- Personnel Expenses),,73,Operations G&A,Opex,Same rule. Class rollup 100- Operations.
+Expenses,General & Administrative (excl. G&A- Personnel Expenses),,SYN_GA,Synechron G&A,Opex,"Same rule. Class rollup 400- Synechron. Writes to the new Synechron block (see reference/synechron-block.md) -- these rows do not exist in the tab's original 71-73 range."
+Expenses,G&A- Personnel Expenses + Sales & Marketing- Personnel Expenses,,75,DD Personnel,Opex,"Combined bucket per SKILL.md SS4 assumption. Class rollup 200- Datadog."
+Expenses,G&A- Personnel Expenses + Sales & Marketing- Personnel Expenses,,76,SN Personnel,Opex,Same rule. Class rollup 300- ServiceNow.
+Expenses,G&A- Personnel Expenses + Sales & Marketing- Personnel Expenses,,77,Operations Personnel,Opex,Same rule. Class rollup 100- Operations.
+Expenses,G&A- Personnel Expenses + Sales & Marketing- Personnel Expenses,,SYN_PERSONNEL,Synechron Personnel,Opex,Same rule. Class rollup 400- Synechron. New Synechron block.
+Expenses,Sales & Marketing (excl. Sales & Marketing- Personnel Expenses),,79,DD S&M,Opex,"Total S&M group MINUS Sales & Marketing- Personnel Expenses (moved to Personnel bucket above). Class rollup 200- Datadog."
+Expenses,Sales & Marketing (excl. Sales & Marketing- Personnel Expenses),,80,SN S&M,Opex,Same rule. Class rollup 300- ServiceNow.
+Expenses,Sales & Marketing (excl. Sales & Marketing- Personnel Expenses),,81,Operations S&M,Opex,Same rule. Class rollup 100- Operations.
+Expenses,Sales & Marketing (excl. Sales & Marketing- Personnel Expenses),,SYN_SM,Synechron S&M,Opex,Same rule. Class rollup 400- Synechron. New Synechron block.
+OtherExpenses,Other Expenses (Depreciation/Income Tax/Interest/Stock Comp/Deferred Tax/Exchange G-L),,84,Other Expenses,Other,"Tab has a single Other Expenses row with no DD/SN/Synechron split. Write the 100- Operations amount only (the overwhelming majority historically); FLAG any DD/SN/Synechron-classed dollars in this group instead of writing them (e.g. Stock Compensation appears across all classes)."

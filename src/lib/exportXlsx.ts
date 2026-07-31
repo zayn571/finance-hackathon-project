@@ -78,10 +78,12 @@ export async function buildIncomeStatementXlsx(opts: XlsxOptions): Promise<Blob>
   });
 
   const dataColCount = opts.periods.length;
+  // The trailing note column only exists when the caller supplies notes.
+  const hasNotes = typeof opts.note === "function";
   ws.getColumn(1).width = COL_A_WIDTH;
   ws.getColumn(2).width = COL_B_WIDTH;
   for (let i = 0; i < dataColCount; i++) ws.getColumn(3 + i).width = DATA_COL_WIDTH;
-  ws.getColumn(3 + dataColCount).width = 30; // Source
+  if (hasNotes) ws.getColumn(3 + dataColCount).width = 30;
 
   // Rows 1-4 are the reference's header band; row 4 carries the period labels so
   // the freeze at C5 lands exactly where it does in the workbook.
@@ -102,10 +104,12 @@ export async function buildIncomeStatementXlsx(opts: XlsxOptions): Promise<Blob>
     c.alignment = { horizontal: "right" };
     c.border = { bottom: { style: "medium", color: { argb: "FF000000" } } };
   });
-  const srcHeader = headerRow.getCell(3 + dataColCount);
-  srcHeader.value = "Source";
-  srcHeader.font = { name: DEFAULT_FONT, size: 8, bold: true };
-  srcHeader.border = { bottom: { style: "medium", color: { argb: "FF000000" } } };
+  if (hasNotes) {
+    const srcHeader = headerRow.getCell(3 + dataColCount);
+    srcHeader.value = "Source";
+    srcHeader.font = { name: DEFAULT_FONT, size: 8, bold: true };
+    srcHeader.border = { bottom: { style: "medium", color: { argb: "FF000000" } } };
+  }
 
   let r = 5;
   for (const row of ACTUALS_ANALYSIS_SCHEMA) {
@@ -124,7 +128,7 @@ export async function buildIncomeStatementXlsx(opts: XlsxOptions): Promise<Blob>
       const label = excelRow.getCell(2);
       label.value = row.label;
       applyRowStyle(label, s, true);
-      for (let i = 0; i < dataColCount + 1; i++) {
+      for (let i = 0; i < dataColCount + (hasNotes ? 1 : 0); i++) {
         const c = excelRow.getCell(3 + i);
         applyRowStyle(c, s, false);
       }
@@ -144,10 +148,12 @@ export async function buildIncomeStatementXlsx(opts: XlsxOptions): Promise<Blob>
       applyRowStyle(c, s, false);
     });
 
-    const noteCell = excelRow.getCell(3 + dataColCount);
-    noteCell.value = opts.note ? opts.note(row) : "";
-    noteCell.font = { name: DEFAULT_FONT, size: 8, color: { argb: "FF6B7A8A" } };
-    noteCell.alignment = { horizontal: "left" };
+    if (hasNotes) {
+      const noteCell = excelRow.getCell(3 + dataColCount);
+      noteCell.value = opts.note!(row);
+      noteCell.font = { name: DEFAULT_FONT, size: 8, color: { argb: "FF6B7A8A" } };
+      noteCell.alignment = { horizontal: "left" };
+    }
 
     r++;
   }

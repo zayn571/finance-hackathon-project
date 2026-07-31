@@ -1,32 +1,56 @@
-# React + TypeScript + Vite
+# RapDev finance operating dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+An internal finance dashboard covering the monthly close: operating metrics, Rule
+of 40, a full income statement with Excel export, A/R aging, backlog, attrition,
+and the month-end close board.
 
-Currently, two official plugins are available:
+## Running it
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+`npm run build` emits `dist/index.html` as a **single self-contained file** — all
+JS, CSS and data inlined — so it can be opened straight from disk with no server.
+
+## Where the numbers come from
+
+| Section | Source |
+|---|---|
+| Income statement, KPI strip, charts, Rule of 40 | QuickBooks Online — P&L by class, pulled per month |
+| A/R aging | QuickBooks Online — Aged Receivables |
+| Backlog, fixed-price mix | Delivered Synechron workbook, June 2026 |
+| Attrition | BambooHR report 228, including terminated employees |
+| Headcount | BambooHR department listing |
+| Close board | Asana project "July '26 Close" |
+| Working files | Live Google Drive links |
+
+Every reference file and every skill the board points at is committed under
+[`references/`](references/README.md), so the repo does not depend on the
+`rapdev-finance-claude-skills` workspace.
+
+## Architecture
+
+Monthly figures are the single source of truth. `src/data/monthlyActuals.json`
+holds one record per closed month, and `src/lib/derive.ts` sums a selected set of
+months and computes every total, margin, ratio and rate from those summed dollars.
+Percentages are never averaged across months, so a quarter figure is a true
+quarter figure rather than a mean of its months.
+
+The period selector in the header drives the whole page. Choosing the fiscal year
+shows quarter columns plus a year total; choosing a quarter breaks it into months;
+choosing a month shows that month alone. Working days is the real business-day
+count for the selection and feeds the hours and rate maths.
+
+Hours and rates are anchored to the two independently verified figures in the
+delivered Synechron workbook — 72.35% utilization and a 317.91 blended rate — with
+hours billed derived from services revenue at that rate.
+
+## Excel export
+
+The income statement and A/R aging both write real `.xlsx` via ExcelJS rather than
+CSV, because CSV cannot carry number formats, fills, weights, indents or column
+widths. Income-statement styling comes from `src/data/refStyles.json`, extracted
+from the Mgmt Reporting `GAAP Analysis` tab, and matches it row for row: freeze at
+C5, column B 27.29, data columns 14.71, Calibri 8 body with 10pt section bands.
