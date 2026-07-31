@@ -44,7 +44,7 @@ interface MonthRow {
   };
   otherExpenses: number;
   otherExpensesAddBack: number;
-  bookings: { total: number; dd: number; sn: number; sw: number; msp: number };
+  bookings: { total: number; dd: number; sn: number; sw: number; msp: number; dealCount: number };
   ebitdaAdjustments: { mwe: number };
 }
 
@@ -175,6 +175,7 @@ export function derive(monthIdxs: number[]) {
       sn: r2(bookingsSn),
       sw: r2(sum(ms, (m) => m.bookings.sw)),
       msp: r2(sum(ms, (m) => m.bookings.msp)),
+      dealCount: sum(ms, (m) => m.bookings.dealCount),
     },
     bookingsShare: { dd: pct(bookingsDd, bookingsTotal), sn: pct(bookingsSn, bookingsTotal) },
     revenue: {

@@ -23,7 +23,7 @@ export default function KpiStrip({ period }: { period: Period }) {
     { label: "Revenue", value: money(d.revenue.total), delta: `${growthPct.toFixed(1)}% vs FY25`, favorable: growthPct > 0 },
     { label: "Adj. EBITDA", value: money(d.adjEbitda), delta: `${d.ebitdaPct.toFixed(1)}% margin` },
     { label: "Gross margin", value: `${d.grossMarginPct.total.toFixed(1)}%`, delta: money(d.grossMargin.total) },
-    { label: "Bookings", value: money(d.bookings.total), delta: `${d.salesEfficiency.toFixed(2)}x sales efficiency` },
+    { label: "Bookings", value: money(d.bookings.total), delta: `${d.bookings.dealCount} deals closed won` },
     { label: "Backlog", value: `$${metrics.backlog.series[metrics.backlog.series.length - 1].value.toFixed(2)}M`, delta: "sold, not delivered" },
     { label: "Headcount", value: String(d.projectHours.billableHeadcount + d.projectHours.nonBillableHeadcount), delta: `${d.projectHours.billablePct.toFixed(0)}% billable`, favorable: true },
   ];
