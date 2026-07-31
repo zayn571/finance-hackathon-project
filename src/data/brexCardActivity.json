@@ -1,6 +1,11 @@
 {
-  "source": "Balance and month activity from QuickBooks Transaction Detail by Account, account 62 (Brex Credit Card, AcctNum 21140). Live category and status detail from the Brex expenses API (CARD).",
-  "syncedAt": "2026-07-31T00:00:00Z",
+  "source": "Brex Transaction Import 20260730 (QBO Transaction Import workbook) \u2014 the categorised import file, which is authoritative for sub-category and department. Account balance from the QuickBooks Transaction Detail report for account 62 (Brex Credit Card, AcctNum 21140).",
+  "window": {
+    "from": "2026-07-25",
+    "to": "2026-07-30",
+    "lines": 465,
+    "total": 84272.77
+  },
   "account": {
     "name": "Brex Credit Card",
     "qboAccountId": "62",
@@ -15,248 +20,283 @@
     "netActivity": 94740.83,
     "distinctMerchants": 103
   },
-  "largestCharge": {
-    "merchant": "Fanduel",
-    "amount": 15685.24,
-    "date": "2026-07-02"
-  },
-  "topMerchants": [
+  "bySubCategory": [
     {
-      "merchant": "Anthropic",
-      "amount": 26150.72
+      "category": "Meals & Entertainment",
+      "amount": 49797.64,
+      "lines": 182
     },
     {
-      "merchant": "Amazon",
-      "amount": 15975.94
+      "category": "Software Licenses",
+      "amount": 12941.41,
+      "lines": 11
     },
     {
-      "merchant": "Food Vendor",
-      "amount": 15898.64
+      "category": "Ground Transportation",
+      "amount": 7184.37,
+      "lines": 184
     },
     {
-      "merchant": "Fanduel",
-      "amount": 15688.17
+      "category": "Airfare",
+      "amount": 5709.41,
+      "lines": 30
     },
     {
-      "merchant": "Hubspot, Inc.",
-      "amount": 14618.83
+      "category": "Other Marketing Expenses",
+      "amount": 3627.01,
+      "lines": 3
     },
     {
-      "merchant": "United Airlines",
-      "amount": 13118.95
+      "category": "Lodging",
+      "amount": 2260.28,
+      "lines": 5
     },
     {
-      "merchant": "Apple",
-      "amount": 7444.69
+      "category": "Office Supplies",
+      "amount": 1678.39,
+      "lines": 18
     },
     {
-      "merchant": "Delta",
-      "amount": 6679.62
+      "category": "Other Travel Expenses",
+      "amount": 599.94,
+      "lines": 21
+    },
+    {
+      "category": "Dues & Subscriptions",
+      "amount": 326.52,
+      "lines": 9
+    },
+    {
+      "category": "Hardware & Peripherals",
+      "amount": 132.8,
+      "lines": 1
+    },
+    {
+      "category": "Utilities",
+      "amount": 15.0,
+      "lines": 1
     }
   ],
-  "feed": {
-    "window": "Jul 30 2026",
-    "count": 100,
-    "byCategory": [
-      {
-        "category": "Travel — lodging",
-        "amount": 93671.53
-      },
-      {
-        "category": "Meals & entertainment",
-        "amount": 21630.09
-      },
-      {
-        "category": "Travel — ground",
-        "amount": 1367.74
-      },
-      {
-        "category": "Software & subscriptions",
-        "amount": 57.16
-      },
-      {
-        "category": "Other",
-        "amount": 49.35
-      },
-      {
-        "category": "Travel — airfare",
-        "amount": 45
-      },
-      {
-        "category": "Office",
-        "amount": 35.4
-      },
-      {
-        "category": "Rent & facilities",
-        "amount": 30.54
-      },
-      {
-        "category": "Dues & subscriptions",
-        "amount": 10.18
-      }
-    ],
-    "recent": [
-      {
-        "date": "2026-07-30",
-        "time": "23:51",
-        "merchant": "TST*MR. TEA",
-        "amount": 7.49,
-        "category": "Meals & entertainment",
-        "status": "Processing"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "23:51",
-        "merchant": "TST*MR. TEA",
-        "amount": 9.15,
-        "category": "Meals & entertainment",
-        "status": "Cleared"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "23:46",
-        "merchant": "UBER   * PENDING",
-        "amount": 40.96,
-        "category": "Travel — ground",
-        "status": "Processing"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "23:38",
-        "merchant": "UBER   *TRIP",
-        "amount": 30,
-        "category": "Travel — ground",
-        "status": "Cleared"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "23:33",
-        "merchant": "CHICK-FIL-A #04205",
-        "amount": 26.73,
-        "category": "Meals & entertainment",
-        "status": "Processing"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "23:18",
-        "merchant": "UBR* PENDING.UBER.COM",
-        "amount": 25.99,
-        "category": "Travel — ground",
-        "status": "Processing"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "23:10",
-        "merchant": "UBER   *TRIP",
-        "amount": 28.94,
-        "category": "Travel — ground",
-        "status": "Cleared"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "23:03",
-        "merchant": "LYFT   *TEMP AUTH HOLD",
-        "amount": 26.63,
-        "category": "Travel — ground",
-        "status": "Processing"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "22:44",
-        "merchant": "UBER   *TRIP",
-        "amount": 41.69,
-        "category": "Travel — ground",
-        "status": "Cleared"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "22:40",
-        "merchant": "UBER   *EATS",
-        "amount": 25.14,
-        "category": "Meals & entertainment",
-        "status": "Cleared"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "22:38",
-        "merchant": "LYFT   *TEMP AUTH HOLD",
-        "amount": 0,
-        "category": "Travel — ground",
-        "status": "Pending"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "22:31",
-        "merchant": "TST* LUKES LOBSTER - B",
-        "amount": 48.15,
-        "category": "Meals & entertainment",
-        "status": "Processing"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "22:16",
-        "merchant": "CVS/PHARMACY #01217",
-        "amount": 44.41,
-        "category": "Other",
-        "status": "Cleared"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "22:05",
-        "merchant": "Uber",
-        "amount": 0,
-        "category": "Travel — ground",
-        "status": "Pending"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "22:04",
-        "merchant": "UBER TECHNOLOGIES INC",
-        "amount": 0,
-        "category": "Travel — ground",
-        "status": "Pending"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "21:51",
-        "merchant": "SQ *CHERYL PALERMO DBA",
-        "amount": 23,
-        "category": "Meals & entertainment",
-        "status": "Cleared"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "21:49",
-        "merchant": "UBER   *TRIP",
-        "amount": 53.61,
-        "category": "Travel — ground",
-        "status": "Cleared"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "21:47",
-        "merchant": "BOS HUDSON ST1925",
-        "amount": 10.18,
-        "category": "Dues & subscriptions",
-        "status": "Cleared"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "21:47",
-        "merchant": "BOSTON COMMON GARAGE",
-        "amount": 144,
-        "category": "Travel — ground",
-        "status": "Processing"
-      },
-      {
-        "date": "2026-07-30",
-        "time": "21:33",
-        "merchant": "LYFT   *COMFORT 07-29",
-        "amount": 39.93,
-        "category": "Travel — ground",
-        "status": "Cleared"
-      }
-    ]
+  "byDepartment": [
+    {
+      "department": "100- Operations",
+      "amount": 63965.49
+    },
+    {
+      "department": "300- ServiceNow",
+      "amount": 10567.67
+    },
+    {
+      "department": "200- Datadog",
+      "amount": 9671.12
+    },
+    {
+      "department": "400- Synechron",
+      "amount": 68.49
+    }
+  ],
+  "topVendors": [
+    {
+      "vendor": "Food Vendor",
+      "amount": 43891.1
+    },
+    {
+      "vendor": "Anthropic",
+      "amount": 10414.99
+    },
+    {
+      "vendor": "Uber",
+      "amount": 5255.62
+    },
+    {
+      "vendor": "Cision US Inc.",
+      "amount": 3595.46
+    },
+    {
+      "vendor": "Travel Vendor",
+      "amount": 2194.46
+    },
+    {
+      "vendor": "Delta",
+      "amount": 1886.96
+    },
+    {
+      "vendor": "Bamboo HR",
+      "amount": 1776.99
+    },
+    {
+      "vendor": "Sweeney's",
+      "amount": 1641.75
+    }
+  ],
+  "largestCharge": {
+    "merchant": "TST*SRV - BOSTON",
+    "vendor": "Food Vendor",
+    "amount": 8049.24,
+    "date": "2026-07-30",
+    "category": "Meals & Entertainment"
   },
-  "privacyNote": "Cardholder names are excluded by design. The feed shows merchant, amount, category and status only."
+  "recent": [
+    {
+      "date": "2026-07-30",
+      "merchant": "TST*SRV - BOSTON",
+      "vendor": "Food Vendor",
+      "category": "Meals & Entertainment",
+      "department": "100- Operations:110- G&A",
+      "amount": 8049.24
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "ANTHROPIC",
+      "vendor": "Anthropic",
+      "category": "Software Licenses",
+      "department": "100- Operations:110- G&A",
+      "amount": 5207.23
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "TST* YELLOW DOOR TAQUE",
+      "vendor": "Food Vendor",
+      "category": "Meals & Entertainment",
+      "department": "100- Operations:110- G&A",
+      "amount": 3500.0
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "PRESSED CAFE PRUDENTI",
+      "vendor": "Food Vendor",
+      "category": "Meals & Entertainment",
+      "department": "100- Operations:110- G&A",
+      "amount": 1492.34
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "DELTA",
+      "vendor": "Delta",
+      "category": "Airfare",
+      "department": "100- Operations:120- Marketing",
+      "amount": 691.6
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "TOTAL WINE AND MORE",
+      "vendor": "Office Vendor",
+      "category": "Office Supplies",
+      "department": "100- Operations:110- G&A",
+      "amount": 668.04
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "ALASKA A",
+      "vendor": "Alaska Air",
+      "category": "Airfare",
+      "department": "300- ServiceNow:330- Sales",
+      "amount": 455.4
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "SOUTHWES",
+      "vendor": "Southwest Air",
+      "category": "Airfare",
+      "department": "300- ServiceNow:330- Sales",
+      "amount": 390.4
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "UNITED",
+      "vendor": "United Airlines",
+      "category": "Airfare",
+      "department": "200- Datadog:220- Engineering",
+      "amount": 377.2
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "TATTEBAKERY",
+      "vendor": "Tatte",
+      "category": "Meals & Entertainment",
+      "department": "300- ServiceNow:330- Sales",
+      "amount": 225.72
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "WEBFLOW.COM",
+      "vendor": "webflow.com",
+      "category": "Software Licenses",
+      "department": "100- Operations:120- Marketing",
+      "amount": 200.81
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "LinkedIn P3061358805",
+      "vendor": "LinkedIn Corporation",
+      "category": "Dues & Subscriptions",
+      "department": "100- Operations:120- Marketing",
+      "amount": 171.86
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "SOUTHWES",
+      "vendor": "Southwest Air",
+      "category": "Airfare",
+      "department": "300- ServiceNow:320- Engineering",
+      "amount": 144.79
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "MICRO CENTER #121",
+      "vendor": "Office Vendor",
+      "category": "Hardware & Peripherals",
+      "department": "100- Operations:110- G&A",
+      "amount": 132.8
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "THE NEWBURY BOSTON F A",
+      "vendor": "The Newbury Boston",
+      "category": "Lodging",
+      "department": "300- ServiceNow:320- Engineering",
+      "amount": 127.72
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "UBER *TRIP",
+      "vendor": "Uber",
+      "category": "Ground Transportation",
+      "department": "100- Operations:110- G&A",
+      "amount": 83.96
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "WWW.PLAYPKL.COM",
+      "vendor": "PKL Boston",
+      "category": "Meals & Entertainment",
+      "department": "200- Datadog:220- Engineering",
+      "amount": 80.0
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "UBER *TRIP",
+      "vendor": "Uber",
+      "category": "Ground Transportation",
+      "department": "300- ServiceNow:320- Engineering",
+      "amount": 78.95
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "UBER *TRIP",
+      "vendor": "Uber",
+      "category": "Ground Transportation",
+      "department": "300- ServiceNow:310- Delivery",
+      "amount": 76.85
+    },
+    {
+      "date": "2026-07-30",
+      "merchant": "UBER *TRIP",
+      "vendor": "Uber",
+      "category": "Ground Transportation",
+      "department": "200- Datadog:220- Engineering",
+      "amount": 74.99
+    }
+  ],
+  "privacyNote": "Cardholder names are stripped from every descriptor. Merchant, vendor, category, department and amount only."
 }
