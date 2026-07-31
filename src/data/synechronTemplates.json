@@ -1,0 +1,164 @@
+{
+  "month": "June '26",
+  "hrTemplate": {
+    "source": "HR Template_June'26.xlsx",
+    "rows": [
+      {
+        "metric": "Onsite headcount",
+        "value": "159",
+        "basis": "excludes Angel, interns, contractors, signed-not-joined"
+      },
+      {
+        "metric": "Nearshore headcount",
+        "value": "0",
+        "basis": "0% of mix"
+      },
+      {
+        "metric": "Offshore headcount",
+        "value": "0",
+        "basis": "0% of mix"
+      },
+      {
+        "metric": "Onsite headcount %",
+        "value": "100%",
+        "basis": "mix unchanged"
+      },
+      {
+        "metric": "Open positions",
+        "value": "6",
+        "basis": "as of Jun 2026"
+      },
+      {
+        "metric": "New joiners",
+        "value": "2",
+        "basis": "Lenny Caraballo, Paulina Mateo"
+      },
+      {
+        "metric": "Gender diversity",
+        "value": "76% M / 23% F",
+        "basis": "target 70% M / 30% F; 1% unspecified"
+      },
+      {
+        "metric": "Bench",
+        "value": "N/A",
+        "basis": "people waiting to be deployed"
+      },
+      {
+        "metric": "Awaiting onboarding",
+        "value": "N/A",
+        "basis": "signed, not yet started"
+      },
+      {
+        "metric": "Backlog",
+        "value": "$17.15M",
+        "basis": "sold work not yet recognized, Jun 2026"
+      },
+      {
+        "metric": "CSAT",
+        "value": "4.8",
+        "basis": "Apr\u2013Jun '26, flat three quarters"
+      }
+    ]
+  },
+  "newClientsWon": [
+    {
+      "name": "OldCastle (CRH Americas)",
+      "initialContractValue": 619920
+    },
+    {
+      "name": "AXA Technologies",
+      "initialContractValue": 400001
+    },
+    {
+      "name": "Ritchie Bros",
+      "initialContractValue": 230016
+    },
+    {
+      "name": "WesBanco",
+      "initialContractValue": 122880
+    },
+    {
+      "name": "NY eHealth Collaborative",
+      "initialContractValue": 100000
+    }
+  ],
+  "backlogByMonth": [
+    {
+      "month": "Jan",
+      "value": 17.9
+    },
+    {
+      "month": "Feb",
+      "value": 18.06
+    },
+    {
+      "month": "Mar",
+      "value": 20.39
+    },
+    {
+      "month": "Apr",
+      "value": 18.57
+    },
+    {
+      "month": "May",
+      "value": 19.36
+    }
+  ],
+  "csatByQuarter": [
+    {
+      "period": "Apr\u2013Jun '26",
+      "score": 4.8
+    },
+    {
+      "period": "Jan\u2013Mar '26",
+      "score": 4.8
+    },
+    {
+      "period": "Oct\u2013Dec '25",
+      "score": 4.8
+    }
+  ],
+  "dashboardTemplate": {
+    "source": "RapDev Dashboard template_Jun26.xlsx, sheet \"Slide 15 - RapDev\"",
+    "rowOrder": [
+      "Revenue",
+      "Avg. working days",
+      "Revenue Growth CC (YOY)",
+      "Revenue Growth CC (YTD)",
+      "Gross Margins",
+      "GM%",
+      "Adjusted EBITDA",
+      "Adj. EBITDA %",
+      "Revenue Per Day",
+      "Revenue Per Employee",
+      "Average Billing rate",
+      "Employee Headcount",
+      "Utilization",
+      "Unbilled AR",
+      "Backlog",
+      "CSAT",
+      "Contractor Mix"
+    ],
+    "june": {
+      "revenue": 4702074.87,
+      "avgWorkingDays": 22,
+      "revenueGrowthYoyPct": 59.57,
+      "revenueGrowthYtdPct": 75.02,
+      "grossMarginsQ2": 8186888.18,
+      "gmPctQ2": 59.71,
+      "adjEbitdaQ2": 2285148.45,
+      "adjEbitdaPctQ2": 16.67,
+      "revenuePerDay": 213730.68,
+      "revenuePerEmployee": 27179.62,
+      "averageBillingRate": 317.91,
+      "headcountOnsite": 159,
+      "headcountRoster": 173,
+      "utilizationPct": 72.35,
+      "unbilledAr": 5649124.92,
+      "arOver60": 370902,
+      "csat": 4.8,
+      "contractors": 1
+    }
+  },
+  "backlogNote": "Dec-May from the HR Template New Metrics backlog block. That block has no June row, so June is not shown."
+}

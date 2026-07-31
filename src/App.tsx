@@ -6,6 +6,7 @@ import IncomeStatement from "./components/IncomeStatement";
 import { RevenueEbitdaByMonth, YoyGrowth, RevenueByQuarter, ExpenseBase } from "./components/Charts";
 import ArAging from "./components/ArAging";
 import { Backlog, Attrition, FixedCostMix } from "./components/BacklogAttrition";
+import Headcount, { NewClients } from "./components/Headcount";
 import CloseBoard from "./components/CloseBoard";
 import WorkingFiles from "./components/WorkingFiles";
 import { PERIODS } from "./lib/derive";
@@ -43,7 +44,11 @@ export default function App() {
           <Backlog />
           <Attrition />
         </div>
-        <FixedCostMix />
+        <Headcount />
+        <div className="grid-2">
+          <NewClients />
+          <FixedCostMix />
+        </div>
         <CloseBoard />
         <WorkingFiles />
       </main>

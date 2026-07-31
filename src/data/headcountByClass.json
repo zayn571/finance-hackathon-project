@@ -1,0 +1,103 @@
+{
+ "source": "BambooHR department listing, Teams column; billable from Billable Status per employee",
+ "asOf": "2026-07",
+ "total": 173,
+ "billable": 115,
+ "groups": [
+  {
+   "code": "100",
+   "name": "Operations",
+   "children": [
+    {
+     "code": "110",
+     "name": "G&A",
+     "headcount": 15,
+     "billable": 0
+    },
+    {
+     "code": "120",
+     "name": "Marketing",
+     "headcount": 5,
+     "billable": 0
+    }
+   ]
+  },
+  {
+   "code": "200",
+   "name": "Datadog",
+   "children": [
+    {
+     "code": "210",
+     "name": "Delivery",
+     "headcount": 6,
+     "billable": 6
+    },
+    {
+     "code": "220",
+     "name": "Engineering",
+     "headcount": 32,
+     "billable": 29
+    },
+    {
+     "code": "230",
+     "name": "Sales",
+     "headcount": 14,
+     "billable": 1
+    }
+   ]
+  },
+  {
+   "code": "300",
+   "name": "ServiceNow",
+   "children": [
+    {
+     "code": "310",
+     "name": "Delivery",
+     "headcount": 17,
+     "billable": 16
+    },
+    {
+     "code": "320",
+     "name": "Engineering",
+     "headcount": 64,
+     "billable": 61
+    },
+    {
+     "code": "330",
+     "name": "Sales",
+     "headcount": 15,
+     "billable": 0
+    }
+   ]
+  },
+  {
+   "code": "400",
+   "name": "Synechron",
+   "children": [
+    {
+     "code": "410",
+     "name": "Digital platforms G&A",
+     "headcount": 4,
+     "billable": 1
+    }
+   ]
+  },
+  {
+   "code": "unassigned",
+   "name": "No team assigned",
+   "children": [
+    {
+     "code": "unassigned",
+     "name": "Unassigned in BambooHR",
+     "headcount": 1,
+     "billable": 1
+    }
+   ]
+  }
+ ],
+ "reconciliation": {
+  "junCloseReported": 156,
+  "synechronOnsiteBasis": 159,
+  "note": "Roster includes interns and one contractor; the Synechron basis excludes interns, contractors, and signed-not-joined."
+ }
+}

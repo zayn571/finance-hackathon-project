@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import metrics from "../data/dashboardMetrics.json";
+import hc from "../data/headcountByClass.json";
 import { derive, MONTHLY, type Period } from "../lib/derive";
 
 const money = (v: number) => (Math.abs(v) >= 1e6 ? `$${(v / 1e6).toFixed(2)}M` : `$${Math.round(v / 1000)}k`);
@@ -25,7 +26,7 @@ export default function KpiStrip({ period }: { period: Period }) {
     { label: "Gross margin", value: `${d.grossMarginPct.total.toFixed(1)}%`, delta: money(d.grossMargin.total) },
     { label: "Bookings", value: money(d.bookings.total), delta: `${d.bookings.dealCount} deals closed won` },
     { label: "Backlog", value: `$${metrics.backlog.series[metrics.backlog.series.length - 1].value.toFixed(2)}M`, delta: "sold, not delivered" },
-    { label: "Headcount", value: String(d.projectHours.billableHeadcount + d.projectHours.nonBillableHeadcount), delta: `${d.projectHours.billablePct.toFixed(0)}% billable`, favorable: true },
+    { label: "Headcount", value: String(hc.total), delta: `${hc.billable} billable`, favorable: true },
   ];
 
   return (

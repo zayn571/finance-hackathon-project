@@ -1010,5 +1010,32 @@
   "numFmt": "0",
   "indent": 0,
   "refRow": 140
+ },
+ "revenue-dd-intercompany": {
+  "bold": false,
+  "fill": "FFFFF2CC",
+  "fontColor": null,
+  "size": null,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 18
+ },
+ "revenue-sn-intercompany": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 2,
+  "refRow": 22
+ },
+ "revenue-other": {
+  "bold": false,
+  "fill": null,
+  "fontColor": "FF000000",
+  "size": 8.0,
+  "numFmt": "\"$\"* #,##0\\ _\u20ac",
+  "indent": 0,
+  "refRow": 23
  }
 }

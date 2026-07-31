@@ -532,3 +532,22 @@ th.col-emphasis, td.col-emphasis {
   font-weight: 600;
 }
 .is-total td.col-emphasis, .is-subtotal td.col-emphasis { font-weight: 700; }
+
+/* ---------- headcount ---------- */
+.hc-stats { display: flex; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+.hc-stat { display: flex; flex-direction: column; }
+.hc-stat-value { font-size: 22px; font-weight: 700; color: var(--navy); }
+.hc-stat-value.teal { color: var(--deep-teal); }
+.hc-stat-label {
+  font-size: 11px; font-weight: 500; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--muted);
+}
+.share-col { width: 140px; }
+.share-track {
+  display: inline-block; width: 120px; height: 8px;
+  background: var(--bg); border-radius: 2px; vertical-align: middle;
+}
+.share-bar { display: block; height: 8px; border-radius: 2px; }
+.badge-outline {
+  background: none; border: 1px solid var(--border-strong); color: var(--muted);
+}

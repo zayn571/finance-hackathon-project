@@ -186,8 +186,20 @@ export function derive(monthIdxs: number[]) {
         software: r2(softwareDd),
         managedDd: r2(managedDd),
         managedSoc: r2(managedSoc),
+        // Synechron intercompany revenue tagged to the Datadog classes. Shown as its
+        // own line so the detail sums to the subtotal above it.
+        intercompany: r2(synDd),
       },
-      sn: { total: r2(revenueSn), services: r2(servicesSn), software: r2(softwareSn), msp: r2(mspSn) },
+      sn: {
+        total: r2(revenueSn),
+        services: r2(servicesSn),
+        software: r2(softwareSn),
+        msp: r2(mspSn),
+        intercompany: r2(synSn),
+      },
+      // Intercompany revenue on the Operations/Synechron classes, which belongs to
+      // neither practice. Keeps DD + SN + this equal to revenue.total.
+      other: r2(synOther),
       totalServices: r2(servicesRevenue),
       totalSw: r2(softwareDd + softwareSn),
       totalMsp: r2(managedDd + managedSoc + mspSn),
