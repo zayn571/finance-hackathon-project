@@ -10,7 +10,23 @@ import bankRules from "../data/qboBankRules.json";
  *
  * Only when no rule matches does anything else decide the category, and the
  * caller supplies that fallback explicitly.
+ *
+ * Descriptors and patterns are both normalised before matching: runs of
+ * whitespace collapse to one space and the `*` separators card networks inject
+ * are treated as spaces. Without that, a rule written as "Uber Eats" never fires
+ * against the real descriptor "UBER   *EATS", and a broader "Uber" rule further
+ * down the list wins instead — the pattern was clearly authored to match, so the
+ * formatting of the bank text should not defeat it.
  */
+
+/** Collapse card-network formatting so an authored pattern matches real bank text. */
+export function normalizeDescriptor(s: string): string {
+  return String(s ?? "")
+    .replace(/\*/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
 
 export interface BankRule {
   priority: number;
@@ -25,8 +41,8 @@ export interface BankRule {
 
 export const RULES = (bankRules as { rules: BankRule[] }).rules;
 
-// Pre-lowered once; every descriptor comparison is case-insensitive.
-const PREPARED = RULES.map((r) => ({ rule: r, pats: r.patterns.map((p) => p.toLowerCase()) }));
+// Pre-normalised once; every descriptor comparison is case-insensitive.
+const PREPARED = RULES.map((r) => ({ rule: r, pats: r.patterns.map(normalizeDescriptor) }));
 
 export type CategorySource = "bank-rule" | "fallback" | "unmatched";
 
@@ -49,7 +65,7 @@ export function resolveCategory(
   descriptor: string,
   fallback?: { subCategory?: string | null; account?: string | null; department?: string | null }
 ): Resolution {
-  const d = (descriptor || "").toLowerCase();
+  const d = normalizeDescriptor(descriptor);
 
   for (const { rule, pats } of PREPARED) {
     const matched = rule.requireAll ? pats.every((p) => d.includes(p)) : pats.find((p) => d.includes(p));
@@ -87,7 +103,7 @@ export function resolveCategory(
  * broad rule sitting above a narrower one.
  */
 export function matchingRules(descriptor: string): BankRule[] {
-  const d = (descriptor || "").toLowerCase();
+  const d = normalizeDescriptor(descriptor);
   return PREPARED.filter(({ rule, pats }) =>
     rule.requireAll ? pats.every((p) => d.includes(p)) : pats.some((p) => d.includes(p))
   ).map(({ rule }) => rule);

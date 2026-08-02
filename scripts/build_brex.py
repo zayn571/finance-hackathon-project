@@ -9,7 +9,9 @@ already on the import file decide.
 
 Matching semantics deliberately mirror src/lib/categorize.ts so the build-time
 result and any live resolution agree: case-insensitive substring against the full
-bank descriptor, all patterns required when isAndRule was set.
+bank descriptor, all patterns required when isAndRule was set, with both sides
+normalised first (whitespace runs collapsed, `*` treated as a space) so a pattern
+authored as "Uber Eats" matches the real descriptor "UBER   *EATS".
 """
 
 import collections
@@ -23,11 +25,18 @@ RULES = "src/data/qboBankRules.json"
 OUT = "src/data/brexCardActivity.json"
 
 rules = json.load(open(RULES))["rules"]
-PREPARED = [(r, [p.lower() for p in r["patterns"]]) for r in rules]
+
+
+def normalize(s):
+    """Collapse card-network formatting so an authored pattern matches real bank text."""
+    return re.sub(r"\s+", " ", str(s if s is not None else "").replace("*", " ")).strip().lower()
+
+
+PREPARED = [(r, [normalize(p) for p in r["patterns"]]) for r in rules]
 
 
 def resolve(descriptor, fallback_sub, fallback_acct):
-    d = (descriptor or "").lower()
+    d = normalize(descriptor)
     for rule, pats in PREPARED:
         hit = all(p in d for p in pats) if rule["requireAll"] else any(p in d for p in pats)
         if hit:

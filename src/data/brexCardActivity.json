@@ -12,8 +12,8 @@
     "byImportFile": 124,
     "topRules": [
       {
-        "rule": "#283 Uber II",
-        "lines": 135
+        "rule": "#21 Uber",
+        "lines": 120
       },
       {
         "rule": "#277 TST",
@@ -24,16 +24,16 @@
         "lines": 17
       },
       {
+        "rule": "#22 UBER EATS",
+        "lines": 15
+      },
+      {
         "rule": "#39 Starbucks",
         "lines": 12
       },
       {
         "rule": "#62 CVS",
         "lines": 7
-      },
-      {
-        "rule": "#71 SPOTHERO",
-        "lines": 6
       }
     ]
   },
@@ -54,8 +54,8 @@
   "bySubCategory": [
     {
       "category": "Meals & Entertainment",
-      "amount": 49470.4,
-      "lines": 181
+      "amount": 50900.17,
+      "lines": 196
     },
     {
       "category": "Software Licenses",
@@ -64,8 +64,8 @@
     },
     {
       "category": "Ground Transportation",
-      "amount": 7554.56,
-      "lines": 185
+      "amount": 6124.79,
+      "lines": 170
     },
     {
       "category": "Airfare",
@@ -315,7 +315,7 @@
       "category": "Ground Transportation",
       "department": "100- Operations:110- G&A",
       "amount": 83.96,
-      "rule": "#283 Uber II"
+      "rule": "#21 Uber"
     },
     {
       "date": "2026-07-30",
@@ -333,7 +333,7 @@
       "category": "Ground Transportation",
       "department": "300- ServiceNow:320- Engineering",
       "amount": 78.95,
-      "rule": "#283 Uber II"
+      "rule": "#21 Uber"
     },
     {
       "date": "2026-07-30",
@@ -342,7 +342,7 @@
       "category": "Ground Transportation",
       "department": "300- ServiceNow:310- Delivery",
       "amount": 76.85,
-      "rule": "#283 Uber II"
+      "rule": "#21 Uber"
     },
     {
       "date": "2026-07-30",
@@ -351,7 +351,7 @@
       "category": "Ground Transportation",
       "department": "200- Datadog:220- Engineering",
       "amount": 74.99,
-      "rule": "#283 Uber II"
+      "rule": "#21 Uber"
     }
   ],
   "privacyNote": "Cardholder names are stripped from every descriptor. Merchant, vendor, category, department and amount only."
