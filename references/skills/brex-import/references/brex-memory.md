@@ -476,3 +476,9 @@ These 5 rows were corrected by Zayn in the returned file — the resolver's orig
 | `COVERMORE TRAVEL INS` | Office Vendor | Dues & Subscriptions | 2026-07-20 | **Corrected by Zayn** — Sub Category only, from Insurance. Travel-insurance subscription/policy line item. |
 | `GLF*VINEYARD` | Travel Vendor | Meals & Entertainment | 2026-07-20 | **Corrected by Zayn** from Office Vendor / Other Business Expenses. Covers both descriptor variants seen this run. |
 | `CROWN AWARDS INC` | Crown Awards | Office Supplies | 2026-07-20 | **Corrected by Zayn** — Sub Category was blank (defaulted), now Office Supplies. |
+| `APH` | Travel Vendor | Ground Transportation | 2026-08-02 | UK Airport Parking & Hotels — airport parking, not food. Confirmed by Zayn on the 20260802 run. |
+| `Tonbridge` | Travel Vendor | Ground Transportation | 2026-08-02 | UK rail station fare. Confirmed by Zayn on the 20260802 run. |
+| `APCOA PARKING` | Travel Vendor | Ground Transportation | 2026-08-02 | UK car-park operator. Confirmed by Zayn on the 20260802 run. |
+| `Big Green Egg` | Office Vendor | Office Supplies | 2026-08-02 | Matches the category already on the Brex CSV. Confirmed by Zayn on the 20260802 run. |
+| `PrintWithMe` | Office Vendor | Office Supplies | 2026-08-02 | Print kiosk — office supplies, not the coffeehouse it sits inside. Confirmed by Zayn on the 20260802 run. |
+| `Sainsbury` | Food Vendor | Meals & Entertainment | 2026-08-02 | UK grocery — Food Vendor is correct; confirming to clear the low-confidence flag. |
