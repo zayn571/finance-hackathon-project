@@ -482,3 +482,6 @@ These 5 rows were corrected by Zayn in the returned file — the resolver's orig
 | `Big Green Egg` | Office Vendor | Office Supplies | 2026-08-02 | Matches the category already on the Brex CSV. Confirmed by Zayn on the 20260802 run. |
 | `PrintWithMe` | Office Vendor | Office Supplies | 2026-08-02 | Print kiosk — office supplies, not the coffeehouse it sits inside. Confirmed by Zayn on the 20260802 run. |
 | `Sainsbury` | Food Vendor | Meals & Entertainment | 2026-08-02 | UK grocery — Food Vendor is correct; confirming to clear the low-confidence flag. |
+| `Google Workspace` | Office Vendor | Software Licenses | 2026-08-02 | **Corrected by Zayn** — was resolving to Food Vendor with no rule, and the `Google Workspace_amana` variant was blanket-matched by the cardholder rule `Aylab DE` (matched Ayla Hourani's budget, not the merchant) and booked to Other Marketing Expenses. A merchant entry here beats the cardholder rule. |
+| `FIVE IRON GOLF` | Food Vendor | Meals & Entertainment | 2026-08-02 | Client/team entertainment venue that serves food. Confirmed by Zayn on the 20260802 run. |
+| `AMC 2657` | Food Vendor | Meals & Entertainment | 2026-08-02 | Cinema — team entertainment. Confirmed by Zayn on the 20260802 run. |
